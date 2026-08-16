@@ -20,8 +20,29 @@ def download_filing(url: str) -> str:
 def clean_html(html: str) -> str:
     soup = BeautifulSoup(html, "html.parser")
 
+    # Remove code/style content
     for tag in soup(["script", "style"]):
         tag.decompose()
+
+    # Remove Inline XBRL metadata
+    for tag_name in [
+        "ix:header",
+        "ix:hidden",
+        "ix:references",
+        "ix:resources",
+    ]:
+        for tag in soup.find_all(tag_name):
+            tag.decompose()
+
+    # Remove hidden elements safely
+    for tag in soup.find_all(style=True):
+        if tag.attrs is None:
+            continue
+
+        style = tag.attrs.get("style", "").lower().replace(" ", "")
+
+        if "display:none" in style or "visibility:hidden" in style:
+            tag.decompose()
 
     text = soup.get_text(separator="\n")
 
