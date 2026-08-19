@@ -1,0 +1,210 @@
+[
+  {
+    "id": "apple_privacy_01",
+    "question": "What privacy risks does Apple face?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_16",
+      "apple_10k_17",
+      "apple_10k_20"
+    ],
+    "category": "privacy"
+  },
+  {
+    "id": "apple_competition_01",
+    "question": "What are Apple's major competitive risks?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_4",
+      "apple_10k_5",
+      "apple_10k_9",
+      "apple_10k_10"
+    ],
+    "category": "competition"
+  },
+  {
+    "id": "apple_supply_chain_01",
+    "question": "What supply chain risks does Apple describe?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_7",
+      "apple_10k_8",
+      "apple_10k_9",
+      "apple_10k_10",
+      "apple_10k_12"
+    ],
+    "category": "supply_chain"
+  },
+  {
+    "id": "apple_china_01",
+    "question": "What does Apple say about Greater China?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_3",
+      "apple_10k_4",
+      "apple_10k_28",
+      "apple_10k_40",
+      "apple_10k_52",
+      "apple_10k_53"
+    ],
+    "category": "geography"
+  },
+  {
+    "id": "apple_cybersecurity_01",
+    "question": "What cybersecurity risks does Apple face?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_8",
+      "apple_10k_16",
+      "apple_10k_17"
+    ],
+    "category": "cybersecurity"
+  },
+  {
+    "id": "microsoft_ai_overview_01",
+    "question": "What does Microsoft say about artificial intelligence?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_2",
+      "microsoft_10k_3",
+      "microsoft_10k_23",
+      "microsoft_10k_24",
+      "microsoft_10k_36",
+      "microsoft_10k_37"
+    ],
+    "category": "ai"
+  },
+  {
+    "id": "microsoft_ai_risk_01",
+    "question": "What AI risks does Microsoft identify?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_23",
+      "microsoft_10k_24",
+      "microsoft_10k_27",
+      "microsoft_10k_37",
+      "microsoft_10k_38"
+    ],
+    "category": "ai_risk"
+  },
+  {
+    "id": "microsoft_cybersecurity_01",
+    "question": "What cybersecurity risks does Microsoft describe?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_19",
+      "microsoft_10k_22",
+      "microsoft_10k_32",
+      "microsoft_10k_34"
+    ],
+    "category": "cybersecurity"
+  },
+  {
+    "id": "microsoft_cloud_01",
+    "question": "What does Microsoft say about cloud services?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_3",
+      "microsoft_10k_4",
+      "microsoft_10k_11",
+      "microsoft_10k_12",
+      "microsoft_10k_37",
+      "microsoft_10k_39",
+      "microsoft_10k_40",
+      "microsoft_10k_41",
+      "microsoft_10k_82",
+      "microsoft_10k_83"
+    ],
+    "category": "cloud"
+  },
+  {
+    "id": "microsoft_competition_01",
+    "question": "What competitive risks does Microsoft face?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_5",
+      "microsoft_10k_7",
+      "microsoft_10k_8",
+      "microsoft_10k_9",
+      "microsoft_10k_15",
+      "microsoft_10k_37"
+    ],
+    "category": "competition"
+  },
+  {
+    "id": "nvidia_export_controls_01",
+    "question": "What risks does NVIDIA face from export controls?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_13",
+      "nvidia_10k_14",
+      "nvidia_10k_20",
+      "nvidia_10k_25",
+      "nvidia_10k_33",
+      "nvidia_10k_34",
+      "nvidia_10k_35",
+      "nvidia_10k_38",
+      "nvidia_10k_39",
+      "nvidia_10k_40"
+    ],
+    "category": "export_controls"
+  },
+  {
+    "id": "nvidia_china_01",
+    "question": "What risks does NVIDIA face in China?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_14",
+      "nvidia_10k_25",
+      "nvidia_10k_27",
+      "nvidia_10k_33",
+      "nvidia_10k_34",
+      "nvidia_10k_35",
+      "nvidia_10k_39",
+      "nvidia_10k_44",
+      "nvidia_10k_50"
+    ],
+    "category": "geography"
+  },
+  {
+    "id": "nvidia_supply_chain_01",
+    "question": "What supply chain risks does NVIDIA face?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_16",
+      "nvidia_10k_20",
+      "nvidia_10k_24",
+      "nvidia_10k_27",
+      "nvidia_10k_29",
+      "nvidia_10k_39",
+      "nvidia_10k_50"
+    ],
+    "category": "supply_chain"
+  },
+  {
+    "id": "nvidia_competition_01",
+    "question": "What competitive risks does NVIDIA describe?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_14",
+      "nvidia_10k_16",
+      "nvidia_10k_20",
+      "nvidia_10k_50"
+    ],
+    "category": "competition"
+  },
+  {
+    "id": "nvidia_regulation_01",
+    "question": "What regulatory risks does NVIDIA face?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_20",
+      "nvidia_10k_29",
+      "nvidia_10k_30",
+      "nvidia_10k_34",
+      "nvidia_10k_39",
+      "nvidia_10k_50"
+    ],
+    "category": "regulation"
+  }
+]

@@ -3,8 +3,7 @@ import os
 from dotenv import load_dotenv
 from pinecone import Pinecone
 
-from embedder import embed_text
-
+from retrieval.embedder import embed_text
 
 load_dotenv()
 

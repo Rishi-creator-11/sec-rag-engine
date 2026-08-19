@@ -1,0 +1,922 @@
+[
+  {
+    "question": "What privacy risks does Apple face?",
+    "answer": "Apple\u2019s disclosed privacy risks (concise):\n\n- Unauthorized access, hacking, ransomware and other cybersecurity incidents that could expose personal/confidential data [Source 1][Source 5].  \n- Malicious attacks are frequent and increasing in sophistication, which can hinder detection, investigation and recovery from incidents [Source 5].  \n- Human-related breaches (employee error, malfeasance, faulty password management) and social\u2011engineering (fraudulently induced credential disclosure) that enable unauthorized access [Source 1][Source 5].  \n- Risks from suppliers and other third parties who receive or process Apple data (their breaches can expose Apple data) [Source 5].  \n- Information\u2011technology system failures, network disruptions or continuity plan inadequacies that can lead to loss or unauthorized release of personal information [Source 5].  \n- Existing security measures (encryption, authentication, multifactor authentication) may be insufficient for all eventualities [Source 1][Source 5].  \n- Regulatory and legal risks from an increasing number of data\u2011protection laws (collection, use, retention, security and transfer), including restrictions on transfers among Apple and its international subsidiaries [Source 3].  \n- New regulatory changes and compliance efforts (e.g., DMA-related changes) can introduce privacy/security risks and may not eliminate all risks to users [Source 3].  \n- Failure to comply with privacy/security laws or expectations can lead to investigations, litigation, fines, reputational harm and other adverse business effects [Source 2][Source 3].  \n- Insurance coverage for data\u2011security incidents may be insufficient to cover all losses or claims [Source 1].",
+    "sources": [
+      {
+        "chunk_id": "apple_10k_17",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.573464453
+      },
+      {
+        "chunk_id": "apple_10k_19",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.570659578
+      },
+      {
+        "chunk_id": "apple_10k_20",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.568093121
+      },
+      {
+        "chunk_id": "apple_10k_7",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.534501672
+      },
+      {
+        "chunk_id": "apple_10k_16",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.523854256
+      }
+    ]
+  },
+  {
+    "question": "What are Apple's major competitive risks?",
+    "answer": "- Intense global competition across smartphones, personal computers, tablets, wearables and services from companies with significant technical, marketing, distribution and other resources, broader product lines, lower-priced products and larger installed bases [Source 1][Source 3].  \n- Aggressive price competition and downward pressure on margins; some competitors can sell at little or no profit or even at a loss [Source 1][Source 2][Source 3].  \n- Competitors imitating Apple\u2019s product features and applications or collaborating to offer more competitive integrated solutions [Source 1][Source 3].  \n- Services competition from business models that provide content for free and from illegitimate means to obtain third\u2011party digital content and applications [Source 1][Source 3][Source 5].  \n- Dependence on continual successful innovation and timely introduction of new products/services (R&D risk, product defects, production ramp issues, and potential cannibalization) [Source 1][Source 5].  \n- Intellectual property risks, including infringement by competitors, patent litigation and uneven effectiveness of IP protection across countries [Source 2][Source 5][Source 4].  \n- Supply\u2011chain and component risks: certain components from single or limited sources, custom single\u2011source parts, industry shortages and commodity price fluctuations [Source 5][Source 3].  \n- Manufacturing and logistics concentration with outsourced partners (primarily in China, India, Japan, South Korea, Taiwan and Vietnam), reducing direct control and increasing risk from disruptions, industrial accidents, pandemics and geopolitical or transportation issues [Source 1][Source 2].",
+    "sources": [
+      {
+        "chunk_id": "apple_10k_10",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.691136539
+      },
+      {
+        "chunk_id": "apple_10k_9",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.686221
+      },
+      {
+        "chunk_id": "apple_10k_4",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.647286117
+      },
+      {
+        "chunk_id": "apple_10k_17",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.641967
+      },
+      {
+        "chunk_id": "apple_10k_5",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.623074234
+      }
+    ]
+  },
+  {
+    "question": "What supply chain risks does Apple describe?",
+    "answer": "Apple describes multiple supply-chain risks, including:\n\n- Reliance on custom or single-source components and initial capacity/ yield constraints for new technologies, risking delays, shortages or higher costs and difficulty finding alternative sources [Source 1].  \n- Delays or shipment constraints from suppliers or outsourcing partners that can materially harm operations, results and financial condition [Source 1].  \n- Heavy dependence on outsourced manufacturing and logistics (primarily in China, India, Japan, South Korea, Taiwan and Vietnam), with significant concentration at a small number of partners and often single locations, reducing Apple\u2019s control and increasing risk of quality, quantity or responsiveness problems [Source 4].  \n- Design and manufacturing defects in Apple\u2019s products or third\u2011party components, leading to safety risks, recalls, warranty and other costs, reputational harm and lost sales [Source 1].  \n- Inventory obsolescence, write\u2011downs and purchase\u2011commitment cancellation exposure for excess or slow\u2011moving components and products [Source 1].  \n- Political/trade restrictions, tariffs and geopolitical tensions that can disrupt supply chains, increase costs, force supplier or operational changes, and be announced with little notice [Source 2].  \n- Natural disasters, earthquakes, industrial accidents, power shortages, terrorism, cyberattacks (e.g., ransomware), labor disputes, public health crises (including pandemics) and other interruptions that can halt manufacturing, delay deliveries and require substantial recovery time and expense [Source 2; Source 5].  \n- Financial and macroeconomic weakness affecting suppliers, contract manufacturers, logistics providers and other partners (e.g., inability to obtain credit, insolvency), which can disrupt supply and manufacturing [Source 3].  \n- Industrial accidents at suppliers or contract manufacturers that can cause injuries, operational disruption and reputational harm [Source 2; Source 5].",
+    "sources": [
+      {
+        "chunk_id": "apple_10k_12",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.645654142
+      },
+      {
+        "chunk_id": "apple_10k_8",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.645481
+      },
+      {
+        "chunk_id": "apple_10k_7",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.614334345
+      },
+      {
+        "chunk_id": "apple_10k_10",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.61433
+      },
+      {
+        "chunk_id": "apple_10k_9",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.604961395
+      }
+    ]
+  },
+  {
+    "question": "What does Apple say about Greater China?",
+    "answer": "- Greater China is one of Apple\u2019s reportable geographic segments and \"includes China mainland, Hong Kong and Taiwan.\" [Source 1][Source 3]\n\n- 2024 net sales for Greater China were $66,952 million and operating income was $27,082 million (comparative 2023: $72,559 million net sales and $30,328 million operating income). [Source 3]\n\n- Greater China net sales decreased 8% in 2024 versus 2023 \"due primarily to lower net sales of iPhone and iPad.\" Apple also states \"the weakness in the renminbi relative to the U.S. dollar had an unfavorable year\u2011over\u2011year impact on Greater China net sales during 2024.\" [Source 5]\n\n- Apple reports China (which it notes includes Hong Kong and Taiwan) as a country with separately disclosed net sales and long\u2011lived assets (2024 long\u2011lived assets for China: $4,797 million). [Source 4][Source 3]",
+    "sources": [
+      {
+        "chunk_id": "apple_10k_3",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.558567584
+      },
+      {
+        "chunk_id": "apple_10k_4",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.507841766
+      },
+      {
+        "chunk_id": "apple_10k_52",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.504166663
+      },
+      {
+        "chunk_id": "apple_10k_53",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.49655059
+      },
+      {
+        "chunk_id": "apple_10k_28",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.489527464
+      }
+    ]
+  },
+  {
+    "question": "What cybersecurity risks does Apple face?",
+    "answer": "The provided SEC filing excerpts identify the following cybersecurity risks Apple faces:\n\n- IT system failures or network disruptions from events such as natural disasters, power or telecommunications failures, terrorism or war, computer viruses, physical/electronic break\u2011ins, ransomware or other cybersecurity incidents, and ineffective continuity measures or upgrades [Source 1].  \n- Loss, unauthorized access to, or release of confidential information (including customer and employee personal data) with attendant reputational, financial, legal and operational consequences [Source 1].  \n- Regular malicious attacks that seek to compromise confidentiality, integrity or availability of data or to disrupt operations; these attacks are increasing in frequency and sophistication and can evade controls, detection and forensic efforts [Source 1].  \n- Greater targeting risk due to Apple\u2019s high profile and the value of the confidential information it handles [Source 1].  \n- Risks from suppliers and other third parties (including outsourced manufacturers) that are exposed to ransomware and other attacks and whose compromise can disrupt Apple\u2019s operations or expose shared confidential information [Source 1; Source 4].  \n- Vulnerabilities in Apple\u2019s and third parties\u2019 security measures to hacking, ransomware, employee error, malfeasance, system error, faulty password management and social\u2011engineering (fraudulent inducement to disclose credentials) [Source 1; Source 2].  \n- Limitations of mitigations and transfer mechanisms: encryption, authentication, multifactor authentication, monitoring and account freezes may be insufficient in all cases, and insurance coverage may not cover all losses or claims [Source 1; Source 2].\n\nPotential impacts cited include preventing access to Apple\u2019s online services, interfering with customer transactions, impeding manufacturing and shipping, delaying or losing customer orders, impeding customer access to products/services, harming reputation, damaging commercial relationships, affecting stock price, and exposing Apple to litigation, government investigations, penalties, fines or judgments [Source 1; Source 2].",
+    "sources": [
+      {
+        "chunk_id": "apple_10k_16",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.613632679
+      },
+      {
+        "chunk_id": "apple_10k_17",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.608573616
+      },
+      {
+        "chunk_id": "apple_10k_19",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.564117312
+      },
+      {
+        "chunk_id": "apple_10k_8",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.560217
+      },
+      {
+        "chunk_id": "apple_10k_7",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.55783844
+      }
+    ]
+  },
+  {
+    "question": "What does Microsoft say about artificial intelligence?",
+    "answer": "- Microsoft says it is committed to making digital technology and artificial intelligence (AI) available broadly and \u201cdoing so responsibly,\u201d with AI central to its mission to \u201cempower every person and every organization\u201d [Source 1], [Source 3].\n- It describes AI as \u201cfundamentally transforming productivity\u201d and says its AI offerings \u201cspan every layer of the technology stack,\u201d enabling transformative outcomes across industries and customers [Source 1].\n- Microsoft positions AI as embedded across its products and cloud (the Microsoft Cloud), including Microsoft 365 Copilot and agents, and as a driver of reinventing productivity, the intelligent cloud/edge platform, and more personal computing [Source 2].\n- It highlights a strategic partnership with OpenAI: Microsoft is a major investor, has rights to OpenAI\u2019s IP for product integration, the OpenAI API is exclusive to and runs on Azure (available via Azure OpenAI Service), and Microsoft has a right of first refusal on OpenAI\u2019s capacity needs [Source 3].\n- Microsoft emphasizes responsible AI: it says AI should be \u201cas empowering as it is powerful,\u201d and it is \u201ccommitted to designing and deploying AI responsibly with safety and security from the outset\u201d [Source 1].\n- The company acknowledges risks and challenges of AI, including flawed algorithms or training, biased or inaccurate datasets, offensive/illegal/inaccurate outputs, potential misuse (e.g., impersonation, misinformation), legal and regulatory exposures, reputational harm, and the need for human review in some scenarios [Source 4], [Source 5].\n- It also notes operational and cost implications: investments in cloud and AI infrastructure (datacenters, compute capacity) are increasing and may raise operating costs and affect margins, and preventing/mitigating AI-related abuses may require substantial investments [Source 3], [Source 4], [Source 5].",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_2",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.587714612
+      },
+      {
+        "chunk_id": "microsoft_10k_3",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.542893052
+      },
+      {
+        "chunk_id": "microsoft_10k_37",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.532618761
+      },
+      {
+        "chunk_id": "microsoft_10k_23",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.527646124
+      },
+      {
+        "chunk_id": "microsoft_10k_24",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.527578533
+      }
+    ]
+  },
+  {
+    "question": "What AI risks does Microsoft identify?",
+    "answer": "Microsoft identifies the following AI-related risks in these filing excerpts:\n\n- AI algorithms or training methodologies may be flawed [Source 1][Source 2].  \n- Training datasets may be overbroad, insufficient, or contain bias or inaccurate information [Source 1][Source 2].  \n- AI-generated content may be offensive, illegal, inaccurate, or otherwise harmful [Source 1][Source 2].  \n- Ineffective or inadequate AI development or deployment practices could cause incidents that impair acceptance, harm individuals or society, or cause products to fail to work as intended [Source 1][Source 2].  \n- Certain AI systems (including agentic systems) may require human review because they can act autonomously [Source 1].  \n- Implementation or outputs of AI could lead to legal liability, regulatory action, intellectual property and data-privacy claims, or other claims related to training and outputs [Source 1][Source 2].  \n- Reputational, brand, or competitive harm arising from AI-related incidents or controversial impacts (e.g., on human rights, privacy, employment) [Source 1][Source 2].  \n- Ethical issues and broad societal impacts from AI, compounded by divergent global approaches and evolving regulations [Source 1][Source 2].  \n- Misuse, unintended use, or customer/partner customization of AI contrary to Microsoft\u2019s responsible-AI policies could cause adverse business and financial effects [Source 1][Source 2].  \n- Platform abuse enabled by AI (e.g., impersonation, dissemination of misleading or manipulative information) harming reputation or user engagement and requiring substantial mitigation investments [Source 2].  \n- Scale and technical limitations may impede detection/removal of harmful or illegal content; content-moderation obligations and freedom-of-expression tensions create regulatory uncertainty [Source 2].  \n- Products that collect large amounts of data or are deployed in high\u2011risk or inappropriate scenarios raise security, privacy, and compliance risks [Source 2][Source 5].  \n- Increased infrastructure and operational demands from incorporating AI (e.g., datacenter, compute, GPUs) raise risks of outages, data loss, supply constraints, and higher costs [Source 1][Source 3].  \n- Evolving export controls, trade policies, and AI-specific rulemakings (e.g., the AI Diffusion Rule) and geopolitical developments could increase costs, restrict offerings, or otherwise disrupt AI operations and supply chains [Source 5].",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_24",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.662214518
+      },
+      {
+        "chunk_id": "microsoft_10k_23",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.650332272
+      },
+      {
+        "chunk_id": "microsoft_10k_37",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.606562793
+      },
+      {
+        "chunk_id": "microsoft_10k_2",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.574827909
+      },
+      {
+        "chunk_id": "microsoft_10k_27",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.551842451
+      }
+    ]
+  },
+  {
+    "question": "What cybersecurity risks does Microsoft describe?",
+    "answer": "Microsoft describes the following cybersecurity risks:\n\n- Exploitation of vulnerabilities in Microsoft or third\u2011party hardware, software, or infrastructure (including supply\u2011chain introduction of malware via updates, supplier accounts, or hardware) [Source 2] [Source 5].  \n- Social engineering (e.g., inducing employees, users, partners, or customers to disclose passwords or take actions that enable access) [Source 2].  \n- Coordinated attacks and nation\u2011state or state\u2011sponsored actors (sustained, resource\u2011intensive campaigns; example: November 2023 password\u2011spray compromise that accessed email, source code repositories, and internal systems) [Source 2].  \n- Failures or delays in applying security patches, including on end\u2011of\u2011life or end\u2011of\u2011support equipment, leading to unauthorized access [Source 2].  \n- Inadequate account or organizational security practices (e.g., failure to rotate passwords or timely remove/update employee access), including risks from acquired companies or third parties with access [Source 2].  \n- Insider threats or intentional compromise by employees or third parties, and legal constraints in foreign jurisdictions that may limit recourse [Source 2] [Source 5].  \n- Use of emerging technologies (such as AI/ML) by threat actors, and evolving, increasingly sophisticated attacks that may evade detection or persist undetected for long periods [Source 2].  \n- Difficulty investigating, mitigating, containing, and remediating sophisticated incidents, cascading impacts across partner and customer networks, and delays in fully assessing incident impact or communicating about incidents [Source 2].  \n- Breaches that disrupt services, impair ability to protect customer data, cause product delays, or compromise confidential/technical business information [Source 2].  \n- Disclosure or misuse of personal data (including by third parties with limited access) leading to liability, reputational harm, regulatory exposure, or reduced customer adoption of cloud services; plus risks from government demands for customer data [Source 5].  \n- Platform abuses (e.g., impersonation, scraping via bots, misuse enabled by AI) that can harm reputation or user engagement [Source 5].  \n- Cybersecurity risks posed by third\u2011party service providers, requiring contractual controls and reviews to manage those risks [Source 1] [Source 2].",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_34",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.653404713
+      },
+      {
+        "chunk_id": "microsoft_10k_19",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.615062475
+      },
+      {
+        "chunk_id": "microsoft_10k_32",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.596451461
+      },
+      {
+        "chunk_id": "microsoft_10k_37",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.572669864
+      },
+      {
+        "chunk_id": "microsoft_10k_22",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.552829
+      }
+    ]
+  },
+  {
+    "question": "What does Microsoft say about cloud services?",
+    "answer": "Microsoft describes cloud services as a central, strategic part of its business that:\n- Provide customers software, services, platforms, and content and are sold with solution support and consulting services [Source 1].  \n- Deliver integration across the technology stack, openness, faster time to value, lower costs, and increased agility [Source 1].  \n- Benefit from three economies of scale: large datacenters (lower cost per unit), aggregation of diverse customer/geographic demand (improved utilization), and multi\u2011tenancy (lower application maintenance labor costs) [Source 1].  \n- Are secured and augmented with integrated, AI\u2011driven products for security, compliance, identity, management, and privacy across multi\u2011cloud, application, and device assets [Source 1].  \n- Form the foundation of Microsoft\u2019s strategy to build an \u201cintelligent cloud and intelligent edge\u201d platform (hybrid consistency, developer productivity, data and AI capabilities, trusted security/compliance) and to lead the AI platform wave across its solutions [Source 1].  \n- Generate substantial and growing revenue (Microsoft Cloud revenue increased 23% to $168.9 billion; Azure and other cloud services drove strong server/cloud revenue growth) and require ongoing investments in datacenter operations and server capacity, which increase operating costs [Source 2].  \n- Are sold through multiple licensing and commercial channels (Enterprise Agreements, Microsoft Customer Agreement, Online Subscription Agreements, Microsoft Cloud Solution Provider program, etc.) to meet different customer sizes and needs [Source 3; Source 5].",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_3",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.578905523
+      },
+      {
+        "chunk_id": "microsoft_10k_37",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.56561929
+      },
+      {
+        "chunk_id": "microsoft_10k_12",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.547131419
+      },
+      {
+        "chunk_id": "microsoft_10k_4",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.542864382
+      },
+      {
+        "chunk_id": "microsoft_10k_11",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.535289705
+      }
+    ]
+  },
+  {
+    "question": "What competitive risks does Microsoft face?",
+    "answer": "Microsoft faces multiple competitive risks, including:\n\n- Intense competition across all markets from large diversified firms and small specialized firms, with low barriers to entry and rapidly evolving technologies that require continual innovation or risk losing competitiveness [Source 1].  \n- Competition among platform-based ecosystems that can erode network effects and scale advantages [Source 1].  \n- Rivals using vertically integrated hardware+software models (e.g., phones, tablets, consoles, wearables) that can claim security/performance benefits and capture services revenue; shifting to such a model could raise Microsoft\u2019s costs and reduce margins [Source 1].  \n- Competition to Windows from alternative platforms and new device form factors (smartphones, tablets) and low- or no-cost operating systems, which can reduce PC OS margins and make it harder to attract developers; some OEM partners also produce competing devices [Source 1, Source 3].  \n- Devices (Surface and PCs) face competition from other computer/tablet/hardware manufacturers, including OEMs that are also partners/customers [Source 3, Source 4].  \n- Gaming (Xbox and cloud gaming) competes with other online gaming ecosystems, game streaming services, and entertainment platforms; success depends on exclusive content, device performance, and active user base [Source 3].  \n- Search, news advertising, Edge/Bing/Copilot face competition for user acquisition, engagement, and ad relevance, affecting ad revenue [Source 3].  \n- Azure and AI offerings compete with other cloud providers, hyperscalers, emerging competitors, and open source solutions; cloud security and server offerings also face broad competition [Source 4].  \n- Server, database, BI, system management, and developer tools compete with many commercial vendors and open source alternatives; vertically integrated manufacturers offer competing preinstalled Unix/Linux solutions [Source 4].  \n- Productivity and collaboration products (Microsoft 365/Office) compete with software vendors, web/mobile/AI-first apps, and local developers; growth depends on cloud shifts and AI feature adoption [Source 5].  \n- Enterprise and partner services compete with multinational consulting firms and niche specialist providers [Source 4].  \n- LinkedIn competes with other professional networks, recruiting/talent-management firms, job boards, learning platforms, and advertising outlets [Source 5].  \n- Market dynamics (rapid device/form-factor shifts) and macroeconomic/geopolitical factors can change demand; investments in cloud and AI infrastructure raise operating costs and may reduce margins [Source 2].",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_15",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.666008532
+      },
+      {
+        "chunk_id": "microsoft_10k_37",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.645539
+      },
+      {
+        "chunk_id": "microsoft_10k_8",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.618994892
+      },
+      {
+        "chunk_id": "microsoft_10k_7",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.615423858
+      },
+      {
+        "chunk_id": "microsoft_10k_5",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.588932037
+      }
+    ]
+  },
+  {
+    "question": "What risks does NVIDIA face from export controls?",
+    "answer": "NVIDIA identifies multiple risks from export controls, including:\n\n- Disruption of supply and distribution chains (including warehousing/distribution from Hong Kong) that could impair ability to serve demand [Source 1][Source 2].  \n- Reduced sales and demand in China and other markets (Europe, Latin America, Southeast Asia, EMEA) and effective foreclosure from China\u2019s data\u2011center market [Source 1][Source 5].  \n- Existing and potential expansion of controls on gaming and data\u2011center GPUs (and related networking/interconnect products) that could directly reduce product sales and competitiveness [Source 1][Source 2][Source 5].  \n- Disproportionate competitive disadvantage versus companies whose products fall outside the controls, and encouragement for customers or governments to \u201cdesign out\u201d or buy from competitors [Source 1][Source 2][Source 5].  \n- Licensing requirements that may be burdensome, temporary, delayed, or denied, harming sales, support, and warranty/service obligations and creating transition costs [Source 4][Source 5].  \n- Restrictions on downstream users (use, resale, repair, transfer) and on creating large GPU clusters, which could limit customer deployment and cloud/service offerings (including NVIDIA AI Cloud and CSPs) [Source 2][Source 4].  \n- Compliance burdens, increased costs, and reputational harm from allegations or reports of diversion even if untrue [Source 1].  \n- Risk of excess inventory or purchase obligations if products become restricted after release (example: H20) [Source 1][Source 2].  \n- Potential requirements to incorporate government\u2011mandated chip features (e.g., tracking/throttling) that could create vulnerabilities, liability, or reduce product demand [Source 4].  \n- Negative impact on R&D and personnel movement from deemed export limits and other controls, potentially impairing roadmap execution [Source 2][Source 3].  \n- Exposure to penalties or other adverse consequences if export control or sanctions violations are alleged or found, even without NVIDIA\u2019s knowledge [Source 3][Source 2].  \n- Increased investment in foreign competitors spurred by controls, reducing NVIDIA\u2019s long\u2011term market opportunities [Source 1][Source 5].",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_39",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.71593374
+      },
+      {
+        "chunk_id": "nvidia_10k_35",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.686415911
+      },
+      {
+        "chunk_id": "nvidia_10k_34",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.67152524
+      },
+      {
+        "chunk_id": "nvidia_10k_38",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.637689948
+      },
+      {
+        "chunk_id": "nvidia_10k_13",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.594943285
+      }
+    ]
+  },
+  {
+    "question": "What risks does NVIDIA face in China?",
+    "answer": "NVIDIA identifies several China\u2011related risks in the provided excerpts:\n\n- US export controls and licensing requirements can restrict sales into China, disrupt supply and distribution (including warehousing in Hong Kong), reduce demand, and force excess inventory/purchase\u2011obligation charges (example: H20) [Source 1][Source 5].  \n- Export controls on data\u2011center GPUs and networking products could limit sales and diminish demand for related products and services in China and elsewhere [Source 1][Source 3].  \n- Regulatory uncertainty and limited or conditional licenses (e.g., H200 licensing requiring U.S. inspection and subject to a 25% tariff) constrain shipments and revenue to China [Source 5].  \n- Potential US restrictions on supporting third\u2011party applications or models originating in China (e.g., DeepSeek, Qwen, KIMMI) could materially harm NVIDIA\u2019s ability to provide products and services for those ecosystems [Source 1].  \n- Increased scrutiny and information requests from Chinese (and other) regulators impose burdens, costs, and potential adverse impacts on relationships and operations [Source 2].  \n- Export controls and sanctions may encourage customers or governments to \u201cdesign\u2011out\u201d U.S. semiconductors or favor non\u2011U.S. competitors, harming NVIDIA\u2019s market position in China and other regions [Source 1][Source 3].  \n- Geopolitical and political instability in China/Hong Kong and the region could lead to changing regulatory requirements and other disruptions that affect operations, product demand, and access to suppliers or facilities [Source 4].  \n- Compliance burdens and risks of alleged diversion or regulatory violations (even if untrue) could damage relationships, reputation, and result in penalties affecting business in China [Source 1][Source 2].",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_39",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.661813557
+      },
+      {
+        "chunk_id": "nvidia_10k_34",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.619607806
+      },
+      {
+        "chunk_id": "nvidia_10k_35",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.608326375
+      },
+      {
+        "chunk_id": "nvidia_10k_27",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.60094291
+      },
+      {
+        "chunk_id": "nvidia_10k_50",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.600284696
+      }
+    ]
+  },
+  {
+    "question": "What supply chain risks does NVIDIA face?",
+    "answer": "NVIDIA identifies multiple supply\u2011chain risks in its SEC filings, including:\n\n- Long manufacturing lead times and uncertain supply/capacity availability that can create supply\u2013demand mismatches [Source 4].  \n- Dependence on third\u2011party suppliers, contract manufacturers and assemblers (mainly in Asia) that reduces NVIDIA\u2019s control over quantity, quality, yields and delivery schedules [Source 4; Source 3].  \n- Geopolitical tensions and regional instability (e.g., China, Hong Kong, Israel, Korea, Taiwan) that could change regulatory requirements or disrupt suppliers, manufacturing and distribution [Source 2; Source 3].  \n- Export controls, licensing requirements and tariffs that can restrict sales, force inspection/tariffing of shipments, create excess inventory or purchase obligations, and disrupt distribution (warehousing/distribution concentrated in Hong Kong) [Source 5; Source 3].  \n- Increased purchase obligations and prepaid manufacturing/capacity agreements that raise financial exposure if demand declines or forecasts are wrong [Source 1].  \n- Complexity from integrating new suppliers, contract manufacturers and expanded product portfolios leading to production planning/logistics challenges, quality issues, lower yields, inventory build\u2011up, inventory write\u2011downs and higher warranty or material costs [Source 1; Source 3].  \n- Concentration of supply chain and critical operations in certain geographies (California headquarters, portions of R&D and data center capacity; much of supply chain in Asia) making operations vulnerable to natural disasters, extreme weather, power/water shortages and other catastrophic events [Source 2].  \n- Cybersecurity incidents or breaches affecting third parties or NVIDIA systems that could disrupt supply chain, production, distribution and the ability to fulfill orders [Source 2].  \n- Reliance on customers\u2019 access to data center capacity, energy and capital \u2014 shortages or delays in those resources can reduce demand for NVIDIA\u2019s products and affect supply planning and revenue [Source 1; Source 3].",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_20",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.68974036
+      },
+      {
+        "chunk_id": "nvidia_10k_27",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.635402739
+      },
+      {
+        "chunk_id": "nvidia_10k_50",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.633027792
+      },
+      {
+        "chunk_id": "nvidia_10k_16",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.624156296
+      },
+      {
+        "chunk_id": "nvidia_10k_39",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.616443634
+      }
+    ]
+  },
+  {
+    "question": "What competitive risks does NVIDIA describe?",
+    "answer": "NVIDIA describes several competitive risks in the provided excerpts:\n\n- Competition could reduce NVIDIA\u2019s market share and adversely affect its financial results. [Source 1]\n- Competing technologies, competitor product releases, announcements or other actions can affect demand and timing of NVIDIA\u2019s revenue. [Source 4]\n- Increased demand for competitive products can reduce demand for NVIDIA\u2019s products. [Source 4]\n- The rise of high\u2011quality open\u2011source foundation models, if adopted on competitors\u2019 platforms, could reduce demand for NVIDIA products and services. [Source 3]\n- Changes in the ecosystem for the architectures underlying NVIDIA\u2019s products (including availability of third\u2011party content on its platforms, such as GeForce NOW) could negatively affect demand. [Source 4]",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_16",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.626202106
+      },
+      {
+        "chunk_id": "nvidia_10k_7",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.625887632
+      },
+      {
+        "chunk_id": "nvidia_10k_50",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.622763455
+      },
+      {
+        "chunk_id": "nvidia_10k_20",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.618534505
+      },
+      {
+        "chunk_id": "nvidia_10k_49",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.60844779
+      }
+    ]
+  },
+  {
+    "question": "What regulatory risks does NVIDIA face?",
+    "answer": "The provided SEC filing excerpts identify several regulatory risks NVIDIA faces:\n\n- Increased scrutiny and information requests from competition and other regulators worldwide (EU, U.S., U.K., South Korea, Japan, China), which are costly, burdensome and could harm customer/supplier relationships. [Source 1]\n\n- AI-specific regulation (e.g., EU AI Act and new state laws) that may limit or impose compliance costs on NVIDIA\u2019s ability to train, deploy, or release AI/foundation models, possibly delaying or halting product deployments and reducing customers. [Source 1]\n\n- Export controls, sanctions and trade restrictions (including U.S. export controls and entity-list restrictions) that can limit shipments, require licenses, disrupt supply and distribution chains, reduce demand in affected markets, and expose NVIDIA to penalties if violated. [Source 1, Source 2]\n\n- Expansion of export controls to additional products (gaming GPUs, data\u2011center GPUs, networking/interconnects) could further disrupt sales, encourage customers to \u201cdesign out\u201d U.S. components, and disadvantage NVIDIA versus competitors. [Source 2]\n\n- Import restrictions, licensing conditions, inspection requirements and tariffs (illustrated by licensing and inventory charges for H20 and inspection/tariff conditions for H200) that increase costs, reduce revenue and create inventory/obsolescence risk. [Source 4]\n\n- Regulatory measures that limit NVIDIA\u2019s ability to support third\u2011party or open\u2011source models (including models originating in China) could materially affect products and services demand. [Source 2]\n\n- Broader regulatory changes or reinterpretations (e.g., increased taxation, trade sanctions, import duties, quotas, or retaliatory actions) and adverse shifts in public/government perception that could negatively affect shipments, timing, business plans and results. [Source 1]\n\n- Increased compliance burdens and reputational risk from allegations of diversion or non\u2011compliance (even if untrue), which could harm relationships with partners and customers. [Source 2]\n\nIf you want, I can extract exact excerpt passages for any of the points above.",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_34",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.667942703
+      },
+      {
+        "chunk_id": "nvidia_10k_39",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.646434426
+      },
+      {
+        "chunk_id": "nvidia_10k_16",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.642034709
+      },
+      {
+        "chunk_id": "nvidia_10k_50",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.626051605
+      },
+      {
+        "chunk_id": "nvidia_10k_20",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.62400347
+      }
+    ]
+  },
+  {
+    "question": "Which company discusses AI-related risks most directly?",
+    "answer": "Microsoft. Its filings give detailed, AI-specific risk descriptions (flawed algorithms/training, biased or insufficient datasets, harmful AI-generated content, need for human review, OpenAI partnership, and regulatory/legal risks) [Source 3]. NVIDIA also addresses AI-related risks but in broader terms [Source 2].",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_23",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.575678825
+      },
+      {
+        "chunk_id": "nvidia_10k_41",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.563061774
+      },
+      {
+        "chunk_id": "microsoft_10k_24",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.560179
+      },
+      {
+        "chunk_id": "nvidia_10k_40",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.555145919
+      },
+      {
+        "chunk_id": "nvidia_10k_11",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.544536591
+      }
+    ]
+  },
+  {
+    "question": "Compare Apple and Microsoft cybersecurity risks.",
+    "answer": "Summary comparison \u2014 Apple vs. Microsoft cybersecurity risks (based only on the provided SEC excerpts):\n\n- Overall exposure\n  - Apple: Regularly experiences malicious attacks that seek to compromise confidentiality, integrity or availability; attacks are increasing in frequency and sophistication and could \"materially adversely affect\" business, reputation, results and financial condition. [Source 2]\n  - Microsoft: Acknowledges an increasingly challenging threat environment but states it does not believe cybersecurity risks have materially affected the company as of the filing date. [Source 1]\n\n- Scope and vectors emphasized\n  - Apple: Highlights risks from system failures, ransomware, unauthorized access or release of confidential/personal information, and disruptions to manufacturing, shipping and online services. It also emphasizes supplier/third\u2011party compromises and social\u2011engineering (fraudulent inducement) risks. [Source 2] [Source 5]\n  - Microsoft: Emphasizes protecting its cloud infrastructure, services, products and internal resources and managing risks from third\u2011party service providers. Microsoft also focuses on regulatory/diplomatic efforts and ecosystem resiliency. [Source 4] [Source 1]\n\n- Third\u2011party / supply\u2011chain risk\n  - Apple: Calls out reliance on global suppliers (including single or limited sources for critical components), and that supplier ransomware or industrial accidents could disrupt manufacturing and delivery. [Source 5] [Source 2]\n  - Microsoft: Requires third\u2011party providers to manage cybersecurity, undergo reviews, notify Microsoft of events, and meet contractual requirements. [Source 1]\n\n- Governance and incident response\n  - Apple: Describes deployment of security technologies (encryption, authentication, monitoring, multifactor authentication) and account freezing under suspicion, but notes measures may be insufficient for all eventualities; insurance may be inadequate. [Source 3]\n  - Microsoft: Has formal governance with Board oversight at least quarterly, senior management (including the CISO) presenting to the Board, a Cybersecurity Governance Council, an established incident\u2011response process (triage, remediation, post\u2011incident review), and the Secure Future Initiative (SFI) driving security strategy. [Source 1] [Source 4]\n\n- Controls vs. limitation statements\n  - Apple: Implements technical controls but explicitly warns they \"cannot provide absolute security\" and lists multiple failure modes (hacking, ransomware, employee error, faulty password management). Insurance may not cover all losses. [Source 2] [Source 3]\n  - Microsoft: Describes proactive programs (bug bounties, coordinated vulnerability disclosure), systematic third\u2011party assessments, incident triage/remediation and post\u2011incident reviews, and positions security as a top corporate priority (SFI). Microsoft states it is continuously monitoring and investing in defenses. [Source 1] [Source 4]\n\n- Distinguishing points\n  - Apple: Stresses high\u2011profile target status and direct business impacts from service outages or data loss (including customer order delays and reputational/legal consequences). [Source 2] [Source 3]\n  - Microsoft: Emphasizes enterprise/cloud ecosystem leadership, formalized governance and risk\u2011management structures, and engagement in multistakeholder/diplomatic efforts to strengthen broader cybersecurity norms. [Source 1] [Source 4]\n\nIf you want, I can convert this into a one\u2011page table or highlight only governance differences.",
+    "sources": [
+      {
+        "chunk_id": "microsoft_10k_34",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.563378692
+      },
+      {
+        "chunk_id": "apple_10k_16",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.55305
+      },
+      {
+        "chunk_id": "apple_10k_17",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.531684756
+      },
+      {
+        "chunk_id": "microsoft_10k_32",
+        "company": "Microsoft Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2025-06-30",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+        "retrieval_score": 0.530539155
+      },
+      {
+        "chunk_id": "apple_10k_9",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.516453147
+      }
+    ]
+  },
+  {
+    "question": "Which company appears most exposed to China-related restrictions?",
+    "answer": "NVIDIA Corporation appears most exposed to China-related restrictions \u2014 the company says it was \u201ceffectively foreclosed from competing in China's data center computing/compute market,\u201d incurred a $4.5 billion charge related to restricted H20 inventory, and describes extensive licensing, tariff, and export-control impacts on sales to China [Source 3] [Source 2].",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_13",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.56939137
+      },
+      {
+        "chunk_id": "nvidia_10k_36",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.563374817
+      },
+      {
+        "chunk_id": "nvidia_10k_37",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.548324406
+      },
+      {
+        "chunk_id": "nvidia_10k_40",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.546236396
+      },
+      {
+        "chunk_id": "nvidia_10k_12",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.546052277
+      }
+    ]
+  },
+  {
+    "question": "What will NVIDIA's exact stock price be on December 31, 2027?",
+    "answer": "\"The provided SEC filing excerpts do not contain enough information to answer this question.\" [Source 1] [Source 4]",
+    "sources": [
+      {
+        "chunk_id": "nvidia_10k_78",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.579155
+      },
+      {
+        "chunk_id": "nvidia_10k_79",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.570286393
+      },
+      {
+        "chunk_id": "nvidia_10k_81",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.558245599
+      },
+      {
+        "chunk_id": "nvidia_10k_49",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.550440848
+      },
+      {
+        "chunk_id": "nvidia_10k_66",
+        "company": "NVIDIA Corporation",
+        "filing_type": "10-K",
+        "filing_date": "2026-01-25",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "retrieval_score": 0.538419485
+      }
+    ]
+  },
+  {
+    "question": "What will Apple's revenue be in 2030?",
+    "answer": "\"The provided SEC filing excerpts do not contain enough information to answer this question.\" [Source 1] [Source 3]",
+    "sources": [
+      {
+        "chunk_id": "apple_10k_39",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.598712802
+      },
+      {
+        "chunk_id": "apple_10k_28",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.581566274
+      },
+      {
+        "chunk_id": "apple_10k_29",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.577865064
+      },
+      {
+        "chunk_id": "apple_10k_27",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.564014614
+      },
+      {
+        "chunk_id": "apple_10k_30",
+        "company": "Apple Inc.",
+        "filing_type": "10-K",
+        "filing_date": "2024-09-28",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "retrieval_score": 0.55018425
+      }
+    ]
+  }
+]

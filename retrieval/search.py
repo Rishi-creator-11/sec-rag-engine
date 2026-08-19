@@ -2,8 +2,7 @@ import json
 import math
 from pathlib import Path
 
-from embedder import embed_text
-
+from retrieval.embedder import embed_text
 
 EMBEDDINGS_PATH = "data/embeddings/sec_chunks.jsonl"
 

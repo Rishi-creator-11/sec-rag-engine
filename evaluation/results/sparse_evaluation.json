@@ -1,0 +1,465 @@
+{
+  "metrics": {
+    "questions": 15,
+    "mean_recall_at_1": 0.1347089947089947,
+    "mean_recall_at_3": 0.32005291005291003,
+    "mean_recall_at_5": 0.4480952380952381,
+    "mean_precision_at_1": 0.8,
+    "mean_precision_at_3": 0.6444444444444444,
+    "mean_precision_at_5": 0.5466666666666666,
+    "mrr": 0.8333333333333334,
+    "average_latency_ms": 77.0255276656826,
+    "median_latency_ms": 66.06012499833014,
+    "p95_latency_ms": 115.84133299766108
+  },
+  "per_question": [
+    {
+      "id": "apple_privacy_01",
+      "question": "What privacy risks does Apple face?",
+      "company": "AAPL",
+      "category": "privacy",
+      "relevant_chunks": [
+        "apple_10k_16",
+        "apple_10k_17",
+        "apple_10k_20"
+      ],
+      "retrieved_chunks": [
+        "apple_10k_7",
+        "nvidia_10k_42",
+        "apple_10k_25",
+        "microsoft_10k_24",
+        "apple_10k_19"
+      ],
+      "recall_at_1": 0.0,
+      "recall_at_3": 0.0,
+      "recall_at_5": 0.0,
+      "precision_at_1": 0.0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "latency_ms": 202.60720799706178
+    },
+    {
+      "id": "apple_competition_01",
+      "question": "What are Apple's major competitive risks?",
+      "company": "AAPL",
+      "category": "competition",
+      "relevant_chunks": [
+        "apple_10k_10",
+        "apple_10k_4",
+        "apple_10k_5",
+        "apple_10k_9"
+      ],
+      "retrieved_chunks": [
+        "apple_10k_9",
+        "apple_10k_4",
+        "apple_10k_7",
+        "apple_10k_22",
+        "apple_10k_10"
+      ],
+      "recall_at_1": 0.25,
+      "recall_at_3": 0.5,
+      "recall_at_5": 0.75,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 115.84133299766108
+    },
+    {
+      "id": "apple_supply_chain_01",
+      "question": "What supply chain risks does Apple describe?",
+      "company": "AAPL",
+      "category": "supply_chain",
+      "relevant_chunks": [
+        "apple_10k_10",
+        "apple_10k_12",
+        "apple_10k_7",
+        "apple_10k_8",
+        "apple_10k_9"
+      ],
+      "retrieved_chunks": [
+        "apple_10k_9",
+        "apple_10k_7",
+        "apple_10k_19",
+        "apple_10k_8",
+        "nvidia_10k_29"
+      ],
+      "recall_at_1": 0.2,
+      "recall_at_3": 0.4,
+      "recall_at_5": 0.6,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 106.41666700394126
+    },
+    {
+      "id": "apple_china_01",
+      "question": "What does Apple say about Greater China?",
+      "company": "AAPL",
+      "category": "geography",
+      "relevant_chunks": [
+        "apple_10k_28",
+        "apple_10k_3",
+        "apple_10k_4",
+        "apple_10k_40",
+        "apple_10k_52",
+        "apple_10k_53"
+      ],
+      "retrieved_chunks": [
+        "apple_10k_40",
+        "apple_10k_28",
+        "apple_10k_4",
+        "apple_10k_53",
+        "apple_10k_52"
+      ],
+      "recall_at_1": 0.16666666666666666,
+      "recall_at_3": 0.5,
+      "recall_at_5": 0.8333333333333334,
+      "precision_at_1": 1.0,
+      "precision_at_3": 1.0,
+      "precision_at_5": 1.0,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 81.2186670009396
+    },
+    {
+      "id": "apple_cybersecurity_01",
+      "question": "What cybersecurity risks does Apple face?",
+      "company": "AAPL",
+      "category": "cybersecurity",
+      "relevant_chunks": [
+        "apple_10k_16",
+        "apple_10k_17",
+        "apple_10k_8"
+      ],
+      "retrieved_chunks": [
+        "apple_10k_25",
+        "microsoft_10k_34",
+        "apple_10k_24",
+        "microsoft_10k_33",
+        "nvidia_10k_26"
+      ],
+      "recall_at_1": 0.0,
+      "recall_at_3": 0.0,
+      "recall_at_5": 0.0,
+      "precision_at_1": 0.0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "latency_ms": 85.52524999686284
+    },
+    {
+      "id": "microsoft_ai_overview_01",
+      "question": "What does Microsoft say about artificial intelligence?",
+      "company": "MSFT",
+      "category": "ai",
+      "relevant_chunks": [
+        "microsoft_10k_2",
+        "microsoft_10k_23",
+        "microsoft_10k_24",
+        "microsoft_10k_3",
+        "microsoft_10k_36",
+        "microsoft_10k_37"
+      ],
+      "retrieved_chunks": [
+        "microsoft_10k_37",
+        "microsoft_10k_2",
+        "microsoft_10k_35",
+        "microsoft_10k_95",
+        "microsoft_10k_44"
+      ],
+      "recall_at_1": 0.16666666666666666,
+      "recall_at_3": 0.3333333333333333,
+      "recall_at_5": 0.3333333333333333,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.4,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 64.25354199745925
+    },
+    {
+      "id": "microsoft_ai_risk_01",
+      "question": "What AI risks does Microsoft identify?",
+      "company": "MSFT",
+      "category": "ai_risk",
+      "relevant_chunks": [
+        "microsoft_10k_23",
+        "microsoft_10k_24",
+        "microsoft_10k_27",
+        "microsoft_10k_37",
+        "microsoft_10k_38"
+      ],
+      "retrieved_chunks": [
+        "microsoft_10k_24",
+        "nvidia_10k_41",
+        "microsoft_10k_37",
+        "microsoft_10k_15",
+        "nvidia_10k_34"
+      ],
+      "recall_at_1": 0.2,
+      "recall_at_3": 0.4,
+      "recall_at_5": 0.4,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.4,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 61.99391599511728
+    },
+    {
+      "id": "microsoft_cybersecurity_01",
+      "question": "What cybersecurity risks does Microsoft describe?",
+      "company": "MSFT",
+      "category": "cybersecurity",
+      "relevant_chunks": [
+        "microsoft_10k_19",
+        "microsoft_10k_22",
+        "microsoft_10k_32",
+        "microsoft_10k_34"
+      ],
+      "retrieved_chunks": [
+        "nvidia_10k_46",
+        "microsoft_10k_34",
+        "microsoft_10k_35",
+        "apple_10k_24",
+        "microsoft_10k_33"
+      ],
+      "recall_at_1": 0.0,
+      "recall_at_3": 0.25,
+      "recall_at_5": 0.25,
+      "precision_at_1": 0.0,
+      "precision_at_3": 0.3333333333333333,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 0.5,
+      "first_relevant_rank": 2,
+      "latency_ms": 67.88770799903432
+    },
+    {
+      "id": "microsoft_cloud_01",
+      "question": "What does Microsoft say about cloud services?",
+      "company": "MSFT",
+      "category": "cloud",
+      "relevant_chunks": [
+        "microsoft_10k_11",
+        "microsoft_10k_12",
+        "microsoft_10k_3",
+        "microsoft_10k_37",
+        "microsoft_10k_39",
+        "microsoft_10k_4",
+        "microsoft_10k_40",
+        "microsoft_10k_41",
+        "microsoft_10k_82",
+        "microsoft_10k_83"
+      ],
+      "retrieved_chunks": [
+        "microsoft_10k_37",
+        "microsoft_10k_3",
+        "microsoft_10k_40",
+        "microsoft_10k_83",
+        "microsoft_10k_41"
+      ],
+      "recall_at_1": 0.1,
+      "recall_at_3": 0.3,
+      "recall_at_5": 0.5,
+      "precision_at_1": 1.0,
+      "precision_at_3": 1.0,
+      "precision_at_5": 1.0,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 24.02329100004863
+    },
+    {
+      "id": "microsoft_competition_01",
+      "question": "What competitive risks does Microsoft face?",
+      "company": "MSFT",
+      "category": "competition",
+      "relevant_chunks": [
+        "microsoft_10k_15",
+        "microsoft_10k_37",
+        "microsoft_10k_5",
+        "microsoft_10k_7",
+        "microsoft_10k_8",
+        "microsoft_10k_9"
+      ],
+      "retrieved_chunks": [
+        "microsoft_10k_15",
+        "microsoft_10k_7",
+        "microsoft_10k_24",
+        "microsoft_10k_9",
+        "apple_10k_10"
+      ],
+      "recall_at_1": 0.16666666666666666,
+      "recall_at_3": 0.3333333333333333,
+      "recall_at_5": 0.5,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 22.323042001517024
+    },
+    {
+      "id": "nvidia_export_controls_01",
+      "question": "What risks does NVIDIA face from export controls?",
+      "company": "NVDA",
+      "category": "export_controls",
+      "relevant_chunks": [
+        "nvidia_10k_13",
+        "nvidia_10k_14",
+        "nvidia_10k_20",
+        "nvidia_10k_25",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_38",
+        "nvidia_10k_39",
+        "nvidia_10k_40"
+      ],
+      "retrieved_chunks": [
+        "nvidia_10k_39",
+        "nvidia_10k_20",
+        "nvidia_10k_40",
+        "nvidia_10k_35",
+        "nvidia_10k_16"
+      ],
+      "recall_at_1": 0.1,
+      "recall_at_3": 0.3,
+      "recall_at_5": 0.4,
+      "precision_at_1": 1.0,
+      "precision_at_3": 1.0,
+      "precision_at_5": 0.8,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 66.06012499833014
+    },
+    {
+      "id": "nvidia_china_01",
+      "question": "What risks does NVIDIA face in China?",
+      "company": "NVDA",
+      "category": "geography",
+      "relevant_chunks": [
+        "nvidia_10k_14",
+        "nvidia_10k_25",
+        "nvidia_10k_27",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_39",
+        "nvidia_10k_44",
+        "nvidia_10k_50"
+      ],
+      "retrieved_chunks": [
+        "nvidia_10k_50",
+        "nvidia_10k_34",
+        "nvidia_10k_16",
+        "nvidia_10k_20",
+        "nvidia_10k_14"
+      ],
+      "recall_at_1": 0.1111111111111111,
+      "recall_at_3": 0.2222222222222222,
+      "recall_at_5": 0.3333333333333333,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 63.44679199537495
+    },
+    {
+      "id": "nvidia_supply_chain_01",
+      "question": "What supply chain risks does NVIDIA face?",
+      "company": "NVDA",
+      "category": "supply_chain",
+      "relevant_chunks": [
+        "nvidia_10k_16",
+        "nvidia_10k_20",
+        "nvidia_10k_24",
+        "nvidia_10k_27",
+        "nvidia_10k_29",
+        "nvidia_10k_39",
+        "nvidia_10k_50"
+      ],
+      "retrieved_chunks": [
+        "nvidia_10k_50",
+        "nvidia_10k_20",
+        "nvidia_10k_29",
+        "nvidia_10k_16",
+        "apple_10k_9"
+      ],
+      "recall_at_1": 0.14285714285714285,
+      "recall_at_3": 0.42857142857142855,
+      "recall_at_5": 0.5714285714285714,
+      "precision_at_1": 1.0,
+      "precision_at_3": 1.0,
+      "precision_at_5": 0.8,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 67.0197500003269
+    },
+    {
+      "id": "nvidia_competition_01",
+      "question": "What competitive risks does NVIDIA describe?",
+      "company": "NVDA",
+      "category": "competition",
+      "relevant_chunks": [
+        "nvidia_10k_14",
+        "nvidia_10k_16",
+        "nvidia_10k_20",
+        "nvidia_10k_50"
+      ],
+      "retrieved_chunks": [
+        "nvidia_10k_20",
+        "nvidia_10k_16",
+        "nvidia_10k_88",
+        "microsoft_10k_17",
+        "nvidia_10k_50"
+      ],
+      "recall_at_1": 0.25,
+      "recall_at_3": 0.5,
+      "recall_at_5": 0.75,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 62.8945830030716
+    },
+    {
+      "id": "nvidia_regulation_01",
+      "question": "What regulatory risks does NVIDIA face?",
+      "company": "NVDA",
+      "category": "regulation",
+      "relevant_chunks": [
+        "nvidia_10k_20",
+        "nvidia_10k_29",
+        "nvidia_10k_30",
+        "nvidia_10k_34",
+        "nvidia_10k_39",
+        "nvidia_10k_50"
+      ],
+      "retrieved_chunks": [
+        "nvidia_10k_20",
+        "nvidia_10k_50",
+        "nvidia_10k_16",
+        "nvidia_10k_88",
+        "nvidia_10k_39"
+      ],
+      "recall_at_1": 0.16666666666666666,
+      "recall_at_3": 0.3333333333333333,
+      "recall_at_5": 0.5,
+      "precision_at_1": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "latency_ms": 63.87104099849239
+    }
+  ]
+}

@@ -96,6 +96,6 @@ if __name__ == "__main__":
 
     index = pc.Index(INDEX_NAME)
 
-stats = index.describe_index_stats()
+    stats = index.describe_index_stats()
 
-print(stats)
+    print(stats)

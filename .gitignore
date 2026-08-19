@@ -1,5 +1,26 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
+
+# Environment / secrets
 .env
+.env.*
+
+# macOS
 .DS_Store
+
+# Generated embeddings
+data/embeddings/
+
+# Evaluation review artifacts
+evaluation/results/*_review.txt
+evaluation/results/retrieval_pool.json
+evaluation/results/pool_judgments.json
+
+# Local code review / inspection artifacts
+codebase_status.txt
+codebase_tree.txt
+tracked_files.txt
+git_history.txt
+sec-rag-code-review.zip
