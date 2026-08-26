@@ -1,12 +1,33 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from api.rag import answer_question
 
 
+load_dotenv()
+
+
+def parse_frontend_origins() -> list[str]:
+    raw = os.getenv("FRONTEND_ORIGINS", "http://localhost:3000")
+    origins = [origin.strip() for origin in raw.split(",")]
+    return [origin for origin in origins if origin]
+
+
 app = FastAPI(
     title="SEC RAG Engine",
     version="0.1.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=parse_frontend_origins(),
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type"],
 )
 
 

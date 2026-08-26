@@ -153,9 +153,15 @@ pip install -r requirements.txt
 OPENAI_API_KEY=
 PINECONE_API_KEY=
 COHERE_API_KEY=
+FRONTEND_ORIGINS=http://localhost:3000
 ```
 
-Optional: `COHERE_RERANK_ENABLED=true`
+Optional:
+
+```text
+COHERE_RERANK_ENABLED=true
+FRONTEND_ORIGINS=http://localhost:3000,https://your-deployed-frontend.example
+```
 
 ## Run
 
