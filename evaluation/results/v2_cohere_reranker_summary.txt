@@ -1,0 +1,68 @@
+BENCHMARK V2 COHERE RERANKER COMPARISON
+Same hybrid top-10 candidates, then rerank-v4.0-fast.
+Unsupported questions excluded from R/P/MRR/NE.
+Recall@10 should stay the same because the candidate set is unchanged.
+
+Metric         Hybrid   GPT Reranker  Cohere Fast
+--------------------------------------------------
+R@1           0.160    0.232    0.205
+R@3           0.470    0.577    0.572
+R@5           0.631    0.771    0.757
+R@10          0.903    0.903    0.903
+P@1           0.818    0.982    0.927
+P@3           0.758    0.879    0.873
+P@5           0.629    0.749    0.735
+MRR           0.890    0.991    0.964
+NE@5          0.867    1.000    1.000
+NE@10         1.000    1.000    1.000
+
+Deltas: Cohere vs Hybrid
+  R@1         0.045
+  R@3         0.102
+  R@5         0.126
+  R@10        0.000
+  P@1         0.109
+  P@3         0.115
+  P@5         0.105
+  MRR         0.073
+  NE@5        0.133
+  NE@10       0.000
+
+Deltas: Cohere vs GPT Reranker
+  R@1        -0.027
+  R@3        -0.005
+  R@5        -0.014
+  R@10        0.000
+  P@1        -0.055
+  P@3        -0.006
+  P@5        -0.015
+  MRR        -0.027
+  NE@5        0.000
+  NE@10       0.000
+Latency
+  Hybrid retrieval median:    0.390 s
+  GPT reranker median:        16.390 s
+  GPT reranker p95:          22.594 s
+  Cohere reranker mean:        0.239 s
+  Cohere reranker median:      0.207 s
+  Cohere reranker p95:         0.320 s
+  Hybrid + Cohere mean:       0.709 s
+  Hybrid + Cohere median:     0.603 s
+  Hybrid + Cohere p95:        1.297 s
+QUALITY TARGETS
+- R@10 >= 0.90
+- P@5 >= 0.70
+- MRR >= 0.95
+- NE@5 >= 0.93
+
+LATENCY TARGET
+- reranker p95 ideally < 2-3 seconds
+
+Cohere Fast vs targets
+  R@10    0.903  target 0.90  PASS
+  P@5    0.735  target 0.70  PASS
+  MRR    0.964  target 0.95  PASS
+  NE@5    1.000  target 0.93  PASS
+  p95    0.320 s  target < 3.00  PASS
+
+No winner is declared here. Compare the measured numbers above.

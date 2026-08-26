@@ -1,0 +1,15 @@
+BENCHMARK V2 RETRIEVAL COMPARISON
+Top-10, no company filter. Unsupported excluded from R/P/MRR/NE.
+NE = Numeric Evidence Hit. UFP = Unsupported false-positive.
+
+retriever     R@1    R@3    R@5   R@10    P@1    P@3    P@5    MRR   NE@5  NE@10  UFP@5 UFP@10  mean ms   med ms   p95 ms
+----------------------------------------------------------------------------------------------------------------------------------
+dense       0.182  0.469  0.638  0.814  0.873  0.764  0.658  0.905  0.800  0.933  1.000  1.000   416.4   304.6   828.6
+bm25        0.163  0.421  0.577  0.744  0.764  0.691  0.582  0.838  0.867  0.933  1.000  1.000     1.6     0.5     0.7
+sparse      0.152  0.350  0.465  0.601  0.800  0.630  0.513  0.845  0.800  0.867  1.000  1.000    53.5    48.7    95.0
+hybrid      0.160  0.470  0.631  0.903  0.818  0.758  0.629  0.890  0.867  1.000  1.000  1.000   269.4   227.9   510.4
+
+eligible questions: 55
+numeric questions: 15
+unsupported questions evaluated: 5
+unsupported average top score is reported per retriever in the JSON using that retriever's own score field.

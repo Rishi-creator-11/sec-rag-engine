@@ -1,0 +1,823 @@
+[
+  {
+    "id": "apple_privacy_01",
+    "question": "What privacy risks does Apple face?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_16",
+      "apple_10k_17",
+      "apple_10k_20"
+    ],
+    "category": "privacy"
+  },
+  {
+    "id": "apple_competition_01",
+    "question": "What are Apple's major competitive risks?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_4",
+      "apple_10k_5",
+      "apple_10k_9",
+      "apple_10k_10"
+    ],
+    "category": "competition"
+  },
+  {
+    "id": "apple_supply_chain_01",
+    "question": "What supply chain risks does Apple describe?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_7",
+      "apple_10k_8",
+      "apple_10k_9",
+      "apple_10k_10",
+      "apple_10k_12"
+    ],
+    "category": "supply_chain"
+  },
+  {
+    "id": "apple_china_01",
+    "question": "What does Apple say about Greater China?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_3",
+      "apple_10k_4",
+      "apple_10k_28",
+      "apple_10k_40",
+      "apple_10k_52",
+      "apple_10k_53"
+    ],
+    "category": "geography"
+  },
+  {
+    "id": "apple_cybersecurity_01",
+    "question": "What cybersecurity risks does Apple face?",
+    "company": "AAPL",
+    "relevant_chunks": [
+      "apple_10k_8",
+      "apple_10k_16",
+      "apple_10k_17"
+    ],
+    "category": "cybersecurity"
+  },
+  {
+    "id": "microsoft_ai_overview_01",
+    "question": "What does Microsoft say about artificial intelligence?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_2",
+      "microsoft_10k_3",
+      "microsoft_10k_23",
+      "microsoft_10k_24",
+      "microsoft_10k_36",
+      "microsoft_10k_37"
+    ],
+    "category": "ai"
+  },
+  {
+    "id": "microsoft_ai_risk_01",
+    "question": "What AI risks does Microsoft identify?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_23",
+      "microsoft_10k_24",
+      "microsoft_10k_27",
+      "microsoft_10k_37",
+      "microsoft_10k_38"
+    ],
+    "category": "ai_risk"
+  },
+  {
+    "id": "microsoft_cybersecurity_01",
+    "question": "What cybersecurity risks does Microsoft describe?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_19",
+      "microsoft_10k_22",
+      "microsoft_10k_32",
+      "microsoft_10k_34"
+    ],
+    "category": "cybersecurity"
+  },
+  {
+    "id": "microsoft_cloud_01",
+    "question": "What does Microsoft say about cloud services?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_3",
+      "microsoft_10k_4",
+      "microsoft_10k_11",
+      "microsoft_10k_12",
+      "microsoft_10k_37",
+      "microsoft_10k_39",
+      "microsoft_10k_40",
+      "microsoft_10k_41",
+      "microsoft_10k_82",
+      "microsoft_10k_83"
+    ],
+    "category": "cloud"
+  },
+  {
+    "id": "microsoft_competition_01",
+    "question": "What competitive risks does Microsoft face?",
+    "company": "MSFT",
+    "relevant_chunks": [
+      "microsoft_10k_5",
+      "microsoft_10k_7",
+      "microsoft_10k_8",
+      "microsoft_10k_9",
+      "microsoft_10k_15",
+      "microsoft_10k_37"
+    ],
+    "category": "competition"
+  },
+  {
+    "id": "nvidia_export_controls_01",
+    "question": "What risks does NVIDIA face from export controls?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_13",
+      "nvidia_10k_14",
+      "nvidia_10k_20",
+      "nvidia_10k_25",
+      "nvidia_10k_33",
+      "nvidia_10k_34",
+      "nvidia_10k_35",
+      "nvidia_10k_38",
+      "nvidia_10k_39",
+      "nvidia_10k_40"
+    ],
+    "category": "export_controls"
+  },
+  {
+    "id": "nvidia_china_01",
+    "question": "What risks does NVIDIA face in China?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_14",
+      "nvidia_10k_25",
+      "nvidia_10k_27",
+      "nvidia_10k_33",
+      "nvidia_10k_34",
+      "nvidia_10k_35",
+      "nvidia_10k_39",
+      "nvidia_10k_44",
+      "nvidia_10k_50"
+    ],
+    "category": "geography"
+  },
+  {
+    "id": "nvidia_supply_chain_01",
+    "question": "What supply chain risks does NVIDIA face?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_16",
+      "nvidia_10k_20",
+      "nvidia_10k_24",
+      "nvidia_10k_27",
+      "nvidia_10k_29",
+      "nvidia_10k_39",
+      "nvidia_10k_50"
+    ],
+    "category": "supply_chain"
+  },
+  {
+    "id": "nvidia_competition_01",
+    "question": "What competitive risks does NVIDIA describe?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_14",
+      "nvidia_10k_16",
+      "nvidia_10k_20",
+      "nvidia_10k_50"
+    ],
+    "category": "competition"
+  },
+  {
+    "id": "nvidia_regulation_01",
+    "question": "What regulatory risks does NVIDIA face?",
+    "company": "NVDA",
+    "relevant_chunks": [
+      "nvidia_10k_20",
+      "nvidia_10k_29",
+      "nvidia_10k_30",
+      "nvidia_10k_34",
+      "nvidia_10k_39",
+      "nvidia_10k_50"
+    ],
+    "category": "regulation"
+  },
+  {
+    "id": "apple_total_net_sales_2024_01",
+    "question": "What were Apple's total net sales in fiscal 2024?",
+    "company": "AAPL",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "apple_10k_28",
+      "apple_10k_29",
+      "apple_10k_34",
+      "apple_10k_39",
+      "apple_10k_53"
+    ]
+  },
+  {
+    "id": "apple_iphone_sales_2024_01",
+    "question": "How much net sales did Apple report for iPhone in fiscal 2024?",
+    "company": "AAPL",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "apple_10k_28",
+      "apple_10k_29",
+      "apple_10k_39"
+    ]
+  },
+  {
+    "id": "apple_services_sales_2024_01",
+    "question": "How much Services net sales did Apple report in fiscal 2024, and what was the year-over-year growth rate?",
+    "company": "AAPL",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "apple_10k_29",
+      "apple_10k_39"
+    ]
+  },
+  {
+    "id": "apple_rd_expense_2024_01",
+    "question": "How much did Apple spend on research and development in fiscal 2024?",
+    "company": "AAPL",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "apple_10k_29",
+      "apple_10k_30",
+      "apple_10k_34",
+      "apple_10k_52",
+      "apple_10k_53"
+    ]
+  },
+  {
+    "id": "apple_operating_cash_flow_2024_01",
+    "question": "How much cash did Apple generate from operating activities in fiscal 2024?",
+    "company": "AAPL",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "apple_10k_37"
+    ]
+  },
+  {
+    "id": "apple_product_categories_01",
+    "question": "What major product and services categories does Apple report in its business?",
+    "company": "AAPL",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_2",
+      "apple_10k_28",
+      "apple_10k_29",
+      "apple_10k_3",
+      "apple_10k_39",
+      "apple_10k_4"
+    ]
+  },
+  {
+    "id": "apple_reportable_segments_01",
+    "question": "What are Apple's reportable geographic segments?",
+    "company": "AAPL",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_28",
+      "apple_10k_3",
+      "apple_10k_4",
+      "apple_10k_52"
+    ]
+  },
+  {
+    "id": "apple_seasonality_01",
+    "question": "How does seasonality affect Apple's net sales during its fiscal year?",
+    "company": "AAPL",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_22",
+      "apple_10k_5",
+      "apple_10k_6"
+    ]
+  },
+  {
+    "id": "apple_dma_changes_01",
+    "question": "What changes did Apple describe making to iOS, iPadOS, the App Store, and Safari in the EU in response to the Digital Markets Act?",
+    "company": "AAPL",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_14",
+      "apple_10k_15",
+      "apple_10k_19",
+      "apple_10k_20",
+      "apple_10k_25",
+      "apple_10k_4"
+    ]
+  },
+  {
+    "id": "apple_data_protection_laws_01",
+    "question": "What data protection and privacy regulatory obligations does Apple describe?",
+    "company": "AAPL",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_20",
+      "apple_10k_21"
+    ]
+  },
+  {
+    "id": "apple_ireland_state_aid_01",
+    "question": "What did Apple disclose about the Ireland State Aid case and the European Court of Justice decision?",
+    "company": "AAPL",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_30",
+      "apple_10k_31",
+      "apple_10k_42",
+      "apple_10k_44",
+      "apple_10k_45",
+      "apple_10k_46"
+    ]
+  },
+  {
+    "id": "apple_services_and_margin_01",
+    "question": "How did Apple's Services sales change in fiscal 2024, and what factors does Apple say can affect gross margins?",
+    "company": "AAPL",
+    "category": "multi_part",
+    "answer_type": "mixed",
+    "relevant_chunks": [
+      "apple_10k_10",
+      "apple_10k_21",
+      "apple_10k_22",
+      "apple_10k_28",
+      "apple_10k_29",
+      "apple_10k_33",
+      "apple_10k_34",
+      "apple_10k_39",
+      "apple_10k_4",
+      "apple_10k_8"
+    ]
+  },
+  {
+    "id": "apple_supply_and_single_source_01",
+    "question": "How does Apple's dependence on suppliers and single-source custom components create operational risk?",
+    "company": "AAPL",
+    "category": "multi_part",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "apple_10k_10",
+      "apple_10k_11",
+      "apple_10k_12",
+      "apple_10k_22",
+      "apple_10k_23",
+      "apple_10k_43",
+      "apple_10k_5",
+      "apple_10k_51",
+      "apple_10k_52",
+      "apple_10k_7",
+      "apple_10k_8",
+      "apple_10k_9"
+    ]
+  },
+  {
+    "id": "apple_iphone17_revenue_2025_unsupported_01",
+    "question": "How much revenue did Apple generate from iPhone 17 in fiscal 2025?",
+    "company": "AAPL",
+    "category": "unsupported",
+    "answer_type": "unsupported",
+    "relevant_chunks": []
+  },
+  {
+    "id": "apple_stock_price_2026_unsupported_01",
+    "question": "What was Apple's closing stock price on January 2, 2026?",
+    "company": "AAPL",
+    "category": "unsupported",
+    "answer_type": "unsupported",
+    "relevant_chunks": []
+  },
+  {
+    "id": "microsoft_total_revenue_2025_01",
+    "question": "What total revenue did Microsoft report for fiscal 2025?",
+    "company": "MSFT",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "microsoft_10k_40",
+      "microsoft_10k_41",
+      "microsoft_10k_83",
+      "microsoft_10k_84"
+    ]
+  },
+  {
+    "id": "microsoft_operating_income_2025_01",
+    "question": "What operating income did Microsoft report for fiscal 2025?",
+    "company": "MSFT",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "microsoft_10k_40",
+      "microsoft_10k_41",
+      "microsoft_10k_42",
+      "microsoft_10k_83",
+      "microsoft_10k_84"
+    ]
+  },
+  {
+    "id": "microsoft_cash_2025_01",
+    "question": "How much cash and cash equivalents did Microsoft report as of June 30, 2025?",
+    "company": "MSFT",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "microsoft_10k_51",
+      "microsoft_10k_52",
+      "microsoft_10k_53",
+      "microsoft_10k_54"
+    ]
+  },
+  {
+    "id": "microsoft_cash_investments_2025_01",
+    "question": "What was Microsoft's total cash, cash equivalents, and short-term investments as of June 30, 2025?",
+    "company": "MSFT",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "microsoft_10k_44",
+      "microsoft_10k_51",
+      "microsoft_10k_52",
+      "microsoft_10k_64"
+    ]
+  },
+  {
+    "id": "microsoft_share_repurchase_remaining_2025_01",
+    "question": "How much remained under Microsoft's $60 billion share repurchase program as of June 30, 2025?",
+    "company": "MSFT",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "microsoft_10k_35",
+      "microsoft_10k_36",
+      "microsoft_10k_47",
+      "microsoft_10k_78",
+      "microsoft_10k_79"
+    ]
+  },
+  {
+    "id": "microsoft_azure_competition_01",
+    "question": "How does Microsoft describe Azure's competitive environment and competitive advantages?",
+    "company": "MSFT",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_3",
+      "microsoft_10k_6",
+      "microsoft_10k_7"
+    ]
+  },
+  {
+    "id": "microsoft_cloud_metrics_01",
+    "question": "What products and services are included in Microsoft's Azure and other cloud services revenue metric?",
+    "company": "MSFT",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_39",
+      "microsoft_10k_40",
+      "microsoft_10k_6",
+      "microsoft_10k_7",
+      "microsoft_10k_82",
+      "microsoft_10k_83",
+      "microsoft_10k_84"
+    ]
+  },
+  {
+    "id": "microsoft_volume_licensing_01",
+    "question": "How do Microsoft's Enterprise Agreements and Software Assurance programs work?",
+    "company": "MSFT",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_11",
+      "microsoft_10k_12",
+      "microsoft_10k_55",
+      "microsoft_10k_56"
+    ]
+  },
+  {
+    "id": "microsoft_export_controls_01",
+    "question": "How do U.S. export and import controls affect Microsoft's products, investments, and supply chain?",
+    "company": "MSFT",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_12",
+      "microsoft_10k_26",
+      "microsoft_10k_27",
+      "microsoft_10k_37",
+      "microsoft_10k_38"
+    ]
+  },
+  {
+    "id": "microsoft_pillar_two_01",
+    "question": "What does Microsoft disclose about the OECD Pillar Two global minimum tax rules?",
+    "company": "MSFT",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_43",
+      "microsoft_10k_44"
+    ]
+  },
+  {
+    "id": "microsoft_international_growth_risks_01",
+    "question": "What risks does Microsoft identify in pursuing growth in international and developing markets?",
+    "company": "MSFT",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_15",
+      "microsoft_10k_22",
+      "microsoft_10k_24",
+      "microsoft_10k_26",
+      "microsoft_10k_27",
+      "microsoft_10k_31",
+      "microsoft_10k_32",
+      "microsoft_10k_37",
+      "microsoft_10k_38"
+    ]
+  },
+  {
+    "id": "microsoft_ai_infrastructure_margin_01",
+    "question": "How are Microsoft's investments in cloud and AI infrastructure affecting operating costs and margins, and what growth does it report in its major businesses?",
+    "company": "MSFT",
+    "category": "multi_part",
+    "answer_type": "mixed",
+    "relevant_chunks": [
+      "microsoft_10k_16",
+      "microsoft_10k_17",
+      "microsoft_10k_24",
+      "microsoft_10k_37",
+      "microsoft_10k_38",
+      "microsoft_10k_40",
+      "microsoft_10k_41",
+      "microsoft_10k_42",
+      "microsoft_10k_83"
+    ]
+  },
+  {
+    "id": "microsoft_security_governance_01",
+    "question": "What is Microsoft's Secure Future Initiative, and how does its cybersecurity governance structure oversee security risk?",
+    "company": "MSFT",
+    "category": "multi_part",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "microsoft_10k_32",
+      "microsoft_10k_33",
+      "microsoft_10k_34",
+      "microsoft_10k_35"
+    ]
+  },
+  {
+    "id": "microsoft_fy2026_revenue_unsupported_01",
+    "question": "What total revenue did Microsoft report for fiscal 2026?",
+    "company": "MSFT",
+    "category": "unsupported",
+    "answer_type": "unsupported",
+    "relevant_chunks": []
+  },
+  {
+    "id": "microsoft_copilot_subscribers_2026_unsupported_01",
+    "question": "How many Microsoft 365 Copilot subscribers did Microsoft have on July 1, 2026?",
+    "company": "MSFT",
+    "category": "unsupported",
+    "answer_type": "unsupported",
+    "relevant_chunks": []
+  },
+  {
+    "id": "nvidia_compute_networking_revenue_2026_01",
+    "question": "What revenue did NVIDIA report for its Compute & Networking segment in fiscal 2026?",
+    "company": "NVDA",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "nvidia_10k_54",
+      "nvidia_10k_94"
+    ]
+  },
+  {
+    "id": "nvidia_graphics_revenue_2026_01",
+    "question": "What revenue did NVIDIA report for its Graphics segment in fiscal 2026?",
+    "company": "NVDA",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "nvidia_10k_54",
+      "nvidia_10k_94"
+    ]
+  },
+  {
+    "id": "nvidia_cash_securities_2026_01",
+    "question": "How much cash, cash equivalents, and marketable securities did NVIDIA have as of January 25, 2026?",
+    "company": "NVDA",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "nvidia_10k_57",
+      "nvidia_10k_58"
+    ]
+  },
+  {
+    "id": "nvidia_share_repurchase_2026_01",
+    "question": "How many shares did NVIDIA repurchase in fiscal 2026 and how much did it spend?",
+    "company": "NVDA",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "nvidia_10k_48",
+      "nvidia_10k_58",
+      "nvidia_10k_68",
+      "nvidia_10k_69",
+      "nvidia_10k_70",
+      "nvidia_10k_93",
+      "nvidia_10k_94"
+    ]
+  },
+  {
+    "id": "nvidia_h20_charge_2026_01",
+    "question": "What charge did NVIDIA incur in fiscal 2026 related to H20 export restrictions?",
+    "company": "NVDA",
+    "category": "financial",
+    "answer_type": "numeric",
+    "relevant_chunks": [
+      "nvidia_10k_12",
+      "nvidia_10k_36",
+      "nvidia_10k_37",
+      "nvidia_10k_50",
+      "nvidia_10k_54",
+      "nvidia_10k_55",
+      "nvidia_10k_56"
+    ]
+  },
+  {
+    "id": "nvidia_data_center_platform_01",
+    "question": "What hardware and software components make up NVIDIA's Data Center infrastructure systems?",
+    "company": "NVDA",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_18",
+      "nvidia_10k_3",
+      "nvidia_10k_4",
+      "nvidia_10k_5",
+      "nvidia_10k_6",
+      "nvidia_10k_8"
+    ]
+  },
+  {
+    "id": "nvidia_target_markets_01",
+    "question": "What major end markets does NVIDIA identify for its accelerated computing platforms?",
+    "company": "NVDA",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_10",
+      "nvidia_10k_3",
+      "nvidia_10k_4",
+      "nvidia_10k_49",
+      "nvidia_10k_5",
+      "nvidia_10k_6",
+      "nvidia_10k_7",
+      "nvidia_10k_8",
+      "nvidia_10k_9",
+      "nvidia_10k_94"
+    ]
+  },
+  {
+    "id": "nvidia_gaming_business_01",
+    "question": "How does NVIDIA describe its Gaming business and the factors driving the gaming market?",
+    "company": "NVDA",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_3",
+      "nvidia_10k_5",
+      "nvidia_10k_6",
+      "nvidia_10k_7",
+      "nvidia_10k_8"
+    ]
+  },
+  {
+    "id": "nvidia_full_stack_strategy_01",
+    "question": "How does NVIDIA describe its full-stack innovation approach and why does it matter competitively?",
+    "company": "NVDA",
+    "category": "business",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_3",
+      "nvidia_10k_4",
+      "nvidia_10k_5",
+      "nvidia_10k_6",
+      "nvidia_10k_7",
+      "nvidia_10k_8"
+    ]
+  },
+  {
+    "id": "nvidia_h20_export_license_01",
+    "question": "What U.S. export licensing requirements did NVIDIA describe for H20 chips shipped to China, Hong Kong, Macau, and D:5 countries?",
+    "company": "NVDA",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_12",
+      "nvidia_10k_36",
+      "nvidia_10k_37",
+      "nvidia_10k_50"
+    ]
+  },
+  {
+    "id": "nvidia_ai_diffusion_rule_01",
+    "question": "What uncertainty did NVIDIA describe around the U.S. AI Diffusion rule and its potential replacement?",
+    "company": "NVDA",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_13",
+      "nvidia_10k_37",
+      "nvidia_10k_38",
+      "nvidia_10k_50"
+    ]
+  },
+  {
+    "id": "nvidia_china_import_restrictions_01",
+    "question": "How could U.S. restrictions on products containing technologies developed or manufactured in China affect NVIDIA?",
+    "company": "NVDA",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_12",
+      "nvidia_10k_13",
+      "nvidia_10k_14",
+      "nvidia_10k_34",
+      "nvidia_10k_35",
+      "nvidia_10k_36",
+      "nvidia_10k_37",
+      "nvidia_10k_38",
+      "nvidia_10k_39",
+      "nvidia_10k_40",
+      "nvidia_10k_50"
+    ]
+  },
+  {
+    "id": "nvidia_responsible_ai_risk_01",
+    "question": "What risks does NVIDIA identify from the responsible use of AI and other evolving technologies?",
+    "company": "NVDA",
+    "category": "regulation_geography",
+    "answer_type": "qualitative",
+    "relevant_chunks": [
+      "nvidia_10k_16",
+      "nvidia_10k_17",
+      "nvidia_10k_34",
+      "nvidia_10k_35",
+      "nvidia_10k_40",
+      "nvidia_10k_41"
+    ]
+  },
+  {
+    "id": "nvidia_export_controls_business_impact_01",
+    "question": "How have export controls affected NVIDIA's H20 products, customer demand, inventory risk, and competitive position in China?",
+    "company": "NVDA",
+    "category": "multi_part",
+    "answer_type": "mixed",
+    "relevant_chunks": [
+      "nvidia_10k_12",
+      "nvidia_10k_13",
+      "nvidia_10k_14",
+      "nvidia_10k_20",
+      "nvidia_10k_35",
+      "nvidia_10k_36",
+      "nvidia_10k_37",
+      "nvidia_10k_38",
+      "nvidia_10k_39",
+      "nvidia_10k_40",
+      "nvidia_10k_50"
+    ]
+  },
+  {
+    "id": "nvidia_fy2027_revenue_unsupported_01",
+    "question": "What total revenue did NVIDIA report for fiscal 2027?",
+    "company": "NVDA",
+    "category": "unsupported",
+    "answer_type": "unsupported",
+    "relevant_chunks": []
+  }
+]

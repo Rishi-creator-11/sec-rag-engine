@@ -1,0 +1,47 @@
+GENERATION MODEL COMPARISON
+Baseline production model: gpt-5-mini
+Same 13 questions, same cached Cohere evidence, same prompt.
+No live Cohere calls. Estimated totals use prior Hybrid+Cohere latency.
+
+Model                  SourceHit  Refusal  GenMean GenMedian  GenP95 TotalMedian  TotalP95
+------------------------------------------------------------------------------------------
+gpt-5-mini                 1.000    1.000    1.948     1.806   2.891       2.420     3.654
+gpt-5-nano                 1.000    1.000    1.446     1.420   1.770       2.024     3.130
+gpt-5.6-terra              1.000    1.000    1.969     1.850   2.862       2.623     3.575
+
+PRODUCTION TARGETS
+- source hit >= 0.90
+- unsupported refusal == 1.00
+- total median < 3.0 s
+- total p95 < 5.0 s
+
+gpt-5-mini
+  PASS  source hit >= 0.90  (1.000)
+  PASS  unsupported refusal == 1.00  (1.000)
+  PASS  total median < 3.0 s  (2.420s)
+  PASS  total p95 < 5.0 s  (3.654s)
+  failures: none
+  citation presence: 1.000
+
+gpt-5-nano
+  PASS  source hit >= 0.90  (1.000)
+  PASS  unsupported refusal == 1.00  (1.000)
+  PASS  total median < 3.0 s  (2.024s)
+  PASS  total p95 < 5.0 s  (3.130s)
+  failures: none
+  citation presence: 1.000
+
+gpt-5.6-terra
+  PASS  source hit >= 0.90  (1.000)
+  PASS  unsupported refusal == 1.00  (1.000)
+  PASS  total median < 3.0 s  (2.623s)
+  PASS  total p95 < 5.0 s  (3.575s)
+  failures: none
+  citation presence: 1.000
+
+DECISION RULE
+A faster model is acceptable only if source hit stays >= 0.90, unsupported refusal stays 1.00, citations remain present, and there are no obvious answer-format failures.
+Do not switch the production model automatically.
+
+gpt-5-nano: meets quality bar for consideration
+gpt-5.6-terra: meets quality bar for consideration

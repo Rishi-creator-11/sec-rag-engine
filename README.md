@@ -1,206 +1,192 @@
 # SEC RAG Engine
 
-Production-oriented RAG system for querying SEC 10-K filings with multiple retrieval strategies and measurable evaluation.
+Production-oriented RAG system over SEC 10-K filings. It retrieves evidence from Apple, Microsoft, and NVIDIA annual reports, reranks it, and returns grounded answers with citations—or a refusal when the filings do not support the question.
 
-## Current Pipeline
+## At a Glance
+
+- 60-question SEC 10-K benchmark
+- 90.3% Recall@10
+- 73.5% Precision@5 after Cohere reranking
+- 96.4% MRR
+- 100% Numeric Evidence Hit@5
+- 100% unsupported-query refusal on the final sanity test
+- ~2.0s median end-to-end latency in a controlled benchmark
+- FastAPI serving layer
+- graceful reranker fallback
+
+## Architecture
 
 ```mermaid
 flowchart LR
-    A[SEC 10-K Filings] --> B[Ingestion + Cleaning]
-    B --> C[Token Chunking]
-
-    C --> D[Dense Embeddings]
+    A[SEC 10-K Filings] --> B[Ingestion and Cleaning]
+    B --> C["~800-token Chunks"]
+    C --> D[Dense Search]
     C --> E[BM25]
-    C --> F[Pinecone Sparse]
-
-    D --> G[Dense Retrieval]
-    E --> H[BM25 Retrieval]
-    F --> I[Sparse Retrieval]
-
-    G --> J[Evaluation]
-    H --> J
-    I --> J
-
-    G --> K[Grounded RAG]
-    K --> L[FastAPI]
+    C --> F[Sparse Search]
+    D --> G[Weighted RRF Hybrid]
+    E --> G
+    F --> G
+    G --> H[Top 10 Candidates]
+    H --> I[Cohere rerank-v4.0-fast]
+    I --> J[Top 5 Evidence]
+    J --> K[GPT-5-nano]
+    K --> L[Grounded Answer + Citations]
+    L --> M[FastAPI]
+    I -.-> N[Cohere error / rate limit]
+    N --> O[Hybrid Top 5 fallback]
+    O --> K
 ```
 
-## Data
+## Why This Project
 
-Indexed filings:
+SEC 10-Ks are long, dense, and hard to search with a single retriever. This project compares dense, BM25, sparse, and hybrid retrieval on a fixed benchmark, then selects reranking and generation models from measured quality and latency—not guesswork. The serving path is production-oriented: citations, refusal on unsupported questions, and immediate fallback if Cohere is rate-limited.
 
-- Apple 10-K
-- Microsoft 10-K
-- NVIDIA 10-K
+## Key Features
 
-Chunking:
+- SEC 10-K ingestion and structured metadata
+- dense, BM25, and sparse retrieval
+- weighted RRF hybrid fusion
+- Cohere reranking
+- grounded generation with citations
+- unsupported-query refusal
+- FastAPI
+- latency diagnostics
+- graceful reranker fallback
+- evaluation framework
 
-- 800 token chunks
-- 120 token overlap
-- 267 total chunks
-- deterministic chunk IDs
-- SEC filing metadata stored with each chunk
-
-## Retrieval
-
-### Dense
-
-- OpenAI `text-embedding-3-small`
-- 1536 dimensions
-- cosine similarity
-- local dense retrieval
-- Pinecone dense index
-
-### BM25
-
-- custom BM25 implementation
-- term frequency
-- inverse document frequency
-- document length normalization
-- `k1 = 1.5`
-- `b = 0.75`
-
-### Sparse
-
-- Pinecone sparse index
-- `pinecone-sparse-english-v0`
-- same chunk IDs as dense retrieval
-- supports incremental indexing
-
-## RAG Flow
+## Evaluation
 
 ```mermaid
 flowchart LR
-    A[Question] --> B[Retrieve Top-K]
-    B --> C[Build Context]
-    C --> D[LLM]
-    D --> E[Grounded Answer + Sources]
+    A[60-question benchmark] --> B[Pooled candidate judgments]
+    B --> C[Dense / BM25 / Sparse / Hybrid]
+    C --> D[Hybrid selected as candidate generator]
+
+    D --> E[GPT reranker benchmark]
+    D --> F[Cohere Fast benchmark]
+    E --> G[Reranker comparison]
+    F --> G
+    G --> H[Cohere Fast selected]
+
+    H --> I[Generation model benchmark]
+    I --> J[GPT-5-mini]
+    I --> K[GPT-5-nano]
+    I --> L[GPT-5.6-terra]
+
+    J --> M[Model comparison]
+    K --> M
+    L --> M
+    M --> N[GPT-5-nano selected]
 ```
 
-FastAPI endpoints:
+**Methodology**
+
+- 60 questions: 20 Apple, 20 Microsoft, 20 NVIDIA
+- 55 supported, 5 unsupported
+- labels come from a pooled Dense / BM25 / Sparse / Hybrid top-10 candidate set
+- LLM-assisted relevance judging
+- human review of every medium/low-confidence judgment
+- 71 ambiguous judgments were human-reviewed
+- qrels are incomplete outside that candidate pool
+
+The 819 pooled candidates were not all labeled by hand.
+
+| Stage | Metric | Result |
+|---|---|---|
+| Hybrid | Recall@10 | 0.903 |
+| Hybrid + Cohere | Recall@5 | 0.757 |
+| Hybrid + Cohere | Precision@5 | 0.735 |
+| Hybrid + Cohere | MRR | 0.964 |
+| Hybrid + Cohere | Numeric Evidence Hit@5 | 1.000 |
+| Cohere Reranker | Median latency | 0.207s |
+| Final RAG | Source hit rate | 1.000 |
+| Final RAG | Unsupported refusal | 1.000 |
+| Final RAG | Median latency | ~2.024s |
+| Final RAG | p95 latency | ~3.130s |
+
+Cohere keeps Recall@10 at 0.903 while improving top-5 ranking. Hybrid is therefore the candidate generator; Cohere is the production reranker.
+
+Generation models were compared on **identical cached Cohere evidence**. That isolates answer-model quality and latency. It is not a live Cohere stress test. Cohere Trial keys are limited to 10 calls/minute, so live runs can hit HTTP 429 and use hybrid fallback. That is quota, not inference latency.
+
+## Production RAG Flow
+
+1. Hybrid retrieves top 10
+2. Cohere rerank-v4.0-fast reranks those 10
+3. Top 5 evidence chunks are sent to `gpt-5-nano`
+4. The model answers only from that evidence, with citations
+5. If evidence is insufficient, it refuses
+6. On Cohere 429 or API error, the request continues with hybrid top-5 and `reranker_fallback=true`
+
+Serving does not sleep on rate limits. `COHERE_RERANK_ENABLED=false` skips Cohere.
+
+## API
 
 ```text
 GET  /health
 POST /ask
 ```
 
-## Evaluation
+`POST /ask` body:
 
-Retrieval is evaluated using:
-
-- Recall@K
-- Precision@K
-- MRR
-- latency
-
-Relevance labels were created using pooled candidates from Dense, BM25, and Sparse retrieval.
-
-```mermaid
-flowchart LR
-    Q[Question] --> D[Dense Top-K]
-    Q --> B[BM25 Top-K]
-    Q --> S[Sparse Top-K]
-
-    D --> P[Candidate Pool]
-    B --> P
-    S --> P
-
-    P --> R[Relevance Judgments]
-    R --> E[Retriever Evaluation]
+```json
+{
+  "question": "What were Apple's total net sales in fiscal 2024?",
+  "top_k": 5
+}
 ```
 
-## Current Results
+Response fields: `question`, `answer`, `sources`, `generation_model`, `reranker_fallback`, `reranker_fallback_reason`, `timings`.
 
-15-question benchmark:
-
-| Retriever | Recall@1 | Recall@3 | Recall@5 | Precision@5 | MRR | Median Latency |
-|---|---:|---:|---:|---:|---:|---:|
-| Dense | **0.196** | **0.515** | **0.799** | **0.867** | **1.000** | 286.9 ms |
-| BM25 | 0.124 | 0.305 | 0.505 | 0.613 | 0.802 | **0.303 ms** |
-| Sparse | 0.135 | 0.320 | 0.448 | 0.547 | 0.833 | 66.1 ms |
-
-Dense retrieval is currently the strongest standalone retriever.
-
-## Project Structure
-
-```text
-sec-rag-engine/
-├── api/
-│   ├── main.py
-│   └── rag.py
-│
-├── data/
-│   ├── raw/
-│   └── chunks/
-│
-├── evaluation/
-│   ├── benchmark.json
-│   ├── evaluate_dense.py
-│   ├── evaluate_bm25.py
-│   ├── evaluate_sparse.py
-│   ├── run_rag_tests.py
-│   └── results/
-│
-├── ingestion/
-│   ├── sec_loader.py
-│   └── chunker.py
-│
-├── retrieval/
-│   ├── embedder.py
-│   ├── build_embeddings.py
-│   ├── search.py
-│   ├── pinecone_store.py
-│   ├── pinecone_search.py
-│   ├── bm25_search.py
-│   ├── sparse_store.py
-│   └── sparse_search.py
-│
-├── FAILURES.md
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
+Swagger UI: `http://127.0.0.1:8000/docs`
 
 ## Setup
 
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Create a `.env` file with the required OpenAI and Pinecone credentials.
+`.env` (do not commit secrets):
 
-## Run Evaluations
-
-```bash
-python -m evaluation.evaluate_dense
-python -m evaluation.evaluate_bm25
-python -m evaluation.evaluate_sparse
+```text
+OPENAI_API_KEY=
+PINECONE_API_KEY=
+COHERE_API_KEY=
 ```
 
-## Run API
+Optional: `COHERE_RERANK_ENABLED=true`
+
+## Run
 
 ```bash
 fastapi dev api/main.py
 ```
 
-Swagger UI:
+## Evaluation Commands
 
-```text
-http://127.0.0.1:8000/docs
+```bash
+python -m evaluation.evaluate_v2
+python -m evaluation.evaluate_cohere_reranker
+python -m evaluation.evaluate_generation_models
+python -m evaluation.evaluate_final_rag
 ```
 
-## Next
+The generation-model comparison reuses cached Cohere rankings so it does not consume Trial quota.
 
-```mermaid
-flowchart LR
-    A[Dense] --> D[Hybrid Retrieval]
-    B[BM25] --> D
-    C[Sparse] --> D
-    D --> E[RRF]
-    E --> F[Reranking]
-    F --> G[Final RAG Pipeline]
-```
+## Limitations
 
-Next milestone: Hybrid Retrieval using Reciprocal Rank Fusion.
+- evaluated on three companies
+- qrels are pooled and incomplete outside the retrieval pool
+- Cohere Trial accounts are limited to 10 calls/minute
+- arbitrary ticker ingestion is not automated
+- production monitoring and deployment are not included
+
+## Next Steps
+
+- arbitrary ticker/company ingestion
+- incremental filing updates
+- metadata filtering
+- multi-company comparisons
+- streaming `/ask` endpoint
+- observability and deployment

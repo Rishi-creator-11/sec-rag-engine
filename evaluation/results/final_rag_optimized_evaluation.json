@@ -1,0 +1,525 @@
+{
+  "benchmark_path": "evaluation/benchmark_v2.json",
+  "baseline_path": "evaluation/results/final_rag_evaluation.json",
+  "questions_tested": 13,
+  "selected_ids": [
+    "apple_total_net_sales_2024_01",
+    "microsoft_total_revenue_2025_01",
+    "nvidia_compute_networking_revenue_2026_01",
+    "apple_iphone_sales_2024_01",
+    "microsoft_operating_income_2025_01",
+    "apple_product_categories_01",
+    "microsoft_azure_competition_01",
+    "nvidia_data_center_platform_01",
+    "apple_seasonality_01",
+    "nvidia_gaming_business_01",
+    "apple_iphone17_revenue_2025_unsupported_01",
+    "microsoft_fy2026_revenue_unsupported_01",
+    "nvidia_fy2027_revenue_unsupported_01"
+  ],
+  "source_hit_rate": 1.0,
+  "unsupported_refusal_rate": 1.0,
+  "mean_total_latency_seconds": 3.7001692307692307,
+  "median_total_latency_seconds": 3.5526999999999997,
+  "p95_total_latency_seconds": 5.4053,
+  "mean_generation_latency_seconds": 2.3982615384615382,
+  "median_generation_latency_seconds": 1.9852,
+  "p95_generation_latency_seconds": 4.0665,
+  "avg_context_chunks": 5.0,
+  "avg_context_characters": 18480.30769230769,
+  "avg_answer_characters": 180.0,
+  "failures": [],
+  "gates": [
+    "PASS  source hit rate >= 0.90  (1.000)",
+    "PASS  unsupported refusal rate == 1.00  (1.000)",
+    "FAIL  median total latency < 3s  (3.553s)",
+    "FAIL  p95 total latency < 5s  (5.405s)"
+  ],
+  "before": {
+    "questions_tested": 13,
+    "source_hit_rate": 1.0,
+    "unsupported_refusal_rate": 1.0,
+    "generation_mean": 10.016238461538462,
+    "generation_median": 7.6463,
+    "generation_p95": 18.8681,
+    "total_mean": 10.75046923076923,
+    "total_median": 8.2591,
+    "total_p95": 19.5243,
+    "avg_context_chunks": null,
+    "avg_context_characters": null,
+    "avg_answer_characters": null,
+    "failures": []
+  },
+  "after": {
+    "questions_tested": 13,
+    "source_hit_rate": 1.0,
+    "unsupported_refusal_rate": 1.0,
+    "generation_mean": 2.3982615384615382,
+    "generation_median": 1.9852,
+    "generation_p95": 4.0665,
+    "total_mean": 3.7001692307692307,
+    "total_median": 3.5526999999999997,
+    "total_p95": 5.4053,
+    "avg_context_chunks": 5.0,
+    "avg_context_characters": 18480.30769230769,
+    "avg_answer_characters": 180.0,
+    "failures": []
+  },
+  "questions": [
+    {
+      "id": "apple_total_net_sales_2024_01",
+      "question": "What were Apple's total net sales in fiscal 2024?",
+      "company": "AAPL",
+      "answer_type": "numeric",
+      "answer": "Apple\u2019s total net sales in fiscal 2024 were $391,035 million. [Source 2]",
+      "expected_relevant_chunks": [
+        "apple_10k_28",
+        "apple_10k_29",
+        "apple_10k_34",
+        "apple_10k_39",
+        "apple_10k_53"
+      ],
+      "returned_source_chunk_ids": [
+        "apple_10k_28",
+        "apple_10k_34",
+        "apple_10k_39",
+        "apple_10k_29",
+        "apple_10k_53"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 830.7,
+        "hybrid_retrieval_ms": 830.7,
+        "rerank_ms": 201.6,
+        "generation_ms": 1929.0,
+        "total_ms": 3233.9,
+        "context_chunks_used": 5,
+        "context_characters": 15585,
+        "answer_characters": 72
+      }
+    },
+    {
+      "id": "microsoft_total_revenue_2025_01",
+      "question": "What total revenue did Microsoft report for fiscal 2025?",
+      "company": "MSFT",
+      "answer_type": "numeric",
+      "answer": "Total Revenue was $281,724 million for fiscal year 2025. [Source 2]",
+      "expected_relevant_chunks": [
+        "microsoft_10k_40",
+        "microsoft_10k_41",
+        "microsoft_10k_83",
+        "microsoft_10k_84"
+      ],
+      "returned_source_chunk_ids": [
+        "microsoft_10k_41",
+        "microsoft_10k_40",
+        "microsoft_10k_84",
+        "microsoft_10k_37",
+        "microsoft_10k_85"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 263.4,
+        "hybrid_retrieval_ms": 263.4,
+        "rerank_ms": 194.7,
+        "generation_ms": 1985.2,
+        "total_ms": 2492.6,
+        "context_chunks_used": 5,
+        "context_characters": 18257,
+        "answer_characters": 67
+      }
+    },
+    {
+      "id": "nvidia_compute_networking_revenue_2026_01",
+      "question": "What revenue did NVIDIA report for its Compute & Networking segment in fiscal 2026?",
+      "company": "NVDA",
+      "answer_type": "numeric",
+      "answer": "NVIDIA reported Compute & Networking revenue of $193,479 million for fiscal 2026. [Source 1]",
+      "expected_relevant_chunks": [
+        "nvidia_10k_54",
+        "nvidia_10k_94"
+      ],
+      "returned_source_chunk_ids": [
+        "nvidia_10k_54",
+        "nvidia_10k_94",
+        "nvidia_10k_96",
+        "nvidia_10k_55",
+        "nvidia_10k_95"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 332.3,
+        "hybrid_retrieval_ms": 332.3,
+        "rerank_ms": 203.2,
+        "generation_ms": 1761.8,
+        "total_ms": 2345.6,
+        "context_chunks_used": 5,
+        "context_characters": 17443,
+        "answer_characters": 92
+      }
+    },
+    {
+      "id": "apple_iphone_sales_2024_01",
+      "question": "How much net sales did Apple report for iPhone in fiscal 2024?",
+      "company": "AAPL",
+      "answer_type": "numeric",
+      "answer": "$201,183 million. [Source 2]",
+      "expected_relevant_chunks": [
+        "apple_10k_28",
+        "apple_10k_29",
+        "apple_10k_39"
+      ],
+      "returned_source_chunk_ids": [
+        "apple_10k_28",
+        "apple_10k_39",
+        "apple_10k_29",
+        "apple_10k_53",
+        "apple_10k_38"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 451.7,
+        "hybrid_retrieval_ms": 451.7,
+        "rerank_ms": 210.6,
+        "generation_ms": 1480.1,
+        "total_ms": 2188.3,
+        "context_chunks_used": 5,
+        "context_characters": 17522,
+        "answer_characters": 28
+      }
+    },
+    {
+      "id": "microsoft_operating_income_2025_01",
+      "question": "What operating income did Microsoft report for fiscal 2025?",
+      "company": "MSFT",
+      "answer_type": "numeric",
+      "answer": "Microsoft reported operating income of $128,528 million for fiscal 2025. [Source 1]",
+      "expected_relevant_chunks": [
+        "microsoft_10k_40",
+        "microsoft_10k_41",
+        "microsoft_10k_42",
+        "microsoft_10k_83",
+        "microsoft_10k_84"
+      ],
+      "returned_source_chunk_ids": [
+        "microsoft_10k_40",
+        "microsoft_10k_41",
+        "microsoft_10k_83",
+        "microsoft_10k_84",
+        "microsoft_10k_42"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 355.1,
+        "hybrid_retrieval_ms": 355.1,
+        "rerank_ms": 218.8,
+        "generation_ms": 1425.8,
+        "total_ms": 2041.9,
+        "context_chunks_used": 5,
+        "context_characters": 16795,
+        "answer_characters": 83
+      }
+    },
+    {
+      "id": "apple_product_categories_01",
+      "question": "What major product and services categories does Apple report in its business?",
+      "company": "AAPL",
+      "answer_type": "qualitative",
+      "answer": "- Products: iPhone, Mac, iPad, Wearables, Home and Accessories. \n- Services: Advertising, AppleCare, Cloud Services, Digital Content (including subscriptions like Apple Arcade, Apple Fitness+, Apple Music, Apple News+, Apple TV+), and Payment Services. [Source 1]",
+      "expected_relevant_chunks": [
+        "apple_10k_2",
+        "apple_10k_28",
+        "apple_10k_29",
+        "apple_10k_3",
+        "apple_10k_39",
+        "apple_10k_4"
+      ],
+      "returned_source_chunk_ids": [
+        "apple_10k_3",
+        "apple_10k_28",
+        "apple_10k_39",
+        "apple_10k_2",
+        "apple_10k_4"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 218.2,
+        "hybrid_retrieval_ms": 218.2,
+        "rerank_ms": 184.6,
+        "generation_ms": 4066.5,
+        "total_ms": 4506.7,
+        "context_chunks_used": 5,
+        "context_characters": 18913,
+        "answer_characters": 263
+      }
+    },
+    {
+      "id": "microsoft_azure_competition_01",
+      "question": "How does Microsoft describe Azure's competitive environment and competitive advantages?",
+      "company": "MSFT",
+      "answer_type": "qualitative",
+      "answer": "Azure faces diverse competition from cloud providers and open source offerings. Its competitive advantages include enabling a hybrid cloud and scalable deployment for businesses of all sizes, plus AI offerings (including AI Foundry) and strong hardware partnerships, including custom silicon. Its global scale and broad portfolio of identity and security solutions further differentiate Azure from the competition. [Source 1][Source 2]",
+      "expected_relevant_chunks": [
+        "microsoft_10k_3",
+        "microsoft_10k_6",
+        "microsoft_10k_7"
+      ],
+      "returned_source_chunk_ids": [
+        "microsoft_10k_6",
+        "microsoft_10k_7",
+        "microsoft_10k_37",
+        "microsoft_10k_5",
+        "microsoft_10k_3"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 2,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 289.8,
+        "hybrid_retrieval_ms": 289.8,
+        "rerank_ms": 197.9,
+        "generation_ms": 2987.8,
+        "total_ms": 3552.7,
+        "context_chunks_used": 5,
+        "context_characters": 22758,
+        "answer_characters": 435
+      }
+    },
+    {
+      "id": "nvidia_data_center_platform_01",
+      "question": "What hardware and software components make up NVIDIA's Data Center infrastructure systems?",
+      "company": "NVDA",
+      "answer_type": "qualitative",
+      "answer": "NVIDIA\u2019s Data Center infrastructure systems comprise hardware: GPUs, CPUs, DPUs, interconnects (NVLink), network adapters, cables, switches, and end-to-end InfiniBand/Ethernet platforms, deployed as rack-scale systems and subsystems. Software: the CUDA development platform, the CUDA-X acceleration libraries, AI models and training data sets, APIs/SDKs, and domain-specific application frameworks (plus enterprise AI software such as NVIDIA AI Enterprise). [Source 2][Source 1]",
+      "expected_relevant_chunks": [
+        "nvidia_10k_18",
+        "nvidia_10k_3",
+        "nvidia_10k_4",
+        "nvidia_10k_5",
+        "nvidia_10k_6",
+        "nvidia_10k_8"
+      ],
+      "returned_source_chunk_ids": [
+        "nvidia_10k_6",
+        "nvidia_10k_5",
+        "nvidia_10k_3",
+        "nvidia_10k_4",
+        "nvidia_10k_7"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 2,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 229.7,
+        "hybrid_retrieval_ms": 229.7,
+        "rerank_ms": 271.6,
+        "generation_ms": 3313.0,
+        "total_ms": 3905.2,
+        "context_chunks_used": 5,
+        "context_characters": 21688,
+        "answer_characters": 478
+      }
+    },
+    {
+      "id": "apple_seasonality_01",
+      "question": "How does seasonality affect Apple's net sales during its fiscal year?",
+      "company": "AAPL",
+      "answer_type": "qualitative",
+      "answer": "Apple historically experiences higher net sales in its first fiscal quarter due to seasonal holiday demand, with seasonality causing Q1 to be stronger than other quarters. New product introductions can also significantly impact net sales. [Source 1]",
+      "expected_relevant_chunks": [
+        "apple_10k_22",
+        "apple_10k_5",
+        "apple_10k_6"
+      ],
+      "returned_source_chunk_ids": [
+        "apple_10k_5",
+        "apple_10k_6",
+        "apple_10k_22",
+        "apple_10k_28",
+        "apple_10k_29"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 171.8,
+        "hybrid_retrieval_ms": 171.8,
+        "rerank_ms": 195.1,
+        "generation_ms": 2567.4,
+        "total_ms": 3002.4,
+        "context_chunks_used": 5,
+        "context_characters": 19326,
+        "answer_characters": 249
+      }
+    },
+    {
+      "id": "nvidia_gaming_business_01",
+      "question": "How does NVIDIA describe its Gaming business and the factors driving the gaming market?",
+      "company": "NVDA",
+      "answer_type": "qualitative",
+      "answer": "Gaming is described as the largest entertainment industry, with PC gaming as the predominant platform. Its growth is driven by factors such as new high production value games, the rise of eSports, social connectivity, and the increasing popularity of game streamers, modders, and creators. [Source 1]",
+      "expected_relevant_chunks": [
+        "nvidia_10k_3",
+        "nvidia_10k_5",
+        "nvidia_10k_6",
+        "nvidia_10k_7",
+        "nvidia_10k_8"
+      ],
+      "returned_source_chunk_ids": [
+        "nvidia_10k_6",
+        "nvidia_10k_7",
+        "nvidia_10k_5",
+        "nvidia_10k_49",
+        "nvidia_10k_51"
+      ],
+      "source_hit": true,
+      "answer_grounded": "manual_review_required",
+      "refusal_expected": false,
+      "refusal_observed": false,
+      "citation_count": 1,
+      "reranker_fallback": false,
+      "timings": {
+        "hybrid_ms": 208.4,
+        "hybrid_retrieval_ms": 208.4,
+        "rerank_ms": 197.1,
+        "generation_ms": 4209.0,
+        "total_ms": 4697.4,
+        "context_chunks_used": 5,
+        "context_characters": 20124,
+        "answer_characters": 300
+      }
+    },
+    {
+      "id": "apple_iphone17_revenue_2025_unsupported_01",
+      "question": "How much revenue did Apple generate from iPhone 17 in fiscal 2025?",
+      "company": "AAPL",
+      "answer_type": "unsupported",
+      "answer": "The provided SEC filing excerpts do not contain enough information to answer this question.",
+      "expected_relevant_chunks": [],
+      "returned_source_chunk_ids": [
+        "apple_10k_28",
+        "apple_10k_39",
+        "apple_10k_27",
+        "apple_10k_2",
+        "apple_10k_38"
+      ],
+      "source_hit": null,
+      "answer_grounded": "yes",
+      "refusal_expected": true,
+      "refusal_observed": true,
+      "citation_count": 0,
+      "reranker_fallback": true,
+      "timings": {
+        "hybrid_ms": 286.3,
+        "hybrid_retrieval_ms": 286.3,
+        "rerank_ms": 3107.4,
+        "generation_ms": 2054.1,
+        "total_ms": 5507.7,
+        "context_chunks_used": 5,
+        "context_characters": 18183,
+        "answer_characters": 91
+      }
+    },
+    {
+      "id": "microsoft_fy2026_revenue_unsupported_01",
+      "question": "What total revenue did Microsoft report for fiscal 2026?",
+      "company": "MSFT",
+      "answer_type": "unsupported",
+      "answer": "The provided SEC filing excerpts do not contain enough information to answer this question.",
+      "expected_relevant_chunks": [],
+      "returned_source_chunk_ids": [
+        "microsoft_10k_84",
+        "microsoft_10k_37",
+        "microsoft_10k_41",
+        "nvidia_10k_56",
+        "nvidia_10k_54"
+      ],
+      "source_hit": null,
+      "answer_grounded": "yes",
+      "refusal_expected": true,
+      "refusal_observed": true,
+      "citation_count": 0,
+      "reranker_fallback": true,
+      "timings": {
+        "hybrid_ms": 465.1,
+        "hybrid_retrieval_ms": 465.1,
+        "rerank_ms": 3097.2,
+        "generation_ms": 1630.8,
+        "total_ms": 5222.5,
+        "context_chunks_used": 5,
+        "context_characters": 17712,
+        "answer_characters": 91
+      }
+    },
+    {
+      "id": "nvidia_fy2027_revenue_unsupported_01",
+      "question": "What total revenue did NVIDIA report for fiscal 2027?",
+      "company": "NVDA",
+      "answer_type": "unsupported",
+      "answer": "The provided SEC filing excerpts do not contain enough information to answer this question.",
+      "expected_relevant_chunks": [],
+      "returned_source_chunk_ids": [
+        "nvidia_10k_54",
+        "nvidia_10k_96",
+        "nvidia_10k_49",
+        "nvidia_10k_81",
+        "nvidia_10k_80"
+      ],
+      "source_hit": null,
+      "answer_grounded": "yes",
+      "refusal_expected": true,
+      "refusal_observed": true,
+      "citation_count": 0,
+      "reranker_fallback": true,
+      "timings": {
+        "hybrid_ms": 271.9,
+        "hybrid_retrieval_ms": 271.9,
+        "rerank_ms": 3322.9,
+        "generation_ms": 1766.9,
+        "total_ms": 5405.3,
+        "context_chunks_used": 5,
+        "context_characters": 15938,
+        "answer_characters": 91
+      }
+    }
+  ]
+}

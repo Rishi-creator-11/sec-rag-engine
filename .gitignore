@@ -10,13 +10,19 @@ __pycache__/
 # macOS
 .DS_Store
 
-# Generated embeddings
+# Local embedding dumps
 data/embeddings/
 
-# Evaluation review artifacts
+# Large intermediate evaluation artifacts / caches
+evaluation/results/benchmark_v2_pool.json
+evaluation/results/cohere_reranker_cache.json
+evaluation/results/reranker_cache.json
+evaluation/results/benchmark_v2_auto_judgments.json
+evaluation/results/benchmark_v2_judgments.json
 evaluation/results/*_review.txt
 evaluation/results/retrieval_pool.json
 evaluation/results/pool_judgments.json
+evaluation/corpus_review.txt
 
 # Local code review / inspection artifacts
 codebase_status.txt

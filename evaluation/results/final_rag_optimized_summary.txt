@@ -1,0 +1,29 @@
+FINAL RAG OPTIMIZED SANITY TEST
+production generation model: gpt-5-nano
+Same 13-question set. Generation-only optimizations; retrieval unchanged.
+
+BEFORE vs AFTER
+metric                           before      after
+--------------------------------------------------
+source hit rate                   1.000      1.000
+unsupported refusal rate          1.000      1.000
+generation mean                  10.016      2.398
+generation median                 7.646      1.985
+generation p95                   18.868      4.066
+total mean                       10.750      3.700
+total median                      8.259      3.553
+total p95                        19.524      5.405
+average context chunks              n/a       5.00
+average context characters          n/a    18480.3
+average answer characters           n/a      180.0
+
+failures by question id: none
+
+QUALITY GATES
+PASS  source hit rate >= 0.90  (1.000)
+PASS  unsupported refusal rate == 1.00  (1.000)
+FAIL  median total latency < 3s  (3.553s)
+FAIL  p95 total latency < 5s  (5.405s)
+
+Latency still misses the production target after context/prompt/output cuts.
+Do not keep tweaking this pass. Next controlled experiment: a faster generation model.

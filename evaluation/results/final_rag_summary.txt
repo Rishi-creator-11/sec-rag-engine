@@ -1,0 +1,16 @@
+FINAL RAG SANITY TEST
+Hybrid top-10 -> Cohere rerank-v4.0-fast -> top-5 -> grounded answer
+
+questions tested: 13
+source hit rate: 1.000
+unsupported refusal rate: 1.000
+average total latency: 10.750s
+median total latency: 8.259s
+p95 total latency: 19.524s
+failures by question id: none
+
+QUALITY GATES
+PASS  source hit rate >= 0.90  (1.000)
+PASS  unsupported refusal rate == 1.00  (1.000)
+FAIL  median total latency < 3s  (8.259s)
+FAIL  p95 total latency < 5s  (19.524s)
