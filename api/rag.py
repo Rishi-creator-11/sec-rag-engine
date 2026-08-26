@@ -200,6 +200,7 @@ def build_sources(
                 "rerank_score": result.get("rerank_score"),
                 "hybrid_rank": hybrid_rank_by_id.get(chunk_id),
                 "retrieval_score": result.get("rrf_score", result.get("score")),
+                "text": result.get("text", ""),
             }
         )
 
