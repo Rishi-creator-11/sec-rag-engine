@@ -160,7 +160,7 @@ Optional:
 
 ```text
 COHERE_RERANK_ENABLED=true
-FRONTEND_ORIGINS=http://localhost:3000,https://your-deployed-frontend.example
+FRONTEND_ORIGINS=http://localhost:3000,https://secfrontend.vercel.app
 ```
 
 ## Run

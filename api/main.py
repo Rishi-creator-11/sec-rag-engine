@@ -14,8 +14,16 @@ load_dotenv()
 MAX_TICKERS = 10
 
 
+# Default origins allowed when FRONTEND_ORIGINS is not set: local dev + the
+# deployed frontend (https://secfrontend.vercel.app). Override with the
+# FRONTEND_ORIGINS env var (comma-separated) on any host that needs a different set.
+DEFAULT_FRONTEND_ORIGINS = (
+    "http://localhost:3000,https://secfrontend.vercel.app"
+)
+
+
 def parse_frontend_origins() -> list[str]:
-    raw = os.getenv("FRONTEND_ORIGINS", "http://localhost:3000")
+    raw = os.getenv("FRONTEND_ORIGINS", DEFAULT_FRONTEND_ORIGINS)
     origins = [origin.strip() for origin in raw.split(",")]
     return [origin for origin in origins if origin]
 
