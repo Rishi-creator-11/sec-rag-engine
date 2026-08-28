@@ -1,0 +1,32 @@
+{
+  "note": "Append-only history of how corpus growth affects retrieval. BM25 global IDF/avgdl shift as companies are added (dense/Pinecone is unaffected). filter_correctness and leakage are structural and must stay 1.000 / 0.000. Watch filtered Recall@10 vs the >= 0.90 gate: when it approaches the gate, the BM25 backend (Phase 6) must be upgraded. Do NOT edit historical rows.",
+  "metric_source": "python -m evaluation.evaluate_scoped --retriever hybrid --mode compare (benchmark_v2.json, 55 supported questions)",
+  "history": [
+    {
+      "phase": "1B/1C/2",
+      "recorded": "2026-08-27 (from Phase 2 report)",
+      "company_count": 3,
+      "companies": ["AAPL", "MSFT", "NVDA"],
+      "chunk_count": 267,
+      "filtered_recall_at_10": 0.929,
+      "unfiltered_recall_at_10": 0.903,
+      "filtered_mrr": 0.898,
+      "filter_correctness": 1.0,
+      "cross_company_leakage_at_10": 0.0,
+      "note": "pre-AMZN baseline"
+    },
+    {
+      "phase": "3",
+      "recorded": "2026-08-27",
+      "company_count": 4,
+      "companies": ["AAPL", "AMZN", "MSFT", "NVDA"],
+      "chunk_count": 356,
+      "filtered_recall_at_10": 0.9202,
+      "unfiltered_recall_at_10": 0.8813,
+      "filtered_mrr": 0.9062,
+      "filter_correctness": 1.0,
+      "cross_company_leakage_at_10": 0.0,
+      "note": "AMZN 10-K FY2025 (89 chunks) added. Filtered R@10 -0.009, unfiltered -0.022 vs 3-company; both from BM25 IDF/avgdl shift + Pinecone ANN noise. Gate (>=0.90) still met."
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import json
+import logging
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -7,9 +8,12 @@ from openai import OpenAI
 
 load_dotenv()
 
+logger = logging.getLogger("ingestion.embeddings")
+
 client = OpenAI()
 
 EMBEDDING_MODEL = "text-embedding-3-small"
+EMBEDDING_DIMENSION = 1536
 BATCH_SIZE = 50
 
 
@@ -34,6 +38,40 @@ def embed_batch(texts: list[str]) -> list[list[float]]:
         item.embedding
         for item in response.data
     ]
+
+
+def embed_records(
+    records: list[dict],
+    *,
+    batch_size: int = BATCH_SIZE,
+) -> list[dict]:
+    """Return copies of ``records`` with an ``embedding`` field added.
+
+    Reuses ``embed_batch`` (same model, ``text-embedding-3-small``). Input
+    records are not mutated. Order is preserved.
+    """
+    embedded: list[dict] = []
+    for start in range(0, len(records), batch_size):
+        batch = records[start:start + batch_size]
+        vectors = embed_batch([record["text"] for record in batch])
+        if len(vectors) != len(batch):
+            raise RuntimeError(
+                f"embedding count {len(vectors)} != batch size {len(batch)}"
+            )
+        for record, vector in zip(batch, vectors):
+            if len(vector) != EMBEDDING_DIMENSION:
+                raise RuntimeError(
+                    f"{record.get('chunk_id')}: embedding dim {len(vector)} "
+                    f"!= {EMBEDDING_DIMENSION}"
+                )
+            new_record = dict(record)
+            new_record["embedding"] = vector
+            embedded.append(new_record)
+        logger.info(
+            "embeddings event=batch done=%d/%d",
+            len(embedded), len(records),
+        )
+    return embedded
 
 
 def add_embeddings(chunks: list[dict]) -> list[dict]:

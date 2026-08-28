@@ -1,17 +1,21 @@
 import json
+import os
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
 
+# Legacy one-off seed loader. New ingestion uses ingestion.sec_client, which
+# requires SEC_USER_AGENT. Keep the SEC contact out of source here too.
+_DEFAULT_UA = "sec-rag-engine set-SEC_USER_AGENT@example.com"
 
-HEADERS = {
-    "User-Agent": "sec-rag-engine hrishitkumar628@gmail.com"
-}
+
+def _headers() -> dict:
+    return {"User-Agent": os.getenv("SEC_USER_AGENT", _DEFAULT_UA)}
 
 
 def download_filing(url: str) -> str:
-    response = requests.get(url, headers=HEADERS, timeout=30)
+    response = requests.get(url, headers=_headers(), timeout=30)
     response.raise_for_status()
 
     return response.text

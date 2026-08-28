@@ -13,6 +13,17 @@ __pycache__/
 # Local embedding dumps
 data/embeddings/
 
+# SEC EDGAR response cache (company_tickers.json etc.)
+data/sec_cache/
+
+# Ingestion rebuild artifacts (large, regenerable from SEC / from chunks).
+# Kept OUT of git: raw HTML and cleaned text. Kept IN git: metadata.json
+# (small record) and data/chunks/**/*.jsonl (the BM25 serving artifact).
+data/raw/**/filing.html
+data/raw/**/filing.txt
+data/raw/**/*.tmp
+data/**/.*.tmp*
+
 # Large intermediate evaluation artifacts / caches
 evaluation/results/benchmark_v2_pool.json
 evaluation/results/cohere_reranker_cache.json

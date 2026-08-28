@@ -1,0 +1,474 @@
+{
+  "benchmark": "/Users/rishiarora/sec-rag-engine/evaluation/benchmark_comparisons.json",
+  "top_k": 5,
+  "summary": {
+    "questions": 15,
+    "comparison_mode_questions": 15,
+    "scope_coverage_at_5": 1.0,
+    "full_coverage_rate": 1.0,
+    "min_evidence_per_scope_mean": 1.4666666666666666,
+    "min_evidence_per_scope_min": 1,
+    "cross_scope_leakage": 0.0,
+    "reranker_fallback_questions": 5,
+    "questions_with_warnings": 0,
+    "latency_mean_s": 1.6696840332665792,
+    "latency_p50_s": 0.5737620409927331,
+    "latency_p95_s": 3.6861784160137177
+  },
+  "questions": [
+    {
+      "id": "aapl_msft_competition_01",
+      "topic": "competition",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 4,
+        "MSFT": 1
+      },
+      "evidence_ticker_sequence": [
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "MSFT",
+        "AAPL"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 1.7436247919686139,
+      "hybrid_ms": 1173.8126669661142,
+      "rerank_ms": 305.3247499628924
+    },
+    {
+      "id": "aapl_msft_cybersecurity_01",
+      "topic": "cybersecurity",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 4,
+        "MSFT": 1
+      },
+      "evidence_ticker_sequence": [
+        "AAPL",
+        "AAPL",
+        "MSFT",
+        "AAPL",
+        "AAPL"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.5002948750043288,
+      "hybrid_ms": 236.82116600684822,
+      "rerank_ms": 257.33345799380913
+    },
+    {
+      "id": "aapl_msft_ai_01",
+      "topic": "ai",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 2,
+        "MSFT": 3
+      },
+      "evidence_ticker_sequence": [
+        "MSFT",
+        "MSFT",
+        "AAPL",
+        "AAPL",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.5130116249783896,
+      "hybrid_ms": 210.30966704711318,
+      "rerank_ms": 290.12854100437835
+    },
+    {
+      "id": "aapl_msft_international_01",
+      "topic": "international_exposure",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 4,
+        "MSFT": 1
+      },
+      "evidence_ticker_sequence": [
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.46870216698152944,
+      "hybrid_ms": 198.76175001263618,
+      "rerank_ms": 261.25616702483967
+    },
+    {
+      "id": "aapl_msft_rnd_01",
+      "topic": "research_and_development",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 3,
+        "MSFT": 2
+      },
+      "evidence_ticker_sequence": [
+        "MSFT",
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.5831647079903632,
+      "hybrid_ms": 310.8209589845501,
+      "rerank_ms": 263.0191670032218
+    },
+    {
+      "id": "aapl_nvda_supply_chain_01",
+      "topic": "supply_chain",
+      "requested_tickers": [
+        "AAPL",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 3,
+        "NVDA": 2
+      },
+      "evidence_ticker_sequence": [
+        "AAPL",
+        "NVDA",
+        "AAPL",
+        "AAPL",
+        "NVDA"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.5665379579877481,
+      "hybrid_ms": 284.5778749906458,
+      "rerank_ms": 269.83308303169906
+    },
+    {
+      "id": "aapl_nvda_china_01",
+      "topic": "china_exposure",
+      "requested_tickers": [
+        "AAPL",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 1,
+        "NVDA": 4
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "NVDA",
+        "NVDA",
+        "NVDA",
+        "AAPL"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.5149675840511918,
+      "hybrid_ms": 245.77687500277534,
+      "rerank_ms": 257.2592080105096
+    },
+    {
+      "id": "aapl_nvda_competition_01",
+      "topic": "competition",
+      "requested_tickers": [
+        "AAPL",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 4,
+        "NVDA": 1
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "AAPL"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.566956625028979,
+      "hybrid_ms": 240.99225003737956,
+      "rerank_ms": 318.2768329861574
+    },
+    {
+      "id": "aapl_nvda_ip_01",
+      "topic": "intellectual_property",
+      "requested_tickers": [
+        "AAPL",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 4,
+        "NVDA": 1
+      },
+      "evidence_ticker_sequence": [
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "AAPL",
+        "NVDA"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.5737620409927331,
+      "hybrid_ms": 304.3552090530284,
+      "rerank_ms": 261.38308399822563
+    },
+    {
+      "id": "msft_nvda_ai_01",
+      "topic": "ai",
+      "requested_tickers": [
+        "MSFT",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "MSFT": 3,
+        "NVDA": 2
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "MSFT",
+        "MSFT",
+        "MSFT",
+        "NVDA"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": false,
+      "reranker_fallback_reason": null,
+      "warnings": [],
+      "latency_seconds": 0.49682962498627603,
+      "hybrid_ms": 226.09591600485146,
+      "rerank_ms": 259.13062499603257
+    },
+    {
+      "id": "msft_nvda_cybersecurity_01",
+      "topic": "cybersecurity",
+      "requested_tickers": [
+        "MSFT",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "MSFT": 3,
+        "NVDA": 2
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "MSFT",
+        "MSFT",
+        "NVDA",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.6686766669736244,
+      "hybrid_ms": 212.27304195053875,
+      "rerank_ms": 3456.0010000132024
+    },
+    {
+      "id": "msft_nvda_regulation_01",
+      "topic": "regulation",
+      "requested_tickers": [
+        "MSFT",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "MSFT": 3,
+        "NVDA": 2
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "MSFT",
+        "MSFT",
+        "NVDA",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.6861784160137177,
+      "hybrid_ms": 212.3162079951726,
+      "rerank_ms": 3473.477167019155
+    },
+    {
+      "id": "msft_nvda_datacenter_01",
+      "topic": "data_center",
+      "requested_tickers": [
+        "MSFT",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "MSFT": 2,
+        "NVDA": 3
+      },
+      "evidence_ticker_sequence": [
+        "MSFT",
+        "NVDA",
+        "NVDA",
+        "MSFT",
+        "NVDA"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.6839655830408446,
+      "hybrid_ms": 202.99649995286018,
+      "rerank_ms": 3480.6779579957947
+    },
+    {
+      "id": "aapl_msft_nvda_cybersecurity_01",
+      "topic": "cybersecurity",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 1,
+        "MSFT": 2,
+        "NVDA": 2
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "MSFT",
+        "AAPL",
+        "NVDA",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.8566124999779277,
+      "hybrid_ms": 266.15049998508766,
+      "rerank_ms": 3590.188083006069
+    },
+    {
+      "id": "aapl_msft_nvda_competition_01",
+      "topic": "competition",
+      "requested_tickers": [
+        "AAPL",
+        "MSFT",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "AAPL": 2,
+        "MSFT": 2,
+        "NVDA": 1
+      },
+      "evidence_ticker_sequence": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "AAPL",
+        "MSFT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.6219753330224194,
+      "hybrid_ms": 246.58670800272375,
+      "rerank_ms": 3375.143290963024
+    }
+  ]
+}

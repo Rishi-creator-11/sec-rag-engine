@@ -1,0 +1,255 @@
+"""Verify a previously-ingested filing — local + remote consistency.
+
+    python -m ingestion.verify_company --ticker AMZN [--full] [--json]
+
+Checks (NO OpenAI / NO Cohere calls):
+
+  LOCAL    registry has the company + this filing; ledger says complete;
+           chunk JSONL exists and validates; chunk_count agrees with registry
+  DENSE    canonical chunk vector ids exist in sec-rag-engine; metadata
+           ticker / filing_id / fiscal_year are correct (sample, or --full)
+  SPARSE   if the sparse stage succeeded, a sample of records exist in
+           sec-rag-sparse
+  SERVING  the BM25 loader sees this filing's chunks (count matches)
+
+Exit code 0 = PASS, 1 = FAIL.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import sys
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+from ingestion import registry
+from ingestion.sec_client import SecClient
+from ingestion.stages import validate_chunks_artifact
+
+load_dotenv()
+
+logger = logging.getLogger("ingestion.verify")
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+LEDGER_PATH = REPO_ROOT / "data" / "registry" / "ingestion_state.json"
+CHUNKS_DIR = REPO_ROOT / "data" / "chunks"
+DENSE_INDEX = "sec-rag-engine"
+SPARSE_INDEX = "sec-rag-sparse"
+NAMESPACE = "__default__"
+SAMPLE_SIZE = 6
+
+
+class Check:
+    def __init__(self, name: str):
+        self.name = name
+        self.ok = True
+        self.details: list[str] = []
+
+    def fail(self, message: str) -> None:
+        self.ok = False
+        self.details.append(f"FAIL {message}")
+
+    def note(self, message: str) -> None:
+        self.details.append(message)
+
+
+def _load_ledger_entry(filing_id: str) -> dict | None:
+    if not LEDGER_PATH.exists():
+        return None
+    data = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
+    return data.get(filing_id)
+
+
+def _canonical_ids(entry: dict) -> list[str]:
+    from retrieval.metadata import canonical_chunk_id
+
+    count = entry.get("chunk_count") or 0
+    return [
+        canonical_chunk_id(
+            ticker=entry["ticker"],
+            fiscal_year=entry["fiscal_year"],
+            filing_type=entry["filing_type"],
+            accession_number=entry["accession_number"],
+            chunk_index=i,
+        )
+        for i in range(count)
+    ]
+
+
+def verify(ticker: str, *, full: bool = False, client: SecClient | None = None) -> dict:
+    ticker = ticker.strip().upper()
+    checks: list[Check] = []
+
+    # ---- discover filing_id (needs SEC, but no OpenAI/Cohere) ----------
+    local = Check("LOCAL")
+    checks.append(local)
+    company = registry.get_company(ticker)
+    if not company:
+        local.fail(f"{ticker} not in registry")
+        return _finish(ticker, checks)
+
+    client = client or SecClient()
+    filing = client.discover_latest_10k(ticker)
+    filing_id = filing.filing_id
+
+    reg_filing = next(
+        (f for f in company.get("filings", [])
+         if f.get("accession_number") == filing.accession_number),
+        None,
+    )
+    if not reg_filing:
+        local.fail(f"registry has no filing {filing.accession_number}")
+    entry = _load_ledger_entry(filing_id)
+    if not entry:
+        local.fail(f"ledger has no entry for {filing_id}")
+        return _finish(ticker, checks)
+    if entry.get("stages", {}).get("complete", {}).get("status") != "ok":
+        local.fail("ledger does not say complete")
+
+    chunk_file = CHUNKS_DIR / ticker / f"{filing_id}_chunks.jsonl"
+    valid, reason = validate_chunks_artifact(
+        chunk_file,
+        expected_count=entry.get("chunk_count"),
+        expected_sha256=entry.get("hashes", {}).get("chunks_sha256"),
+    )
+    if not valid:
+        local.fail(f"chunk artifact: {reason}")
+    else:
+        local.note(f"chunk artifact valid ({entry.get('chunk_count')} chunks)")
+    if reg_filing and reg_filing.get("chunk_count") != entry.get("chunk_count"):
+        local.fail(
+            f"registry chunk_count {reg_filing.get('chunk_count')} != "
+            f"ledger {entry.get('chunk_count')}"
+        )
+
+    ids = _canonical_ids(entry)
+    if not ids:
+        local.fail("no canonical chunk ids (chunk_count missing)")
+        return _finish(ticker, checks)
+
+    sample = ids if full else (ids[:3] + ids[-3:])
+
+    # ---- DENSE -------------------------------------------------------
+    dense = Check("DENSE")
+    checks.append(dense)
+    try:
+        from pinecone import Pinecone
+        import os
+
+        pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+        index = pc.Index(DENSE_INDEX)
+        to_fetch = ids if full else sample
+        found: dict = {}
+        for start in range(0, len(to_fetch), 100):
+            batch = to_fetch[start:start + 100]
+            fetched = index.fetch(ids=batch, namespace=NAMESPACE)
+            found.update(fetched.vectors or {})
+        missing = [i for i in to_fetch if i not in found]
+        if missing:
+            dense.fail(f"{len(missing)} vectors missing (e.g. {missing[:3]})")
+        else:
+            dense.note(f"{len(found)} sampled vectors present")
+        for vid, vector in found.items():
+            meta = vector.metadata or {}
+            if meta.get("ticker") != ticker:
+                dense.fail(f"{vid}: ticker={meta.get('ticker')!r}")
+            if meta.get("filing_id") not in (None, filing_id):
+                dense.fail(f"{vid}: filing_id={meta.get('filing_id')!r}")
+            if meta.get("fiscal_year") not in (None, entry["fiscal_year"]):
+                dense.fail(f"{vid}: fiscal_year={meta.get('fiscal_year')!r}")
+    except Exception as exc:  # noqa: BLE001
+        dense.fail(f"{type(exc).__name__}: {exc}")
+
+    # ---- SPARSE ----------------------------------------------------
+    sparse = Check("SPARSE")
+    checks.append(sparse)
+    sparse_status = entry.get("stages", {}).get("sparse_upserted", {}).get("status")
+    if sparse_status != "ok":
+        sparse.note(f"sparse stage status={sparse_status!r}; skipping remote check")
+    else:
+        try:
+            from pinecone import Pinecone
+            import os
+
+            pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+            index = pc.Index(SPARSE_INDEX)
+            fetched = index.fetch(ids=sample, namespace=NAMESPACE)
+            present = (fetched.vectors or {}).keys()
+            missing = [i for i in sample if i not in present]
+            if missing:
+                sparse.fail(f"{len(missing)} sparse records missing")
+            else:
+                sparse.note(f"{len(list(present))} sampled sparse records present")
+        except Exception as exc:  # noqa: BLE001
+            sparse.fail(f"{type(exc).__name__}: {exc}")
+
+    # ---- SERVING (BM25 loader) -----------------------------------
+    serving = Check("SERVING")
+    checks.append(serving)
+    try:
+        from retrieval.bm25_search import load_chunks
+
+        rows = [
+            r for r in load_chunks()
+            if r.get("chunk_id", "").startswith(f"{ticker}_")
+            and r.get("filing_id") == filing_id
+        ]
+        if len(rows) != entry.get("chunk_count"):
+            serving.fail(
+                f"BM25 loader sees {len(rows)} chunks, expected {entry.get('chunk_count')}"
+            )
+        else:
+            serving.note(f"BM25 loader sees all {len(rows)} chunks")
+    except Exception as exc:  # noqa: BLE001
+        serving.fail(f"{type(exc).__name__}: {exc}")
+
+    return _finish(ticker, checks, filing_id=filing_id)
+
+
+def _finish(ticker: str, checks: list[Check], filing_id: str | None = None) -> dict:
+    passed = all(c.ok for c in checks)
+    return {
+        "ticker": ticker,
+        "filing_id": filing_id,
+        "result": "PASS" if passed else "FAIL",
+        "checks": [
+            {"name": c.name, "ok": c.ok, "details": c.details} for c in checks
+        ],
+    }
+
+
+def _print_report(report: dict) -> None:
+    print("=" * 70)
+    print(f"VERIFY {report['ticker']}"
+          + (f"  filing {report['filing_id']}" if report["filing_id"] else "")
+          + f"  ->  {report['result']}")
+    print("=" * 70)
+    for check in report["checks"]:
+        mark = "PASS" if check["ok"] else "FAIL"
+        print(f"  [{mark}] {check['name']}")
+        for detail in check["details"]:
+            print(f"         {detail}")
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--ticker", required=True)
+    parser.add_argument("--full", action="store_true", help="fetch every vector, not a sample")
+    parser.add_argument("--json", action="store_true")
+    args = parser.parse_args(argv)
+
+    logging.basicConfig(level=logging.WARNING, stream=sys.stderr)
+    report = verify(args.ticker, full=args.full)
+
+    if args.json:
+        print(json.dumps(report, indent=2))
+    else:
+        _print_report(report)
+    return 0 if report["result"] == "PASS" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

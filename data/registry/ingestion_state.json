@@ -1,0 +1,90 @@
+{
+  "000101872426000004": {
+    "accession_number": "0001018724-26-000004",
+    "artifacts": {
+      "chunks": "data/chunks/AMZN/000101872426000004_chunks.jsonl",
+      "clean_text": "data/raw/AMZN/000101872426000004/filing.txt",
+      "embeddings": "data/embeddings/AMZN/000101872426000004_embeddings.jsonl",
+      "metadata": "data/raw/AMZN/000101872426000004/metadata.json",
+      "raw_html": "data/raw/AMZN/000101872426000004/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 1968342,
+    "chunk_count": 89,
+    "cik": "0001018724",
+    "clean_chars": 283514,
+    "company_name": "AMAZON COM INC",
+    "created_at": "2026-08-28T01:29:36Z",
+    "dense_upserted": 89,
+    "dense_verified": 89,
+    "embedding_count": 89,
+    "filing_date": "2026-02-06",
+    "filing_id": "000101872426000004",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "1cf1fd1442e3728ca06c8c1c5acedf7b8932692309e5ebac24030f70803e5bf8",
+      "clean_text_sha256": "34f29ad066e10ea99bd4bd09575f918c97446cb258bef1a0e250fb8309604a30",
+      "embeddings_sha256": "655e9e79a996f02c7137d46bc7a289cf05f9c29b5cf000040d1e4dfcdd5d56b5"
+    },
+    "last_error": null,
+    "primary_doc_sha256": "beb1bfc28558135e76882db0cf36ba72a1ab44e2144fe37534f4da1e120ddb57",
+    "primary_document": "amzn-20251231.htm",
+    "report_date": "2025-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 89,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:11Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:04Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:04Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:11Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:07Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-28T01:29:36Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:03Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:05Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:11Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T02:00:11Z"
+      }
+    },
+    "ticker": "AMZN",
+    "updated_at": "2026-08-28T02:00:11Z"
+  }
+}

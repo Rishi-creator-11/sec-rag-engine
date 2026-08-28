@@ -1,14 +1,17 @@
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from api.rag import answer_question
+from ingestion.registry import list_companies, partition_tickers
 
 
 load_dotenv()
+
+MAX_TICKERS = 10
 
 
 def parse_frontend_origins() -> list[str]:
@@ -41,18 +44,75 @@ class AskRequest(BaseModel):
         ge=1,
         le=10,
     )
+    # Optional retrieval scope. Absent / null / [] => global search (legacy).
+    # One ticker  => strict company-specific retrieval.
+    # Several     => joint "ticker IN (...)" filter. Phase 1C does NOT balance
+    #                evidence across companies; Phase 2 adds per-company quota
+    #                retrieval (scoped_search) for guaranteed comparison coverage.
+    tickers: list[str] | None = Field(
+        default=None,
+        max_length=MAX_TICKERS,
+    )
+
+    @field_validator("tickers", mode="after")
+    @classmethod
+    def _normalize_tickers(cls, value: list[str] | None) -> list[str] | None:
+        if value is None:
+            return None
+        normalized: list[str] = []
+        seen: set[str] = set()
+        for raw in value:
+            ticker = str(raw).strip().upper()
+            if not ticker or ticker in seen:
+                continue
+            seen.add(ticker)
+            normalized.append(ticker)
+        return normalized or None
 
 
 @app.get("/health")
 def health() -> dict:
+    from retrieval.bm25_search import document_count
+
+    # Additive diagnostics. `bm25_documents` is null until the index is built
+    # (first /ask); a restart-after-ingest is how a running process picks up
+    # newly ingested filings.
     return {
-        "status": "ok"
+        "status": "ok",
+        "companies": len(list_companies()),
+        "bm25_documents": document_count(),
+    }
+
+
+@app.get("/companies")
+def companies() -> dict:
+    """Registered companies, sorted by ticker. Powers the frontend selector."""
+    return {
+        "companies": [
+            {"ticker": company["ticker"], "name": company["name"]}
+            for company in list_companies()
+        ]
     }
 
 
 @app.post("/ask")
 def ask(request: AskRequest) -> dict:
+    tickers = request.tickers
+
+    if tickers:
+        known, unknown = partition_tickers(tickers)
+        if unknown:
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "error": "unknown_tickers",
+                    "unknown_tickers": unknown,
+                },
+            )
+        tickers = known
+
     return answer_question(
         question=request.question,
         top_k=request.top_k,
+        tickers=tickers,
     )

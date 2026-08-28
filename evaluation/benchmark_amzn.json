@@ -1,0 +1,73 @@
+[
+  {
+    "id": "amzn_net_sales_2025_01",
+    "question": "What were Amazon's total net sales for fiscal year 2025?",
+    "tickers": ["AMZN"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "716,924"
+  },
+  {
+    "id": "amzn_operating_income_2025_01",
+    "question": "What was Amazon's operating income for fiscal 2025?",
+    "tickers": ["AMZN"],
+    "category": "numeric",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "amzn_aws_segment_01",
+    "question": "How does Amazon describe the AWS segment and its offerings?",
+    "tickers": ["AMZN"],
+    "category": "aws_cloud",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_aws_risks_01",
+    "question": "What risks does Amazon identify specific to AWS?",
+    "tickers": ["AMZN"],
+    "category": "aws_cloud",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_competition_01",
+    "question": "What competitive risks does Amazon describe?",
+    "tickers": ["AMZN"],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_regulation_01",
+    "question": "What regulatory and legal risks does Amazon disclose?",
+    "tickers": ["AMZN"],
+    "category": "regulation",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_cybersecurity_01",
+    "question": "What does Amazon say about cybersecurity and information security risks?",
+    "tickers": ["AMZN"],
+    "category": "cybersecurity",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_international_01",
+    "question": "What risks does Amazon describe related to international operations and foreign exchange?",
+    "tickers": ["AMZN"],
+    "category": "international",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_fulfillment_logistics_01",
+    "question": "What risks does Amazon describe in operating its fulfillment and logistics network?",
+    "tickers": ["AMZN"],
+    "category": "supply_chain",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_future_stock_2030_unsupported_01",
+    "question": "What will Amazon's stock price be on January 2, 2030?",
+    "tickers": ["AMZN"],
+    "category": "unsupported",
+    "answer_type": "unsupported"
+  }
+]

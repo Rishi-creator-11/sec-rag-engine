@@ -1,6 +1,7 @@
 from retrieval.pinecone_search import search as dense_search
 from retrieval.bm25_search import search as bm25_search
 from retrieval.sparse_search import search as sparse_search
+from retrieval.filters import RetrievalFilter
 
 
 RRF_K = 60
@@ -72,13 +73,19 @@ def search(
     dense_weight: float = 1.0,
     bm25_weight: float = 1.0,
     sparse_weight: float = 1.0,
+    filters: RetrievalFilter | None = None,
+    query_embedding: list[float] | None = None,
 ) -> list[dict]:
     rankings = {}
     weights = {}
 
+    scope = filters if (filters is not None and not filters.is_empty()) else None
+
     dense_results = dense_search(
         query,
         top_k=candidate_k,
+        filters=scope,
+        query_embedding=query_embedding,
     )
 
     rankings["dense"] = dense_results
@@ -88,10 +95,13 @@ def search(
         rankings["bm25"] = bm25_search(
             query,
             top_k=candidate_k,
+            filters=scope,
         )
         weights["bm25"] = bm25_weight
 
     if use_sparse:
+        # Sparse retrieval stays disabled by default (use_sparse=False) and is
+        # not filter-aware yet; scoped sparse retrieval is a later phase.
         rankings["sparse"] = sparse_search(
             query,
             top_k=candidate_k,

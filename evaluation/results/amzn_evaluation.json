@@ -1,0 +1,225 @@
+{
+  "summary": {
+    "questions": 10,
+    "supported_questions": 9,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": 1.0,
+    "reranker_fallback_questions": 9,
+    "latency_mean_s": 3.6216345582972282,
+    "latency_p50_s": 3.5512134169985075
+  },
+  "questions": [
+    {
+      "id": "amzn_net_sales_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": "716,924",
+      "number_evidence_present": true,
+      "reranker_fallback": true,
+      "latency_seconds": 4.305681583005935
+    },
+    {
+      "id": "amzn_operating_income_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.253066500008572
+    },
+    {
+      "id": "amzn_aws_segment_01",
+      "category": "aws_cloud",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5333197090076283
+    },
+    {
+      "id": "amzn_aws_risks_01",
+      "category": "aws_cloud",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5691071249893866
+    },
+    {
+      "id": "amzn_competition_01",
+      "category": "competition",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.6770462499698624
+    },
+    {
+      "id": "amzn_regulation_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.7076368749840185
+    },
+    {
+      "id": "amzn_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4509704579832032
+    },
+    {
+      "id": "amzn_international_01",
+      "category": "international",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5148569580051117
+    },
+    {
+      "id": "amzn_fulfillment_logistics_01",
+      "category": "supply_chain",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4749702920089476
+    },
+    {
+      "id": "amzn_future_stock_2030_unsupported_01",
+      "category": "unsupported",
+      "answer_type": "unsupported",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN",
+        "AMZN"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_amzn_evidence": true,
+      "supported": false,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 3.7296898330096155
+    }
+  ]
+}

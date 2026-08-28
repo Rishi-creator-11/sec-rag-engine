@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "note": "Company registry (source of truth). legal_name = SEC-authoritative (EDGAR); display_name = curated human-friendly name; effective name = display_name or legal_name. Verified against data.sec.gov 2026-08-27.",
+  "companies": [
+    {
+      "ticker": "AAPL",
+      "legal_name": "Apple Inc.",
+      "display_name": "Apple Inc.",
+      "cik": "0000320193"
+    },
+    {
+      "ticker": "AMZN",
+      "legal_name": "AMAZON COM INC",
+      "display_name": "Amazon.com, Inc.",
+      "cik": "0001018724",
+      "filings": [
+        {
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "accession_number": "0001018724-26-000004",
+          "filing_date": "2026-02-06",
+          "report_date": "2025-12-31",
+          "chunk_count": 89
+        }
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "legal_name": "MICROSOFT CORP",
+      "display_name": "Microsoft Corporation",
+      "cik": "0000789019"
+    },
+    {
+      "ticker": "NVDA",
+      "legal_name": "NVIDIA CORP",
+      "display_name": "NVIDIA Corporation",
+      "cik": "0001045810"
+    }
+  ]
+}

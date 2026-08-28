@@ -1,0 +1,107 @@
+[
+  {
+    "id": "aapl_msft_competition_01",
+    "question": "Compare how Apple and Microsoft describe their competitive risks.",
+    "tickers": ["AAPL", "MSFT"],
+    "topic": "competition",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_msft_cybersecurity_01",
+    "question": "Compare Apple's and Microsoft's cybersecurity risk disclosures.",
+    "tickers": ["AAPL", "MSFT"],
+    "topic": "cybersecurity",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_msft_ai_01",
+    "question": "How do Apple and Microsoft each describe risks related to artificial intelligence?",
+    "tickers": ["AAPL", "MSFT"],
+    "topic": "ai",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_msft_international_01",
+    "question": "Compare Apple's and Microsoft's exposure to international and China-related risks.",
+    "tickers": ["AAPL", "MSFT"],
+    "topic": "international_exposure",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_msft_rnd_01",
+    "question": "Compare what Apple and Microsoft say about research and development.",
+    "tickers": ["AAPL", "MSFT"],
+    "topic": "research_and_development",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_nvda_supply_chain_01",
+    "question": "Compare the supply chain and manufacturing risks disclosed by Apple and NVIDIA.",
+    "tickers": ["AAPL", "NVDA"],
+    "topic": "supply_chain",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_nvda_china_01",
+    "question": "Compare how Apple and NVIDIA describe risks tied to China and export restrictions.",
+    "tickers": ["AAPL", "NVDA"],
+    "topic": "china_exposure",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_nvda_competition_01",
+    "question": "Compare the competitive landscape Apple and NVIDIA each describe.",
+    "tickers": ["AAPL", "NVDA"],
+    "topic": "competition",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_nvda_ip_01",
+    "question": "Compare Apple's and NVIDIA's intellectual property risks.",
+    "tickers": ["AAPL", "NVDA"],
+    "topic": "intellectual_property",
+    "both_filings_support": true
+  },
+  {
+    "id": "msft_nvda_ai_01",
+    "question": "Compare how Microsoft and NVIDIA describe AI-related opportunities and risks.",
+    "tickers": ["MSFT", "NVDA"],
+    "topic": "ai",
+    "both_filings_support": true
+  },
+  {
+    "id": "msft_nvda_cybersecurity_01",
+    "question": "Compare Microsoft's and NVIDIA's cybersecurity risk disclosures.",
+    "tickers": ["MSFT", "NVDA"],
+    "topic": "cybersecurity",
+    "both_filings_support": true
+  },
+  {
+    "id": "msft_nvda_regulation_01",
+    "question": "Compare the regulatory and legal risks Microsoft and NVIDIA describe.",
+    "tickers": ["MSFT", "NVDA"],
+    "topic": "regulation",
+    "both_filings_support": true
+  },
+  {
+    "id": "msft_nvda_datacenter_01",
+    "question": "Compare what Microsoft and NVIDIA say about data center demand and infrastructure.",
+    "tickers": ["MSFT", "NVDA"],
+    "topic": "data_center",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_msft_nvda_cybersecurity_01",
+    "question": "Compare the cybersecurity disclosures of Apple, Microsoft, and NVIDIA.",
+    "tickers": ["AAPL", "MSFT", "NVDA"],
+    "topic": "cybersecurity",
+    "both_filings_support": true
+  },
+  {
+    "id": "aapl_msft_nvda_competition_01",
+    "question": "Compare how Apple, Microsoft, and NVIDIA each describe competition.",
+    "tickers": ["AAPL", "MSFT", "NVDA"],
+    "topic": "competition",
+    "both_filings_support": true
+  }
+]
