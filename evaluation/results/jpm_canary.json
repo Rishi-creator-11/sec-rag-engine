@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "ticker": "JPM",
+    "questions": 10,
+    "supported_questions": 9,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": 1.0,
+    "reranker_fallback_questions": 0,
+    "latency_mean_s": 0.5772659791982733,
+    "latency_p50_s": 0.463131833501393,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "jpm_total_net_revenue_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 1.4147143329610117
+    },
+    {
+      "id": "jpm_net_income_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "57,048",
+      "number_evidence_present": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.5218432089895941
+    },
+    {
+      "id": "jpm_business_segments_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4595280420035124
+    },
+    {
+      "id": "jpm_competition_01",
+      "category": "competition",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.8490727919852361
+    },
+    {
+      "id": "jpm_credit_risk_01",
+      "category": "risk",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.46673562499927357
+    },
+    {
+      "id": "jpm_capital_requirements_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4848894170136191
+    },
+    {
+      "id": "jpm_interest_rate_risk_01",
+      "category": "risk",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.37571020796895027
+    },
+    {
+      "id": "jpm_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.45096670801285654
+    },
+    {
+      "id": "jpm_international_01",
+      "category": "international",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.3707649580319412
+    },
+    {
+      "id": "jpm_future_rates_2030_unsupported_01",
+      "category": "unsupported",
+      "answer_type": "unsupported",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM",
+        "JPM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": false,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.37843450001673773
+    }
+  ]
+}

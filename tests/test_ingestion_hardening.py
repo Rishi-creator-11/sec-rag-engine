@@ -274,6 +274,8 @@ class VerificationTests(unittest.TestCase):
         from ingestion import verify_company as vc
         self.vc = vc
         self.filing = FILING
+        p = patch.object(vc, "DENSE_VERIFY_WAITS", (0.0,))  # no real sleeps in tests
+        p.start(); self.addCleanup(p.stop)
         self._tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self._tmp.cleanup)
         root = Path(self._tmp.name)
@@ -315,7 +317,8 @@ class VerificationTests(unittest.TestCase):
         registry.reload(); self.addCleanup(registry.reload)
 
         # SEC discovery
-        p = patch.object(vc.SecClient, "discover_latest_10k", lambda self, t: FILING)
+        p = patch.object(vc.SecClient, "discover_latest_10k",
+                         lambda self, t, **kw: FILING)
         p.start(); self.addCleanup(p.stop)
 
         # BM25 loader sees the 3 chunks
@@ -428,3 +431,55 @@ class DisplayNameEndpointTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SparseRateLimitTests(unittest.TestCase):
+    def test_upsert_filing_sparse_retries_on_429(self):
+        from retrieval import sparse_store as ss
+
+        calls = {"n": 0}
+
+        class Idx:
+            def upsert_records(self, namespace=None, records=None):
+                calls["n"] += 1
+                if calls["n"] == 1:
+                    raise RuntimeError("[429 RESOURCE_EXHAUSTED] max tokens per minute")
+
+        class Client:
+            def Index(self, name):
+                return Idx()
+
+        with patch.object(ss, "get_client", lambda: Client()), \
+             patch.object(ss, "SPARSE_RATE_LIMIT_SLEEP", 0.0), \
+             patch.object(ss, "SPARSE_INTER_BATCH_SLEEP", 0.0):
+            result = ss.upsert_filing_sparse(
+                [{"chunk_id": f"X_{i}", "text": "t", "ticker": "X", "company_name": "X",
+                  "company": "X", "filing_type": "10-K", "filing_date": "2025-01-01",
+                  "report_date": "2024-12-31", "source_url": "https://www.sec.gov/x",
+                  "cik": "0000000001", "fiscal_year": 2024, "accession_number": "a",
+                  "filing_id": "b", "chunk_index": i} for i in range(3)],
+                batch_size=2,
+            )
+        self.assertEqual(result["upserted"], 3)
+        self.assertEqual(calls["n"], 3)  # batch1 fail+retry, batch2 ok
+
+    def test_upsert_filing_sparse_reraises_non_rate_limit(self):
+        from retrieval import sparse_store as ss
+
+        class Idx:
+            def upsert_records(self, namespace=None, records=None):
+                raise RuntimeError("some other pinecone error")
+
+        class Client:
+            def Index(self, name):
+                return Idx()
+
+        with patch.object(ss, "get_client", lambda: Client()):
+            with self.assertRaises(RuntimeError):
+                ss.upsert_filing_sparse(
+                    [{"chunk_id": "X_0", "text": "t", "ticker": "X", "company_name": "X",
+                      "company": "X", "filing_type": "10-K", "filing_date": "2025-01-01",
+                      "report_date": "2024-12-31", "source_url": "https://www.sec.gov/x",
+                      "cik": "0000000001", "fiscal_year": 2024, "accession_number": "a",
+                      "filing_id": "b", "chunk_index": 0}],
+                )

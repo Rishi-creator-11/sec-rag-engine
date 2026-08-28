@@ -1,0 +1,12 @@
+[
+  { "id": "googl_total_revenue_2025_01", "question": "What were Alphabet's total revenues for fiscal year 2025?", "tickers": ["GOOGL"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "googl_operating_income_2025_01", "question": "What was Alphabet's operating income for fiscal 2025?", "tickers": ["GOOGL"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "googl_primary_business_01", "question": "How does Alphabet describe its primary products and sources of revenue?", "tickers": ["GOOGL"], "category": "business", "answer_type": "qualitative" },
+  { "id": "googl_advertising_competition_01", "question": "What competition does Alphabet describe in digital advertising and search?", "tickers": ["GOOGL"], "category": "competition", "answer_type": "qualitative" },
+  { "id": "googl_ai_01", "question": "What does Alphabet say about artificial intelligence, including opportunities and risks?", "tickers": ["GOOGL"], "category": "ai", "answer_type": "qualitative" },
+  { "id": "googl_cloud_01", "question": "How does Alphabet describe Google Cloud and its competitive position?", "tickers": ["GOOGL"], "category": "cloud", "answer_type": "qualitative" },
+  { "id": "googl_regulation_antitrust_01", "question": "What antitrust and regulatory risks does Alphabet disclose?", "tickers": ["GOOGL"], "category": "regulation", "answer_type": "qualitative" },
+  { "id": "googl_cybersecurity_01", "question": "What cybersecurity and data security risks does Alphabet describe?", "tickers": ["GOOGL"], "category": "cybersecurity", "answer_type": "qualitative" },
+  { "id": "googl_international_01", "question": "What risks does Alphabet describe related to international operations and foreign regulation?", "tickers": ["GOOGL"], "category": "international", "answer_type": "qualitative" },
+  { "id": "googl_future_marketcap_2030_unsupported_01", "question": "What will Alphabet's market capitalization be at the end of 2030?", "tickers": ["GOOGL"], "category": "unsupported", "answer_type": "unsupported" }
+]

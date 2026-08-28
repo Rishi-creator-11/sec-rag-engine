@@ -1,0 +1,12 @@
+[
+  { "id": "meta_total_revenue_2025_01", "question": "What was Meta's total revenue for fiscal year 2025?", "tickers": ["META"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "meta_income_from_operations_2025_01", "question": "What was Meta's income from operations for fiscal 2025?", "tickers": ["META"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "meta_family_of_apps_01", "question": "How does Meta describe its Family of Apps and how it generates revenue?", "tickers": ["META"], "category": "business", "answer_type": "qualitative" },
+  { "id": "meta_advertising_competition_01", "question": "What competition does Meta describe for user engagement and advertising?", "tickers": ["META"], "category": "competition", "answer_type": "qualitative" },
+  { "id": "meta_ai_investment_risk_01", "question": "What does Meta say about its investments in artificial intelligence and the associated risks?", "tickers": ["META"], "category": "ai", "answer_type": "qualitative" },
+  { "id": "meta_reality_labs_01", "question": "How does Meta describe Reality Labs and the metaverse, including its financial impact?", "tickers": ["META"], "category": "business", "answer_type": "qualitative" },
+  { "id": "meta_regulation_privacy_01", "question": "What privacy, data protection, and regulatory risks does Meta disclose?", "tickers": ["META"], "category": "regulation", "answer_type": "qualitative" },
+  { "id": "meta_cybersecurity_01", "question": "What cybersecurity and platform integrity risks does Meta describe?", "tickers": ["META"], "category": "cybersecurity", "answer_type": "qualitative" },
+  { "id": "meta_international_01", "question": "What risks does Meta describe related to international operations and government restrictions on its products?", "tickers": ["META"], "category": "international", "answer_type": "qualitative" },
+  { "id": "meta_future_dau_2030_unsupported_01", "question": "How many daily active users will Meta have in 2030?", "tickers": ["META"], "category": "unsupported", "answer_type": "unsupported" }
+]

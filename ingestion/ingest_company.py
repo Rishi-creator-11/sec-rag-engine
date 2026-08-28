@@ -192,8 +192,31 @@ def validate_filing_metadata(filing: DiscoveredFiling) -> None:
     except (ValueError, TypeError) as exc:
         problems.append(f"canonical schema rejects filing: {exc}")
 
+    if filing.cik_override:
+        if filing.successor_effective_date:
+            try:
+                validate_iso_date(filing.successor_effective_date,
+                                  field="successor_effective_date")
+            except ValueError as exc:
+                problems.append(str(exc))
+        if filing.successor_cik and (
+            len(filing.successor_cik) != 10 or not filing.successor_cik.isdigit()
+        ):
+            problems.append(f"successor_cik not 10 digits: {filing.successor_cik!r}")
+        if filing.successor_cik and filing.successor_cik == filing.cik:
+            problems.append("successor_cik equals the registrant cik (no succession)")
+
     if problems:
         raise IngestionError("filing metadata validation failed: " + "; ".join(problems))
+
+    if filing.cik_override:
+        log_event(
+            "cik_override_active", level=logging.WARNING, ticker=filing.ticker,
+            registrant_cik=filing.cik, registrant_legal_name=filing.company_name,
+            accession=filing.accession_number,
+            successor_cik=filing.successor_cik,
+            successor_effective_date=filing.successor_effective_date,
+        )
 
 
 def validate_html_payload(text: str, content_type: str, filing: DiscoveredFiling) -> None:
@@ -403,7 +426,10 @@ def stage_sparse(ctx: Ctx) -> None:
 
 def stage_bm25(ctx: Ctx) -> None:
     filing = ctx.filing
-    bm25_search.reload()
+    # reload() rebuilds the in-process lexical index from the canonical chunk
+    # JSONL. For the bm25s backend it also RE-PERSISTS data/bm25s_index/ so a
+    # restarted API loads the new corpus in ~20ms.
+    index = bm25_search.reload()
     hits = bm25_search.search(
         f"{filing.company_name} risk revenue business",
         top_k=25,
@@ -411,20 +437,51 @@ def stage_bm25(ctx: Ctx) -> None:
     )
     if not hits or any(hit["ticker"] != filing.ticker for hit in hits):
         raise IngestionError(
-            f"BM25 did not pick up {filing.ticker} after reload "
+            f"lexical index did not pick up {filing.ticker} after rebuild "
             f"(hits={len(hits)})"
         )
+    doc_count = getattr(index, "document_count", None)
     ctx.ledger.record_stage(
-        filing.filing_id, "bm25_registered", bm25_hits=len(hits)
+        filing.filing_id, "bm25_registered",
+        bm25_hits=len(hits),
+        lexical_backend=type(index).__name__,
+        lexical_document_count=doc_count,
     )
 
 
 def stage_registry(ctx: Ctx) -> None:
     filing = ctx.filing
     chunk_count = ctx.ledger.get(filing.filing_id).get("chunk_count")
+
+    # When a CIK override was used, record the ticker->registrant lineage so the
+    # registry keeps the search ticker (filing.ticker) distinct from the entity
+    # that actually filed (filing.cik / filing.company_name) and from the entity
+    # the ticker currently resolves to (successor_*).
+    lineage = None
+    if filing.cik_override:
+        lineage = {
+            "cik_override": True,
+            "registrant_cik": filing.cik,
+            "registrant_legal_name": filing.company_name,
+            "successor_cik": filing.successor_cik,
+            "successor_legal_name": filing.successor_name,
+            "successor_effective_date": filing.successor_effective_date,
+            "note": (
+                f"Ticker {filing.ticker} is currently registered to CIK "
+                f"{filing.successor_cik or 'a successor entity'}"
+                + (f" ({filing.successor_name})" if filing.successor_name else "")
+                + (f" effective {filing.successor_effective_date}"
+                   if filing.successor_effective_date else "")
+                + f". This 10-K (accession {filing.accession_number}, FY"
+                f"{filing.fiscal_year}) was filed by CIK {filing.cik} "
+                f"({filing.company_name}); its metadata is kept SEC-authentic."
+            ),
+        }
+
     # legal_name is SEC-authoritative; display_name is left to curation.
     registry.upsert_company(
-        filing.ticker, legal_name=filing.company_name, cik=filing.cik
+        filing.ticker, legal_name=filing.company_name, cik=filing.cik,
+        lineage=lineage,
     )
     registry.record_filing(
         filing.ticker,
@@ -494,6 +551,15 @@ def _print_plan(plan: dict) -> None:
                 "accession_number", "filing_id", "filing_date", "report_date",
                 "primary_document", "source_url"):
         print(f"  {key:<18} {filing[key]}")
+    if filing.get("cik_override"):
+        print("\n  ** EXPLICIT CIK OVERRIDE — ticker->CIK discovery bypassed **")
+        print(f"  {'registrant_cik':<18} {filing['cik']}  ({filing['company_name']})")
+        print(f"  {'search_ticker':<18} {filing['ticker']}  (retrieval scope)")
+        if filing.get("successor_cik"):
+            print(f"  {'successor_cik':<18} {filing['successor_cik']}"
+                  f"  ({filing.get('successor_name') or 'n/a'})")
+        if filing.get("successor_effective_date"):
+            print(f"  {'successor_since':<18} {filing['successor_effective_date']}")
     print("\n  planned local paths:")
     for name, path in plan["paths"].items():
         print(f"    {name:<12} {path}")
@@ -514,6 +580,10 @@ def ingest_company(
     dry_run: bool = False,
     force: bool = False,
     skip_sparse: bool = False,
+    cik: str | None = None,
+    successor_cik: str | None = None,
+    successor_name: str | None = None,
+    successor_effective_date: str | None = None,
     client: SecClient | None = None,
     ledger: Ledger | None = None,
 ) -> dict:
@@ -521,8 +591,18 @@ def ingest_company(
     started = time.perf_counter()
 
     client = client or SecClient()
+    if cik is not None:
+        logger.warning(
+            "ingest event=cik_override_requested ticker=%s cik=%s", ticker, cik,
+        )
     logger.info("ingest event=discover ticker=%s", ticker)
-    filing = client.discover_latest_10k(ticker)
+    filing = client.discover_latest_10k(
+        ticker,
+        cik=cik,
+        successor_cik=successor_cik,
+        successor_name=successor_name,
+        successor_effective_date=successor_effective_date,
+    )
     validate_filing_metadata(filing)
     logger.info(
         "ingest event=discovered ticker=%s filing_id=%s fiscal_year=%d",
@@ -687,10 +767,26 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--skip-sparse", action="store_true")
+    parser.add_argument(
+        "--cik", default=None,
+        help="explicit registrant CIK; bypasses ONLY ticker->CIK discovery "
+        "(filing discovery still runs against SEC submissions for this CIK). "
+        "Use for ticker->registrant successions. Always logged, never silent.",
+    )
+    parser.add_argument("--successor-cik", default=None,
+                        help="lineage note: CIK the ticker currently resolves to")
+    parser.add_argument("--successor-name", default=None,
+                        help="lineage note: successor registrant legal name")
+    parser.add_argument("--successor-effective-date", default=None,
+                        help="lineage note: succession effective date (YYYY-MM-DD)")
     parser.add_argument("--verify", action="store_true",
                         help="after ingestion, run ingestion.verify_company")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args(argv)
+
+    if args.cik is None and (args.successor_cik or args.successor_name
+                             or args.successor_effective_date):
+        parser.error("--successor-* flags require --cik")
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -704,6 +800,10 @@ def main(argv: list[str] | None = None) -> int:
             dry_run=args.dry_run,
             force=args.force,
             skip_sparse=args.skip_sparse,
+            cik=args.cik,
+            successor_cik=args.successor_cik,
+            successor_name=args.successor_name,
+            successor_effective_date=args.successor_effective_date,
         )
     except (SecClientError, IngestionError) as exc:
         logger.error("ingest event=aborted ticker=%s error_class=%s: %s",

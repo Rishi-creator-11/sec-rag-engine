@@ -1,0 +1,77 @@
+[
+  {
+    "id": "xom_total_revenues_2025_01",
+    "question": "What were ExxonMobil's total revenues and other income for 2025?",
+    "tickers": ["XOM"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "332,238"
+  },
+  {
+    "id": "xom_net_income_2025_01",
+    "question": "What was ExxonMobil's net income attributable to ExxonMobil for 2025?",
+    "tickers": ["XOM"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "28,844"
+  },
+  {
+    "id": "xom_total_assets_2025_01",
+    "question": "What were ExxonMobil's total assets as of December 31, 2025?",
+    "tickers": ["XOM"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "448,980"
+  },
+  {
+    "id": "xom_long_term_debt_2025_01",
+    "question": "How much long-term debt did ExxonMobil report at year-end 2025?",
+    "tickers": ["XOM"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "34,241"
+  },
+  {
+    "id": "xom_rd_costs_2025_01",
+    "question": "What were ExxonMobil's research and development costs in 2025?",
+    "tickers": ["XOM"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "1,228"
+  },
+  {
+    "id": "xom_business_segments_01",
+    "question": "What are ExxonMobil's principal business segments?",
+    "tickers": ["XOM"],
+    "category": "business",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "xom_pioneer_acquisition_01",
+    "question": "What does ExxonMobil disclose about its acquisition of Pioneer Natural Resources?",
+    "tickers": ["XOM"],
+    "category": "business",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "xom_climate_regulation_01",
+    "question": "What climate-change and greenhouse gas regulation risks does ExxonMobil describe?",
+    "tickers": ["XOM"],
+    "category": "regulation",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "xom_commodity_price_risk_01",
+    "question": "How does ExxonMobil describe the risk from crude oil and natural gas price volatility?",
+    "tickers": ["XOM"],
+    "category": "risk",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "xom_cybersecurity_01",
+    "question": "What does ExxonMobil disclose about cybersecurity risk and governance?",
+    "tickers": ["XOM"],
+    "category": "cybersecurity",
+    "answer_type": "qualitative"
+  }
+]

@@ -21,6 +21,7 @@ import argparse
 import json
 import logging
 import sys
+import time
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -40,6 +41,8 @@ DENSE_INDEX = "sec-rag-engine"
 SPARSE_INDEX = "sec-rag-sparse"
 NAMESPACE = "__default__"
 SAMPLE_SIZE = 6
+# Dense read-after-write poll schedule (verify may run right after ingest).
+DENSE_VERIFY_WAITS = (0.0, 2.0, 5.0, 10.0)
 
 
 class Check:
@@ -79,7 +82,13 @@ def _canonical_ids(entry: dict) -> list[str]:
     ]
 
 
-def verify(ticker: str, *, full: bool = False, client: SecClient | None = None) -> dict:
+def verify(
+    ticker: str,
+    *,
+    full: bool = False,
+    client: SecClient | None = None,
+    cik: str | None = None,
+) -> dict:
     ticker = ticker.strip().upper()
     checks: list[Check] = []
 
@@ -91,8 +100,17 @@ def verify(ticker: str, *, full: bool = False, client: SecClient | None = None) 
         local.fail(f"{ticker} not in registry")
         return _finish(ticker, checks)
 
+    # A ticker whose registrant differs from its current CIK (a succession)
+    # carries the filing CIK in registry lineage; use it so discovery does not
+    # fall back to a successor entity that has not filed the 10-K. An explicit
+    # cik= argument still wins.
+    lineage = company.get("lineage") or {}
+    cik_override = cik or (lineage.get("registrant_cik") if lineage.get("cik_override") else None)
+    if cik_override:
+        local.note(f"cik override in effect: registrant CIK {cik_override}")
+
     client = client or SecClient()
-    filing = client.discover_latest_10k(ticker)
+    filing = client.discover_latest_10k(ticker, cik=cik_override)
     filing_id = filing.filing_id
 
     reg_filing = next(
@@ -143,10 +161,16 @@ def verify(ticker: str, *, full: bool = False, client: SecClient | None = None) 
         index = pc.Index(DENSE_INDEX)
         to_fetch = ids if full else sample
         found: dict = {}
-        for start in range(0, len(to_fetch), 100):
-            batch = to_fetch[start:start + 100]
-            fetched = index.fetch(ids=batch, namespace=NAMESPACE)
-            found.update(fetched.vectors or {})
+        # tolerate Pinecone read-after-write lag when verify runs right after ingest
+        for wait in DENSE_VERIFY_WAITS:
+            if wait:
+                time.sleep(wait)
+            pending = [i for i in to_fetch if i not in found]
+            for start in range(0, len(pending), 100):
+                fetched = index.fetch(ids=pending[start:start + 100], namespace=NAMESPACE)
+                found.update(fetched.vectors or {})
+            if all(i in found for i in to_fetch):
+                break
         missing = [i for i in to_fetch if i not in found]
         if missing:
             dense.fail(f"{len(missing)} vectors missing (e.g. {missing[:3]})")
@@ -176,13 +200,17 @@ def verify(ticker: str, *, full: bool = False, client: SecClient | None = None) 
 
             pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
             index = pc.Index(SPARSE_INDEX)
-            fetched = index.fetch(ids=sample, namespace=NAMESPACE)
-            present = (fetched.vectors or {}).keys()
+            # Batch: fetch() puts ids in the request line, so a --full run over a
+            # large filing (e.g. 400 chunks) overflows with a single call (431).
+            present: set[str] = set()
+            for start in range(0, len(sample), 50):
+                fetched = index.fetch(ids=sample[start:start + 50], namespace=NAMESPACE)
+                present.update((fetched.vectors or {}).keys())
             missing = [i for i in sample if i not in present]
             if missing:
                 sparse.fail(f"{len(missing)} sparse records missing")
             else:
-                sparse.note(f"{len(list(present))} sampled sparse records present")
+                sparse.note(f"{len(present)} sampled sparse records present")
         except Exception as exc:  # noqa: BLE001
             sparse.fail(f"{type(exc).__name__}: {exc}")
 
@@ -238,11 +266,14 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ticker", required=True)
     parser.add_argument("--full", action="store_true", help="fetch every vector, not a sample")
+    parser.add_argument("--cik", default=None,
+                        help="explicit registrant CIK (bypasses ticker->CIK "
+                        "discovery); normally taken from registry lineage")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.WARNING, stream=sys.stderr)
-    report = verify(args.ticker, full=args.full)
+    report = verify(args.ticker, full=args.full, cik=args.cik)
 
     if args.json:
         print(json.dumps(report, indent=2))

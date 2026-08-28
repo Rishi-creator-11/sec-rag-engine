@@ -43,10 +43,11 @@ SUMMARY_PATH = REPO_ROOT / "evaluation" / "results" / "comparison_summary.txt"
 TOP_K = 5
 
 
-def load_benchmark() -> list[dict]:
-    data = json.loads(BENCHMARK_PATH.read_text(encoding="utf-8"))
+def load_benchmark(path: Path | None = None) -> list[dict]:
+    path = path or BENCHMARK_PATH
+    data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, list) or not data:
-        raise ValueError(f"unexpected benchmark shape in {BENCHMARK_PATH}")
+        raise ValueError(f"unexpected benchmark shape in {path}")
     return data
 
 
@@ -112,10 +113,11 @@ def summarize(rows: list[dict]) -> dict:
     }
 
 
-def build_summary_text(summary: dict, rows: list[dict]) -> str:
+def build_summary_text(summary: dict, rows: list[dict],
+                       benchmark_name: str = BENCHMARK_PATH.name) -> str:
     lines = [
         "COMPARISON RETRIEVAL EVALUATION (scope coverage only)",
-        f"benchmark: {BENCHMARK_PATH.name}   questions: {summary['questions']}   top_k: {TOP_K}",
+        f"benchmark: {benchmark_name}   questions: {summary['questions']}   top_k: {TOP_K}",
         "Relevance quality is NOT judged here (deferred).",
         "",
         f"scope_coverage@5          {summary['scope_coverage_at_5']:.3f}   (target 1.000)",
@@ -150,9 +152,20 @@ def build_summary_text(summary: dict, rows: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def main() -> int:
-    benchmark = load_benchmark()
-    print(f"Evaluating {len(benchmark)} comparison questions (retrieval only)...\n")
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--benchmark", default=None,
+                    help="path to a comparison benchmark JSON "
+                    f"(default: {BENCHMARK_PATH.name})")
+    ap.add_argument("--tag", default=None,
+                    help="suffix for output files (keeps the default run intact)")
+    a = ap.parse_args(argv)
+
+    bench_path = Path(a.benchmark) if a.benchmark else BENCHMARK_PATH
+    benchmark = load_benchmark(bench_path)
+    print(f"Evaluating {len(benchmark)} comparison questions from "
+          f"{bench_path.name} (retrieval only)...\n")
 
     rows = []
     for item in benchmark:
@@ -166,20 +179,24 @@ def main() -> int:
 
     summary = summarize(rows)
     output = {
-        "benchmark": str(BENCHMARK_PATH),
+        "benchmark": str(bench_path),
         "top_k": TOP_K,
         "summary": summary,
         "questions": rows,
     }
-    JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
-    JSON_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    json_path, summary_path = JSON_PATH, SUMMARY_PATH
+    if a.tag:
+        json_path = JSON_PATH.with_name(f"comparison_evaluation_{a.tag}.json")
+        summary_path = SUMMARY_PATH.with_name(f"comparison_summary_{a.tag}.txt")
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(json.dumps(output, indent=2), encoding="utf-8")
 
-    text = build_summary_text(summary, rows)
-    SUMMARY_PATH.write_text(text, encoding="utf-8")
+    text = build_summary_text(summary, rows, benchmark_name=bench_path.name)
+    summary_path.write_text(text, encoding="utf-8")
     print()
     print(text)
-    print(f"Saved JSON to {JSON_PATH}")
-    print(f"Saved summary to {SUMMARY_PATH}")
+    print(f"Saved JSON to {json_path}")
+    print(f"Saved summary to {summary_path}")
     return 0
 
 

@@ -1,0 +1,12 @@
+[
+  { "id": "wmt_total_revenue_2026_01", "question": "What were Walmart's total revenues for the fiscal year ended January 31, 2026?", "tickers": ["WMT"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "wmt_operating_income_2026_01", "question": "What was Walmart's consolidated operating income for fiscal 2026?", "tickers": ["WMT"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "wmt_segments_01", "question": "What are Walmart's reportable segments and how do they differ?", "tickers": ["WMT"], "category": "business", "answer_type": "qualitative" },
+  { "id": "wmt_competition_01", "question": "What competition does Walmart describe in retail and e-commerce?", "tickers": ["WMT"], "category": "competition", "answer_type": "qualitative" },
+  { "id": "wmt_supply_chain_01", "question": "What supply chain, inventory, and logistics risks does Walmart describe?", "tickers": ["WMT"], "category": "supply_chain", "answer_type": "qualitative" },
+  { "id": "wmt_ecommerce_01", "question": "How does Walmart describe its eCommerce and omni-channel strategy?", "tickers": ["WMT"], "category": "business", "answer_type": "qualitative" },
+  { "id": "wmt_regulation_01", "question": "What regulatory and legal risks does Walmart disclose?", "tickers": ["WMT"], "category": "regulation", "answer_type": "qualitative" },
+  { "id": "wmt_cybersecurity_01", "question": "What cybersecurity and data privacy risks does Walmart describe?", "tickers": ["WMT"], "category": "cybersecurity", "answer_type": "qualitative" },
+  { "id": "wmt_international_01", "question": "What risks does Walmart describe for its international operations and foreign currency exposure?", "tickers": ["WMT"], "category": "international", "answer_type": "qualitative" },
+  { "id": "wmt_future_sales_2032_unsupported_01", "question": "What will Walmart's total revenue be in fiscal 2032?", "tickers": ["WMT"], "category": "unsupported", "answer_type": "unsupported" }
+]

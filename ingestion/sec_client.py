@@ -27,7 +27,7 @@ import logging
 import os
 import random
 import time
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, replace
 from pathlib import Path
 
 import requests
@@ -37,6 +37,7 @@ from retrieval.metadata import (
     format_accession,
     normalize_cik,
     normalize_ticker,
+    validate_iso_date,
 )
 
 logger = logging.getLogger("ingestion.sec_client")
@@ -81,9 +82,9 @@ class SecTransientError(SecClientError):
 
 @dataclass(frozen=True)
 class DiscoveredFiling:
-    company_name: str
-    ticker: str
-    cik: str                # 10-digit
+    company_name: str       # SEC-authoritative registrant legal name (EDGAR)
+    ticker: str             # product / retrieval-scope ticker
+    cik: str                # 10-digit — the registrant CIK that FILED this filing
     filing_type: str        # "10-K"
     fiscal_year: int
     accession_number: str   # dashed
@@ -92,6 +93,11 @@ class DiscoveredFiling:
     report_date: str        # fiscal period end (YYYY-MM-DD)
     primary_document: str
     source_url: str
+    # --- ticker->CIK lineage (only set when an explicit CIK override is used) ---
+    cik_override: bool = False          # True => ticker->CIK discovery was bypassed
+    successor_cik: str | None = None    # CIK the ticker currently resolves to, if different
+    successor_name: str | None = None   # successor registrant legal name
+    successor_effective_date: str | None = None  # YYYY-MM-DD the succession took effect
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -245,9 +251,10 @@ class SecClient:
         *,
         form: str = "10-K",
         ticker: str | None = None,
+        submissions: dict | None = None,
     ) -> DiscoveredFiling:
         cik10 = normalize_cik(cik10)
-        subs = self.submissions(cik10)
+        subs = submissions if submissions is not None else self.submissions(cik10)
         recent = subs.get("filings", {}).get("recent", {})
 
         forms = recent.get("form", [])
@@ -300,10 +307,71 @@ class SecClient:
             source_url=source_url,
         )
 
-    def discover_latest_10k(self, ticker: str) -> DiscoveredFiling:
-        normalized = normalize_ticker(ticker)
-        cik10 = self.resolve_cik(normalized)
-        return self.latest_filing(cik10, form="10-K", ticker=normalized)
+    def discover_latest_10k(
+        self,
+        ticker: str,
+        *,
+        cik: str | None = None,
+        successor_cik: str | None = None,
+        successor_name: str | None = None,
+        successor_effective_date: str | None = None,
+    ) -> DiscoveredFiling:
+        """Discover the latest 10-K for ``ticker``.
+
+        Normally the CIK is resolved from SEC's ``company_tickers.json``. Pass an
+        explicit ``cik`` to bypass *only* that resolution step — filing discovery
+        still runs against SEC's submissions feed for that exact CIK, and the
+        requested ticker is validated and carried through as the retrieval scope.
+        This exists for ticker->registrant successions (e.g. a holding-company
+        reorganization) where the ticker now points at an entity that has not yet
+        filed the annual report. An explicit override is always logged and is
+        never applied silently.
+
+        ``successor_*`` are optional lineage annotations recorded on the filing
+        and (by the caller) in the registry; they never alter the filing's own
+        SEC-authoritative registrant metadata.
+        """
+        normalized = normalize_ticker(ticker)  # raises ValueError on a bad ticker
+
+        if cik is None:
+            cik10 = self.resolve_cik(normalized)
+            return self.latest_filing(cik10, form="10-K", ticker=normalized)
+
+        cik10 = normalize_cik(cik)  # raises ValueError on a bad CIK
+        logger.warning(
+            "sec_client event=cik_override ticker=%s cik=%s "
+            "reason=explicit_flag note=ticker->CIK_discovery_bypassed",
+            normalized, cik10,
+        )
+        subs = self.submissions(cik10)
+        registrant_tickers = [
+            normalize_ticker(value)
+            for value in (subs.get("tickers") or [])
+            if str(value).strip()
+        ]
+        if registrant_tickers and normalized not in registrant_tickers:
+            logger.warning(
+                "sec_client event=cik_override_ticker_mismatch ticker=%s cik=%s "
+                "registrant_tickers=%s note=expected_if_ticker_moved_to_successor",
+                normalized, cik10, ",".join(registrant_tickers),
+            )
+
+        filing = self.latest_filing(
+            cik10, form="10-K", ticker=normalized, submissions=subs
+        )
+
+        eff_date = None
+        if successor_effective_date:
+            eff_date = validate_iso_date(
+                successor_effective_date, field="successor_effective_date"
+            )
+        return replace(
+            filing,
+            cik_override=True,
+            successor_cik=normalize_cik(successor_cik) if successor_cik else None,
+            successor_name=(successor_name or None),
+            successor_effective_date=eff_date,
+        )
 
     def download_document(self, url: str) -> requests.Response:
         return self._get(url)

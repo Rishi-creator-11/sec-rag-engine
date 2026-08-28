@@ -1,0 +1,232 @@
+{
+  "benchmark": "evaluation/benchmark_comparisons_batch3.json",
+  "top_k": 5,
+  "summary": {
+    "questions": 7,
+    "comparison_mode_questions": 7,
+    "scope_coverage_at_5": 1.0,
+    "full_coverage_rate": 1.0,
+    "min_evidence_per_scope_mean": 1.8571428571428572,
+    "min_evidence_per_scope_min": 1,
+    "cross_scope_leakage": 0.0,
+    "reranker_fallback_questions": 7,
+    "questions_with_warnings": 0,
+    "latency_mean_s": 3.7517820116980665,
+    "latency_p50_s": 3.627288415969815,
+    "latency_p95_s": 4.479670249973424
+  },
+  "questions": [
+    {
+      "id": "xom_cvx_style_climate_msft_01",
+      "topic": "climate_regulation",
+      "requested_tickers": [
+        "XOM",
+        "MSFT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "XOM": 3,
+        "MSFT": 2
+      },
+      "evidence_ticker_sequence": [
+        "XOM",
+        "MSFT",
+        "MSFT",
+        "XOM",
+        "XOM"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 4.479670249973424,
+      "hybrid_ms": 1073.4614579705521,
+      "rerank_ms": 3405.208166979719
+    },
+    {
+      "id": "xom_wmt_supply_chain_01",
+      "topic": "supply_chain",
+      "requested_tickers": [
+        "XOM",
+        "WMT"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "XOM": 2,
+        "WMT": 3
+      },
+      "evidence_ticker_sequence": [
+        "XOM",
+        "WMT",
+        "WMT",
+        "XOM",
+        "WMT"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.627288415969815,
+      "hybrid_ms": 315.60908403480425,
+      "rerank_ms": 3311.3042499753647
+    },
+    {
+      "id": "xom_nvda_cybersecurity_01",
+      "topic": "cybersecurity",
+      "requested_tickers": [
+        "XOM",
+        "NVDA"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "XOM": 3,
+        "NVDA": 2
+      },
+      "evidence_ticker_sequence": [
+        "NVDA",
+        "XOM",
+        "XOM",
+        "NVDA",
+        "XOM"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.7984392499784008,
+      "hybrid_ms": 279.20945797814056,
+      "rerank_ms": 3518.9731249702163
+    },
+    {
+      "id": "unh_jpm_regulation_01",
+      "topic": "regulation",
+      "requested_tickers": [
+        "UNH",
+        "JPM"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "UNH": 2,
+        "JPM": 3
+      },
+      "evidence_ticker_sequence": [
+        "JPM",
+        "UNH",
+        "JPM",
+        "UNH",
+        "JPM"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.599029832985252,
+      "hybrid_ms": 286.93008300615475,
+      "rerank_ms": 3311.8499579722993
+    },
+    {
+      "id": "unh_aapl_cybersecurity_01",
+      "topic": "cybersecurity",
+      "requested_tickers": [
+        "UNH",
+        "AAPL"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "UNH": 3,
+        "AAPL": 2
+      },
+      "evidence_ticker_sequence": [
+        "UNH",
+        "AAPL",
+        "UNH",
+        "AAPL",
+        "UNH"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.691584749962203,
+      "hybrid_ms": 269.18887498322874,
+      "rerank_ms": 3422.120084054768
+    },
+    {
+      "id": "xom_unh_competition_01",
+      "topic": "competition",
+      "requested_tickers": [
+        "XOM",
+        "UNH"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "XOM": 3,
+        "UNH": 2
+      },
+      "evidence_ticker_sequence": [
+        "XOM",
+        "UNH",
+        "XOM",
+        "UNH",
+        "XOM"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 2,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.6000687920022756,
+      "hybrid_ms": 239.3623330281116,
+      "rerank_ms": 3360.0805000169203
+    },
+    {
+      "id": "xom_unh_jpm_regulation_01",
+      "topic": "regulation",
+      "requested_tickers": [
+        "XOM",
+        "UNH",
+        "JPM"
+      ],
+      "comparison_mode": true,
+      "evidence_count": 5,
+      "evidence_by_scope": {
+        "XOM": 2,
+        "UNH": 1,
+        "JPM": 2
+      },
+      "evidence_ticker_sequence": [
+        "XOM",
+        "JPM",
+        "UNH",
+        "XOM",
+        "JPM"
+      ],
+      "scope_coverage": 1.0,
+      "min_evidence_per_scope": 1,
+      "cross_scope_leakage": 0.0,
+      "reranker_fallback": true,
+      "reranker_fallback_reason": "rate_limited",
+      "warnings": [],
+      "latency_seconds": 3.466392791015096,
+      "hybrid_ms": 305.7521670125425,
+      "rerank_ms": 3160.1982089923695
+    }
+  ]
+}

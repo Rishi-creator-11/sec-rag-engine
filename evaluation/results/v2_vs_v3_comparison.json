@@ -1,0 +1,259 @@
+{
+  "v2_hybrid": {
+    "retriever": "hybrid",
+    "mode": "filtered",
+    "questions": 60,
+    "eligible_questions": 55,
+    "numeric_questions": 15,
+    "scoped_questions": 60,
+    "recall_at_1": 0.16914994096812278,
+    "recall_at_3": 0.4540010494555949,
+    "recall_at_5": 0.6308067689885871,
+    "recall_at_10": 0.9035038698675062,
+    "precision_at_1": 0.8363636363636363,
+    "precision_at_3": 0.7454545454545455,
+    "precision_at_5": 0.6290909090909091,
+    "mrr": 0.8942424242424243,
+    "numeric_evidence_hit_at_5": 0.8666666666666667,
+    "numeric_evidence_hit_at_10": 1.0,
+    "filter_correctness": 1.0,
+    "cross_company_leakage_at_1": 0.0,
+    "cross_company_leakage_at_3": 0.0,
+    "cross_company_leakage_at_5": 0.0,
+    "cross_company_leakage_at_10": 0.0,
+    "cross_company_leakage_at_10_supported_only": 0.0,
+    "warnings": []
+  },
+  "v3_hybrid": {
+    "retriever": "hybrid",
+    "scored_questions": 115,
+    "reviewed_questions": 115,
+    "numeric_questions": 28,
+    "mean_relevant_per_question": 11.4,
+    "recall_at_1": 0.11907021617524492,
+    "recall_at_3": 0.30290322775667716,
+    "recall_at_5": 0.4198267115966898,
+    "recall_at_10": 0.5861572741136003,
+    "recall_at_10_capped": 0.7249654934437543,
+    "r_precision": 0.5533118359612476,
+    "recall_at_10_reviewed_only": 0.5861572741136003,
+    "recall_at_10_capped_reviewed_only": 0.7249654934437543,
+    "mrr_reviewed_only": 0.9026086956521739,
+    "precision_at_1": 0.8434782608695652,
+    "precision_at_3": 0.736231884057971,
+    "precision_at_5": 0.6469565217391304,
+    "mrr": 0.9026086956521739,
+    "numeric_evidence_hit_at_5": 0.9285714285714286,
+    "numeric_evidence_hit_at_10": 0.9642857142857143,
+    "filter_correctness": 1.0,
+    "cross_company_leakage_at_10": 0.0
+  },
+  "weak_questions": [
+    {
+      "id": "microsoft_cash_2025_01",
+      "v2_relevant_chunks": [
+        "microsoft_10k_51",
+        "microsoft_10k_52",
+        "microsoft_10k_53",
+        "microsoft_10k_54"
+      ],
+      "v3_relevant_chunks": [
+        "microsoft_10k_51",
+        "microsoft_10k_52"
+      ],
+      "newly_relevant": [],
+      "no_longer_relevant": [
+        "microsoft_10k_53",
+        "microsoft_10k_54"
+      ],
+      "v2_recall_at_10": 0.25,
+      "v3_recall_at_10": 0.0,
+      "newly_relevant_in_v3_top10": [],
+      "all_v3_relevant_were_poolable": true
+    },
+    {
+      "id": "nvidia_responsible_ai_risk_01",
+      "v2_relevant_chunks": [
+        "nvidia_10k_16",
+        "nvidia_10k_17",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_40",
+        "nvidia_10k_41"
+      ],
+      "v3_relevant_chunks": [
+        "nvidia_10k_17",
+        "nvidia_10k_26",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_38",
+        "nvidia_10k_39",
+        "nvidia_10k_40",
+        "nvidia_10k_41",
+        "nvidia_10k_42"
+      ],
+      "newly_relevant": [
+        "nvidia_10k_26",
+        "nvidia_10k_33",
+        "nvidia_10k_38",
+        "nvidia_10k_39",
+        "nvidia_10k_42"
+      ],
+      "no_longer_relevant": [
+        "nvidia_10k_16"
+      ],
+      "v2_recall_at_10": 0.6666666666666666,
+      "v3_recall_at_10": 0.3,
+      "newly_relevant_in_v3_top10": [],
+      "all_v3_relevant_were_poolable": true
+    },
+    {
+      "id": "nvidia_china_01",
+      "v2_relevant_chunks": [
+        "nvidia_10k_14",
+        "nvidia_10k_25",
+        "nvidia_10k_27",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_39",
+        "nvidia_10k_44",
+        "nvidia_10k_50"
+      ],
+      "v3_relevant_chunks": [
+        "nvidia_10k_11",
+        "nvidia_10k_12",
+        "nvidia_10k_13",
+        "nvidia_10k_14",
+        "nvidia_10k_18",
+        "nvidia_10k_25",
+        "nvidia_10k_27",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_36",
+        "nvidia_10k_37",
+        "nvidia_10k_38",
+        "nvidia_10k_39",
+        "nvidia_10k_40",
+        "nvidia_10k_43",
+        "nvidia_10k_44",
+        "nvidia_10k_50",
+        "nvidia_10k_55"
+      ],
+      "newly_relevant": [
+        "nvidia_10k_11",
+        "nvidia_10k_12",
+        "nvidia_10k_13",
+        "nvidia_10k_18",
+        "nvidia_10k_36",
+        "nvidia_10k_37",
+        "nvidia_10k_38",
+        "nvidia_10k_40",
+        "nvidia_10k_43",
+        "nvidia_10k_55"
+      ],
+      "no_longer_relevant": [],
+      "v2_recall_at_10": 0.7777777777777778,
+      "v3_recall_at_10": 0.3684210526315789,
+      "newly_relevant_in_v3_top10": [
+        "nvidia_10k_40"
+      ],
+      "all_v3_relevant_were_poolable": true
+    },
+    {
+      "id": "microsoft_total_revenue_2025_01",
+      "v2_relevant_chunks": [
+        "microsoft_10k_40",
+        "microsoft_10k_41",
+        "microsoft_10k_83",
+        "microsoft_10k_84"
+      ],
+      "v3_relevant_chunks": [
+        "microsoft_10k_40",
+        "microsoft_10k_41",
+        "microsoft_10k_83",
+        "microsoft_10k_84"
+      ],
+      "newly_relevant": [],
+      "no_longer_relevant": [],
+      "v2_recall_at_10": 0.75,
+      "v3_recall_at_10": 1.0,
+      "newly_relevant_in_v3_top10": [],
+      "all_v3_relevant_were_poolable": true
+    },
+    {
+      "id": "nvidia_export_controls_01",
+      "v2_relevant_chunks": [
+        "nvidia_10k_13",
+        "nvidia_10k_14",
+        "nvidia_10k_20",
+        "nvidia_10k_25",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_38",
+        "nvidia_10k_39",
+        "nvidia_10k_40"
+      ],
+      "v3_relevant_chunks": [
+        "nvidia_10k_11",
+        "nvidia_10k_12",
+        "nvidia_10k_13",
+        "nvidia_10k_14",
+        "nvidia_10k_17",
+        "nvidia_10k_33",
+        "nvidia_10k_34",
+        "nvidia_10k_35",
+        "nvidia_10k_36",
+        "nvidia_10k_37",
+        "nvidia_10k_38",
+        "nvidia_10k_39",
+        "nvidia_10k_40",
+        "nvidia_10k_50"
+      ],
+      "newly_relevant": [
+        "nvidia_10k_11",
+        "nvidia_10k_12",
+        "nvidia_10k_17",
+        "nvidia_10k_36",
+        "nvidia_10k_37",
+        "nvidia_10k_50"
+      ],
+      "no_longer_relevant": [
+        "nvidia_10k_20",
+        "nvidia_10k_25"
+      ],
+      "v2_recall_at_10": 0.8,
+      "v3_recall_at_10": 0.6428571428571429,
+      "newly_relevant_in_v3_top10": [
+        "nvidia_10k_36"
+      ],
+      "all_v3_relevant_were_poolable": true
+    },
+    {
+      "id": "microsoft_cash_investments_2025_01",
+      "v2_relevant_chunks": [
+        "microsoft_10k_44",
+        "microsoft_10k_51",
+        "microsoft_10k_52",
+        "microsoft_10k_64"
+      ],
+      "v3_relevant_chunks": [
+        "microsoft_10k_44",
+        "microsoft_10k_51",
+        "microsoft_10k_52",
+        "microsoft_10k_64"
+      ],
+      "newly_relevant": [],
+      "no_longer_relevant": [],
+      "v2_recall_at_10": 0.75,
+      "v3_recall_at_10": 0.75,
+      "newly_relevant_in_v3_top10": [],
+      "all_v3_relevant_were_poolable": true
+    }
+  ],
+  "v2_origin_questions_with_new_relevant": 34,
+  "v2_origin_total_new_relevant_chunks": 212
+}

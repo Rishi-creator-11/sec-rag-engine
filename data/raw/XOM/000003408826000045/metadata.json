@@ -1,0 +1,17 @@
+{
+  "company_name": "EXXON MOBIL CORP",
+  "ticker": "XOM",
+  "cik": "0000034088",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000034088-26-000045",
+  "filing_id": "000003408826000045",
+  "filing_date": "2026-02-18",
+  "report_date": "2025-12-31",
+  "primary_document": "xom-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/34088/000003408826000045/xom-20251231.htm",
+  "cik_override": true,
+  "successor_cik": "0002115436",
+  "successor_name": "ExxonMobil Holdings Corporation",
+  "successor_effective_date": "2026-07-01"
+}

@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "ticker": "META",
+    "questions": 10,
+    "supported_questions": 9,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": null,
+    "reranker_fallback_questions": 10,
+    "latency_mean_s": 3.612185116589535,
+    "latency_p50_s": 3.5630800419894513,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "meta_total_revenue_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 4.1797819579951465
+    },
+    {
+      "id": "meta_income_from_operations_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.6460713330307044
+    },
+    {
+      "id": "meta_family_of_apps_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.6810687909601256
+    },
+    {
+      "id": "meta_advertising_competition_01",
+      "category": "competition",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.396637915982865
+    },
+    {
+      "id": "meta_ai_investment_risk_01",
+      "category": "ai",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.529988374968525
+    },
+    {
+      "id": "meta_reality_labs_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4540596249862574
+    },
+    {
+      "id": "meta_regulation_privacy_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5940954589750618
+    },
+    {
+      "id": "meta_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.574399999983143
+    },
+    {
+      "id": "meta_international_01",
+      "category": "international",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.513987625017762
+    },
+    {
+      "id": "meta_future_dau_2030_unsupported_01",
+      "category": "unsupported",
+      "answer_type": "unsupported",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "META",
+        "META",
+        "META",
+        "META",
+        "META"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": false,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5517600839957595
+    }
+  ]
+}

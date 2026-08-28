@@ -1,0 +1,51 @@
+[
+  {
+    "id": "xom_cvx_style_climate_msft_01",
+    "question": "Compare how ExxonMobil and Microsoft each describe climate-change and greenhouse-gas regulation risk.",
+    "tickers": ["XOM", "MSFT"],
+    "topic": "climate_regulation",
+    "both_filings_support": true
+  },
+  {
+    "id": "xom_wmt_supply_chain_01",
+    "question": "Compare how ExxonMobil and Walmart describe supply chain and operational disruption risk.",
+    "tickers": ["XOM", "WMT"],
+    "topic": "supply_chain",
+    "both_filings_support": true
+  },
+  {
+    "id": "xom_nvda_cybersecurity_01",
+    "question": "Compare how ExxonMobil and NVIDIA each describe cybersecurity risk.",
+    "tickers": ["XOM", "NVDA"],
+    "topic": "cybersecurity",
+    "both_filings_support": true
+  },
+  {
+    "id": "unh_jpm_regulation_01",
+    "question": "Compare how UnitedHealth Group and JPMorgan Chase each describe government regulation risk.",
+    "tickers": ["UNH", "JPM"],
+    "topic": "regulation",
+    "both_filings_support": true
+  },
+  {
+    "id": "unh_aapl_cybersecurity_01",
+    "question": "Compare how UnitedHealth Group and Apple each describe cybersecurity and data protection risk.",
+    "tickers": ["UNH", "AAPL"],
+    "topic": "cybersecurity",
+    "both_filings_support": true
+  },
+  {
+    "id": "xom_unh_competition_01",
+    "question": "Compare how ExxonMobil and UnitedHealth Group each describe competition in their industries.",
+    "tickers": ["XOM", "UNH"],
+    "topic": "competition",
+    "both_filings_support": true
+  },
+  {
+    "id": "xom_unh_jpm_regulation_01",
+    "question": "Compare how ExxonMobil, UnitedHealth Group, and JPMorgan Chase each describe regulatory risk.",
+    "tickers": ["XOM", "UNH", "JPM"],
+    "topic": "regulation",
+    "both_filings_support": true
+  }
+]

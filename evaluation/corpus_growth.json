@@ -6,7 +6,11 @@
       "phase": "1B/1C/2",
       "recorded": "2026-08-27 (from Phase 2 report)",
       "company_count": 3,
-      "companies": ["AAPL", "MSFT", "NVDA"],
+      "companies": [
+        "AAPL",
+        "MSFT",
+        "NVDA"
+      ],
       "chunk_count": 267,
       "filtered_recall_at_10": 0.929,
       "unfiltered_recall_at_10": 0.903,
@@ -19,7 +23,12 @@
       "phase": "3",
       "recorded": "2026-08-27",
       "company_count": 4,
-      "companies": ["AAPL", "AMZN", "MSFT", "NVDA"],
+      "companies": [
+        "AAPL",
+        "AMZN",
+        "MSFT",
+        "NVDA"
+      ],
       "chunk_count": 356,
       "filtered_recall_at_10": 0.9202,
       "unfiltered_recall_at_10": 0.8813,
@@ -27,6 +36,46 @@
       "filter_correctness": 1.0,
       "cross_company_leakage_at_10": 0.0,
       "note": "AMZN 10-K FY2025 (89 chunks) added. Filtered R@10 -0.009, unfiltered -0.022 vs 3-company; both from BM25 IDF/avgdl shift + Pinecone ANN noise. Gate (>=0.90) still met."
+    },
+    {
+      "phase": "4-batch1",
+      "recorded": "2026-08-28 03:06:43Z",
+      "company_count": 6,
+      "companies": [
+        "AAPL",
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA"
+      ],
+      "chunk_count": 616,
+      "filtered_recall_at_10": 0.9153,
+      "unfiltered_recall_at_10": 0.8589,
+      "filtered_mrr": 0.891,
+      "filter_correctness": 1.0,
+      "cross_company_leakage_at_10": 0.0
+    },
+    {
+      "phase": "4-batch2",
+      "recorded": "2026-08-28 03:21:05Z",
+      "company_count": 8,
+      "companies": [
+        "AAPL",
+        "AMZN",
+        "GOOGL",
+        "JPM",
+        "META",
+        "MSFT",
+        "NVDA",
+        "WMT"
+      ],
+      "chunk_count": 1126,
+      "filtered_recall_at_10": 0.9035,
+      "unfiltered_recall_at_10": 0.833,
+      "filtered_mrr": 0.8942,
+      "filter_correctness": 1.0,
+      "cross_company_leakage_at_10": 0.0
     }
   ]
 }

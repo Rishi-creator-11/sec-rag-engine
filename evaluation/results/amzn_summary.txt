@@ -6,7 +6,7 @@ cross_company_leakage         0.000   (target 0.000)
 scoped_retrieval_rate         1.000   (supported Qs with >=1 AMZN chunk)
 numeric_evidence_present_rate 1.0   (lexical proxy over number_hint, not a qrel)
 reranker_fallback             9/10
-latency                       mean 3.62s  p50 3.55s
+latency                       mean 3.65s  p50 3.51s
 
 GATES
   filter_correctness == 1.000   PASS
@@ -14,13 +14,13 @@ GATES
   scoped_retrieval_rate == 1.0  PASS
 
 per-question:
-  amzn_net_sales_2025_01                   numeric        amzn_evidence=5 leak=0.00 number_evidence=yes  4.31s
-  amzn_operating_income_2025_01            numeric        amzn_evidence=5 leak=0.00  3.25s
-  amzn_aws_segment_01                      aws_cloud      amzn_evidence=5 leak=0.00  3.53s
-  amzn_aws_risks_01                        aws_cloud      amzn_evidence=5 leak=0.00  3.57s
-  amzn_competition_01                      competition    amzn_evidence=5 leak=0.00  3.68s
-  amzn_regulation_01                       regulation     amzn_evidence=5 leak=0.00  3.71s
-  amzn_cybersecurity_01                    cybersecurity  amzn_evidence=5 leak=0.00  3.45s
-  amzn_international_01                    international  amzn_evidence=5 leak=0.00  3.51s
-  amzn_fulfillment_logistics_01            supply_chain   amzn_evidence=5 leak=0.00  3.47s
-  amzn_future_stock_2030_unsupported_01    unsupported    amzn_evidence=5 leak=0.00  3.73s
+  amzn_net_sales_2025_01                   numeric        amzn_evidence=5 leak=0.00 number_evidence=yes  4.64s
+  amzn_operating_income_2025_01            numeric        amzn_evidence=5 leak=0.00  3.75s
+  amzn_aws_segment_01                      aws_cloud      amzn_evidence=5 leak=0.00  3.25s
+  amzn_aws_risks_01                        aws_cloud      amzn_evidence=5 leak=0.00  3.27s
+  amzn_competition_01                      competition    amzn_evidence=5 leak=0.00  3.46s
+  amzn_regulation_01                       regulation     amzn_evidence=5 leak=0.00  3.88s
+  amzn_cybersecurity_01                    cybersecurity  amzn_evidence=5 leak=0.00  3.46s
+  amzn_international_01                    international  amzn_evidence=5 leak=0.00  3.48s
+  amzn_fulfillment_logistics_01            supply_chain   amzn_evidence=5 leak=0.00  3.54s
+  amzn_future_stock_2030_unsupported_01    unsupported    amzn_evidence=5 leak=0.00  3.79s

@@ -57,7 +57,7 @@ class FakeClient:
         self._html = html
         self.downloads = 0
 
-    def discover_latest_10k(self, ticker):
+    def discover_latest_10k(self, ticker, **kwargs):
         return self._filing
 
     def download_document(self, url):

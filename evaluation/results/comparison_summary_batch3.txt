@@ -1,0 +1,24 @@
+COMPARISON RETRIEVAL EVALUATION (scope coverage only)
+benchmark: benchmark_comparisons_batch3.json   questions: 7   top_k: 5
+Relevance quality is NOT judged here (deferred).
+
+scope_coverage@5          1.000   (target 1.000)
+full_coverage_rate        1.000
+cross_scope_leakage       0.000   (target 0.000)
+min_evidence_per_scope    mean 1.86  min 1
+reranker_fallback         7/7 questions
+questions_with_warnings   0
+latency (plan_evidence)   mean 3.75s  p50 3.63s  p95 4.48s
+
+GATES
+  scope_coverage@5 == 1.000   PASS
+  cross_scope_leakage == 0.0  PASS
+
+per-question:
+  xom_cvx_style_climate_msft_01      XOM+MSFT       by_scope={'XOM': 3, 'MSFT': 2} cov=1.00 leak=0.00 4.48s
+  xom_wmt_supply_chain_01            XOM+WMT        by_scope={'XOM': 2, 'WMT': 3} cov=1.00 leak=0.00 3.63s
+  xom_nvda_cybersecurity_01          XOM+NVDA       by_scope={'XOM': 3, 'NVDA': 2} cov=1.00 leak=0.00 3.80s
+  unh_jpm_regulation_01              UNH+JPM        by_scope={'UNH': 2, 'JPM': 3} cov=1.00 leak=0.00 3.60s
+  unh_aapl_cybersecurity_01          UNH+AAPL       by_scope={'UNH': 3, 'AAPL': 2} cov=1.00 leak=0.00 3.69s
+  xom_unh_competition_01             XOM+UNH        by_scope={'XOM': 3, 'UNH': 2} cov=1.00 leak=0.00 3.60s
+  xom_unh_jpm_regulation_01          XOM+UNH+JPM    by_scope={'XOM': 2, 'UNH': 1, 'JPM': 2} cov=1.00 leak=0.00 3.47s

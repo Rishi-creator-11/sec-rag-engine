@@ -1,0 +1,118 @@
+BENCHMARK v2 vs v3 - COMPARISON REPORT
+======================================================================
+
+                                               v2               v3
+benchmark file                       benchmark_v2     benchmark_v3
+companies                        3 (AAPL/MSFT/NVDA)                8
+questions (total)                              60              125
+questions (supported/scored)                   55              115
+judging pool depth               ~10 (3-co retrievers) 50 (8-co system)
+pooled questions                               45              115
+total judged candidates                       819             8982
+avg candidates / question                    18.2             78.1
+total relevant labels                         301             1311
+
+SCOPED (filtered) HYBRID RETRIEVAL QUALITY
+----------------------------------------------------------------------
+metric                               v2         v3      delta
+Recall@1                          0.169      0.119     -0.050
+Recall@3                          0.454      0.303     -0.151
+Recall@5                          0.631      0.420     -0.211
+Recall@10                         0.904      0.586     -0.317
+Recall@10capped                     n/a      0.725        n/a
+R-precision                         n/a      0.553        n/a
+Precision@5                       0.629      0.647     +0.018
+MRR                               0.894      0.903     +0.008
+NumEvidence@5                     0.867      0.929     +0.062
+NumEvidence@10                    1.000      0.964     -0.036
+filter_correctness                1.000      1.000     +0.000
+leakage@10                        0.000      0.000     +0.000
+
+NOTE: v2 and v3 are DIFFERENT question sets and DIFFERENT qrel depths -
+this is not 'v2 improved to v3'. Two things the table shows:
+ 1. v3 mean |relevant| = 11.4 vs v2 ~3, because v3 judged a depth-50 pool.
+    Plain Recall@10 is capacity-capped when |relevant| > 10, so it FALLS
+    even though retrieval quality did not. Use Recall@10capped / R-precision
+    / MRR / P@5 for the v3 baseline.
+ 2. v3 MRR (0.903) and P@1 stay high - the top of the ranking is still
+    almost always relevant. The Phase 4.5 'regression' was the v2 qrels
+    missing labels for chunks the 8-company retriever newly surfaced.
+
+PHASE 4.5 'LOST CHUNK' QUESTIONS - RE-EXAMINED UNDER v3
+======================================================================
+
+[microsoft_cash_2025_01]
+  question:            How much cash and cash equivalents did Microsoft report as of June 30, 2025?
+  v2 relevant_chunks:  ['microsoft_10k_51', 'microsoft_10k_52', 'microsoft_10k_53', 'microsoft_10k_54']
+  v3 relevant_chunks:  ['microsoft_10k_51', 'microsoft_10k_52']
+  newly relevant (v3): []  (0)
+  no longer relevant:  ['microsoft_10k_53', 'microsoft_10k_54']
+  v2 hybrid Recall@10: 0.25   first_rel_rank=10
+  v3 hybrid Recall@10: 0.0   first_rel_rank=None
+  v3 hybrid top-10:    ['microsoft_10k_44', 'microsoft_10k_85', 'microsoft_10k_36', 'microsoft_10k_84', 'microsoft_10k_69', 'microsoft_10k_35', 'microsoft_10k_77', 'microsoft_10k_54', 'microsoft_10k_0', 'microsoft_10k_37']
+  of the newly-relevant chunks, in v3 top-10: []
+
+[nvidia_responsible_ai_risk_01]
+  question:            What risks does NVIDIA identify from the responsible use of AI and other evolving technologies?
+  v2 relevant_chunks:  ['nvidia_10k_16', 'nvidia_10k_17', 'nvidia_10k_34', 'nvidia_10k_35', 'nvidia_10k_40', 'nvidia_10k_41']
+  v3 relevant_chunks:  ['nvidia_10k_17', 'nvidia_10k_26', 'nvidia_10k_33', 'nvidia_10k_34', 'nvidia_10k_35', 'nvidia_10k_38', 'nvidia_10k_39', 'nvidia_10k_40', 'nvidia_10k_41', 'nvidia_10k_42']
+  newly relevant (v3): ['nvidia_10k_26', 'nvidia_10k_33', 'nvidia_10k_38', 'nvidia_10k_39', 'nvidia_10k_42']  (5)
+  no longer relevant:  ['nvidia_10k_16']
+  v2 hybrid Recall@10: 0.6666666666666666   first_rel_rank=3
+  v3 hybrid Recall@10: 0.3   first_rel_rank=4
+  v3 hybrid top-10:    ['nvidia_10k_8', 'nvidia_10k_4', 'nvidia_10k_7', 'nvidia_10k_35', 'nvidia_10k_40', 'nvidia_10k_41', 'nvidia_10k_5', 'nvidia_10k_50', 'nvidia_10k_20', 'nvidia_10k_18']
+  of the newly-relevant chunks, in v3 top-10: []
+
+[nvidia_china_01]
+  question:            What risks does NVIDIA face in China?
+  v2 relevant_chunks:  ['nvidia_10k_14', 'nvidia_10k_25', 'nvidia_10k_27', 'nvidia_10k_33', 'nvidia_10k_34', 'nvidia_10k_35', 'nvidia_10k_39', 'nvidia_10k_44', 'nvidia_10k_50']
+  v3 relevant_chunks:  ['nvidia_10k_11', 'nvidia_10k_12', 'nvidia_10k_13', 'nvidia_10k_14', 'nvidia_10k_18', 'nvidia_10k_25', 'nvidia_10k_27', 'nvidia_10k_33', 'nvidia_10k_34', 'nvidia_10k_35', 'nvidia_10k_36', 'nvidia_10k_37', 'nvidia_10k_38', 'nvidia_10k_39', 'nvidia_10k_40', 'nvidia_10k_43', 'nvidia_10k_44', 'nvidia_10k_50', 'nvidia_10k_55']
+  newly relevant (v3): ['nvidia_10k_11', 'nvidia_10k_12', 'nvidia_10k_13', 'nvidia_10k_18', 'nvidia_10k_36', 'nvidia_10k_37', 'nvidia_10k_38', 'nvidia_10k_40', 'nvidia_10k_43', 'nvidia_10k_55']  (10)
+  no longer relevant:  []
+  v2 hybrid Recall@10: 0.7777777777777778   first_rel_rank=1
+  v3 hybrid Recall@10: 0.3684210526315789   first_rel_rank=1
+  v3 hybrid top-10:    ['nvidia_10k_39', 'nvidia_10k_50', 'nvidia_10k_34', 'nvidia_10k_14', 'nvidia_10k_35', 'nvidia_10k_16', 'nvidia_10k_40', 'nvidia_10k_20', 'nvidia_10k_49', 'nvidia_10k_33']
+  of the newly-relevant chunks, in v3 top-10: ['nvidia_10k_40']
+
+[microsoft_total_revenue_2025_01]
+  question:            What total revenue did Microsoft report for fiscal 2025?
+  v2 relevant_chunks:  ['microsoft_10k_40', 'microsoft_10k_41', 'microsoft_10k_83', 'microsoft_10k_84']
+  v3 relevant_chunks:  ['microsoft_10k_40', 'microsoft_10k_41', 'microsoft_10k_83', 'microsoft_10k_84']
+  newly relevant (v3): []  (0)
+  no longer relevant:  []
+  v2 hybrid Recall@10: 0.75   first_rel_rank=1
+  v3 hybrid Recall@10: 1.0   first_rel_rank=1
+  v3 hybrid top-10:    ['microsoft_10k_84', 'microsoft_10k_41', 'microsoft_10k_37', 'microsoft_10k_40', 'microsoft_10k_85', 'microsoft_10k_36', 'microsoft_10k_39', 'microsoft_10k_4', 'microsoft_10k_38', 'microsoft_10k_83']
+  of the newly-relevant chunks, in v3 top-10: []
+
+[nvidia_export_controls_01]
+  question:            What risks does NVIDIA face from export controls?
+  v2 relevant_chunks:  ['nvidia_10k_13', 'nvidia_10k_14', 'nvidia_10k_20', 'nvidia_10k_25', 'nvidia_10k_33', 'nvidia_10k_34', 'nvidia_10k_35', 'nvidia_10k_38', 'nvidia_10k_39', 'nvidia_10k_40']
+  v3 relevant_chunks:  ['nvidia_10k_11', 'nvidia_10k_12', 'nvidia_10k_13', 'nvidia_10k_14', 'nvidia_10k_17', 'nvidia_10k_33', 'nvidia_10k_34', 'nvidia_10k_35', 'nvidia_10k_36', 'nvidia_10k_37', 'nvidia_10k_38', 'nvidia_10k_39', 'nvidia_10k_40', 'nvidia_10k_50']
+  newly relevant (v3): ['nvidia_10k_11', 'nvidia_10k_12', 'nvidia_10k_17', 'nvidia_10k_36', 'nvidia_10k_37', 'nvidia_10k_50']  (6)
+  no longer relevant:  ['nvidia_10k_20', 'nvidia_10k_25']
+  v2 hybrid Recall@10: 0.8   first_rel_rank=1
+  v3 hybrid Recall@10: 0.6428571428571429   first_rel_rank=1
+  v3 hybrid top-10:    ['nvidia_10k_39', 'nvidia_10k_35', 'nvidia_10k_34', 'nvidia_10k_20', 'nvidia_10k_36', 'nvidia_10k_13', 'nvidia_10k_38', 'nvidia_10k_14', 'nvidia_10k_40', 'nvidia_10k_33']
+  of the newly-relevant chunks, in v3 top-10: ['nvidia_10k_36']
+
+[microsoft_cash_investments_2025_01]
+  question:            What was Microsoft's total cash, cash equivalents, and short-term investments as of June 30, 2025?
+  v2 relevant_chunks:  ['microsoft_10k_44', 'microsoft_10k_51', 'microsoft_10k_52', 'microsoft_10k_64']
+  v3 relevant_chunks:  ['microsoft_10k_44', 'microsoft_10k_51', 'microsoft_10k_52', 'microsoft_10k_64']
+  newly relevant (v3): []  (0)
+  no longer relevant:  []
+  v2 hybrid Recall@10: 0.75   first_rel_rank=1
+  v3 hybrid Recall@10: 0.75   first_rel_rank=1
+  v3 hybrid top-10:    ['microsoft_10k_44', 'microsoft_10k_69', 'microsoft_10k_51', 'microsoft_10k_84', 'microsoft_10k_36', 'microsoft_10k_85', 'microsoft_10k_77', 'microsoft_10k_52', 'microsoft_10k_80', 'microsoft_10k_37']
+  of the newly-relevant chunks, in v3 top-10: []
+
+GLOBAL: v2-origin questions - chunks now relevant in v3 that were NOT in
+the v2 qrels (i.e. were pooled/judged only under the 8-company system)
+----------------------------------------------------------------------
+  v2-origin questions with >=1 newly-relevant chunk: 34
+  total newly-relevant chunks added across v2-origin questions: 212
+
+This is the mechanism behind the apparent Phase 4.5 regression: the
+retriever was surfacing MORE genuinely-relevant chunks, but the v2 qrels
+had no label for them, so Recall@10 scored them as misses.

@@ -5,28 +5,28 @@ Relevance quality is NOT judged here (deferred).
 scope_coverage@5          1.000   (target 1.000)
 full_coverage_rate        1.000
 cross_scope_leakage       0.000   (target 0.000)
-min_evidence_per_scope    mean 1.47  min 1
+min_evidence_per_scope    mean 1.53  min 1
 reranker_fallback         5/15 questions
 questions_with_warnings   0
-latency (plan_evidence)   mean 1.67s  p50 0.57s  p95 3.69s
+latency (plan_evidence)   mean 1.64s  p50 0.57s  p95 3.75s
 
 GATES
   scope_coverage@5 == 1.000   PASS
   cross_scope_leakage == 0.0  PASS
 
 per-question:
-  aapl_msft_competition_01           AAPL+MSFT      by_scope={'AAPL': 4, 'MSFT': 1} cov=1.00 leak=0.00 1.74s
-  aapl_msft_cybersecurity_01         AAPL+MSFT      by_scope={'AAPL': 4, 'MSFT': 1} cov=1.00 leak=0.00 0.50s
-  aapl_msft_ai_01                    AAPL+MSFT      by_scope={'AAPL': 2, 'MSFT': 3} cov=1.00 leak=0.00 0.51s
-  aapl_msft_international_01         AAPL+MSFT      by_scope={'AAPL': 4, 'MSFT': 1} cov=1.00 leak=0.00 0.47s
-  aapl_msft_rnd_01                   AAPL+MSFT      by_scope={'AAPL': 3, 'MSFT': 2} cov=1.00 leak=0.00 0.58s
-  aapl_nvda_supply_chain_01          AAPL+NVDA      by_scope={'AAPL': 3, 'NVDA': 2} cov=1.00 leak=0.00 0.57s
-  aapl_nvda_china_01                 AAPL+NVDA      by_scope={'AAPL': 1, 'NVDA': 4} cov=1.00 leak=0.00 0.51s
-  aapl_nvda_competition_01           AAPL+NVDA      by_scope={'AAPL': 4, 'NVDA': 1} cov=1.00 leak=0.00 0.57s
-  aapl_nvda_ip_01                    AAPL+NVDA      by_scope={'AAPL': 4, 'NVDA': 1} cov=1.00 leak=0.00 0.57s
-  msft_nvda_ai_01                    MSFT+NVDA      by_scope={'MSFT': 3, 'NVDA': 2} cov=1.00 leak=0.00 0.50s
-  msft_nvda_cybersecurity_01         MSFT+NVDA      by_scope={'MSFT': 3, 'NVDA': 2} cov=1.00 leak=0.00 3.67s
-  msft_nvda_regulation_01            MSFT+NVDA      by_scope={'MSFT': 3, 'NVDA': 2} cov=1.00 leak=0.00 3.69s
-  msft_nvda_datacenter_01            MSFT+NVDA      by_scope={'MSFT': 2, 'NVDA': 3} cov=1.00 leak=0.00 3.68s
-  aapl_msft_nvda_cybersecurity_01    AAPL+MSFT+NVDA by_scope={'AAPL': 1, 'MSFT': 2, 'NVDA': 2} cov=1.00 leak=0.00 3.86s
-  aapl_msft_nvda_competition_01      AAPL+MSFT+NVDA by_scope={'AAPL': 2, 'MSFT': 2, 'NVDA': 1} cov=1.00 leak=0.00 3.62s
+  aapl_msft_competition_01           AAPL+MSFT      by_scope={'AAPL': 4, 'MSFT': 1} cov=1.00 leak=0.00 1.23s
+  aapl_msft_cybersecurity_01         AAPL+MSFT      by_scope={'AAPL': 4, 'MSFT': 1} cov=1.00 leak=0.00 0.48s
+  aapl_msft_ai_01                    AAPL+MSFT      by_scope={'AAPL': 2, 'MSFT': 3} cov=1.00 leak=0.00 0.56s
+  aapl_msft_international_01         AAPL+MSFT      by_scope={'AAPL': 4, 'MSFT': 1} cov=1.00 leak=0.00 0.52s
+  aapl_msft_rnd_01                   AAPL+MSFT      by_scope={'AAPL': 3, 'MSFT': 2} cov=1.00 leak=0.00 0.57s
+  aapl_nvda_supply_chain_01          AAPL+NVDA      by_scope={'AAPL': 3, 'NVDA': 2} cov=1.00 leak=0.00 0.49s
+  aapl_nvda_china_01                 AAPL+NVDA      by_scope={'AAPL': 1, 'NVDA': 4} cov=1.00 leak=0.00 1.00s
+  aapl_nvda_competition_01           AAPL+NVDA      by_scope={'AAPL': 3, 'NVDA': 2} cov=1.00 leak=0.00 0.51s
+  aapl_nvda_ip_01                    AAPL+NVDA      by_scope={'AAPL': 4, 'NVDA': 1} cov=1.00 leak=0.00 0.52s
+  msft_nvda_ai_01                    MSFT+NVDA      by_scope={'MSFT': 3, 'NVDA': 2} cov=1.00 leak=0.00 0.47s
+  msft_nvda_cybersecurity_01         MSFT+NVDA      by_scope={'MSFT': 3, 'NVDA': 2} cov=1.00 leak=0.00 3.75s
+  msft_nvda_regulation_01            MSFT+NVDA      by_scope={'MSFT': 3, 'NVDA': 2} cov=1.00 leak=0.00 3.54s
+  msft_nvda_datacenter_01            MSFT+NVDA      by_scope={'MSFT': 2, 'NVDA': 3} cov=1.00 leak=0.00 3.67s
+  aapl_msft_nvda_cybersecurity_01    AAPL+MSFT+NVDA by_scope={'AAPL': 2, 'MSFT': 2, 'NVDA': 1} cov=1.00 leak=0.00 3.63s
+  aapl_msft_nvda_competition_01      AAPL+MSFT+NVDA by_scope={'AAPL': 2, 'MSFT': 2, 'NVDA': 1} cov=1.00 leak=0.00 3.76s

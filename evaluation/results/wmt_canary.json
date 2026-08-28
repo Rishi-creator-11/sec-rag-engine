@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "ticker": "WMT",
+    "questions": 10,
+    "supported_questions": 9,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": null,
+    "reranker_fallback_questions": 10,
+    "latency_mean_s": 3.5725471457117237,
+    "latency_p50_s": 3.540539000008721,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "wmt_total_revenue_2026_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 4.0418103750562295
+    },
+    {
+      "id": "wmt_operating_income_2026_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.558290750021115
+    },
+    {
+      "id": "wmt_segments_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.33234874997288
+    },
+    {
+      "id": "wmt_competition_01",
+      "category": "competition",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.522787249996327
+    },
+    {
+      "id": "wmt_supply_chain_01",
+      "category": "supply_chain",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.7716597500257194
+    },
+    {
+      "id": "wmt_ecommerce_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.6880339169874787
+    },
+    {
+      "id": "wmt_regulation_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.2875128330197185
+    },
+    {
+      "id": "wmt_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.456557083001826
+    },
+    {
+      "id": "wmt_international_01",
+      "category": "international",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5777267910307273
+    },
+    {
+      "id": "wmt_future_sales_2032_unsupported_01",
+      "category": "unsupported",
+      "answer_type": "unsupported",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT",
+        "WMT"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": false,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.488743958005216
+    }
+  ]
+}

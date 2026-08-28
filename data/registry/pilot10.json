@@ -1,0 +1,30 @@
+{
+  "note": "Phase 4 controlled 10-company pilot manifest. Reproducibility only — NOT a second company registry. data/registry/companies.json remains the source of truth for what is actually ingested. CIK / accession / filing metadata are NEVER hand-supplied here; they come from live SEC discovery (ingestion.sec_client).",
+  "status": "complete",
+  "target_company_count": 10,
+  "ingested_company_count": 10,
+  "batch_rollout": "ingest batch -> verify -> restart serving -> run scoped + comparison evals -> append corpus-growth row -> gate; STOP if any hard gate fails",
+  "hard_gates": {
+    "filter_correctness": 1.0,
+    "cross_company_leakage_at_10": 0.0,
+    "comparison_scope_coverage_at_5": 1.0,
+    "cross_scope_leakage": 0.0,
+    "verification": "PASS per newly ingested company",
+    "retrieval_quality": "benchmark_v3 (see evaluation/PHASE_4_BATCH3_REPORT.md); the benchmark_v2 Recall@10>=0.90 gate is retired"
+  },
+  "companies": [
+    { "ticker": "AAPL", "batch": 0, "sector": "Technology (consumer hardware/services)", "status": "seed" },
+    { "ticker": "AMZN", "batch": 0, "sector": "Consumer/Cloud (e-commerce + AWS)", "status": "ingested" },
+    { "ticker": "MSFT", "batch": 0, "sector": "Technology (software/cloud)", "status": "seed" },
+    { "ticker": "NVDA", "batch": 0, "sector": "Semiconductors", "status": "seed" },
+
+    { "ticker": "GOOGL", "batch": 1, "sector": "Technology (digital advertising / cloud / AI)", "status": "ingested" },
+    { "ticker": "META",  "batch": 1, "sector": "Technology (social / digital advertising / AI)", "status": "ingested" },
+
+    { "ticker": "JPM", "batch": 2, "sector": "Financials (diversified bank)", "status": "ingested" },
+    { "ticker": "WMT", "batch": 2, "sector": "Consumer Staples (retail / logistics)", "status": "ingested" },
+
+    { "ticker": "XOM", "batch": 3, "sector": "Energy (integrated oil & gas)", "status": "ingested", "note": "ingested via explicit --cik override: FY2025 10-K filed by legacy registrant EXXON MOBIL CORP (CIK 0000034088); ticker XOM now registered to successor CIK 0002115436 effective 2026-07-01. See data/registry/companies.json lineage block." },
+    { "ticker": "UNH", "batch": 3, "sector": "Health Care (managed care / insurance)", "status": "ingested" }
+  ]
+}

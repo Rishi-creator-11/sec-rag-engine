@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "ticker": "UNH",
+    "questions": 10,
+    "supported_questions": 10,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": 1.0,
+    "reranker_fallback_questions": 10,
+    "latency_mean_s": 3.6068985539954155,
+    "latency_p50_s": 3.5058574164577294,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "unh_total_revenues_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "447,567",
+      "number_evidence_present": true,
+      "reranker_fallback": true,
+      "latency_seconds": 4.410850208019838
+    },
+    {
+      "id": "unh_net_earnings_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "12,056",
+      "number_evidence_present": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4452465000213124
+    },
+    {
+      "id": "unh_diluted_eps_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "13.23",
+      "number_evidence_present": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.6895857909694314
+    },
+    {
+      "id": "unh_medical_care_ratio_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "89.1",
+      "number_evidence_present": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.3662154999910854
+    },
+    {
+      "id": "unh_total_assets_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "309,581",
+      "number_evidence_present": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.513757957960479
+    },
+    {
+      "id": "unh_business_segments_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.49795687495498
+    },
+    {
+      "id": "unh_optum_description_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.527861042006407
+    },
+    {
+      "id": "unh_regulation_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4235097499913536
+    },
+    {
+      "id": "unh_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.7642038330086507
+    },
+    {
+      "id": "unh_medical_cost_risk_01",
+      "category": "risk",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH",
+        "UNH"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4297980830306187
+    }
+  ]
+}

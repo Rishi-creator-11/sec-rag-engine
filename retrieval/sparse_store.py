@@ -161,6 +161,20 @@ def canary_check(index_name: str = INDEX_NAME) -> dict:
     return result
 
 
+# The pinecone-sparse-english-v0 integrated embedder has a per-project
+# tokens-per-minute limit for 'passage' input (250k on the free plan). Large
+# filings (400+ chunks ~ 320k tokens) exceed it, so pace the batches and
+# retry on 429/RESOURCE_EXHAUSTED. Patchable in tests.
+SPARSE_INTER_BATCH_SLEEP = 12.0        # ~50 chunks/batch, <=5 batches/min
+SPARSE_RATE_LIMIT_SLEEP = 65.0         # the limit is per-minute
+SPARSE_MAX_RETRIES = 6
+
+
+def _is_rate_limited(exc: Exception) -> bool:
+    text = f"{type(exc).__name__} {exc}".upper()
+    return "429" in text or "RESOURCE_EXHAUSTED" in text or "MAX TOKENS PER MINUTE" in text
+
+
 def upsert_filing_sparse(
     records: list[dict],
     *,
@@ -171,11 +185,30 @@ def upsert_filing_sparse(
         return {"upserted": 0}
     index = get_client().Index(index_name)
     upserted = 0
-    for start in range(0, len(records), batch_size):
-        batch = [record_to_sparse(r) for r in records[start:start + batch_size]]
-        index.upsert_records(namespace=NAMESPACE, records=batch)
+    batches = [
+        [record_to_sparse(r) for r in records[start:start + batch_size]]
+        for start in range(0, len(records), batch_size)
+    ]
+    for batch_index, batch in enumerate(batches):
+        for attempt in range(1, SPARSE_MAX_RETRIES + 1):
+            try:
+                index.upsert_records(namespace=NAMESPACE, records=batch)
+                break
+            except Exception as exc:  # noqa: BLE001
+                if _is_rate_limited(exc) and attempt < SPARSE_MAX_RETRIES:
+                    logger.warning(
+                        "sparse_upsert event=rate_limited batch=%d attempt=%d/%d "
+                        "sleep=%.0fs",
+                        batch_index, attempt, SPARSE_MAX_RETRIES,
+                        SPARSE_RATE_LIMIT_SLEEP,
+                    )
+                    time.sleep(SPARSE_RATE_LIMIT_SLEEP)
+                    continue
+                raise
         upserted += len(batch)
         logger.info("sparse_upsert event=batch count=%d total=%d", len(batch), upserted)
+        if batch_index < len(batches) - 1 and SPARSE_INTER_BATCH_SLEEP:
+            time.sleep(SPARSE_INTER_BATCH_SLEEP)
     return {"upserted": upserted}
 
 

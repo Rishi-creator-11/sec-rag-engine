@@ -299,3 +299,25 @@ class ScopeHelperTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class HealthReadinessTests(unittest.TestCase):
+    def test_health_reports_lexical_backend(self):
+        from fastapi.testclient import TestClient
+        from api.main import app
+
+        body = TestClient(app).get("/health").json()
+        self.assertEqual(body["status"], "ok")
+        self.assertIn(body["lexical_backend"], {"bm25s", "current"})
+        self.assertIsInstance(body["bm25_documents"], int)
+
+    def test_health_503_when_lexical_index_unavailable(self):
+        from fastapi.testclient import TestClient
+        from api.main import app
+        from retrieval.lexical_backend import LexicalBackendError
+
+        with patch("retrieval.bm25_search.get_index",
+                   side_effect=LexicalBackendError("no index, no rebuild")):
+            resp = TestClient(app, raise_server_exceptions=False).get("/health")
+        self.assertEqual(resp.status_code, 503)
+        self.assertEqual(resp.json()["status"], "unavailable")

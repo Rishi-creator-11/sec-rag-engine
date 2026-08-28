@@ -337,6 +337,17 @@ def assess_filing(
             resume_stage, stages, artifact_paths, hashes, notes
         )
 
+    # A COMPLETE + servable filing whose soft sparse stage was ATTEMPTED and
+    # FAILED (distinct from deliberately "skipped") is still worth repairing on
+    # a plain rerun — sparse is idempotent and re-upserting is cheap relative to
+    # --force. "skipped" is left alone.
+    repair_soft_stage: str | None = None
+    if complete and servable and not skip_sparse:
+        if stages.get("sparse_upserted", {}).get("status") == "failed":
+            repair_soft_stage = "sparse_upserted"
+            notes.append("sparse_upserted was attempted and failed; a plain "
+                         "rerun will retry it (idempotent)")
+
     if complete and not servable:
         notes.append("COMPLETE filing is not servable: chunk artifact missing/corrupt")
     elif complete and missing_rebuild:
@@ -346,10 +357,15 @@ def assess_filing(
             "or if a later re-run needs them"
         )
 
+    if complete and servable:
+        final_resume = repair_soft_stage
+    else:
+        final_resume = resume_stage
+
     return FilingAssessment(
         complete=complete,
         servable=servable,
-        resume_stage=resume_stage if (not complete or not servable) else None,
+        resume_stage=final_resume,
         invalid_stages=sorted(invalid),
         missing_rebuild_artifacts=sorted(set(missing_rebuild)),
         notes=notes,

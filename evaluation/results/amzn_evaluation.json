@@ -7,8 +7,8 @@
     "scoped_retrieval_rate": 1.0,
     "numeric_evidence_present_rate": 1.0,
     "reranker_fallback_questions": 9,
-    "latency_mean_s": 3.6216345582972282,
-    "latency_p50_s": 3.5512134169985075
+    "latency_mean_s": 3.6523674791038503,
+    "latency_p50_s": 3.5088438955135643
   },
   "questions": [
     {
@@ -30,7 +30,7 @@
       "number_hint": "716,924",
       "number_evidence_present": true,
       "reranker_fallback": true,
-      "latency_seconds": 4.305681583005935
+      "latency_seconds": 4.6433180419844575
     },
     {
       "id": "amzn_operating_income_2025_01",
@@ -51,7 +51,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.253066500008572
+      "latency_seconds": 3.750979791977443
     },
     {
       "id": "amzn_aws_segment_01",
@@ -72,7 +72,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.5333197090076283
+      "latency_seconds": 3.2509667919948697
     },
     {
       "id": "amzn_aws_risks_01",
@@ -93,7 +93,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.5691071249893866
+      "latency_seconds": 3.270078082976397
     },
     {
       "id": "amzn_competition_01",
@@ -114,7 +114,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.6770462499698624
+      "latency_seconds": 3.456119500042405
     },
     {
       "id": "amzn_regulation_01",
@@ -135,7 +135,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.7076368749840185
+      "latency_seconds": 3.878667165990919
     },
     {
       "id": "amzn_cybersecurity_01",
@@ -156,7 +156,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.4509704579832032
+      "latency_seconds": 3.4638256250182167
     },
     {
       "id": "amzn_international_01",
@@ -177,7 +177,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.5148569580051117
+      "latency_seconds": 3.479969208012335
     },
     {
       "id": "amzn_fulfillment_logistics_01",
@@ -198,7 +198,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": true,
-      "latency_seconds": 3.4749702920089476
+      "latency_seconds": 3.5377185830147937
     },
     {
       "id": "amzn_future_stock_2030_unsupported_01",
@@ -219,7 +219,7 @@
       "number_hint": null,
       "number_evidence_present": null,
       "reranker_fallback": false,
-      "latency_seconds": 3.7296898330096155
+      "latency_seconds": 3.7920320000266656
     }
   ]
 }

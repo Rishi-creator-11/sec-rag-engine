@@ -1,40 +1,140 @@
 {
-  "schema_version": 2,
-  "note": "Company registry (source of truth). legal_name = SEC-authoritative (EDGAR); display_name = curated human-friendly name; effective name = display_name or legal_name. Verified against data.sec.gov 2026-08-27.",
   "companies": [
     {
-      "ticker": "AAPL",
-      "legal_name": "Apple Inc.",
+      "cik": "0000320193",
       "display_name": "Apple Inc.",
-      "cik": "0000320193"
+      "legal_name": "Apple Inc.",
+      "ticker": "AAPL"
     },
     {
-      "ticker": "AMZN",
-      "legal_name": "AMAZON COM INC",
-      "display_name": "Amazon.com, Inc.",
       "cik": "0001018724",
+      "display_name": "Amazon.com, Inc.",
       "filings": [
         {
+          "accession_number": "0001018724-26-000004",
+          "chunk_count": 89,
+          "filing_date": "2026-02-06",
           "filing_type": "10-K",
           "fiscal_year": 2025,
-          "accession_number": "0001018724-26-000004",
-          "filing_date": "2026-02-06",
-          "report_date": "2025-12-31",
-          "chunk_count": 89
+          "report_date": "2025-12-31"
         }
-      ]
+      ],
+      "legal_name": "AMAZON COM INC",
+      "ticker": "AMZN"
     },
     {
-      "ticker": "MSFT",
-      "legal_name": "MICROSOFT CORP",
+      "cik": "0001652044",
+      "filings": [
+        {
+          "accession_number": "0001652044-26-000018",
+          "chunk_count": 108,
+          "filing_date": "2026-02-05",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        }
+      ],
+      "legal_name": "Alphabet Inc.",
+      "ticker": "GOOGL"
+    },
+    {
+      "cik": "0000019617",
+      "display_name": "JPMorgan Chase & Co.",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-008131",
+          "chunk_count": 400,
+          "filing_date": "2026-02-13",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        }
+      ],
+      "legal_name": "JPMORGAN CHASE & CO",
+      "ticker": "JPM"
+    },
+    {
+      "cik": "0001326801",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-003942",
+          "chunk_count": 152,
+          "filing_date": "2026-01-29",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        }
+      ],
+      "legal_name": "Meta Platforms, Inc.",
+      "ticker": "META"
+    },
+    {
+      "cik": "0000789019",
       "display_name": "Microsoft Corporation",
-      "cik": "0000789019"
+      "legal_name": "MICROSOFT CORP",
+      "ticker": "MSFT"
     },
     {
-      "ticker": "NVDA",
-      "legal_name": "NVIDIA CORP",
+      "cik": "0001045810",
       "display_name": "NVIDIA Corporation",
-      "cik": "0001045810"
+      "legal_name": "NVIDIA CORP",
+      "ticker": "NVDA"
+    },
+    {
+      "cik": "0000731766",
+      "filings": [
+        {
+          "accession_number": "0000731766-26-000062",
+          "chunk_count": 103,
+          "filing_date": "2026-03-02",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        }
+      ],
+      "legal_name": "UNITEDHEALTH GROUP INC",
+      "ticker": "UNH"
+    },
+    {
+      "cik": "0000104169",
+      "filings": [
+        {
+          "accession_number": "0000104169-26-000055",
+          "chunk_count": 110,
+          "filing_date": "2026-03-13",
+          "filing_type": "10-K",
+          "fiscal_year": 2026,
+          "report_date": "2026-01-31"
+        }
+      ],
+      "legal_name": "Walmart Inc.",
+      "ticker": "WMT"
+    },
+    {
+      "cik": "0000034088",
+      "filings": [
+        {
+          "accession_number": "0000034088-26-000045",
+          "chunk_count": 149,
+          "filing_date": "2026-02-18",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        }
+      ],
+      "legal_name": "EXXON MOBIL CORP",
+      "lineage": {
+        "cik_override": true,
+        "note": "Ticker XOM is currently registered to CIK 0002115436 (ExxonMobil Holdings Corporation) effective 2026-07-01. This 10-K (accession 0000034088-26-000045, FY2025) was filed by CIK 0000034088 (EXXON MOBIL CORP); its metadata is kept SEC-authentic.",
+        "registrant_cik": "0000034088",
+        "registrant_legal_name": "EXXON MOBIL CORP",
+        "successor_cik": "0002115436",
+        "successor_effective_date": "2026-07-01",
+        "successor_legal_name": "ExxonMobil Holdings Corporation"
+      },
+      "ticker": "XOM"
     }
-  ]
+  ],
+  "note": "Company registry (source of truth). legal_name = SEC-authoritative (EDGAR); display_name = curated human-friendly name; effective name = display_name or legal_name. Verified against data.sec.gov 2026-08-27.",
+  "schema_version": 2
 }

@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "ticker": "GOOGL",
+    "questions": 10,
+    "supported_questions": 9,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": null,
+    "reranker_fallback_questions": 0,
+    "latency_mean_s": 0.5110083167033735,
+    "latency_p50_s": 0.4340921455004718,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "googl_total_revenue_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 1.2853894589934498
+    },
+    {
+      "id": "googl_operating_income_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4557480830117129
+    },
+    {
+      "id": "googl_primary_business_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4215254579903558
+    },
+    {
+      "id": "googl_advertising_competition_01",
+      "category": "competition",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.3736204169690609
+    },
+    {
+      "id": "googl_ai_01",
+      "category": "ai",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.3912919170106761
+    },
+    {
+      "id": "googl_cloud_01",
+      "category": "cloud",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4010877500404604
+    },
+    {
+      "id": "googl_regulation_antitrust_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.3960382500081323
+    },
+    {
+      "id": "googl_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.44665883301058784
+    },
+    {
+      "id": "googl_international_01",
+      "category": "international",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.455462959012948
+    },
+    {
+      "id": "googl_future_marketcap_2030_unsupported_01",
+      "category": "unsupported",
+      "answer_type": "unsupported",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL",
+        "GOOGL"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": false,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.48326004098635167
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  { "id": "jpm_total_net_revenue_2025_01", "question": "What was JPMorgan Chase's total net revenue for 2025?", "tickers": ["JPM"], "category": "numeric", "answer_type": "numeric" },
+  { "id": "jpm_net_income_2025_01", "question": "What was JPMorgan Chase's net income for 2025?", "tickers": ["JPM"], "category": "numeric", "answer_type": "numeric", "number_hint": "57,048" },
+  { "id": "jpm_business_segments_01", "question": "What are JPMorgan Chase's primary business segments?", "tickers": ["JPM"], "category": "business", "answer_type": "qualitative" },
+  { "id": "jpm_competition_01", "question": "What competitive pressures does JPMorgan Chase describe?", "tickers": ["JPM"], "category": "competition", "answer_type": "qualitative" },
+  { "id": "jpm_credit_risk_01", "question": "How does JPMorgan Chase describe credit risk and its allowance for credit losses?", "tickers": ["JPM"], "category": "risk", "answer_type": "qualitative" },
+  { "id": "jpm_capital_requirements_01", "question": "What does JPMorgan Chase say about regulatory capital requirements and stress testing?", "tickers": ["JPM"], "category": "regulation", "answer_type": "qualitative" },
+  { "id": "jpm_interest_rate_risk_01", "question": "How does JPMorgan Chase describe interest rate risk and net interest income sensitivity?", "tickers": ["JPM"], "category": "risk", "answer_type": "qualitative" },
+  { "id": "jpm_cybersecurity_01", "question": "What cybersecurity and operational resilience risks does JPMorgan Chase disclose?", "tickers": ["JPM"], "category": "cybersecurity", "answer_type": "qualitative" },
+  { "id": "jpm_international_01", "question": "What risks does JPMorgan Chase describe related to its international operations?", "tickers": ["JPM"], "category": "international", "answer_type": "qualitative" },
+  { "id": "jpm_future_rates_2030_unsupported_01", "question": "What will the federal funds rate be in 2030?", "tickers": ["JPM"], "category": "unsupported", "answer_type": "unsupported" }
+]

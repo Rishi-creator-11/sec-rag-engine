@@ -1,0 +1,227 @@
+{
+  "summary": {
+    "ticker": "XOM",
+    "questions": 10,
+    "supported_questions": 10,
+    "filter_correctness": 1.0,
+    "cross_company_leakage": 0.0,
+    "scoped_retrieval_rate": 1.0,
+    "numeric_evidence_present_rate": 0.8,
+    "reranker_fallback_questions": 0,
+    "latency_mean_s": 0.672231791797094,
+    "latency_p50_s": 0.44775185399339534,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "xom_total_revenues_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "332,238",
+      "number_evidence_present": true,
+      "reranker_fallback": false,
+      "latency_seconds": 1.2952719170134515
+    },
+    {
+      "id": "xom_net_income_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "28,844",
+      "number_evidence_present": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.42621770896948874
+    },
+    {
+      "id": "xom_total_assets_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "448,980",
+      "number_evidence_present": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.43616937496699393
+    },
+    {
+      "id": "xom_long_term_debt_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "34,241",
+      "number_evidence_present": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4638098750147037
+    },
+    {
+      "id": "xom_rd_costs_2025_01",
+      "category": "numeric",
+      "answer_type": "numeric",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": "1,228",
+      "number_evidence_present": false,
+      "reranker_fallback": false,
+      "latency_seconds": 1.812071125023067
+    },
+    {
+      "id": "xom_business_segments_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.45021091599483043
+    },
+    {
+      "id": "xom_pioneer_acquisition_01",
+      "category": "business",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4061728339875117
+    },
+    {
+      "id": "xom_climate_regulation_01",
+      "category": "regulation",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.5848773330217227
+    },
+    {
+      "id": "xom_commodity_price_risk_01",
+      "category": "risk",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.44529279199196026
+    },
+    {
+      "id": "xom_cybersecurity_01",
+      "category": "cybersecurity",
+      "answer_type": "qualitative",
+      "evidence_count": 5,
+      "evidence_tickers": [
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM",
+        "XOM"
+      ],
+      "filter_correctness": 1.0,
+      "cross_company_leakage": 0.0,
+      "has_company_evidence": true,
+      "supported": true,
+      "number_hint": null,
+      "number_evidence_present": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4022240419872105
+    }
+  ]
+}

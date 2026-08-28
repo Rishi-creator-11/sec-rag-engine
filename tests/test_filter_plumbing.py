@@ -142,27 +142,31 @@ class Bm25FilterPlumbingTests(unittest.TestCase):
 
     def test_filtered_scores_match_global_scoring(self):
         """A filtered result keeps the same score it has in the unfiltered run."""
-        unfiltered = {r["chunk_id"]: r["score"] for r in self.search(self.QUERY, top_k=300)}
+        corpus_size = self.index.document_count  # cover the whole corpus
+        unfiltered = {
+            r["chunk_id"]: r["score"]
+            for r in self.search(self.QUERY, top_k=corpus_size)
+        }
         filtered = self.search(
-            self.QUERY, top_k=300, filters=RetrievalFilter(tickers=("AAPL",))
+            self.QUERY, top_k=corpus_size, filters=RetrievalFilter(tickers=("AAPL",))
         )
         for row in filtered:
             self.assertAlmostEqual(row["score"], unfiltered[row["chunk_id"]], places=12)
 
-    def test_global_statistics_unchanged_after_filtered_query(self):
-        avgdl_before = self.index.average_document_length
-        idf_before = dict(self.index.inverse_document_frequencies)
-        count_before = self.index.document_count
+    def test_current_bm25_global_stats_unchanged_after_filtered_query(self):
+        # reference pure-Python impl: filtering must not recompute IDF / avgdl
+        from retrieval.bm25_search import BM25Index, load_chunks
 
-        self.search(
-            self.QUERY, top_k=10, filters=RetrievalFilter(tickers=("NVDA",))
-        )
+        idx = BM25Index(load_chunks())
+        avgdl_before = idx.average_document_length
+        idf_before = dict(idx.inverse_document_frequencies)
+        count_before = idx.document_count
 
-        self.assertEqual(self.index.average_document_length, avgdl_before)
-        self.assertEqual(self.index.document_count, count_before)
-        self.assertEqual(
-            dict(self.index.inverse_document_frequencies), idf_before
-        )
+        idx.search(self.QUERY, top_k=10, filters=RetrievalFilter(tickers=("NVDA",)))
+
+        self.assertEqual(idx.average_document_length, avgdl_before)
+        self.assertEqual(idx.document_count, count_before)
+        self.assertEqual(dict(idx.inverse_document_frequencies), idf_before)
 
     def test_no_matches_returns_empty_list(self):
         rows = self.search(

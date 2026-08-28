@@ -280,39 +280,46 @@ class BM25Index:
         return results
 
 
-_index: BM25Index | None = None
+# The in-process lexical retriever. It is a `retrieval.lexical_backend`
+# LexicalBackend — bm25s by default (persisted, ~20ms load), or the pure-Python
+# BM25Index (via CurrentBM25Backend) with SEC_RAG_LEXICAL_BACKEND=current.
+# Both expose .search(query, top_k, filters) and .document_count.
+_index = None
 
 
-def get_index() -> BM25Index:
+def _select_backend(*, force_rebuild: bool = False):
+    from retrieval.lexical_backend import get_lexical_backend  # lazy: avoids cycle
+
+    return get_lexical_backend(force_rebuild=force_rebuild)
+
+
+def get_index():
     global _index
-
     if _index is None:
-        _index = BM25Index(
-            load_chunks()
-        )
-
+        _index = _select_backend()
     return _index
 
 
-def reload() -> BM25Index:
-    """Rebuild the in-process BM25 index from disk.
+def reload():
+    """Rebuild the in-process lexical index from the canonical chunk JSONL.
 
-    Call this after a new filing's chunk JSONL has been written so the current
-    process picks it up. A separately-running API process must either call this
-    or be restarted (documented ingestion workflow: ingest -> restart API).
+    Call this after a new filing's chunks are written so the current process
+    picks it up. For the bm25s backend this also re-persists the index so a
+    restarted API loads it in ~20ms. A separately-running API process must
+    still restart (documented workflow: ingest -> restart API).
     """
     global _index
-    _index = BM25Index(load_chunks())
+    _index = _select_backend(force_rebuild=True)
     return _index
 
 
 def document_count() -> int | None:
-    """Number of chunks in the loaded BM25 index, or None if not yet built.
+    """Chunk count of the loaded lexical index, or None if not yet built.
 
-    Deliberately does NOT trigger a build — it is a cheap diagnostic for
-    /health so an operator can confirm a restart picked up new filings.
+    Deliberately does NOT trigger a build — a cheap /health diagnostic so an
+    operator can confirm a restart picked up new filings.
     """
-    return _index.document_count if _index is not None else None
+    return getattr(_index, "document_count", None) if _index is not None else None
 
 
 def search(

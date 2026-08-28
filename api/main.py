@@ -71,17 +71,40 @@ class AskRequest(BaseModel):
 
 
 @app.get("/health")
-def health() -> dict:
-    from retrieval.bm25_search import document_count
+def health():
+    """Liveness + readiness.
 
-    # Additive diagnostics. `bm25_documents` is null until the index is built
-    # (first /ask); a restart-after-ingest is how a running process picks up
-    # newly ingested filings.
-    return {
+    Additive diagnostics: `lexical_backend` ("bm25s" | "current"), `bm25_documents`
+    (null until the index is built on the first /ask), `companies`.
+
+    Readiness: the lexical retriever must be able to load OR deterministically
+    rebuild its index. If neither works we return 503 rather than silently
+    serving partial lexical search.
+    """
+    import os
+
+    from fastapi.responses import JSONResponse
+
+    from retrieval.bm25_search import document_count, get_index
+    from retrieval.lexical_backend import DEFAULT_BACKEND, LexicalBackendError
+
+    backend = os.getenv("SEC_RAG_LEXICAL_BACKEND", DEFAULT_BACKEND).strip().lower()
+    body = {
         "status": "ok",
+        "lexical_backend": backend,
         "companies": len(list_companies()),
         "bm25_documents": document_count(),
     }
+    try:
+        get_index()  # builds/loads once; cheap thereafter
+        body["bm25_documents"] = document_count()
+    except LexicalBackendError as exc:
+        return JSONResponse(
+            status_code=503,
+            content={**body, "status": "unavailable",
+                     "detail": f"lexical index unavailable: {exc}"},
+        )
+    return body
 
 
 @app.get("/companies")

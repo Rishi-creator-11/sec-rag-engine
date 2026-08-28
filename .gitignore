@@ -16,6 +16,9 @@ data/embeddings/
 # SEC EDGAR response cache (company_tickers.json etc.)
 data/sec_cache/
 
+# Persisted bm25s lexical index (rebuildable from data/chunks/**)
+data/bm25s_index/
+
 # Ingestion rebuild artifacts (large, regenerable from SEC / from chunks).
 # Kept OUT of git: raw HTML and cleaned text. Kept IN git: metadata.json
 # (small record) and data/chunks/**/*.jsonl (the BM25 serving artifact).
@@ -26,11 +29,14 @@ data/**/.*.tmp*
 
 # Large intermediate evaluation artifacts / caches
 evaluation/results/benchmark_v2_pool.json
+evaluation/results/benchmark_v3_pool.json
 evaluation/results/cohere_reranker_cache.json
 evaluation/results/reranker_cache.json
 evaluation/results/benchmark_v2_auto_judgments.json
 evaluation/results/benchmark_v2_judgments.json
+evaluation/results/benchmark_v3_auto_judgments.json
 evaluation/results/*_review.txt
+evaluation/results/*.log
 evaluation/results/retrieval_pool.json
 evaluation/results/pool_judgments.json
 evaluation/corpus_review.txt

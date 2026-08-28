@@ -19,6 +19,9 @@ DEFAULT_NAMESPACE = "__default__"
 VECTOR_DIMENSION = 1536
 BATCH_SIZE = 50
 UPSERT_MAX_ATTEMPTS = 4
+# Read-after-write poll schedule for the post-upsert verification (Pinecone
+# serverless is eventually consistent). Patchable in tests.
+VERIFY_POLL_WAITS = (1.0, 2.0, 4.0, 8.0, 15.0, 15.0)
 
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
@@ -118,18 +121,31 @@ def upsert_filing(
     result = {"upserted": upserted, "verified": 0, "missing": []}
     if verify:
         ids = [record["chunk_id"] for record in records]
+        # Pinecone serverless is eventually consistent on read-after-write, so
+        # poll with backoff rather than declaring vectors missing after one
+        # short sleep. Total wait is bounded (~1+2+4+8+15+15 ≈ 45s worst case).
+        waits = VERIFY_POLL_WAITS
         found: set[str] = set()
-        for batch in _iter_batches(ids, 100):
-            time.sleep(0.2)  # brief settle for read-after-write
-            fetched = index.fetch(ids=batch, namespace=namespace)
-            found.update((fetched.vectors or {}).keys())
-        missing = [chunk_id for chunk_id in ids if chunk_id not in found]
+        missing = list(ids)
+        for attempt, wait in enumerate(waits, start=1):
+            time.sleep(wait)
+            pending = [chunk_id for chunk_id in missing if chunk_id not in found]
+            for batch in _iter_batches(pending, 100):
+                fetched = index.fetch(ids=batch, namespace=namespace)
+                found.update((fetched.vectors or {}).keys())
+            missing = [chunk_id for chunk_id in ids if chunk_id not in found]
+            if not missing:
+                break
+            logger.info(
+                "dense_upsert event=verify_poll attempt=%d/%d found=%d/%d",
+                attempt, len(waits), len(found), len(ids),
+            )
         result["verified"] = len(found)
         result["missing"] = missing
         if missing:
             raise RuntimeError(
                 f"dense upsert verification failed: {len(missing)} vectors missing "
-                f"(e.g. {missing[:3]})"
+                f"after {sum(waits):.0f}s of polling (e.g. {missing[:3]})"
             )
     return result
 

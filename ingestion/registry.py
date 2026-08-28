@@ -82,7 +82,7 @@ def _load() -> dict[str, dict]:
         if ticker in table:
             raise ValueError(f"{REGISTRY_PATH}: duplicate ticker {ticker}")
         filings = entry.get("filings", [])
-        table[ticker] = {
+        record = {
             "ticker": ticker,
             "legal_name": legal_name,
             "display_name": display_name,
@@ -90,6 +90,9 @@ def _load() -> dict[str, dict]:
             "cik": str(entry["cik"]).strip(),
             "filings": list(filings) if isinstance(filings, list) else [],
         }
+        if isinstance(entry.get("lineage"), dict):
+            record["lineage"] = dict(entry["lineage"])
+        table[ticker] = record
 
     _cache = table
     return _cache
@@ -116,6 +119,7 @@ def upsert_company(
     legal_name: str,
     cik: str,
     display_name: str | None = None,
+    lineage: dict | None = None,
 ) -> dict:
     """Add a company or update its legal_name/cik (and display_name if given).
 
@@ -123,11 +127,18 @@ def upsert_company(
     passed. ``display_name`` is only set when a non-empty value is supplied, so
     ingestion never clobbers a curated name. Existing filings are preserved.
     Idempotent.
+
+    ``lineage`` (optional): ticker->registrant succession metadata, written only
+    when supplied. It records that the search ``ticker`` is distinct from the
+    entity that filed (``cik`` / ``legal_name``) and, if known, from the entity
+    the ticker currently resolves to. Passing ``None`` never clears an existing
+    lineage block.
     """
     normalized = normalize_ticker(ticker)
     legal_name = str(legal_name).strip()
     cik = str(cik).strip()
     display_name = (display_name or "").strip() or None
+    lineage = lineage if isinstance(lineage, dict) and lineage else None
 
     data = _read_raw()
     companies = data.setdefault("companies", [])
@@ -140,6 +151,8 @@ def upsert_company(
             entry["cik"] = cik
             if display_name is not None:
                 entry["display_name"] = display_name
+            if lineage is not None:
+                entry["lineage"] = lineage
             entry.setdefault("filings", [])
             if json.dumps(entry, sort_keys=True) != before:
                 _write_raw(data)
@@ -155,6 +168,8 @@ def upsert_company(
     }
     if display_name is not None:
         new_entry["display_name"] = display_name
+    if lineage is not None:
+        new_entry["lineage"] = lineage
     companies.append(new_entry)
     companies.sort(key=lambda c: normalize_ticker(c.get("ticker", "")))
     _write_raw(data)

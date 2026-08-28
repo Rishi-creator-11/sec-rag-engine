@@ -1,0 +1,77 @@
+[
+  {
+    "id": "unh_total_revenues_2025_01",
+    "question": "What were UnitedHealth Group's total revenues for 2025?",
+    "tickers": ["UNH"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "447,567"
+  },
+  {
+    "id": "unh_net_earnings_2025_01",
+    "question": "What were UnitedHealth Group's net earnings attributable to common shareholders for 2025?",
+    "tickers": ["UNH"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "12,056"
+  },
+  {
+    "id": "unh_diluted_eps_2025_01",
+    "question": "What was UnitedHealth Group's diluted earnings per share for 2025?",
+    "tickers": ["UNH"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "13.23"
+  },
+  {
+    "id": "unh_medical_care_ratio_2025_01",
+    "question": "What was UnitedHealth Group's medical care ratio in 2025?",
+    "tickers": ["UNH"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "89.1"
+  },
+  {
+    "id": "unh_total_assets_2025_01",
+    "question": "What were UnitedHealth Group's total assets as of December 31, 2025?",
+    "tickers": ["UNH"],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint": "309,581"
+  },
+  {
+    "id": "unh_business_segments_01",
+    "question": "What are UnitedHealth Group's reportable business segments?",
+    "tickers": ["UNH"],
+    "category": "business",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "unh_optum_description_01",
+    "question": "How does UnitedHealth Group describe the Optum business?",
+    "tickers": ["UNH"],
+    "category": "business",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "unh_regulation_01",
+    "question": "What government regulation risks does UnitedHealth Group describe for its health insurance and services businesses?",
+    "tickers": ["UNH"],
+    "category": "regulation",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "unh_cybersecurity_01",
+    "question": "What does UnitedHealth Group disclose about cybersecurity risk, including the Change Healthcare cyberattack?",
+    "tickers": ["UNH"],
+    "category": "cybersecurity",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "unh_medical_cost_risk_01",
+    "question": "How does UnitedHealth Group describe the risk that medical costs exceed its estimates?",
+    "tickers": ["UNH"],
+    "category": "risk",
+    "answer_type": "qualitative"
+  }
+]
