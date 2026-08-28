@@ -177,6 +177,73 @@
     "ticker": "WMT",
     "updated_at": "2026-08-28T03:18:32Z"
   },
+  "000032019324000123": {
+    "accession_number": "0000320193-24-000123",
+    "artifacts": {
+      "chunks": "data/chunks/apple_10k_chunks.jsonl"
+    },
+    "chunk_count": 66,
+    "cik": "0000320193",
+    "company_name": "Apple Inc.",
+    "created_at": "seed-backfill",
+    "dense_upserted": 66,
+    "embedding_count": 66,
+    "filing_date": "2024-11-01",
+    "filing_id": "000032019324000123",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {},
+    "last_error": null,
+    "note": "seed filing; chunks use legacy ids apple_10k_N (no canonical migration)",
+    "primary_document": "0000320193-24-000123 (seed)",
+    "report_date": "2024-09-28",
+    "source_url": "",
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      }
+    },
+    "ticker": "AAPL",
+    "updated_at": "seed-backfill"
+  },
   "000073176626000062": {
     "accession_number": "0000731766-26-000062",
     "artifacts": {
@@ -267,6 +334,73 @@
     "ticker": "UNH",
     "updated_at": "2026-08-28T17:46:23Z"
   },
+  "000095017025100235": {
+    "accession_number": "0000950170-25-100235",
+    "artifacts": {
+      "chunks": "data/chunks/microsoft_10k_chunks.jsonl"
+    },
+    "chunk_count": 98,
+    "cik": "0000789019",
+    "company_name": "MICROSOFT CORP",
+    "created_at": "seed-backfill",
+    "dense_upserted": 98,
+    "embedding_count": 98,
+    "filing_date": "2025-07-30",
+    "filing_id": "000095017025100235",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {},
+    "last_error": null,
+    "note": "seed filing; chunks use legacy ids microsoft_10k_N (no canonical migration)",
+    "primary_document": "0000950170-25-100235 (seed)",
+    "report_date": "2025-06-30",
+    "source_url": "",
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      }
+    },
+    "ticker": "MSFT",
+    "updated_at": "seed-backfill"
+  },
   "000101872426000004": {
     "accession_number": "0001018724-26-000004",
     "artifacts": {
@@ -354,6 +488,343 @@
     },
     "ticker": "AMZN",
     "updated_at": "2026-08-28T02:00:11Z"
+  },
+  "000104581023000017": {
+    "accession_number": "0001045810-23-000017",
+    "artifacts": {
+      "chunks": "data/chunks/NVDA/000104581023000017_chunks.jsonl",
+      "clean_text": "data/raw/NVDA/000104581023000017/filing.txt",
+      "embeddings": "data/embeddings/NVDA/000104581023000017_embeddings.jsonl",
+      "metadata": "data/raw/NVDA/000104581023000017/metadata.json",
+      "raw_html": "data/raw/NVDA/000104581023000017/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2669239,
+    "chunk_count": 98,
+    "cik": "0001045810",
+    "clean_chars": 319267,
+    "company_name": "NVIDIA CORP",
+    "created_at": "2026-08-28T23:28:09Z",
+    "dense_upserted": 98,
+    "dense_verified": 98,
+    "embedding_count": 98,
+    "filing_date": "2023-02-24",
+    "filing_id": "000104581023000017",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "ce534ad08b431d5a0d7c10a0dc72939ad050270a9b2eed51b1c465e9ac1ca142",
+      "clean_text_sha256": "e405e53bcb1510aa99bd9f819556628acc79cdb5aa35b76c0eb864a221bdd13e",
+      "embeddings_sha256": "c34f6f8da46778586d36c7d25c199c2ec73cd58a6810d6fce52b062eff2180f4"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 1684,
+    "primary_doc_sha256": "a4c77324eba4a3d88d46428ee097531930b75e46e983816352c76eff927621b7",
+    "primary_document": "nvda-20230129.htm",
+    "report_date": "2023-01-29",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 98,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:28Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:28Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:12Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:10Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:28Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:27Z"
+      }
+    },
+    "ticker": "NVDA",
+    "updated_at": "2026-08-28T23:28:28Z"
+  },
+  "000104581024000029": {
+    "accession_number": "0001045810-24-000029",
+    "artifacts": {
+      "chunks": "data/chunks/NVDA/000104581024000029_chunks.jsonl",
+      "clean_text": "data/raw/NVDA/000104581024000029/filing.txt",
+      "embeddings": "data/embeddings/NVDA/000104581024000029_embeddings.jsonl",
+      "metadata": "data/raw/NVDA/000104581024000029/metadata.json",
+      "raw_html": "data/raw/NVDA/000104581024000029/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2085566,
+    "chunk_count": 103,
+    "cik": "0001045810",
+    "clean_chars": 340003,
+    "company_name": "NVIDIA CORP",
+    "created_at": "2026-08-28T23:27:35Z",
+    "dense_upserted": 103,
+    "dense_verified": 103,
+    "embedding_count": 103,
+    "filing_date": "2024-02-21",
+    "filing_id": "000104581024000029",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "801bb56cbf76c154dc10ad92f503d51c58b3c0fcfea1cc5f1d287df517aef84b",
+      "clean_text_sha256": "098884fe124e468362432206d2e597bfb0af075ff843834a9c973c1a643e5cad",
+      "embeddings_sha256": "4ac5f174d34540d690f999d643847cd0e034e1e1e9b7a72c186ba49c374ffb25"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 1586,
+    "primary_doc_sha256": "3ee6c75beb947d9e815464e5c0b6392db4f8ca20aa2f99666bc17c92b82d7759",
+    "primary_document": "nvda-20240128.htm",
+    "report_date": "2024-01-28",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 103,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:39Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:37Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:09Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T23:28:08Z"
+      }
+    },
+    "ticker": "NVDA",
+    "updated_at": "2026-08-28T23:28:09Z"
+  },
+  "000104581025000023": {
+    "accession_number": "0001045810-25-000023",
+    "artifacts": {
+      "chunks": "data/chunks/NVDA/000104581025000023_chunks.jsonl",
+      "clean_text": "data/raw/NVDA/000104581025000023/filing.txt",
+      "embeddings": "data/embeddings/NVDA/000104581025000023_embeddings.jsonl",
+      "metadata": "data/raw/NVDA/000104581025000023/metadata.json",
+      "raw_html": "data/raw/NVDA/000104581025000023/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2067520,
+    "chunk_count": 105,
+    "cik": "0001045810",
+    "clean_chars": 348385,
+    "company_name": "NVIDIA CORP",
+    "created_at": "2026-08-28T23:27:00Z",
+    "dense_upserted": 105,
+    "dense_verified": 105,
+    "embedding_count": 105,
+    "filing_date": "2025-02-26",
+    "filing_id": "000104581025000023",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "ddd192461a2768cc277d4ed16942d78d655415aeeefb9e45e732aafdd9f15b30",
+      "clean_text_sha256": "110611178d95bb573385622eecfc0516f2701fb10a0d15f78333a5d31a008fa3",
+      "embeddings_sha256": "c1ef2a9f899c1704f1387cdd2e53522339ea7bbbcaf40142aebb03f5ef6282a2"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 1483,
+    "primary_doc_sha256": "dae19486be264fd26eb00a7f920dc641041a261c81bc8c03b678eea947de4856",
+    "primary_document": "nvda-20250126.htm",
+    "report_date": "2025-01-26",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 105,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:00Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:00Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:06Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:00Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:00Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:03Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:35Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-28T23:27:34Z"
+      }
+    },
+    "ticker": "NVDA",
+    "updated_at": "2026-08-28T23:27:35Z"
+  },
+  "000104581026000021": {
+    "accession_number": "0001045810-26-000021",
+    "artifacts": {
+      "chunks": "data/chunks/nvidia_10k_chunks.jsonl"
+    },
+    "chunk_count": 103,
+    "cik": "0001045810",
+    "company_name": "NVIDIA CORP",
+    "created_at": "seed-backfill",
+    "dense_upserted": 103,
+    "embedding_count": 103,
+    "filing_date": "2026-02-25",
+    "filing_id": "000104581026000021",
+    "filing_type": "10-K",
+    "fiscal_year": 2026,
+    "hashes": {},
+    "last_error": null,
+    "note": "seed filing; chunks use legacy ids nvidia_10k_N (no canonical migration)",
+    "primary_document": "0001045810-26-000021 (seed)",
+    "report_date": "2026-01-25",
+    "source_url": "",
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "seed-backfill"
+      }
+    },
+    "ticker": "NVDA",
+    "updated_at": "seed-backfill"
   },
   "000162828026003942": {
     "accession_number": "0001628280-26-003942",

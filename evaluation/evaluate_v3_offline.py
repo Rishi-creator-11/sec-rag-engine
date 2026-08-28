@@ -50,6 +50,28 @@ def _is_numeric(item: dict) -> bool:
     )
 
 
+_SEED_FY = {"apple_10k": 2024, "microsoft_10k": 2025, "nvidia_10k": 2026}
+
+
+def _chunk_fiscal_year(chunk_id: str) -> int | None:
+    """Fiscal year of a chunk from its id. Handles seed (legacy) + canonical."""
+    for prefix, year in _SEED_FY.items():
+        if chunk_id.startswith(prefix + "_"):
+            return year
+    parts = chunk_id.split("_")
+    if len(parts) >= 3 and parts[1].isdigit():
+        return int(parts[1])
+    return None
+
+
+def _qrel_years(relevant_chunks: list[str]) -> list[int] | None:
+    """The fiscal years the qrels live in — used to keep a benchmark_v3 question
+    scoped to the year it was judged against, even after other years of the same
+    company are ingested (Phase 5). None => leave the scope ticker-only."""
+    years = {y for cid in relevant_chunks if (y := _chunk_fiscal_year(cid)) is not None}
+    return sorted(years) if years else None
+
+
 def build_live_pool(bench: list[dict], depth: int = 50) -> dict:
     """Call the real retrievers (scoped) and return a pool dict in the same shape
     as benchmark_v3_pool.json. Used by --live to re-check retrieval quality on the
@@ -67,7 +89,11 @@ def build_live_pool(bench: list[dict], depth: int = 50) -> dict:
                  if q["answer_type"] != "unsupported" and q.get("relevant_chunks")]
     for n, item in enumerate(supported, 1):
         qid, ticker, q = item["id"], item["company"], item["question"]
-        filt = RetrievalFilter(tickers=(ticker,))
+        # Keep each question scoped to the fiscal year(s) its qrels live in, so
+        # adding other years of the same company (Phase 5 multi-year) does not
+        # move judged chunks out of the top-k and fake a regression.
+        years = _qrel_years(item["relevant_chunks"])
+        filt = RetrievalFilter(tickers=(ticker,), fiscal_years=years)
         vec = embed_text(q)
         cand: dict = {}
         runs = {

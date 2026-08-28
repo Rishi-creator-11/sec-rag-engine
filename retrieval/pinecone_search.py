@@ -45,18 +45,35 @@ def search(
     results = []
 
     for match in response.matches:
+        meta = match.metadata or {}
         results.append({
             "chunk_id": match.id,
             "score": match.score,
-            "text": match.metadata["text"],
-            "company": match.metadata["company"],
-            "ticker": match.metadata["ticker"],
-            "filing_type": match.metadata["filing_type"],
-            "filing_date": match.metadata["filing_date"],
-            "source_url": match.metadata["source_url"],
+            "text": meta.get("text", ""),
+            "company": meta.get("company") or meta.get("company_name"),
+            "ticker": meta.get("ticker"),
+            "filing_type": meta.get("filing_type"),
+            "filing_date": meta.get("filing_date"),
+            "source_url": meta.get("source_url"),
+            # year/filing identity (present on pipeline-ingested + backfilled seed
+            # vectors; may be absent on un-backfilled seed vectors)
+            "fiscal_year": _as_int(meta.get("fiscal_year")),
+            "report_date": meta.get("report_date"),
+            "accession_number": meta.get("accession_number"),
+            "filing_id": meta.get("filing_id"),
+            "chunk_index": _as_int(meta.get("chunk_index")),
         })
 
     return results
+
+
+def _as_int(value):
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
 
 
 if __name__ == "__main__":

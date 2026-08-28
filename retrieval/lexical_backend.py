@@ -39,6 +39,9 @@ class LexicalBackendError(RuntimeError):
 
 _RESULT_FIELDS = (
     "text", "company", "ticker", "filing_type", "filing_date", "source_url",
+    # year / filing identity — present on pipeline + backfilled seed chunks,
+    # None on un-backfilled seed chunks. Mirrors retrieval.bm25_search.search.
+    "fiscal_year", "report_date", "accession_number", "filing_id", "chunk_index",
 )
 
 
@@ -46,6 +49,8 @@ def _to_result(chunk: dict, score: float) -> dict:
     out = {"chunk_id": chunk["chunk_id"], "score": float(score)}
     for field in _RESULT_FIELDS:
         out[field] = chunk.get(field)
+    if out.get("company") is None:
+        out["company"] = chunk.get("company_name")
     return out
 
 

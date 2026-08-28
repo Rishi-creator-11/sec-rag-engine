@@ -197,10 +197,34 @@ def record_filing(ticker: str, filing: dict) -> None:
                     _write_raw(data)
                     return
             filings.append(record)
-            filings.sort(key=lambda f: (f.get("filing_type", ""), f.get("fiscal_year", 0)))
+            _sort_filings(filings)
             _write_raw(data)
             return
     raise ValueError(f"record_filing: company {normalized} is not registered")
+
+
+def _sort_filings(filings: list[dict]) -> None:
+    """Deterministic order: filing_type asc, then fiscal_year DESC (newest first)."""
+    filings.sort(
+        key=lambda f: (str(f.get("filing_type", "")), -int(f.get("fiscal_year") or 0))
+    )
+
+
+def available_fiscal_years(ticker: str) -> list[int]:
+    """Fiscal years with an ingested 10-K for ``ticker`` (newest first).
+
+    Backs API fiscal-year validation: a requested year not in this list is
+    rejected rather than silently widened to an all-years search.
+    """
+    entry = _load().get(normalize_ticker(ticker))
+    if not entry:
+        return []
+    years = {
+        int(f["fiscal_year"])
+        for f in entry.get("filings", [])
+        if f.get("filing_type") == "10-K" and f.get("fiscal_year") is not None
+    }
+    return sorted(years, reverse=True)
 
 
 def list_companies() -> list[dict]:

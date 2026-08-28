@@ -3,6 +3,16 @@
     {
       "cik": "0000320193",
       "display_name": "Apple Inc.",
+      "filings": [
+        {
+          "accession_number": "0000320193-24-000123",
+          "chunk_count": 66,
+          "filing_date": "2024-11-01",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-09-28"
+        }
+      ],
       "legal_name": "Apple Inc.",
       "ticker": "AAPL"
     },
@@ -71,12 +81,56 @@
     {
       "cik": "0000789019",
       "display_name": "Microsoft Corporation",
+      "filings": [
+        {
+          "accession_number": "0000950170-25-100235",
+          "chunk_count": 98,
+          "filing_date": "2025-07-30",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-06-30"
+        }
+      ],
       "legal_name": "MICROSOFT CORP",
       "ticker": "MSFT"
     },
     {
       "cik": "0001045810",
       "display_name": "NVIDIA Corporation",
+      "filings": [
+        {
+          "accession_number": "0001045810-26-000021",
+          "chunk_count": 103,
+          "filing_date": "2026-02-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2026,
+          "report_date": "2026-01-25"
+        },
+        {
+          "accession_number": "0001045810-25-000023",
+          "chunk_count": 105,
+          "filing_date": "2025-02-26",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-01-26"
+        },
+        {
+          "accession_number": "0001045810-24-000029",
+          "chunk_count": 103,
+          "filing_date": "2024-02-21",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-01-28"
+        },
+        {
+          "accession_number": "0001045810-23-000017",
+          "chunk_count": 98,
+          "filing_date": "2023-02-24",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-01-29"
+        }
+      ],
       "legal_name": "NVIDIA CORP",
       "ticker": "NVDA"
     },

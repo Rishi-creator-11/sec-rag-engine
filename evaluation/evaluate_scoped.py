@@ -99,6 +99,24 @@ class FilterNotPlumbed(RuntimeError):
 # --------------------------------------------------------------------------- #
 # Ticker derivation                                                           #
 # --------------------------------------------------------------------------- #
+_SEED_FISCAL_YEAR = {"apple_10k": 2024, "microsoft_10k": 2025, "nvidia_10k": 2026}
+
+
+def _qrel_fiscal_years(relevant_chunks: list[str]) -> list[int]:
+    """Fiscal years the qrels live in (seed prefix map + canonical TICKER_FY_...)."""
+    years: set[int] = set()
+    for cid in relevant_chunks:
+        for prefix, year in _SEED_FISCAL_YEAR.items():
+            if cid.startswith(prefix + "_"):
+                years.add(year)
+                break
+        else:
+            parts = cid.split("_")
+            if len(parts) >= 3 and parts[1].isdigit():
+                years.add(int(parts[1]))
+    return sorted(years)
+
+
 def ticker_from_chunk_id(chunk_id: str) -> str | None:
     for prefix, ticker in PREFIX_TO_TICKER.items():
         if chunk_id.startswith(f"{prefix}_"):
@@ -223,8 +241,17 @@ def evaluate(retriever_name: str, mode: str, limit: int | None) -> dict | None:
         expected, item_warnings = derive_expected_tickers(item)
         warnings.extend(item_warnings)
         relevant = set(item.get("relevant_chunks", []))
+        # Scope to the fiscal year(s) the qrels live in. benchmark_v2 predates
+        # multi-year ingestion; once a company has several fiscal years in the
+        # corpus a ticker-only filter dilutes the (single-year) qrels. Deriving
+        # the year from the qrel chunk ids keeps the historical benchmark a fair
+        # reference. (It is NOT a production gate — see PHASE_4.5_REPORT.md.)
+        years = _qrel_fiscal_years(item.get("relevant_chunks", []))
         filt = (
-            RetrievalFilter(tickers=tuple(sorted(expected)))
+            RetrievalFilter(
+                tickers=tuple(sorted(expected)),
+                fiscal_years=tuple(years) if years else None,
+            )
             if (filtered and expected)
             else None
         )

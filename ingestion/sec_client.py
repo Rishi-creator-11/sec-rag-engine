@@ -44,6 +44,9 @@ logger = logging.getLogger("ingestion.sec_client")
 
 COMPANY_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
+# Older filing history is paged into separate JSON files referenced from
+# submissions["filings"]["files"]; each entry's "name" is fetched from here.
+SUBMISSIONS_ARCHIVE_URL = "https://data.sec.gov/submissions/{name}"
 ARCHIVES_DOC_URL = (
     "https://www.sec.gov/Archives/edgar/data/{cik_int}/{accession_nodash}/{primary_document}"
 )
@@ -245,6 +248,173 @@ class SecClient:
     def submissions(self, cik10: str) -> dict:
         return self._get_json(SUBMISSIONS_URL.format(cik10=normalize_cik(cik10)))
 
+    # ------------------------------------------------------------------ #
+    # 10-K filing history                                                 #
+    # ------------------------------------------------------------------ #
+    @staticmethod
+    def _rows_from_block(block: dict) -> list[dict]:
+        """Turn a parallel-array filing block (recent[] or an archive file)
+        into a list of per-filing row dicts. Missing arrays -> empty list."""
+        required = ("form", "accessionNumber", "filingDate", "reportDate", "primaryDocument")
+        if any(key not in block for key in required):
+            return []
+        forms = block["form"]
+        rows: list[dict] = []
+        for i in range(len(forms)):
+            rows.append({
+                "form": forms[i],
+                "accessionNumber": block["accessionNumber"][i],
+                "filingDate": block["filingDate"][i],
+                "reportDate": block["reportDate"][i],
+                "primaryDocument": block["primaryDocument"][i],
+            })
+        return rows
+
+    def _all_10k_rows(
+        self, cik10: str, *, submissions: dict | None = None,
+        include_archives: bool = True,
+    ) -> list[dict]:
+        """Every EXACT 10-K (never 10-K/A) for a CIK, newest fiscal period first.
+
+        Merges submissions["filings"]["recent"] with every archived filing-history
+        JSON file referenced from submissions["filings"]["files"] — never assumes
+        the full history lives in recent[]. De-duped by accession, sorted by
+        (report_date desc, filing_date desc, accession desc).
+
+        ``include_archives=False`` skips the archive fetches (recent[] only) — a
+        fast path for "latest 10-K" callers, since recent[] holds the newest
+        ~1000 filings and the archives only page in older history.
+        """
+        cik10 = normalize_cik(cik10)
+        subs = submissions if submissions is not None else self.submissions(cik10)
+        filings = subs.get("filings", {})
+
+        blocks = [filings.get("recent", {})]
+        if include_archives:
+            for archive in filings.get("files", []) or []:
+                name = str(archive.get("name", "")).strip()
+                if not name:
+                    continue
+                try:
+                    blocks.append(
+                        self._get_json(SUBMISSIONS_ARCHIVE_URL.format(name=name))
+                    )
+                except SecNotFoundError:
+                    logger.warning(
+                        "sec_client event=archive_missing cik=%s file=%s (skipped)",
+                        cik10, name,
+                    )
+
+        seen: set[str] = set()
+        rows: list[dict] = []
+        for block in blocks:
+            for row in self._rows_from_block(block):
+                if row["form"] != "10-K":  # exact match excludes "10-K/A"
+                    continue
+                if not row["reportDate"]:
+                    continue
+                accession = format_accession(row["accessionNumber"])
+                if accession in seen:
+                    continue
+                seen.add(accession)
+                rows.append({**row, "accessionNumber": accession})
+
+        rows.sort(
+            key=lambda r: (r["reportDate"], r["filingDate"], r["accessionNumber"]),
+            reverse=True,
+        )
+        return rows
+
+    def _build_discovered(
+        self, row: dict, cik10: str, subs: dict, ticker: str | None,
+    ) -> DiscoveredFiling:
+        cik10 = normalize_cik(cik10)
+        accession = format_accession(row["accessionNumber"])
+        report_date = row["reportDate"]
+        if not report_date:
+            raise SecClientError(f"{accession}: empty reportDate; cannot derive fiscal year")
+        accession_nodash = accession.replace("-", "")
+        source_url = ARCHIVES_DOC_URL.format(
+            cik_int=int(cik10),
+            accession_nodash=accession_nodash,
+            primary_document=row["primaryDocument"],
+        )
+        resolved_ticker = (
+            normalize_ticker(ticker)
+            if ticker
+            else normalize_ticker((subs.get("tickers") or ["?"])[0])
+        )
+        return DiscoveredFiling(
+            company_name=str(subs.get("name", "")).strip(),
+            ticker=resolved_ticker,
+            cik=cik10,
+            filing_type="10-K",
+            fiscal_year=derive_fiscal_year(report_date),
+            accession_number=accession,
+            filing_id=accession_nodash,
+            filing_date=row["filingDate"],
+            report_date=report_date,
+            primary_document=row["primaryDocument"],
+            source_url=source_url,
+        )
+
+    def list_10ks(
+        self, cik10: str, *, ticker: str | None = None, submissions: dict | None = None,
+        include_archives: bool = True,
+    ) -> list[DiscoveredFiling]:
+        """All exact 10-Ks for a CIK as DiscoveredFiling, newest fiscal year first."""
+        cik10 = normalize_cik(cik10)
+        subs = submissions if submissions is not None else self.submissions(cik10)
+        rows = self._all_10k_rows(
+            cik10, submissions=subs, include_archives=include_archives
+        )
+        if not rows:
+            raise SecNotFoundError(f"no 10-K in submissions for CIK {cik10}")
+        return [self._build_discovered(row, cik10, subs, ticker) for row in rows]
+
+    def discover_10k(
+        self,
+        cik10: str,
+        *,
+        fiscal_year: int | None = None,
+        ticker: str | None = None,
+        submissions: dict | None = None,
+    ) -> DiscoveredFiling:
+        """One exact 10-K for a CIK.
+
+        ``fiscal_year`` is the year of the SEC ``reportDate`` (fiscal period end),
+        e.g. NVIDIA's period ending 2026-01-25 is fiscal 2026 and WMT's period
+        ending 2026-01-31 is fiscal 2026 — the calendar year the period ends in.
+        ``None`` returns the latest available 10-K. An unavailable year raises
+        ``SecNotFoundError`` listing what IS available.
+        """
+        cik10 = normalize_cik(cik10)
+        subs = submissions if submissions is not None else self.submissions(cik10)
+
+        if fiscal_year is None:
+            # Fast path: the newest 10-K is in recent[]; no archive fetches.
+            filings = self.list_10ks(
+                cik10, ticker=ticker, submissions=subs, include_archives=False
+            )
+            return filings[0]
+
+        target = int(fiscal_year)
+        # Try recent[] first; only page in the archives if the year isn't there.
+        for include_archives in (False, True):
+            filings = self.list_10ks(
+                cik10, ticker=ticker, submissions=subs,
+                include_archives=include_archives,
+            )
+            for filing in filings:
+                if filing.fiscal_year == target:
+                    return filing
+            if not include_archives and not subs.get("filings", {}).get("files"):
+                break  # nothing more to check
+        available = ", ".join(str(f.fiscal_year) for f in filings)
+        raise SecNotFoundError(
+            f"no FY{target} 10-K for CIK {cik10}; available: {available}"
+        )
+
     def latest_filing(
         self,
         cik10: str,
@@ -253,58 +423,11 @@ class SecClient:
         ticker: str | None = None,
         submissions: dict | None = None,
     ) -> DiscoveredFiling:
-        cik10 = normalize_cik(cik10)
-        subs = submissions if submissions is not None else self.submissions(cik10)
-        recent = subs.get("filings", {}).get("recent", {})
-
-        forms = recent.get("form", [])
-        required = ("accessionNumber", "filingDate", "reportDate", "primaryDocument")
-        if not forms or any(key not in recent for key in required):
-            raise SecClientError(f"submissions for CIK {cik10} missing 'recent' filing arrays")
-
-        chosen_index = None
-        for index, current_form in enumerate(forms):
-            if current_form == form:  # exact match: excludes "10-K/A"
-                chosen_index = index
-                break
-
-        if chosen_index is None:
-            raise SecNotFoundError(f"no {form} in recent submissions for CIK {cik10}")
-
-        accession = format_accession(recent["accessionNumber"][chosen_index])
-        report_date = recent["reportDate"][chosen_index]
-        filing_date = recent["filingDate"][chosen_index]
-        primary_document = recent["primaryDocument"][chosen_index]
-
-        if not report_date:
-            raise SecClientError(f"{accession}: empty reportDate; cannot derive fiscal year")
-
-        cik_int = int(cik10)
-        accession_nodash = accession.replace("-", "")
-        source_url = ARCHIVES_DOC_URL.format(
-            cik_int=cik_int,
-            accession_nodash=accession_nodash,
-            primary_document=primary_document,
-        )
-
-        resolved_ticker = (
-            normalize_ticker(ticker)
-            if ticker
-            else normalize_ticker((subs.get("tickers") or ["?"])[0])
-        )
-
-        return DiscoveredFiling(
-            company_name=str(subs.get("name", "")).strip(),
-            ticker=resolved_ticker,
-            cik=cik10,
-            filing_type=form,
-            fiscal_year=derive_fiscal_year(report_date),
-            accession_number=accession,
-            filing_id=accession_nodash,
-            filing_date=filing_date,
-            report_date=report_date,
-            primary_document=primary_document,
-            source_url=source_url,
+        if form != "10-K":
+            raise SecClientError(f"only 10-K is supported, got {form!r}")
+        return self.discover_10k(
+            normalize_cik(cik10), fiscal_year=None, ticker=ticker,
+            submissions=submissions,
         )
 
     def discover_latest_10k(
@@ -312,11 +435,12 @@ class SecClient:
         ticker: str,
         *,
         cik: str | None = None,
+        fiscal_year: int | None = None,
         successor_cik: str | None = None,
         successor_name: str | None = None,
         successor_effective_date: str | None = None,
     ) -> DiscoveredFiling:
-        """Discover the latest 10-K for ``ticker``.
+        """Discover a 10-K for ``ticker`` (the latest by default).
 
         Normally the CIK is resolved from SEC's ``company_tickers.json``. Pass an
         explicit ``cik`` to bypass *only* that resolution step — filing discovery
@@ -327,6 +451,10 @@ class SecClient:
         filed the annual report. An explicit override is always logged and is
         never applied silently.
 
+        ``fiscal_year`` (year of the SEC reportDate) selects a specific historical
+        10-K instead of the latest; combine with ``cik`` to pull a pre-succession
+        filing from the legacy registrant (e.g. XOM FY2024 from CIK 0000034088).
+
         ``successor_*`` are optional lineage annotations recorded on the filing
         and (by the caller) in the registry; they never alter the filing's own
         SEC-authoritative registrant metadata.
@@ -335,13 +463,15 @@ class SecClient:
 
         if cik is None:
             cik10 = self.resolve_cik(normalized)
-            return self.latest_filing(cik10, form="10-K", ticker=normalized)
+            return self.discover_10k(
+                cik10, fiscal_year=fiscal_year, ticker=normalized
+            )
 
         cik10 = normalize_cik(cik)  # raises ValueError on a bad CIK
         logger.warning(
-            "sec_client event=cik_override ticker=%s cik=%s "
+            "sec_client event=cik_override ticker=%s cik=%s fiscal_year=%s "
             "reason=explicit_flag note=ticker->CIK_discovery_bypassed",
-            normalized, cik10,
+            normalized, cik10, fiscal_year,
         )
         subs = self.submissions(cik10)
         registrant_tickers = [
@@ -356,8 +486,8 @@ class SecClient:
                 normalized, cik10, ",".join(registrant_tickers),
             )
 
-        filing = self.latest_filing(
-            cik10, form="10-K", ticker=normalized, submissions=subs
+        filing = self.discover_10k(
+            cik10, fiscal_year=fiscal_year, ticker=normalized, submissions=subs
         )
 
         eff_date = None

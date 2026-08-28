@@ -78,19 +78,16 @@ class DenseFilterPlumbingTests(unittest.TestCase):
 
     @patch("retrieval.pinecone_search.embed_text", return_value=[0.0] * 1536)
     @patch("retrieval.pinecone_search.index")
-    def test_result_shape_unchanged(self, mock_index, _embed):
+    def test_result_shape(self, mock_index, _embed):
         rows = self._run(mock_index)
         self.assertEqual(
             set(rows[0]),
             {
-                "chunk_id",
-                "score",
-                "text",
-                "company",
-                "ticker",
-                "filing_type",
-                "filing_date",
-                "source_url",
+                "chunk_id", "score", "text", "company", "ticker",
+                "filing_type", "filing_date", "source_url",
+                # Phase 5: year / filing identity (None on un-backfilled seed)
+                "fiscal_year", "report_date", "accession_number",
+                "filing_id", "chunk_index",
             },
         )
 

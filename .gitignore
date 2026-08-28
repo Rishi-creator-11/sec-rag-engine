@@ -16,6 +16,10 @@ data/embeddings/
 # SEC EDGAR response cache (company_tickers.json etc.)
 data/sec_cache/
 
+# Local rollback snapshots (registry / ledger / Pinecone metadata before a
+# controlled backfill). Kept on the operator's machine, not in git.
+data/registry/backups/
+
 # Persisted bm25s lexical index (rebuildable from data/chunks/**)
 data/bm25s_index/
 

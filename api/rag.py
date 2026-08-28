@@ -13,6 +13,7 @@ from retrieval.cohere_reranker import (
 from retrieval.filters import RetrievalFilter
 from retrieval.hybrid_search import search as hybrid_search
 from retrieval.embedder import embed_text
+from retrieval.scope import Scope, expand_scopes
 from retrieval.scoped_search import scoped_search
 
 
@@ -153,42 +154,64 @@ def select_evidence(
     return selected
 
 
+def _as_scopes(scopes) -> list[Scope]:
+    """Coerce a list of Scope | "TICKER" | "TICKER:YEAR" into Scope objects."""
+    out: list[Scope] = []
+    for item in scopes:
+        if isinstance(item, Scope):
+            out.append(item)
+        elif isinstance(item, str) and ":" in item:
+            ticker, year = item.split(":", 1)
+            out.append(Scope(ticker, int(year)))
+        else:
+            out.append(Scope(str(item)))
+    return out
+
+
+def _chunk_scope_label(chunk: dict, scopes: list[Scope]) -> str | None:
+    for scope in _as_scopes(scopes):
+        if scope.matches(chunk):
+            return scope.label
+    return None
+
+
 def select_evidence_with_coverage(
     ranked_chunks: list[dict],
-    requested_tickers: list[str],
+    scopes: list[Scope],
     evidence_k: int,
     min_per_scope: int = MIN_PER_SCOPE,
 ) -> list[dict]:
     """Coverage-aware evidence selection for comparison mode.
 
     ``ranked_chunks`` are candidates in final rank order (Cohere order, or the
-    per-scope union order on fallback).
+    per-scope union order on fallback). A *scope* is a ``(ticker, fiscal_year?)``
+    pair — this handles company comparison, year comparison, and company+year
+    comparison with one code path.
 
-    1. Reserve up to ``min_per_scope`` chunks for every requested ticker that
-       has at least one candidate, taking that ticker's highest-ranked chunks.
+    1. Reserve up to ``min_per_scope`` chunks for every requested scope that has
+       at least one candidate, taking that scope's highest-ranked chunks.
     2. Fill the remaining slots (up to ``evidence_k``) strictly by global rank
-       order — no per-company cap, so quality can favor one company
-       (e.g. AAPL 4 / MSFT 1 is fine; AAPL 5 / MSFT 0 is not).
+       order — no per-scope cap, so quality can favor one side
+       (e.g. FY2023 4 / FY2025 1 is fine; FY2023 5 / FY2025 0 is not).
     3. Return the selection in global rank order for stable presentation.
-
-    ``evidence_k`` is expected to already be >= number of requested tickers
-    (the caller auto-raises it), so the reserved chunks always fit.
     """
     if not ranked_chunks:
         return []
 
     rank_of = {chunk["chunk_id"]: index for index, chunk in enumerate(ranked_chunks)}
 
-    by_ticker: dict[str, list[dict]] = {}
+    scopes = _as_scopes(scopes)
+    by_scope: dict[str, list[dict]] = {}
     for chunk in ranked_chunks:
-        ticker = str(chunk.get("ticker", "")).strip().upper()
-        by_ticker.setdefault(ticker, []).append(chunk)
+        label = _chunk_scope_label(chunk, scopes)
+        if label is not None:
+            by_scope.setdefault(label, []).append(chunk)
 
     selected_ids: set[str] = set()
     selected: list[dict] = []
 
-    for ticker in requested_tickers:
-        for chunk in by_ticker.get(ticker, [])[:min_per_scope]:
+    for scope in scopes:
+        for chunk in by_scope.get(scope.label, [])[:min_per_scope]:
             if chunk["chunk_id"] not in selected_ids:
                 selected_ids.add(chunk["chunk_id"])
                 selected.append(chunk)
@@ -206,14 +229,19 @@ def select_evidence_with_coverage(
 
 def evidence_by_scope(
     evidence: list[dict],
-    requested_tickers: list[str],
+    scopes: list[Scope],
 ) -> dict[str, int]:
-    """Count final evidence chunks per requested ticker (0 included)."""
-    counts = {ticker: 0 for ticker in requested_tickers}
+    """Count final evidence chunks per requested scope (0 included).
+
+    Keys are scope labels: ``"AAPL"`` for a ticker-only scope (unchanged
+    company-comparison contract), ``"NVDA:2023"`` for a ticker+year scope.
+    """
+    scopes = _as_scopes(scopes)
+    counts = {scope.label: 0 for scope in scopes}
     for chunk in evidence:
-        ticker = str(chunk.get("ticker", "")).strip().upper()
-        if ticker in counts:
-            counts[ticker] += 1
+        label = _chunk_scope_label(chunk, scopes)
+        if label in counts:
+            counts[label] += 1
     return counts
 
 
@@ -221,10 +249,13 @@ def build_context(results: list[dict]) -> str:
     context_parts = []
 
     for index, result in enumerate(results, start=1):
+        fiscal_year = result.get("fiscal_year")
+        fy_line = f"Fiscal year: FY{fiscal_year}\n" if fiscal_year else ""
         context_parts.append(
             f"SOURCE {index}\n"
             f"Company: {result.get('company')}\n"
             f"Ticker: {result.get('ticker')}\n"
+            f"{fy_line}"
             f"Filing: {result.get('filing_type')} "
             f"{result.get('filing_date')}\n"
             f"Chunk ID: {result.get('chunk_id')}\n"
@@ -237,7 +268,7 @@ def build_context(results: list[dict]) -> str:
 def build_generation_request(
     question: str,
     context: str,
-    comparison_tickers: list[str] | None = None,
+    comparison_scopes: list[str] | None = None,
 ) -> dict:
     instructions = (
         'Answer only from the SEC excerpts below. No outside knowledge.\n'
@@ -248,16 +279,33 @@ def build_generation_request(
         'Keep answers short: 1-3 sentences for numbers; one short paragraph or short bullets otherwise.'
     )
 
-    if comparison_tickers:
-        instructions += (
-            "\n\nThe user requested a comparison across these companies: "
-            + ", ".join(comparison_tickers)
-            + ".\nAddress each requested company explicitly, using only that "
-            "company's own excerpts. If the excerpts do not contain enough "
-            "information for a requested company, say so plainly for that "
-            "company. Never infer or transfer facts for one company from "
-            "another company's excerpts."
-        )
+    if comparison_scopes:
+        year_comparison = any(":" in label for label in comparison_scopes)
+        if year_comparison:
+            instructions += (
+                "\n\nThe user requested a comparison across these filing scopes: "
+                + ", ".join(comparison_scopes)
+                + " (TICKER:FISCAL_YEAR).\n"
+                "- Discuss each requested fiscal year explicitly, in its own section "
+                "(e.g. 'FY2023:' then 'FY2025:'), then a final 'What changed:' section.\n"
+                "- Use only evidence from that year's own filing. Never transfer a "
+                "fact from one year's excerpts to another year.\n"
+                "- Distinguish a change in disclosure LANGUAGE from a change in the "
+                "underlying real-world fact.\n"
+                "- Do not say something increased or decreased unless excerpts from "
+                "both years support the direction.\n"
+                "- If a year's excerpts lack the answer, say so plainly for that year."
+            )
+        else:
+            instructions += (
+                "\n\nThe user requested a comparison across these companies: "
+                + ", ".join(comparison_scopes)
+                + ".\nAddress each requested company explicitly, using only that "
+                "company's own excerpts. If the excerpts do not contain enough "
+                "information for a requested company, say so plainly for that "
+                "company. Never infer or transfer facts for one company from "
+                "another company's excerpts."
+            )
 
     prompt = f"""{instructions}
 
@@ -294,8 +342,11 @@ def build_sources(
                 "company": result.get("company"),
                 "ticker": result.get("ticker"),
                 "filing_type": result.get("filing_type"),
+                "fiscal_year": result.get("fiscal_year"),
+                "accession_number": result.get("accession_number"),
                 "date": result.get("filing_date"),
                 "filing_date": result.get("filing_date"),
+                "report_date": result.get("report_date"),
                 "source_url": result.get("source_url"),
                 "rerank_score": result.get("rerank_score"),
                 "hybrid_rank": hybrid_rank_by_id.get(chunk_id),
@@ -367,16 +418,18 @@ def retrieve_evidence(
 def retrieve_evidence_comparison(
     question: str,
     evidence_k: int,
-    requested_tickers: list[str],
+    scopes: list[Scope],
 ) -> dict:
-    """Comparison path: per-ticker hybrid -> union -> ONE Cohere rerank ->
-    coverage-aware selection. Returns a dict with everything needed to build
-    the response (no generation)."""
-    scopes = [RetrievalFilter(tickers=(ticker,)) for ticker in requested_tickers]
+    """Comparison path: per-scope hybrid -> union -> ONE Cohere rerank ->
+    coverage-aware selection. A scope is a ``(ticker, fiscal_year?)`` pair, so
+    this serves company, year, and company+year comparisons identically.
+    Returns a dict with everything needed to build the response (no generation).
+    """
+    scope_filters = [scope.to_filter() for scope in scopes]
 
     union, per_scope, hybrid_ms = scoped_search(
         question,
-        scopes,
+        scope_filters,
         per_scope_k=HYBRID_TOP_K,
         candidate_k=CANDIDATE_K,
         union_cap=UNION_CAP,
@@ -384,12 +437,12 @@ def retrieve_evidence_comparison(
 
     ranked, fallback, reason, rerank_ms = rerank_once(question, union)
 
-    tickers_with_candidates = [
-        ticker for ticker in requested_tickers if per_scope.get(ticker)
+    scopes_with_candidates = [
+        scope for scope in scopes if per_scope.get(scope.label)
     ]
     evidence = select_evidence_with_coverage(
         ranked,
-        requested_tickers,
+        scopes,
         evidence_k,
         min_per_scope=MIN_PER_SCOPE,
     )
@@ -402,17 +455,17 @@ def retrieve_evidence_comparison(
         "reranker_fallback_reason": reason,
         "hybrid_ms": hybrid_ms,
         "rerank_ms": rerank_ms,
-        "tickers_with_candidates": tickers_with_candidates,
+        "scopes_with_candidates": scopes_with_candidates,
     }
 
 
 def generate_answer(
     question: str,
     evidence: list[dict],
-    comparison_tickers: list[str] | None = None,
+    comparison_scopes: list[str] | None = None,
 ) -> tuple[str, str, float]:
     context = build_context(evidence)
-    request = build_generation_request(question, context, comparison_tickers)
+    request = build_generation_request(question, context, comparison_scopes)
 
     generation_start = time.perf_counter()
     response = client.responses.create(**request)
@@ -454,21 +507,48 @@ def build_scope_filter(
 
 def assert_coverage(
     evidence: list[dict],
-    tickers_with_candidates: list[str],
+    scopes_with_candidates: list[Scope],
     *,
     where: str,
 ) -> None:
-    """Every requested ticker that HAD candidates must appear in final evidence."""
-    if not tickers_with_candidates:
+    """Every requested scope that HAD candidates must appear in final evidence."""
+    if not scopes_with_candidates:
         return
     present = {
-        str(chunk.get("ticker", "")).strip().upper() for chunk in evidence
+        _chunk_scope_label(chunk, scopes_with_candidates) for chunk in evidence
     }
-    missing = [ticker for ticker in tickers_with_candidates if ticker not in present]
+    missing = [s.label for s in scopes_with_candidates if s.label not in present]
     if missing:
         message = (
-            f"{where}: coverage-aware selection dropped requested tickers "
+            f"{where}: coverage-aware selection dropped requested scopes "
             f"{missing} that had candidates"
+        )
+        logger.error(message)
+        raise ScopeViolationError(message)
+
+
+def assert_scopes(
+    rows: list[dict],
+    scopes: list[Scope],
+    *,
+    where: str,
+) -> None:
+    """Fail loudly if any row falls outside every requested scope.
+
+    Enforces ticker AND fiscal_year together: a chunk from NVDA FY2024 is a
+    violation when only NVDA:2023 and NVDA:2025 were requested.
+    """
+    offenders = sorted(
+        {
+            f'{row.get("ticker")}:{row.get("fiscal_year")}'
+            for row in rows
+            if _chunk_scope_label(row, scopes) is None
+        }
+    )
+    if offenders:
+        message = (
+            f"{where}: retrieval returned {offenders} outside the requested "
+            f"scopes {[s.label for s in scopes]}"
         )
         logger.error(message)
         raise ScopeViolationError(message)
@@ -500,10 +580,27 @@ def assert_scope(
         raise ScopeViolationError(message)
 
 
+def _normalize_years(fiscal_years) -> list[int]:
+    if not fiscal_years:
+        return []
+    out: list[int] = []
+    seen: set[int] = set()
+    for raw in fiscal_years:
+        try:
+            year = int(raw)
+        except (TypeError, ValueError):
+            continue
+        if year not in seen:
+            seen.add(year)
+            out.append(year)
+    return out
+
+
 def plan_evidence(
     question: str,
     top_k: int = DEFAULT_EVIDENCE_K,
     tickers: list[str] | None = None,
+    fiscal_years: list[int] | None = None,
 ) -> dict:
     """Retrieve + rerank + select evidence and run scope assertions.
 
@@ -511,37 +608,39 @@ def plan_evidence(
     so evaluation can measure retrieval/coverage without spending generation
     tokens.
 
-    Routing:
-      0 tickers  -> global path            (unchanged)
-      1 ticker   -> single-company filter  (unchanged, Phase 1C)
-      2+ tickers -> comparison path        (per-company quota + coverage)
+    A *scope* is a ``(ticker, fiscal_year?)`` pair; a request expands to a list
+    of scopes (retrieval.scope.expand_scopes). Routing is purely by scope count:
+
+      0 scopes   -> global path                    (unchanged)
+      1 scope    -> single ticker[/year] filter    (Phase 1C / Phase 5 year)
+      2+ scopes  -> comparison path (company, year, or company+year)
     """
     requested = normalize_requested_tickers(tickers)
-    comparison_mode = len(requested) >= 2
+    years = _normalize_years(fiscal_years)
+    scopes = expand_scopes(requested, years) if requested else []
+    comparison_mode = len(scopes) >= 2
 
     base_k = max(1, min(top_k, HYBRID_TOP_K))
 
     if comparison_mode:
-        # Auto-raise so each requested ticker can get >= MIN_PER_SCOPE chunks,
-        # capped at HYBRID_TOP_K. (The API caps ticker count at MAX_TICKERS=10.)
-        evidence_k = min(max(base_k, len(requested) * MIN_PER_SCOPE), HYBRID_TOP_K)
+        # Auto-raise so each requested scope can get >= MIN_PER_SCOPE chunks,
+        # capped at HYBRID_TOP_K.
+        evidence_k = min(max(base_k, len(scopes) * MIN_PER_SCOPE), HYBRID_TOP_K)
 
-        result = retrieve_evidence_comparison(question, evidence_k, requested)
+        result = retrieve_evidence_comparison(question, evidence_k, scopes)
         union = result["union"]
         evidence = result["evidence"]
-        tickers_with_candidates = result["tickers_with_candidates"]
+        scopes_with_candidates = result["scopes_with_candidates"]
 
-        combined_scope = RetrievalFilter(tickers=tuple(requested))
-        assert_scope(union, combined_scope, where="comparison_candidates")
-        assert_scope(evidence, combined_scope, where="comparison_evidence")
-        assert_coverage(
-            evidence, tickers_with_candidates, where="comparison_evidence"
-        )
+        assert_scopes(union, scopes, where="comparison_candidates")
+        assert_scopes(evidence, scopes, where="comparison_evidence")
+        assert_coverage(evidence, scopes_with_candidates, where="comparison_evidence")
 
+        covered = {s.label for s in scopes_with_candidates}
         warnings = [
-            f"No relevant evidence was found for {ticker} in the requested scope."
-            for ticker in requested
-            if ticker not in tickers_with_candidates
+            f"No relevant evidence was found for {s.label} in the requested scope."
+            for s in scopes
+            if s.label not in covered
         ]
 
         return {
@@ -553,14 +652,17 @@ def plan_evidence(
             "rerank_ms": result["rerank_ms"],
             "comparison_mode": True,
             "requested_tickers": requested,
+            "fiscal_years": years,
+            "scopes": [s.label for s in scopes],
             "comparison_tickers": requested,
-            "evidence_by_scope": evidence_by_scope(evidence, requested),
+            "comparison_scopes": [s.label for s in scopes],
+            "evidence_by_scope": evidence_by_scope(evidence, scopes),
             "warnings": warnings,
         }
 
-    # Global / single-company path (unchanged behavior).
+    # Global / single-scope path.
     evidence_k = base_k
-    scope = build_scope_filter(requested)
+    scope = scopes[0].to_filter() if scopes else None
 
     (
         hybrid_results,
@@ -571,8 +673,9 @@ def plan_evidence(
         rerank_ms,
     ) = retrieve_evidence(question, evidence_k, scope)
 
-    assert_scope(hybrid_results, scope, where="hybrid_candidates")
-    assert_scope(evidence, scope, where="evidence")
+    if scopes:
+        assert_scopes(hybrid_results, scopes, where="hybrid_candidates")
+        assert_scopes(evidence, scopes, where="evidence")
 
     return {
         "evidence": evidence,
@@ -583,8 +686,11 @@ def plan_evidence(
         "rerank_ms": rerank_ms,
         "comparison_mode": False,
         "requested_tickers": requested,
+        "fiscal_years": years,
+        "scopes": [s.label for s in scopes],
         "comparison_tickers": None,
-        "evidence_by_scope": evidence_by_scope(evidence, requested) if requested else {},
+        "comparison_scopes": None,
+        "evidence_by_scope": evidence_by_scope(evidence, scopes) if scopes else {},
         "warnings": [],
     }
 
@@ -593,20 +699,22 @@ def answer_question(
     question: str,
     top_k: int = DEFAULT_EVIDENCE_K,
     tickers: list[str] | None = None,
+    fiscal_years: list[int] | None = None,
 ) -> dict:
     total_start = time.perf_counter()
 
-    plan = plan_evidence(question, top_k, tickers)
+    plan = plan_evidence(question, top_k, tickers, fiscal_years)
 
     compact_evidence = prepare_evidence(plan["evidence"])
     answer, context, generation_ms = generate_answer(
         question,
         compact_evidence,
-        plan["comparison_tickers"],
+        plan["comparison_scopes"],
     )
     total_ms = (time.perf_counter() - total_start) * 1000
 
     requested = plan["requested_tickers"]
+    years = plan["fiscal_years"]
 
     return {
         "question": question,
@@ -619,6 +727,8 @@ def answer_question(
             "global_search": len(requested) == 0,
             "comparison_mode": plan["comparison_mode"],
             "tickers": requested or None,
+            "fiscal_years": years or None,
+            "scopes": plan["scopes"] or None,
             "evidence_by_scope": plan["evidence_by_scope"],
             "warnings": plan["warnings"],
         },

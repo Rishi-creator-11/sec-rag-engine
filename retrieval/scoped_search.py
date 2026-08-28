@@ -30,11 +30,19 @@ DEFAULT_UNION_CAP = 60
 
 
 def scope_label(scope: RetrievalFilter) -> str:
-    """A short, stable label for a scope. Phase 2: the single ticker."""
+    """A short, stable label for a scope.
+
+    - single ticker, no other constraint  -> "NVDA"       (Phase 2 form)
+    - single ticker + single fiscal year  -> "NVDA:2023"  (Phase 5 form)
+    - anything else                       -> scope.describe()
+    """
     if scope.tickers and len(scope.tickers) == 1 and not (
-        scope.filing_types or scope.fiscal_years or scope.filing_ids
+        scope.filing_types or scope.filing_ids
     ):
-        return scope.tickers[0]
+        if not scope.fiscal_years:
+            return scope.tickers[0]
+        if len(scope.fiscal_years) == 1:
+            return f"{scope.tickers[0]}:{scope.fiscal_years[0]}"
     return scope.describe()
 
 

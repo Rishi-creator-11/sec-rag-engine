@@ -66,7 +66,24 @@ def _load_ledger_entry(filing_id: str) -> dict | None:
     return data.get(filing_id)
 
 
-def _canonical_ids(entry: dict) -> list[str]:
+def _canonical_ids(entry: dict, chunk_file: Path | None = None) -> list[str]:
+    """Chunk ids for this filing.
+
+    Prefer the ids actually written in the chunk JSONL (the serving source of
+    truth) — this covers seed filings, which keep legacy ``<prefix>_N`` ids
+    rather than the canonical ``TICKER_FY_10-K_ACC_N`` form. Fall back to the
+    canonical construction when the file is unavailable.
+    """
+    if chunk_file is not None and Path(chunk_file).exists():
+        ids = []
+        for line in Path(chunk_file).read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                cid = json.loads(line).get("chunk_id")
+                if cid:
+                    ids.append(cid)
+        if ids:
+            return ids
+
     from retrieval.metadata import canonical_chunk_id
 
     count = entry.get("chunk_count") or 0
@@ -88,6 +105,7 @@ def verify(
     full: bool = False,
     client: SecClient | None = None,
     cik: str | None = None,
+    fiscal_year: int | None = None,
 ) -> dict:
     ticker = ticker.strip().upper()
     checks: list[Check] = []
@@ -110,8 +128,12 @@ def verify(
         local.note(f"cik override in effect: registrant CIK {cik_override}")
 
     client = client or SecClient()
-    filing = client.discover_latest_10k(ticker, cik=cik_override)
+    filing = client.discover_latest_10k(
+        ticker, cik=cik_override, fiscal_year=fiscal_year
+    )
     filing_id = filing.filing_id
+    if fiscal_year is not None:
+        local.note(f"verifying FY{filing.fiscal_year} ({filing.accession_number})")
 
     reg_filing = next(
         (f for f in company.get("filings", [])
@@ -127,7 +149,13 @@ def verify(
     if entry.get("stages", {}).get("complete", {}).get("status") != "ok":
         local.fail("ledger does not say complete")
 
-    chunk_file = CHUNKS_DIR / ticker / f"{filing_id}_chunks.jsonl"
+    # Canonical path for pipeline filings; a seed filing keeps legacy chunk ids
+    # and records its own path in the ledger (data/chunks/<prefix>_chunks.jsonl).
+    ledger_chunks = (entry.get("artifacts") or {}).get("chunks")
+    chunk_file = (
+        (REPO_ROOT / ledger_chunks) if ledger_chunks
+        else CHUNKS_DIR / ticker / f"{filing_id}_chunks.jsonl"
+    )
     valid, reason = validate_chunks_artifact(
         chunk_file,
         expected_count=entry.get("chunk_count"),
@@ -143,7 +171,7 @@ def verify(
             f"ledger {entry.get('chunk_count')}"
         )
 
-    ids = _canonical_ids(entry)
+    ids = _canonical_ids(entry, chunk_file)
     if not ids:
         local.fail("no canonical chunk ids (chunk_count missing)")
         return _finish(ticker, checks)
@@ -220,10 +248,10 @@ def verify(
     try:
         from retrieval.bm25_search import load_chunks
 
+        id_set = set(ids)
         rows = [
             r for r in load_chunks()
-            if r.get("chunk_id", "").startswith(f"{ticker}_")
-            and r.get("filing_id") == filing_id
+            if r.get("chunk_id") in id_set or r.get("filing_id") == filing_id
         ]
         if len(rows) != entry.get("chunk_count"):
             serving.fail(
@@ -269,11 +297,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--cik", default=None,
                         help="explicit registrant CIK (bypasses ticker->CIK "
                         "discovery); normally taken from registry lineage")
+    parser.add_argument("--fiscal-year", type=int, default=None,
+                        help="verify a specific fiscal year's 10-K (default: latest)")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.WARNING, stream=sys.stderr)
-    report = verify(args.ticker, full=args.full, cik=args.cik)
+    report = verify(args.ticker, full=args.full, cik=args.cik,
+                    fiscal_year=args.fiscal_year)
 
     if args.json:
         print(json.dumps(report, indent=2))

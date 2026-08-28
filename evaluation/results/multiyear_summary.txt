@@ -1,0 +1,33 @@
+MULTI-YEAR (FISCAL-YEAR SCOPE) EVALUATION - NVDA canary
+questions: 18  supported: 16  unsupported-year: 2   top_k: 5
+
+fiscal_year_filter_correctness   1.000   (target 1.000)
+cross_year_leakage@5             0.000   (target 0.000)
+scope_coverage (all)             1.000
+scope_coverage (comparison Qs)   1.000   (target 1.000)
+numeric_year_correctness         1.000   (right number, right year)
+unsupported_year rejected        1.000   (target 1.000)
+reranker_fallback               6/16
+latency  mean 1.74s  p50 0.71s
+
+GATE  PASS
+
+per-question:
+  nvda_export_controls_fy2023_01             scopes=['NVDA:2023'] ev_by_scope={'NVDA:2023': 5} leak=0.00
+  nvda_export_controls_fy2025_01             scopes=['NVDA:2025'] ev_by_scope={'NVDA:2025': 5} leak=0.00
+  nvda_china_fy2023_01                       scopes=['NVDA:2023'] ev_by_scope={'NVDA:2023': 5} leak=0.00
+  nvda_china_fy2025_01                       scopes=['NVDA:2025'] ev_by_scope={'NVDA:2025': 5} leak=0.00
+  nvda_ai_risk_fy2024_01                     scopes=['NVDA:2024'] ev_by_scope={'NVDA:2024': 5} leak=0.00
+  nvda_datacenter_fy2024_01                  scopes=['NVDA:2024'] ev_by_scope={'NVDA:2024': 5} leak=0.00
+  nvda_revenue_fy2023_01                     scopes=['NVDA:2023'] ev_by_scope={'NVDA:2023': 5} leak=0.00
+  nvda_revenue_fy2025_01                     scopes=['NVDA:2025'] ev_by_scope={'NVDA:2025': 5} leak=0.00
+  nvda_datacenter_revenue_fy2024_01          scopes=['NVDA:2024'] ev_by_scope={'NVDA:2024': 5} leak=0.00
+  nvda_export_controls_change_2023_2025_01   scopes=['NVDA:2023', 'NVDA:2025'] ev_by_scope={'NVDA:2023': 1, 'NVDA:2025': 4} leak=0.00
+  nvda_china_change_2023_2025_01             scopes=['NVDA:2023', 'NVDA:2025'] ev_by_scope={'NVDA:2023': 3, 'NVDA:2025': 2} leak=0.00
+  nvda_ai_risk_change_2024_2026_01           scopes=['NVDA:2024', 'NVDA:2026'] ev_by_scope={'NVDA:2024': 3, 'NVDA:2026': 2} leak=0.00
+  nvda_revenue_change_2023_2025_01           scopes=['NVDA:2023', 'NVDA:2025'] ev_by_scope={'NVDA:2023': 3, 'NVDA:2025': 2} leak=0.00
+  nvda_supply_chain_change_2023_2025_01      scopes=['NVDA:2023', 'NVDA:2025'] ev_by_scope={'NVDA:2023': 3, 'NVDA:2025': 2} leak=0.00
+  nvda_competition_fy2024_01                 scopes=['NVDA:2024'] ev_by_scope={'NVDA:2024': 5} leak=0.00
+  nvda_gaming_fy2025_01                      scopes=['NVDA:2025'] ev_by_scope={'NVDA:2025': 5} leak=0.00
+  nvda_year_not_present_fy2019_01            requested NVDA:2019 available [2026, 2025, 2024, 2023] -> correctly_unavailable=True
+  nvda_year_not_present_fy2020_01            requested NVDA:2020 available [2026, 2025, 2024, 2023] -> correctly_unavailable=True

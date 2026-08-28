@@ -85,7 +85,9 @@ class ParityTests(unittest.TestCase):
         self.assertEqual(
             set(row),
             {"chunk_id", "score", "text", "company", "ticker",
-             "filing_type", "filing_date", "source_url"},
+             "filing_type", "filing_date", "source_url",
+             "fiscal_year", "report_date", "accession_number",
+             "filing_id", "chunk_index"},
         )
 
     def test_deterministic_ranking(self):

@@ -1,0 +1,498 @@
+{
+  "summary": {
+    "questions": 18,
+    "supported_questions": 16,
+    "unsupported_year_questions": 2,
+    "fiscal_year_filter_correctness": 1.0,
+    "cross_year_leakage_at_k": 0.0,
+    "scope_coverage_mean": 1.0,
+    "comparison_scope_coverage_mean": 1.0,
+    "numeric_year_correctness": 1.0,
+    "unsupported_year_correctly_rejected": 1.0,
+    "reranker_fallback_questions": 6,
+    "latency_mean_s": 1.7386748515054933,
+    "latency_p50_s": 0.7114403329906054,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "nvda_export_controls_fy2023_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2023"
+      ],
+      "evidence_scopes": [
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 1.78545025002677,
+      "warnings": []
+    },
+    {
+      "id": "nvda_export_controls_fy2025_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.6678027079906315,
+      "warnings": []
+    },
+    {
+      "id": "nvda_china_fy2023_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2023"
+      ],
+      "evidence_scopes": [
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.45778979203896597,
+      "warnings": []
+    },
+    {
+      "id": "nvda_china_fy2025_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.6124921659938991,
+      "warnings": []
+    },
+    {
+      "id": "nvda_ai_risk_fy2024_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2024"
+      ],
+      "evidence_scopes": [
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2024": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.7550779579905793,
+      "warnings": []
+    },
+    {
+      "id": "nvda_datacenter_fy2024_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2024"
+      ],
+      "evidence_scopes": [
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2024": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.45371575001627207,
+      "warnings": []
+    },
+    {
+      "id": "nvda_revenue_fy2023_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "NVDA:2023"
+      ],
+      "evidence_scopes": [
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2023": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.588085959025193,
+      "warnings": []
+    },
+    {
+      "id": "nvda_revenue_fy2025_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2025": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4362514579552226,
+      "warnings": []
+    },
+    {
+      "id": "nvda_datacenter_revenue_fy2024_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "NVDA:2024"
+      ],
+      "evidence_scopes": [
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2024": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2024": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.5101523750345223,
+      "warnings": []
+    },
+    {
+      "id": "nvda_export_controls_change_2023_2025_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "NVDA:2023",
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 1,
+        "NVDA:2025": 4
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.5043205830152147,
+      "warnings": []
+    },
+    {
+      "id": "nvda_china_change_2023_2025_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "NVDA:2023",
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2023",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2023",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 3,
+        "NVDA:2025": 2
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.779810834035743,
+      "warnings": []
+    },
+    {
+      "id": "nvda_ai_risk_change_2024_2026_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "NVDA:2024",
+        "NVDA:2026"
+      ],
+      "evidence_scopes": [
+        "NVDA:2024",
+        "NVDA:2026",
+        "NVDA:2024",
+        "NVDA:2026",
+        "NVDA:2024"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2024": 3,
+        "NVDA:2026": 2
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.397356832982041,
+      "warnings": []
+    },
+    {
+      "id": "nvda_revenue_change_2023_2025_01",
+      "answer_type": "comparison_numeric",
+      "requested_scopes": [
+        "NVDA:2023",
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2023",
+        "NVDA:2025",
+        "NVDA:2023",
+        "NVDA:2025",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 3,
+        "NVDA:2025": 2
+      },
+      "comparison_mode": true,
+      "number_year_hits": {
+        "2023": true,
+        "2025": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.631559874978848,
+      "warnings": []
+    },
+    {
+      "id": "nvda_supply_chain_change_2023_2025_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "NVDA:2023",
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2023",
+        "NVDA:2025",
+        "NVDA:2023",
+        "NVDA:2025",
+        "NVDA:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2023": 3,
+        "NVDA:2025": 2
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4483086250256747,
+      "warnings": []
+    },
+    {
+      "id": "nvda_competition_fy2024_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2024"
+      ],
+      "evidence_scopes": [
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024",
+        "NVDA:2024"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2024": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.288459250004962,
+      "warnings": []
+    },
+    {
+      "id": "nvda_gaming_fy2025_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "NVDA:2025"
+      ],
+      "evidence_scopes": [
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025",
+        "NVDA:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "NVDA:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5021632079733536,
+      "warnings": []
+    }
+  ],
+  "unsupported_year": [
+    {
+      "id": "nvda_year_not_present_fy2019_01",
+      "answer_type": "unsupported_year",
+      "requested": "NVDA:2019",
+      "available_years": [
+        2026,
+        2025,
+        2024,
+        2023
+      ],
+      "year_available": false,
+      "correctly_unavailable": true
+    },
+    {
+      "id": "nvda_year_not_present_fy2020_01",
+      "answer_type": "unsupported_year",
+      "requested": "NVDA:2020",
+      "available_years": [
+        2026,
+        2025,
+        2024,
+        2023
+      ],
+      "year_available": false,
+      "correctly_unavailable": true
+    }
+  ]
+}

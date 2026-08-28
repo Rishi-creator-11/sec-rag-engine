@@ -6,7 +6,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 
 from api.rag import answer_question
-from ingestion.registry import list_companies, partition_tickers
+from ingestion.registry import (
+    available_fiscal_years,
+    list_companies,
+    partition_tickers,
+)
 
 
 load_dotenv()
@@ -61,6 +65,11 @@ class AskRequest(BaseModel):
         default=None,
         max_length=MAX_TICKERS,
     )
+    # Optional per-year scope. Absent / null / [] => search every ingested
+    # filing for each requested ticker (documented default). When present, each
+    # (ticker, fiscal_year) pair is a retrieval scope; >=2 scopes => comparison.
+    # An unavailable year is rejected (422), never silently widened.
+    fiscal_years: list[int] | None = Field(default=None, max_length=20)
 
     @field_validator("tickers", mode="after")
     @classmethod
@@ -76,6 +85,20 @@ class AskRequest(BaseModel):
             seen.add(ticker)
             normalized.append(ticker)
         return normalized or None
+
+    @field_validator("fiscal_years", mode="after")
+    @classmethod
+    def _normalize_years(cls, value: list[int] | None) -> list[int] | None:
+        if value is None:
+            return None
+        out: list[int] = []
+        seen: set[int] = set()
+        for raw in value:
+            year = int(raw)
+            if year not in seen:
+                seen.add(year)
+                out.append(year)
+        return out or None
 
 
 @app.get("/health")
@@ -129,6 +152,16 @@ def companies() -> dict:
 @app.post("/ask")
 def ask(request: AskRequest) -> dict:
     tickers = request.tickers
+    fiscal_years = request.fiscal_years
+
+    if fiscal_years and not tickers:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "error": "fiscal_years_without_tickers",
+                "detail": "fiscal_years requires at least one ticker",
+            },
+        )
 
     if tickers:
         known, unknown = partition_tickers(tickers)
@@ -142,8 +175,30 @@ def ask(request: AskRequest) -> dict:
             )
         tickers = known
 
+    if fiscal_years and tickers:
+        # A requested year must have an ingested 10-K for EVERY requested ticker;
+        # otherwise reject with what IS available. Never silently widen scope.
+        unavailable: dict[str, list[int]] = {}
+        for ticker in tickers:
+            have = set(available_fiscal_years(ticker))
+            missing = sorted(y for y in fiscal_years if y not in have)
+            if missing:
+                unavailable[ticker] = missing
+        if unavailable:
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "error": "fiscal_year_not_available",
+                    "unavailable": unavailable,
+                    "available": {
+                        t: available_fiscal_years(t) for t in tickers
+                    },
+                },
+            )
+
     return answer_question(
         question=request.question,
         top_k=request.top_k,
         tickers=tickers,
+        fiscal_years=fiscal_years,
     )

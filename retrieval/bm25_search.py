@@ -264,17 +264,18 @@ class BM25Index:
                 "chunk_id": chunk["chunk_id"],
                 "score": score,
                 "text": chunk["text"],
-                "company": chunk["company"],
+                "company": chunk.get("company") or chunk.get("company_name"),
                 "ticker": chunk["ticker"],
-                "filing_type": chunk[
-                    "filing_type"
-                ],
-                "filing_date": chunk[
-                    "filing_date"
-                ],
-                "source_url": chunk[
-                    "source_url"
-                ],
+                "filing_type": chunk["filing_type"],
+                "filing_date": chunk["filing_date"],
+                "source_url": chunk["source_url"],
+                # year / filing identity — present on pipeline + backfilled seed
+                # chunks; None on un-backfilled seed chunks.
+                "fiscal_year": chunk.get("fiscal_year"),
+                "report_date": chunk.get("report_date"),
+                "accession_number": chunk.get("accession_number"),
+                "filing_id": chunk.get("filing_id"),
+                "chunk_index": chunk.get("chunk_index"),
             })
 
         return results

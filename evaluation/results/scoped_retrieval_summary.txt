@@ -2,20 +2,20 @@ SCOPED RETRIEVAL: UNFILTERED vs FILTERED (Benchmark v2)
 
 [hybrid]
   metric       unfiltered     filtered      delta
-  R@1               0.148        0.169     +0.021
-  R@3               0.432        0.448     +0.016
-  R@5               0.606        0.629     +0.024
-  R@10              0.832        0.904     +0.072
-  P@5               0.607        0.629     +0.022
-  MRR               0.868        0.891     +0.023
-  NE@5              0.867        0.867     +0.000
-  FiltOK            0.795        1.000     +0.205
-  Leak@1            0.050        0.000     -0.050
+  R@1               0.120        0.169     +0.049
+  R@3               0.361        0.460     +0.099
+  R@5               0.510        0.627     +0.117
+  R@10              0.703        0.907     +0.204
+  P@5               0.476        0.633     +0.156
+  MRR               0.730        0.895     +0.165
+  NE@5              0.933        0.867     -0.067
+  FiltOK            0.807        1.000     +0.193
+  Leak@1            0.033        0.000     -0.033
   Leak@3            0.078        0.000     -0.078
-  Leak@5            0.137        0.000     -0.137
-  Leak@10           0.205        0.000     -0.205
+  Leak@5            0.120        0.000     -0.120
+  Leak@10           0.193        0.000     -0.193
 
 PRIMARY GATES (filtered hybrid)
   filter_correctness == 1.000   1.000   PASS
   cross_company_leakage@10 == 0  0.000   PASS
-  Recall@10 >= 0.90              0.904   PASS
+  Recall@10 >= 0.90              0.907   PASS

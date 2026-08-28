@@ -11,9 +11,9 @@
     "cross_scope_leakage": 0.0,
     "reranker_fallback_questions": 7,
     "questions_with_warnings": 0,
-    "latency_mean_s": 3.7517820116980665,
-    "latency_p50_s": 3.627288415969815,
-    "latency_p95_s": 4.479670249973424
+    "latency_mean_s": 3.6060131905666952,
+    "latency_p50_s": 3.4666502500185743,
+    "latency_p95_s": 4.285933208011556
   },
   "questions": [
     {
@@ -42,9 +42,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 4.479670249973424,
-      "hybrid_ms": 1073.4614579705521,
-      "rerank_ms": 3405.208166979719
+      "latency_seconds": 4.285933208011556,
+      "hybrid_ms": 784.538041043561,
+      "rerank_ms": 3501.118707994465
     },
     {
       "id": "xom_wmt_supply_chain_01",
@@ -72,9 +72,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 3.627288415969815,
-      "hybrid_ms": 315.60908403480425,
-      "rerank_ms": 3311.3042499753647
+      "latency_seconds": 3.572340583021287,
+      "hybrid_ms": 242.30762501247227,
+      "rerank_ms": 3329.489166964777
     },
     {
       "id": "xom_nvda_cybersecurity_01",
@@ -102,9 +102,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 3.7984392499784008,
-      "hybrid_ms": 279.20945797814056,
-      "rerank_ms": 3518.9731249702163
+      "latency_seconds": 3.8763337089912966,
+      "hybrid_ms": 694.5070410147309,
+      "rerank_ms": 3181.3715409953147
     },
     {
       "id": "unh_jpm_regulation_01",
@@ -132,9 +132,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 3.599029832985252,
-      "hybrid_ms": 286.93008300615475,
-      "rerank_ms": 3311.8499579722993
+      "latency_seconds": 3.266034874948673,
+      "hybrid_ms": 233.06774999946356,
+      "rerank_ms": 3032.6804170035757
     },
     {
       "id": "unh_aapl_cybersecurity_01",
@@ -162,9 +162,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 3.691584749962203,
-      "hybrid_ms": 269.18887498322874,
-      "rerank_ms": 3422.120084054768
+      "latency_seconds": 3.4138140419963747,
+      "hybrid_ms": 229.43937504896894,
+      "rerank_ms": 3183.3583749830723
     },
     {
       "id": "xom_unh_competition_01",
@@ -192,9 +192,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 3.6000687920022756,
-      "hybrid_ms": 239.3623330281116,
-      "rerank_ms": 3360.0805000169203
+      "latency_seconds": 3.4666502500185743,
+      "hybrid_ms": 231.24508396722376,
+      "rerank_ms": 3234.919875045307
     },
     {
       "id": "xom_unh_jpm_regulation_01",
@@ -224,9 +224,9 @@
       "reranker_fallback": true,
       "reranker_fallback_reason": "rate_limited",
       "warnings": [],
-      "latency_seconds": 3.466392791015096,
-      "hybrid_ms": 305.7521670125425,
-      "rerank_ms": 3160.1982089923695
+      "latency_seconds": 3.3609856669791043,
+      "hybrid_ms": 257.24429194815457,
+      "rerank_ms": 3103.4565839800052
     }
   ]
 }

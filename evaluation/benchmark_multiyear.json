@@ -1,0 +1,165 @@
+[
+  {
+    "id": "nvda_export_controls_fy2023_01",
+    "question": "What export-control risks did NVIDIA describe in fiscal 2023?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2023}],
+    "category": "regulation",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_export_controls_fy2025_01",
+    "question": "What export-control risks did NVIDIA describe in fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2025}],
+    "category": "regulation",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_china_fy2023_01",
+    "question": "What risks did NVIDIA describe about its business in China in fiscal 2023?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2023}],
+    "category": "international",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_china_fy2025_01",
+    "question": "What risks did NVIDIA describe about its business in China in fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2025}],
+    "category": "international",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_ai_risk_fy2024_01",
+    "question": "How did NVIDIA describe risks from artificial intelligence in fiscal 2024?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2024}],
+    "category": "ai",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_datacenter_fy2024_01",
+    "question": "How did NVIDIA describe its Data Center platform in fiscal 2024?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2024}],
+    "category": "business",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_revenue_fy2023_01",
+    "question": "What was NVIDIA's total revenue for fiscal 2023?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2023}],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "26,974"}
+  },
+  {
+    "id": "nvda_revenue_fy2025_01",
+    "question": "What was NVIDIA's total revenue for fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2025}],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "130,497"}
+  },
+  {
+    "id": "nvda_datacenter_revenue_fy2024_01",
+    "question": "What was NVIDIA's Data Center revenue for fiscal 2024?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2024}],
+    "category": "numeric",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2024": "47,525"}
+  },
+  {
+    "id": "nvda_export_controls_change_2023_2025_01",
+    "question": "How did NVIDIA's export-control risk disclosures change from fiscal 2023 to fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [
+      {"ticker": "NVDA", "fiscal_year": 2023},
+      {"ticker": "NVDA", "fiscal_year": 2025}
+    ],
+    "category": "regulation",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "nvda_china_change_2023_2025_01",
+    "question": "Compare NVIDIA's China-related risks in fiscal 2023 and fiscal 2025.",
+    "ticker": "NVDA",
+    "scopes": [
+      {"ticker": "NVDA", "fiscal_year": 2023},
+      {"ticker": "NVDA", "fiscal_year": 2025}
+    ],
+    "category": "international",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "nvda_ai_risk_change_2024_2026_01",
+    "question": "How did NVIDIA's description of AI-related risks change from fiscal 2024 to fiscal 2026?",
+    "ticker": "NVDA",
+    "scopes": [
+      {"ticker": "NVDA", "fiscal_year": 2024},
+      {"ticker": "NVDA", "fiscal_year": 2026}
+    ],
+    "category": "ai",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "nvda_revenue_change_2023_2025_01",
+    "question": "What was NVIDIA's total revenue in fiscal 2023 versus fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [
+      {"ticker": "NVDA", "fiscal_year": 2023},
+      {"ticker": "NVDA", "fiscal_year": 2025}
+    ],
+    "category": "numeric",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "26,974", "2025": "130,497"}
+  },
+  {
+    "id": "nvda_supply_chain_change_2023_2025_01",
+    "question": "How did NVIDIA describe supply-chain and manufacturing risk in fiscal 2023 compared with fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [
+      {"ticker": "NVDA", "fiscal_year": 2023},
+      {"ticker": "NVDA", "fiscal_year": 2025}
+    ],
+    "category": "operations",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "nvda_competition_fy2024_01",
+    "question": "How did NVIDIA describe competition in fiscal 2024?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2024}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_gaming_fy2025_01",
+    "question": "How did NVIDIA describe its Gaming business in fiscal 2025?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2025}],
+    "category": "business",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "nvda_year_not_present_fy2019_01",
+    "question": "What did NVIDIA say about export controls in fiscal 2019?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2019}],
+    "category": "regulation",
+    "answer_type": "unsupported_year"
+  },
+  {
+    "id": "nvda_year_not_present_fy2020_01",
+    "question": "How did NVIDIA describe AI risk in fiscal 2020?",
+    "ticker": "NVDA",
+    "scopes": [{"ticker": "NVDA", "fiscal_year": 2020}],
+    "category": "ai",
+    "answer_type": "unsupported_year"
+  }
+]

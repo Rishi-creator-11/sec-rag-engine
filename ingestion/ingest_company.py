@@ -581,24 +581,48 @@ def ingest_company(
     force: bool = False,
     skip_sparse: bool = False,
     cik: str | None = None,
+    fiscal_year: int | None = None,
+    years: int | None = None,
     successor_cik: str | None = None,
     successor_name: str | None = None,
     successor_effective_date: str | None = None,
     client: SecClient | None = None,
     ledger: Ledger | None = None,
 ) -> dict:
+    """Ingest one or more 10-K filings for ``ticker``.
+
+    - default (no ``fiscal_year``/``years``): the latest 10-K only (unchanged).
+    - ``fiscal_year=YYYY``: exactly that fiscal year's 10-K.
+    - ``years=N``: the latest N available exact 10-Ks; each accession has its
+      own ledger state, so a rerun skips complete ones and resumes the rest.
+    ``fiscal_year`` and ``years`` are mutually exclusive.
+    """
     ticker = ticker.strip().upper()
     started = time.perf_counter()
-
     client = client or SecClient()
+
+    if fiscal_year is not None and years is not None:
+        raise IngestionError("pass only one of fiscal_year / years")
+
     if cik is not None:
         logger.warning(
-            "ingest event=cik_override_requested ticker=%s cik=%s", ticker, cik,
+            "ingest event=cik_override_requested ticker=%s cik=%s fiscal_year=%s "
+            "years=%s", ticker, cik, fiscal_year, years,
         )
-    logger.info("ingest event=discover ticker=%s", ticker)
+
+    if years is not None:
+        return _ingest_years(
+            ticker, n=years, dry_run=dry_run, force=force, skip_sparse=skip_sparse,
+            cik=cik, successor_cik=successor_cik, successor_name=successor_name,
+            successor_effective_date=successor_effective_date,
+            client=client, ledger=ledger,
+        )
+
+    logger.info("ingest event=discover ticker=%s fiscal_year=%s", ticker, fiscal_year)
     filing = client.discover_latest_10k(
         ticker,
         cik=cik,
+        fiscal_year=fiscal_year,
         successor_cik=successor_cik,
         successor_name=successor_name,
         successor_effective_date=successor_effective_date,
@@ -608,7 +632,117 @@ def ingest_company(
         "ingest event=discovered ticker=%s filing_id=%s fiscal_year=%d",
         ticker, filing.filing_id, filing.fiscal_year,
     )
+    return _ingest_discovered(
+        filing, ticker, dry_run=dry_run, force=force, skip_sparse=skip_sparse,
+        client=client, ledger=ledger, started=started,
+    )
 
+
+def _ingest_years(
+    ticker: str,
+    *,
+    n: int,
+    dry_run: bool,
+    force: bool,
+    skip_sparse: bool,
+    cik: str | None,
+    successor_cik: str | None,
+    successor_name: str | None,
+    successor_effective_date: str | None,
+    client: SecClient,
+    ledger: Ledger | None,
+) -> dict:
+    """Discover the latest ``n`` exact 10-Ks and ingest each independently."""
+    if n < 1:
+        raise IngestionError("--years must be >= 1")
+
+    if cik is not None:
+        cik10 = cik
+        subs = client.submissions(cik10)
+        filings = client.list_10ks(cik10, ticker=ticker, submissions=subs)
+        lineage = dict(
+            successor_cik=successor_cik, successor_name=successor_name,
+            successor_effective_date=successor_effective_date,
+        )
+    else:
+        cik10 = client.resolve_cik(ticker)
+        filings = client.list_10ks(cik10, ticker=ticker)
+        lineage = {}
+
+    selected = filings[:n]
+    logger.info(
+        "ingest event=discovered_years ticker=%s requested=%d available=%d "
+        "selected=%s", ticker, n, len(filings),
+        ",".join(f"FY{f.fiscal_year}" for f in selected),
+    )
+
+    # Accessions the registry already records (e.g. a backfilled seed filing
+    # that lives under legacy chunk ids, not the canonical artifact path).
+    reg = registry.get_company(ticker) or {}
+    registered_accessions = {
+        f.get("accession_number") for f in reg.get("filings", [])
+    }
+
+    ledger = ledger or Ledger()
+    results: list[dict] = []
+    for filing in selected:
+        if filing.accession_number in registered_accessions and not force:
+            logger.info(
+                "ingest event=year_skipped_registered ticker=%s FY%d accession=%s "
+                "(already in registry)", ticker, filing.fiscal_year,
+                filing.accession_number,
+            )
+            results.append({
+                "status": "already_ingested",
+                "ticker": ticker,
+                "fiscal_year": filing.fiscal_year,
+                "filing_id": filing.filing_id,
+                "accession_number": filing.accession_number,
+                "chunk_count": next(
+                    (f.get("chunk_count") for f in reg.get("filings", [])
+                     if f.get("accession_number") == filing.accession_number),
+                    None,
+                ),
+                "note": "already recorded in registry (e.g. backfilled seed)",
+            })
+            continue
+        if lineage.get("successor_cik") or lineage.get("successor_effective_date"):
+            filing = dataclasses.replace(
+                filing, cik_override=True,
+                successor_cik=lineage.get("successor_cik"),
+                successor_name=lineage.get("successor_name"),
+                successor_effective_date=lineage.get("successor_effective_date"),
+            )
+        elif cik is not None:
+            filing = dataclasses.replace(filing, cik_override=True)
+        validate_filing_metadata(filing)
+        started = time.perf_counter()
+        results.append(_ingest_discovered(
+            filing, ticker, dry_run=dry_run, force=force, skip_sparse=skip_sparse,
+            client=client, ledger=ledger, started=started,
+        ))
+
+    return {
+        "status": "dry_run" if dry_run else "multi",
+        "ticker": ticker,
+        "requested_years": n,
+        "available_years": [f.fiscal_year for f in filings],
+        "processed_years": [f.fiscal_year for f in selected],
+        "results": results,
+    }
+
+
+def _ingest_discovered(
+    filing: DiscoveredFiling,
+    ticker: str,
+    *,
+    dry_run: bool,
+    force: bool,
+    skip_sparse: bool,
+    client: SecClient | None,
+    ledger: Ledger | None,
+    started: float,
+) -> dict:
     plan = build_plan(filing)
 
     if dry_run:
@@ -657,6 +791,7 @@ def ingest_company(
                 "status": "already_ingested",
                 "ticker": ticker,
                 "filing_id": filing.filing_id,
+                "fiscal_year": filing.fiscal_year,
                 "accession_number": filing.accession_number,
                 "chunk_count": entry.get("chunk_count"),
                 "missing_rebuild_artifacts": assessment.missing_rebuild_artifacts,
@@ -759,6 +894,22 @@ def _print_summary(result: dict) -> None:
     elif result["status"] == "already_ingested":
         print(f"  {result['ticker']} accession {result['accession_number']} "
               f"already complete ({result['chunk_count']} chunks). Use --force to rebuild.")
+    elif result["status"] == "multi":
+        print(f"  {result['ticker']}  requested {result['requested_years']} years  "
+              f"available {result['available_years']}")
+        print(f"  processed fiscal years: {result['processed_years']}")
+        for sub in result["results"]:
+            status = sub["status"]
+            if status == "ingested":
+                f = sub["filing"]
+                print(f"    FY{f['fiscal_year']}  {status:<16} chunks {sub['chunk_count']}  "
+                      f"dense {sub['dense_upserted']}  sparse {sub['sparse_status']}  "
+                      f"{sub['total_ms']:.0f} ms  ({f['accession_number']})")
+            elif status == "already_ingested":
+                print(f"    FY{sub.get('fiscal_year','?')}  {status:<16} "
+                      f"{sub['chunk_count']} chunks  ({sub['accession_number']})")
+            else:
+                print(f"    {status}: {sub}")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -779,6 +930,16 @@ def main(argv: list[str] | None = None) -> int:
                         help="lineage note: successor registrant legal name")
     parser.add_argument("--successor-effective-date", default=None,
                         help="lineage note: succession effective date (YYYY-MM-DD)")
+    year_group = parser.add_mutually_exclusive_group()
+    year_group.add_argument(
+        "--years", type=int, default=None,
+        help="ingest the latest N available exact 10-K filings "
+        "(each accession is independently checkpointed/resumable)",
+    )
+    year_group.add_argument(
+        "--fiscal-year", type=int, default=None,
+        help="ingest exactly this fiscal year's 10-K (year of the SEC reportDate)",
+    )
     parser.add_argument("--verify", action="store_true",
                         help="after ingestion, run ingestion.verify_company")
     parser.add_argument("--verbose", action="store_true")
@@ -787,6 +948,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.cik is None and (args.successor_cik or args.successor_name
                              or args.successor_effective_date):
         parser.error("--successor-* flags require --cik")
+    if args.years is not None and args.years < 1:
+        parser.error("--years must be >= 1")
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -801,6 +964,8 @@ def main(argv: list[str] | None = None) -> int:
             force=args.force,
             skip_sparse=args.skip_sparse,
             cik=args.cik,
+            fiscal_year=args.fiscal_year,
+            years=args.years,
             successor_cik=args.successor_cik,
             successor_name=args.successor_name,
             successor_effective_date=args.successor_effective_date,

@@ -67,15 +67,19 @@ class ApiAskTests(unittest.TestCase):
             rows = _rows(tickers, n=3)
             return rows, rows[:evidence_k], False, None, 1.0, 1.0
 
-        def fake_generate(question, evidence, comparison_tickers=None):
-            self.seen["comparison_tickers"] = comparison_tickers
+        def fake_generate(question, evidence, comparison_scopes=None):
+            self.seen["comparison_tickers"] = comparison_scopes
+            self.seen["comparison_scopes"] = comparison_scopes
             return "canned answer [Source 1]", "CTX", 1.0
 
-        def fake_comparison(question, evidence_k, requested_tickers):
-            self.seen["comparison_requested"] = list(requested_tickers)
+        def fake_comparison(question, evidence_k, scopes):
+            # Phase 5: scopes is a list of retrieval.scope.Scope
+            self.seen["comparison_requested"] = [s.ticker for s in scopes]
+            self.seen["comparison_scope_labels"] = [s.label for s in scopes]
             self.seen["comparison_evidence_k"] = evidence_k
-            rows = _rows(requested_tickers, n=max(evidence_k, len(requested_tickers)))
-            per_scope = {t: [r for r in rows if r["ticker"] == t] for t in requested_tickers}
+            tickers = [s.ticker for s in scopes]
+            rows = _rows(tickers, n=max(evidence_k, len(scopes)))
+            per_scope = {s.label: [r for r in rows if s.matches(r)] for s in scopes}
             return {
                 "union": rows,
                 "per_scope": per_scope,
@@ -84,7 +88,7 @@ class ApiAskTests(unittest.TestCase):
                 "reranker_fallback_reason": None,
                 "hybrid_ms": 1.0,
                 "rerank_ms": 1.0,
-                "tickers_with_candidates": [t for t in requested_tickers if per_scope[t]],
+                "scopes_with_candidates": [s for s in scopes if per_scope[s.label]],
             }
 
         self._patches = [
@@ -108,6 +112,8 @@ class ApiAskTests(unittest.TestCase):
                 "global_search": True,
                 "comparison_mode": False,
                 "tickers": None,
+                "fiscal_years": None,
+                "scopes": None,
                 "evidence_by_scope": {},
                 "warnings": [],
             },
@@ -145,6 +151,8 @@ class ApiAskTests(unittest.TestCase):
                 "global_search": False,
                 "comparison_mode": False,
                 "tickers": ["AAPL"],
+                "fiscal_years": None,
+                "scopes": ["AAPL"],
                 "evidence_by_scope": {"AAPL": len(body["sources"])},
                 "warnings": [],
             },
