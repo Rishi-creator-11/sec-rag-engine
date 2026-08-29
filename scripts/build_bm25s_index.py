@@ -20,8 +20,9 @@ persisted index bundled with the function. This script produces that bundle:
          returns byte-identical top-k (ids + order) to a fresh in-memory build,
          both unfiltered and with a ticker+fiscal_year filter
 
-Ranking is not touched. Commit the resulting data/bm25s_index/ — it is bundled
-read-only into the deployment (see vercel.json includeFiles).
+Ranking is not touched. Commit the resulting data/bm25s_index/ — Vercel bundles
+every tracked project file into the Python function by default, so the committed
+index ships read-only and `retrieval.lexical_backend` loads it without rebuilding.
 
 Run after any ingestion or metadata change, before deploying.
 """
