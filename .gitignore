@@ -20,8 +20,13 @@ data/sec_cache/
 # controlled backfill). Kept on the operator's machine, not in git.
 data/registry/backups/
 
-# Persisted bm25s lexical index (rebuildable from data/chunks/**)
-data/bm25s_index/
+# Persisted bm25s lexical index — TRACKED. The deployed runtime (Vercel) has a
+# read-only filesystem and cannot rebuild it, so the prebuilt index is committed
+# and bundled read-only into the function (vercel.json includeFiles). Rebuild
+# with `python -m scripts.build_bm25s_index` after any ingestion/metadata change
+# and commit the result. Only the transient tempfiles below are ignored.
+data/bm25s_index/*.tmp
+data/bm25s_index/.*.tmp*
 
 # Ingestion rebuild artifacts (large, regenerable from SEC / from chunks).
 # Kept OUT of git: raw HTML and cleaned text. Kept IN git: metadata.json

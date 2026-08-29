@@ -8,7 +8,9 @@ from pydantic import BaseModel, Field, field_validator
 from api.rag import answer_question
 from ingestion.registry import (
     available_fiscal_years,
+    get_company,
     list_companies,
+    normalize_ticker,
     partition_tickers,
 )
 
@@ -108,21 +110,27 @@ def health():
     Additive diagnostics: `lexical_backend` ("bm25s" | "current"), `bm25_documents`
     (null until the index is built on the first /ask), `companies`.
 
-    Readiness: the lexical retriever must be able to load OR deterministically
-    rebuild its index. If neither works we return 503 rather than silently
-    serving partial lexical search.
+    Readiness: the lexical retriever must load its index. On a writable
+    filesystem a missing/stale index is deterministically rebuilt; on a
+    read-only runtime (Vercel/Lambda) a missing/stale/corrupt bundled index
+    returns 503 — never a silent empty retriever, never a write under /var/task.
     """
     import os
 
     from fastapi.responses import JSONResponse
 
     from retrieval.bm25_search import document_count, get_index
-    from retrieval.lexical_backend import DEFAULT_BACKEND, LexicalBackendError
+    from retrieval.lexical_backend import (
+        DEFAULT_BACKEND,
+        LexicalBackendError,
+        is_read_only_runtime,
+    )
 
     backend = os.getenv("SEC_RAG_LEXICAL_BACKEND", DEFAULT_BACKEND).strip().lower()
     body = {
         "status": "ok",
         "lexical_backend": backend,
+        "read_only_runtime": is_read_only_runtime(),
         "companies": len(list_companies()),
         "bm25_documents": document_count(),
     }
@@ -140,13 +148,74 @@ def health():
 
 @app.get("/companies")
 def companies() -> dict:
-    """Registered companies, sorted by ticker. Powers the frontend selector."""
+    """Registered companies, sorted by ticker. Powers the frontend selector.
+
+    Deliberately lightweight — ticker + effective name only. Per-company filing
+    history is at GET /companies/{ticker}/filings.
+    """
     return {
         "companies": [
             {"ticker": company["ticker"], "name": company["name"]}
             for company in list_companies()
         ]
     }
+
+
+_FILING_PUBLIC_FIELDS = (
+    "filing_type", "fiscal_year", "report_date", "filing_date",
+    "accession_number", "chunk_count",
+)
+
+
+@app.get("/companies/{ticker}/filings")
+def company_filings(ticker: str) -> dict:
+    """Ingested filing history for one company, newest fiscal year first.
+
+    Backed by the company registry — no chunk text, no secrets, no internal
+    paths. ``fiscal_year`` is the year of the SEC reportDate (fiscal-period end).
+    Use these years in POST /ask ``fiscal_years`` for single-year or
+    year-comparison retrieval.
+    """
+    normalized = normalize_ticker(ticker)
+    company = get_company(normalized)
+    if company is None:
+        raise HTTPException(
+            status_code=404,
+            detail={"error": "unknown_ticker", "ticker": normalized},
+        )
+
+    filings = sorted(
+        (
+            {k: f.get(k) for k in _FILING_PUBLIC_FIELDS}
+            for f in company.get("filings", [])
+        ),
+        key=lambda f: (
+            str(f.get("filing_type") or ""),
+            -(f.get("fiscal_year") or 0),
+        ),
+    )
+
+    body = {
+        "ticker": normalized,
+        "name": company.get("name"),
+        "cik": company.get("cik"),
+        "filings": filings,
+        "available_fiscal_years": available_fiscal_years(normalized),
+    }
+
+    # Ticker->registrant succession (e.g. XOM). Factual: the historical filing's
+    # registrant is NOT the entity the ticker currently resolves to.
+    lineage = company.get("lineage")
+    if isinstance(lineage, dict) and lineage.get("cik_override"):
+        body["registrant_lineage"] = {
+            "note": lineage.get("note"),
+            "filing_registrant_cik": lineage.get("registrant_cik"),
+            "filing_registrant_legal_name": lineage.get("registrant_legal_name"),
+            "current_successor_cik": lineage.get("successor_cik"),
+            "current_successor_legal_name": lineage.get("successor_legal_name"),
+            "successor_effective_date": lineage.get("successor_effective_date"),
+        }
+    return body
 
 
 @app.post("/ask")

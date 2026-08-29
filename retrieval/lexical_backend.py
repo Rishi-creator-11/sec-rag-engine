@@ -156,6 +156,7 @@ class BM25SBackend(LexicalBackend):
         (path / "corpus_version.json").write_text(
             json.dumps({
                 "corpus_version": corpus_version(self._chunks),
+                "corpus_version_schema": CORPUS_VERSION_SCHEMA,
                 "document_count": len(self._chunks),
                 "k1": 1.5, "b": 0.75, "method": "lucene", "built": time.time(),
             }, indent=2),
@@ -212,10 +213,104 @@ class BM25SBackend(LexicalBackend):
 # --------------------------------------------------------------------------- #
 # Corpus versioning + backend selection                                       #
 # --------------------------------------------------------------------------- #
+CORPUS_VERSION_SCHEMA = "v2"  # bump when the fingerprint fields/format change
+
+
+def _corpus_fingerprint_line(chunk: dict) -> str:
+    """Retrieval-critical identity of one chunk, order-independent across the set.
+
+    Includes the fields a scoped query filters on, so a metadata-only change
+    (e.g. backfilling ``fiscal_year`` onto seed chunks) invalidates the index
+    even though the chunk ids did not change. Deliberately excludes chunk text
+    and transient fields (timestamps, scores, filing_date display).
+    """
+    filing = str(chunk.get("filing_id") or chunk.get("accession_number") or "")
+    return "|".join((
+        str(chunk["chunk_id"]),
+        str(chunk.get("ticker") or ""),
+        "" if chunk.get("fiscal_year") in (None, "") else str(int(chunk["fiscal_year"])),
+        filing.replace("-", ""),
+    ))
+
+
 def corpus_version(chunks: list[dict]) -> str:
-    """Deterministic id of the lexical corpus: sha256 of sorted chunk_ids."""
-    joined = "\n".join(sorted(str(c["chunk_id"]) for c in chunks))
-    return hashlib.sha256(joined.encode("utf-8")).hexdigest()
+    """Deterministic id of the lexical corpus.
+
+    ``<schema>:<sha256>`` over the sorted per-chunk fingerprints
+    (chunk_id + ticker + fiscal_year + filing_id/accession). Order-independent.
+    """
+    joined = "\n".join(sorted(_corpus_fingerprint_line(c) for c in chunks))
+    digest = hashlib.sha256(joined.encode("utf-8")).hexdigest()
+    return f"{CORPUS_VERSION_SCHEMA}:{digest}"
+
+
+def is_read_only_runtime() -> bool:
+    """True on a serverless/read-only project filesystem (Vercel, AWS Lambda).
+
+    In this mode the lexical index is loaded read-only from the deployment
+    bundle and is NEVER rebuilt (any rebuild would write under a read-only
+    /var/task). Override with SEC_RAG_READ_ONLY_FS=1 (force on) or
+    SEC_RAG_FORCE_WRITABLE_FS=1 (force off, e.g. a self-hosted container).
+    """
+    if os.getenv("SEC_RAG_FORCE_WRITABLE_FS") == "1":
+        return False
+    if os.getenv("SEC_RAG_READ_ONLY_FS") == "1":
+        return True
+    return bool(
+        os.getenv("VERCEL")
+        or os.getenv("VERCEL_ENV")
+        or os.getenv("AWS_LAMBDA_FUNCTION_NAME")
+        or os.getenv("AWS_EXECUTION_ENV")
+    )
+
+
+def load_readonly_bm25s(
+    index_dir: str | Path = BM25S_INDEX_DIR,
+    chunks: list[dict] | None = None,
+) -> "BM25SBackend":
+    """Load the deployment-bundled bm25s index read-only. Never rebuilds, never
+    writes. Raises LexicalBackendError (→ /health 503) if the index is missing,
+    unreadable, empty, or does not match the current corpus_version."""
+    index_dir = Path(index_dir)
+    chunks = chunks if chunks is not None else load_chunks()
+    expected = corpus_version(chunks)
+
+    version_file = index_dir / "corpus_version.json"
+    if not (index_dir.is_dir() and version_file.exists()):
+        raise LexicalBackendError(
+            f"read-only runtime: no bundled bm25s index at {index_dir} "
+            "(build it before deploy: python -m scripts.build_bm25s_index)"
+        )
+    try:
+        meta = json.loads(version_file.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        raise LexicalBackendError(
+            f"read-only runtime: bundled bm25s corpus_version.json unreadable: {exc}"
+        ) from exc
+    if meta.get("corpus_version") != expected:
+        raise LexicalBackendError(
+            "read-only runtime: bundled bm25s index is stale "
+            f"(bundled {str(meta.get('corpus_version'))[:20]} != corpus {expected[:20]}); "
+            "rebuild + redeploy"
+        )
+    t0 = time.perf_counter()
+    try:
+        backend = BM25SBackend.load(index_dir)
+    except LexicalBackendError:
+        raise
+    except Exception as exc:  # noqa: BLE001
+        raise LexicalBackendError(
+            f"read-only runtime: bundled bm25s index failed to load: "
+            f"{type(exc).__name__}: {exc}"
+        ) from exc
+    if backend.document_count < 1:
+        raise LexicalBackendError("read-only runtime: bundled bm25s index has 0 documents")
+    logger.info(
+        "lexical event=bm25s_load_readonly document_count=%d duration_ms=%.0f "
+        "corpus_version=%s",
+        backend.document_count, (time.perf_counter() - t0) * 1000, expected[:16],
+    )
+    return backend
 
 
 def build_persisted_bm25s(
@@ -302,10 +397,24 @@ def get_lexical_backend(
     reference implementation (kept for parity/debugging).
 
     ``force_rebuild`` (used by reload() after ingestion) rebuilds + re-persists.
+
+    On a read-only runtime (Vercel / AWS Lambda — see ``is_read_only_runtime``)
+    the index is loaded read-only from the deployment bundle and is NEVER
+    rebuilt; a missing / stale / corrupt bundle fails readiness (no silent empty
+    retriever, no write under /var/task).
     """
     name = os.getenv("SEC_RAG_LEXICAL_BACKEND", DEFAULT_BACKEND).strip().lower()
     if name == "current":
         return CurrentBM25Backend(chunks)
+
+    if is_read_only_runtime():
+        if force_rebuild:
+            raise LexicalBackendError(
+                "bm25s rebuild requested on a read-only runtime; build the index "
+                "before deploy (python -m scripts.build_bm25s_index) and redeploy"
+            )
+        return load_readonly_bm25s(BM25S_INDEX_DIR, chunks)
+
     if force_rebuild:
         return build_persisted_bm25s(chunks)
     return load_or_build_bm25s(chunks=chunks)
