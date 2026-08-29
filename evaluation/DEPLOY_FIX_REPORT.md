@@ -1,65 +1,75 @@
 # Production deployment fix — Vercel-safe bm25s + available-filings API
 
-Date: 2026-08-28
-Scope: two backend contract/deployment issues found by the frontend inspection.
-No ranking / candidate_k / RRF / Cohere / OpenAI / frontend change. Not committed,
-not pushed.
+Date: 2026-08-29
+Deployed: `https://sec-rag-engine.vercel.app`
+Commits: `5aa624c` (fix) + `9ba93c0` (routing correction) on `origin/main`.
+No retrieval-ranking / candidate_k / RRF / Cohere / OpenAI / frontend change.
 
 ---
 
 ## 1. Root cause of the Vercel failure
 
-`GET /health` → 503 on Vercel because the lexical backend tried to **build** the
-bm25s index at request time and **write** it under `/var/task/data/bm25s_index`,
-which is read-only on Vercel (AWS Lambda) serverless functions.
+`GET /health` → 503:
 
-Chain: first `/ask` (or `/health`) → `get_lexical_backend()` →
-`load_or_build_bm25s()` → the persisted index is **absent from the function
-bundle** (nothing bundled `data/bm25s_index/**` — Vercel's `@vercel/python`
-only ships imported modules unless `includeFiles` says otherwise) → falls to
-`build_persisted_bm25s()` → `BM25SBackend.save()` → `path.mkdir()` +
-`np.save(...)` → `OSError: [Errno 30] Read-only file system` →
-`LexicalBackendError` → `/health` returns 503 and `/ask` cannot retrieve.
+```
+lexical index unavailable: bm25s rebuild failed:
+OSError: [Errno 30] Read-only file system: '/var/task/data/bm25s_index'
+```
+
+The persisted bm25s index (`data/bm25s_index/`) was **git-ignored**, so it was
+absent from the Vercel git checkout and therefore absent from the Python
+function bundle (Vercel's Python runtime bundles *tracked* project files by
+default; a gitignored directory ships nothing). At the first request
+`get_lexical_backend()` → `load_or_build_bm25s()` found no bundled index →
+fell through to `build_persisted_bm25s()` → `BM25SBackend.save()` →
+`Path.mkdir()` + `np.save(...)` under `/var/task`, which is read-only on Vercel
+(AWS Lambda) → `OSError` → `LexicalBackendError` → `/health` 503, `/ask`
+un-retrievable.
 
 Two design gaps behind it:
-- no deployment-aware branch — the runtime always assumed a writable FS;
+- the runtime always assumed a writable filesystem — no read-only branch;
 - `corpus_version` hashed **chunk ids only**, so a metadata-only change (the
-  Phase-5 seed `fiscal_year` backfill) would not have invalidated a stale
-  bundled index even once one existed.
+  Phase-5 seed `fiscal_year` backfill) would not invalidate a stale bundled
+  index once one existed.
 
 ## 2. Index packaging strategy — **A: commit the prebuilt index**
 
-`data/bm25s_index/` is now **git-tracked** and bundled read-only into the Vercel
-function via `vercel.json` `includeFiles`. Chosen over "build during Vercel
-build" because:
-- there is currently **no committed Vercel build pipeline** to hang a reliable
-  `buildCommand` on (no `vercel.json`, no `.vercelignore` in the repo);
-- deterministic — the exact index validated locally is what runs in production;
-- 11.7 MB / 7 files is trivial for the bundle (Vercel unzipped limit is 250 MB);
-- it fits the existing operator workflow — ingestion already rebuilds the index,
-  and phase checkpoints already commit `data/` serving artifacts.
+`data/bm25s_index/` is now **git-tracked** (7 files, 11.7 MB). Vercel's Python
+runtime bundles every reachable tracked file into the function **by default —
+no `includeFiles` needed**. Chosen over a Vercel build step because there is no
+committed build pipeline to hang a `buildCommand` on, the committed index is
+deterministic (exactly what was validated locally runs in production), and it
+fits the operator workflow (ingestion already rebuilds the index and phase
+checkpoints already commit `data/` serving artifacts).
 
-Rebuild + re-commit `data/bm25s_index/` after any ingestion or metadata change:
+Rebuild + re-commit after any ingestion or metadata change:
 `python -m scripts.build_bm25s_index`.
 
 ## 3. Files changed
 
-**Modified**
+**`5aa624c` — Make bm25s deployment Vercel-safe and expose filing years**
+
 | file | change |
 |---|---|
 | `retrieval/lexical_backend.py` | `is_read_only_runtime()`; `load_readonly_bm25s()` (load-only, fails clearly); `get_lexical_backend()` read-only branch (never rebuilds); content-aware `corpus_version()` (`v2:` schema); `save()` records `corpus_version_schema` |
-| `api/main.py` | `GET /companies/{ticker}/filings`; `/health` adds `read_only_runtime` and documents the read-only readiness contract; `/companies` doc clarified (unchanged shape) |
+| `api/main.py` | `GET /companies/{ticker}/filings`; `/health` adds `read_only_runtime`; readiness contract doc |
 | `.gitignore` | `data/bm25s_index/` now tracked (only `*.tmp` ignored) |
+| `scripts/build_bm25s_index.py` (new) | deterministic prebuild + verify (load round-trip + ranking parity, unfiltered and year-filtered) |
+| `tests/test_deploy_readonly.py` (new) | 24 tests (§10) |
+| `data/bm25s_index/` (new, 7 files) | committed prebuilt index (`v2:` corpus_version, 1,684 docs) |
+| `evaluation/DEPLOY_FIX_REPORT.md` (new) | this report |
 
-**New**
-| file | purpose |
-|---|---|
-| `scripts/build_bm25s_index.py` | deterministic prebuild + verify (load round-trip + ranking parity) |
-| `api/index.py` | Vercel Python entrypoint (`from api.main import app`) |
-| `vercel.json` | function config + `includeFiles: "data/**"` + rewrite all routes to `api/index` |
-| `.vercelignore` | drop `evaluation/`, `tests/`, `scripts/`, dev trees from the bundle |
-| `tests/test_deploy_readonly.py` | 24 tests (see §10) |
-| `data/bm25s_index/` (7 files) | the committed prebuilt index (`v2:` corpus_version, 1,684 docs, 11.7 MB) |
+**`9ba93c0` — Fix Vercel routing: drop vercel.json rewrite + api/index.py**
+
+`5aa624c` also added `vercel.json` (a `/(.*) → /api/index` rewrite), an
+`api/index.py` re-export entrypoint, and `.vercelignore`. On the live project
+this **broke routing** — every path returned Starlette's `{"detail":"Not
+Found"}` (`/openapi.json` still showed the routes; `/docs` still rendered):
+`api/index.py` took precedence over `api/main.py` as the FastAPI entrypoint and
+its `from api.main import app` fails on Vercel's import path, and the rewrite
+forced every request onto `/api/index`. The pre-existing zero-config deployment
+routed all paths to the `api/main.py` FastAPI `app`; `9ba93c0` restores that by
+**removing all three files**. Net config change for routing: none.
 
 ## 4. Build / index generation command
 
@@ -67,73 +77,61 @@ Rebuild + re-commit `data/bm25s_index/` after any ingestion or metadata change:
 python -m scripts.build_bm25s_index          # build data/bm25s_index/ + verify
 python -m scripts.build_bm25s_index --check   # verify only, no write
 ```
-Build settings are read from the production code path (`method="lucene"`,
-`k1=1.5`, `b=0.75`, `dtype="float64"`, `retrieval.bm25_search.tokenize`). Verify:
-- fresh `BM25SBackend.load()` round-trips;
-- `corpus_version` + `document_count` recorded and match `load_chunks()`;
-- **ranking parity** — for 6 fixed queries, unfiltered and with a
-  `NVDA` + `fiscal_year=2023` filter, the persisted index returns byte-identical
-  top-10 (ids + scores) to a fresh in-memory build.
+Settings come from the production code path (`method="lucene"`, `k1=1.5`,
+`b=0.75`, `dtype="float64"`, `retrieval.bm25_search.tokenize`). Verifies:
+fresh `BM25SBackend.load()` round-trips; `corpus_version` + `document_count`
+recorded and match `load_chunks()`; **ranking parity** — 6 fixed queries,
+unfiltered and with a `NVDA` + `fiscal_year=2023` filter, byte-identical top-10
+(ids + scores) between the persisted index and a fresh in-memory build.
 
-Current output: `document_count 1684`, `corpus_version
+Current: `document_count 1684`, `corpus_version
 v2:ef5d6c2a1e426f2481fdde176658ac8deb01359ef88c1b67405f9985b4aea163`,
 parity **OK**.
 
 ## 5. Runtime Vercel behaviour
 
-`is_read_only_runtime()` is True when `VERCEL`, `VERCEL_ENV`,
-`AWS_LAMBDA_FUNCTION_NAME`, or `AWS_EXECUTION_ENV` is set (or
-`SEC_RAG_READ_ONLY_FS=1`; `SEC_RAG_FORCE_WRITABLE_FS=1` forces it off).
+`is_read_only_runtime()` → True when `VERCEL` / `VERCEL_ENV` /
+`AWS_LAMBDA_FUNCTION_NAME` / `AWS_EXECUTION_ENV` is set (or
+`SEC_RAG_READ_ONLY_FS=1`; `SEC_RAG_FORCE_WRITABLE_FS=1` forces off).
 
 In that mode `get_lexical_backend()`:
 - loads the bundled index **read-only** via `BM25SBackend.load(BM25S_INDEX_DIR)`
-  — bm25s 0.3.11 `load()` reads only, no write, verified against a
-  `chmod`-read-only directory (both `mmap=False` and `mmap=True`);
+  — bm25s 0.3.11 `load()` reads only, verified against a `chmod`-read-only
+  directory (`mmap=False` and `mmap=True`);
 - **never** calls `build_persisted_bm25s()`; `force_rebuild=True` raises
-  `LexicalBackendError` ("build the index before deploy");
-- fails **clearly** (→ `LexicalBackendError` → `/health` 503, `status:
-  "unavailable"`, `detail: "...read-only runtime: ..."`) when the bundle is
-  **missing**, its `corpus_version.json` is **unreadable**, the
-  `corpus_version` does **not match** `corpus_version(load_chunks())` (stale), the
-  bm25s load **throws**, or the loaded index has **0 documents**. No silent empty
-  retriever; no write under `/var/task`.
+  `LexicalBackendError`;
+- fails **clearly** (→ `LexicalBackendError` → `/health` 503,
+  `status: "unavailable"`) when the bundle is **missing**, `corpus_version.json`
+  is **unreadable**, the `corpus_version` does **not match**
+  `corpus_version(load_chunks())` (stale), the bm25s load **throws**, or the
+  loaded index has **0 documents**. No silent empty retriever; no write under
+  `/var/task`. A `/tmp` copy is not needed.
 
-A `/tmp` copy is **not** needed — direct read-only load works.
-
-Local verification (`VERCEL=1`, `TestClient`):
-- current bundle → `/health` **200 ok** (`read_only_runtime: true`,
-  `bm25_documents: 1684`); `/ask NVDA FY2023` **200**, sources all FY2023.
-- stale bundle → `/health` **503** "read-only runtime: bundled bm25s index is
-  stale …".
+**Production, live:** `GET /health` → `{"status":"ok","lexical_backend":"bm25s",
+"read_only_runtime":true,"companies":10,"bm25_documents":1684}`.
 
 ## 6. Local behaviour (unchanged)
 
-Writable FS (default): `load_or_build_bm25s()` — loads the persisted index if
-`corpus_version` matches, otherwise deterministically **rebuilds + re-persists**
-(missing / corrupt / stale), and only fails readiness if a rebuild also fails.
-`bm25_search.reload()` (called by ingestion `stage_bm25`) still force-rebuilds
-locally. `SEC_RAG_LEXICAL_BACKEND=current` rollback unchanged.
+Writable FS: `load_or_build_bm25s()` loads if `corpus_version` matches,
+otherwise deterministically **rebuilds + re-persists** (missing/corrupt/stale),
+fails readiness only if a rebuild also fails. `bm25_search.reload()` (ingestion
+`stage_bm25`) still force-rebuilds. `SEC_RAG_LEXICAL_BACKEND=current` rollback
+unchanged.
 
 ## 7. corpus_version change
 
-Before: `sha256("\n".join(sorted(chunk_id)))`.
-After: `"v2:" + sha256` over the sorted per-chunk fingerprint
+`"v2:" + sha256` over the sorted per-chunk fingerprint
+`chunk_id | ticker | fiscal_year | (filing_id or accession_number, dashes
+stripped)` — order-independent, **excludes** chunk text and transient fields
+(`filing_date` display, scores, timestamps). A metadata-only change (seed
+`fiscal_year` backfill, re-attribution, adding a company year) now changes
+`corpus_version`, so a stale bundled index is detected (503 on Vercel; rebuild
+locally). The `v2:` prefix treats any index persisted by the old code as stale;
+the committed index was rebuilt with the new function.
 
-```
-chunk_id | ticker | fiscal_year | (filing_id or accession_number, dashes stripped)
-```
-
-- Order-independent; **excludes** chunk text and transient fields
-  (`filing_date` display, scores, timestamps).
-- A metadata-only change — e.g. backfilling `fiscal_year` onto the seed chunks,
-  re-attributing a filing, adding a fiscal year for a company — now changes
-  `corpus_version`, so a stale bundled index is detected (503 on Vercel; rebuild
-  locally).
-- The `v2:` schema prefix means any index persisted by the old code is treated
-  as stale. The committed `data/bm25s_index/` was rebuilt with the new function.
-- Tests: `CorpusVersionTests` (7) — schema prefix, determinism/order-independence,
-  changes on `fiscal_year` / `filing_id` / `ticker`, `accession_number` ⇄
-  `filing_id` equivalence, ignores transient fields, ≠ the old chunk-id-only hash.
+Tests: `CorpusVersionTests` (7) — schema prefix, determinism/order-independence,
+sensitivity to `fiscal_year` / `filing_id` / `ticker`, `accession_number` ⇄
+`filing_id` equivalence, transient-field immunity, ≠ old chunk-id-only hash.
 
 ## 8. GET /companies/{ticker}/filings contract
 
@@ -147,23 +145,22 @@ GET /companies/NVDA/filings  -> 200
     {"filing_type":"10-K","fiscal_year":2026,"report_date":"2026-01-25",
      "filing_date":"2026-02-25","accession_number":"0001045810-26-000021",
      "chunk_count":103},
-    ... FY2025, FY2024, FY2023
+    ...FY2025, FY2024, FY2023
   ],
   "available_fiscal_years": [2026, 2025, 2024, 2023]
 }
 ```
 - backed by `ingestion.registry.get_company` — **no chunk text, no secrets, no
   internal paths**;
-- deterministic order: `filing_type` asc, then `fiscal_year` **desc**
-  (newest-year-first);
-- unknown ticker → **404** `{"detail": {"error": "unknown_ticker", "ticker": …}}`;
-- `GET /companies` **unchanged** — still `{"companies": [{"ticker","name"}]}`.
+- deterministic order: `filing_type` asc, then `fiscal_year` **desc**;
+- unknown ticker → **404** `{"detail":{"error":"unknown_ticker","ticker":…}}`;
+- `GET /companies` **unchanged** — `{"companies":[{"ticker","name"}]}`.
 
 ## 9. XOM provenance response
 
-When a company carries registry lineage (ticker→registrant succession), the
-response adds a factual `registrant_lineage` block — the historical filing's
-registrant is **not** the entity the ticker currently resolves to:
+Companies with registry lineage get a factual `registrant_lineage` block —
+the historical filing's registrant is not the entity the ticker currently
+resolves to:
 
 ```
 GET /companies/XOM/filings -> "registrant_lineage": {
@@ -178,120 +175,81 @@ GET /companies/XOM/filings -> "registrant_lineage": {
   "successor_effective_date": "2026-07-01"
 }
 ```
-The XOM FY2025 filing itself stays attributed to the historical registrant.
-Companies without lineage have no such block. Generic — driven by the registry,
-no ticker hardcoding.
+Production check confirmed: `filing_registrant 0000034088` → `successor
+0002115436`, XOM filing years `[2025]`. Companies without lineage have no block.
+Generic — registry-driven, no ticker hardcoding.
 
 ## 10. Tests
 
-`python -m unittest discover -s tests -t .` → **277 passed** (was 253; +24
-`tests/test_deploy_readonly.py`). Existing suites all green (ranking, comparison,
-multi-year, XOM lineage, ingestion resume, API contract).
+`python -m unittest discover -s tests -t .` → **277 passed** (+24
+`tests/test_deploy_readonly.py`; existing suites all green).
 
-New coverage:
-- **corpus_version** (7): schema, determinism, sensitivity to
-  fiscal_year/filing_id/ticker, transient-field immunity, ≠ old hash.
-- **read-only detection** (4): VERCEL / AWS_LAMBDA env, explicit on/off flags,
-  local default writable.
-- **read-only backend** (5, against the real prebuilt index): loads without
-  writing a byte to the dir, Vercel mode never calls the builder,
-  `force_rebuild` raises, missing bundle fails clearly, stale corpus_version
-  fails clearly, **ranking identical** read-only-load vs fresh build.
-- **local mode** (1): missing index still rebuilds when not on Vercel.
-- **/companies/{ticker}/filings** (7): NVDA FY2026/2025/2024/2023 newest-first,
-  lowercase normalised, AAPL current registered filing, XOM lineage factual
-  (registrant ≠ successor), no-lineage company has no block, unknown ticker 404,
-  `/companies` unchanged.
+New coverage: `corpus_version` (7); read-only detection (4: VERCEL/AWS env,
+explicit flags, local default); read-only backend against the real prebuilt
+index (5: loads without writing a byte, Vercel mode never calls the builder,
+`force_rebuild` raises, missing bundle fails clearly, stale `corpus_version`
+fails clearly, **ranking identical** read-only-load vs fresh); local mode still
+rebuilds when not on Vercel (1); `/companies/{ticker}/filings` (7:
+NVDA 4 years newest-first, lowercase normalised, AAPL current filing, XOM
+lineage factual, no-lineage company has no block, unknown ticker 404,
+`/companies` unchanged).
 
-## 11. Local API checks
+## 11. Local API checks (pre-push)
 
 | check | result |
 |---|---|
-| `GET /health` | **200** `{"status":"ok","lexical_backend":"bm25s","read_only_runtime":false,"bm25_documents":1684,"companies":10}` |
-| `GET /companies` | **200**, 10 companies, `{ticker,name}` only |
-| `GET /companies/NVDA/filings` | **200**, years `[2026,2025,2024,2023]`, `available_fiscal_years` matches |
-| `GET /companies/XOM/filings` | **200**, `registrant_lineage` `0000034088 → 0002115436` |
-| `GET /companies/ZZZZ/filings` | **404** `unknown_ticker` |
-| `POST /ask` NVDA FY2023 | **200**, `search_scope.scopes == ["NVDA:2023"]`, every source `fiscal_year == 2023` (zero cross-year leakage) |
-| `POST /ask` NVDA FY2023+FY2025 | **200**, `evidence_by_scope {"NVDA:2023":1,"NVDA:2025":4}`, sources only FY2023/FY2025 |
-| `POST /ask` NVDA FY1999 | **422** `fiscal_year_not_available` (not silently widened) |
-| `VERCEL=1` `GET /health` | **200 ok**, `read_only_runtime: true` |
-| `VERCEL=1` + stale index `GET /health` | **503** "bundled bm25s index is stale" |
-| benchmark_v3 offline (frozen pool) | hybrid MRR **0.903**, filter_correctness 1.000, leakage 0.000 — **ranking unchanged** |
-| `build_bm25s_index --check` | **OK** — read-only load ranks identically to a fresh build |
+| `GET /health` | 200, `read_only_runtime:false`, `bm25_documents:1684` |
+| `GET /companies` | 200, 10 companies |
+| `GET /companies/NVDA/filings` | 200, `[2026,2025,2024,2023]` |
+| `POST /ask` NVDA FY2023 | 200, `scopes ["NVDA:2023"]`, every source `fiscal_year==2023` |
+| `POST /ask` NVDA FY2023+FY2025 | 200, `evidence_by_scope {"NVDA:2023":1,"NVDA:2025":4}`, sources FY2023/2025 only |
+| `POST /ask` NVDA FY1999 | 422 `fiscal_year_not_available` |
+| `VERCEL=1 GET /health` | 200 ok; stale index → 503 "bundled bm25s index is stale" |
+| benchmark_v3 offline (frozen pool) | hybrid MRR **0.903**, filter_correctness 1.000, leakage 0.000 — ranking unchanged |
+| `build_bm25s_index --check` | OK — read-only load ranks identically to a fresh build |
 
-## 12. Exact Vercel deployment steps
+## 12. Vercel deployment — what shipped
 
-**Files to deploy (all in the repo, this task's diff):**
-- `vercel.json`, `.vercelignore`, `api/index.py`
-- `retrieval/lexical_backend.py`, `api/main.py`, `.gitignore`
-- `scripts/build_bm25s_index.py`, `tests/test_deploy_readonly.py`
-- **`data/bm25s_index/` (7 files, 11.7 MB)** — the prebuilt index, now git-tracked
+- **Routing**: pre-existing zero-config — Vercel's FastAPI preset (`fastapi` in
+  `requirements.txt`) serves the `api/main.py` `app` and routes every path to
+  it. No `vercel.json`, no rewrites.
+- **Bundling**: every tracked project file is bundled by default, so the
+  committed `data/bm25s_index/` (11.7 MB) + `data/chunks/**` + `data/registry/
+  *.json` ship into the function. Gitignored paths
+  (`data/raw/**/filing.*`, `data/embeddings/`, `data/sec_cache/`,
+  `data/registry/backups/`) are absent from the git checkout and not bundled.
+- **Environment variables** (Vercel Production project): `OPENAI_API_KEY`,
+  `PINECONE_API_KEY`, `COHERE_API_KEY` (required for `/ask`); `SEC_USER_AGENT`;
+  `FRONTEND_ORIGINS` (or the built-in default). `VERCEL` is set automatically →
+  read-only bm25s path activates. Do **not** set `SEC_RAG_LEXICAL_BACKEND`.
+- Redeploy after any ingestion / metadata change: `python -m
+  scripts.build_bm25s_index`, commit `data/bm25s_index/`, push.
 
-**Steps:**
-1. `python -m scripts.build_bm25s_index` — regenerate `data/bm25s_index/` from
-   the current corpus, confirm parity `OK`.
-2. Commit the diff (this task did **not** commit) including `data/bm25s_index/`.
-3. Push `main` → Vercel deploys.
-4. Vercel picks up `vercel.json`:
-   - `functions."api/index.py".includeFiles: "data/**"` bundles
-     `data/bm25s_index/**`, `data/chunks/**`, `data/registry/*.json`,
-     `data/raw/**/metadata.json` (gitignored `data/raw/**/filing.*`,
-     `data/embeddings/`, `data/sec_cache/`, `data/registry/backups/` are absent
-     from the git checkout and not bundled);
-   - `rewrites: [{ "source": "/(.*)", "destination": "/api/index" }]` routes
-     `/health`, `/companies`, `/companies/*/filings`, `/ask` to the FastAPI app;
-   - `maxDuration: 30`.
-5. **Environment variables** on the Vercel project (Production):
-   - `OPENAI_API_KEY`, `PINECONE_API_KEY`, `COHERE_API_KEY` — required
-   - `SEC_USER_AGENT` — required for any SEC call (`/ask` does not call SEC, but
-     `verify` tooling does; safe to set)
-   - `FRONTEND_ORIGINS=https://secfrontend.vercel.app` (or rely on the built-in
-     default from the CORS commit)
-   - `VERCEL` is set automatically by Vercel → read-only bm25s path activates.
-   - do **not** set `SEC_RAG_LEXICAL_BACKEND` (defaults to `bm25s`).
-6. If the Vercel project currently has a dashboard "Root Directory" / build
-   override or an out-of-repo `vercel.json`, reconcile it with the committed
-   `vercel.json` (this repo had none committed).
+## 13. git diff --stat
 
-**Post-deploy production checks (must pass):**
-| request | expect |
-|---|---|
-| `GET /health` | 200, `{"status":"ok","read_only_runtime":true,"bm25_documents":1684}` |
-| `GET /companies` | 200 |
-| `GET /companies/NVDA/filings` | 200, 4 fiscal years newest-first |
-| `POST /ask` `{"question":"…","tickers":["NVDA"],"fiscal_years":[2023]}` | 200, sources FY2023 only |
-| `POST /ask` `{"question":"…","tickers":["NVDA"],"fiscal_years":[2023,2025]}` | 200, evidence_by_scope both years |
-| `POST /ask` `{"question":"…","tickers":["NVDA"],"fiscal_years":[1999]}` | 422 `fiscal_year_not_available` |
-
-If `/health` returns 503 with "bundled bm25s index is stale" or "no bundled
-bm25s index", step 1 was skipped or `includeFiles` did not ship the directory —
-rerun the build, confirm `data/bm25s_index/` is committed, redeploy.
-
-## 13. git diff --stat (staged preview — NOT committed)
-
+`5aa624c`:
 ```
  .gitignore                             |    9 +-
- .vercelignore                          |   24 +
- api/index.py                           |   12 +
  api/main.py                            |   79 +-
  data/bm25s_index/chunks.jsonl          | 1684 ++++++++++++++++++++++++++++++
  data/bm25s_index/corpus_version.json   |    9 +
- data/bm25s_index/data.csc.index.npy    |  Bin 0 -> 3179048 bytes
- data/bm25s_index/indices.csc.index.npy |  Bin 0 -> 1589588 bytes
- data/bm25s_index/indptr.csc.index.npy  |  Bin 0 -> 92472 bytes
+ data/bm25s_index/data.csc.index.npy    |  Bin 0 -> 3179048
+ data/bm25s_index/indices.csc.index.npy |  Bin 0 -> 1589588
+ data/bm25s_index/indptr.csc.index.npy  |  Bin 0 -> 92472
  data/bm25s_index/params.index.json     |   12 +
  data/bm25s_index/vocab.index.json      |    1 +
+ evaluation/DEPLOY_FIX_REPORT.md        |  297 +++++
  retrieval/lexical_backend.py           |  115 ++-
  scripts/build_bm25s_index.py           |  130 +++
  tests/test_deploy_readonly.py          |  233 +++++
- vercel.json                            |   12 +
- 15 files changed, 2310 insertions(+), 10 deletions(-)
+ vercel.json / .vercelignore / api/index.py  (added, then reverted in 9ba93c0)
 ```
+`9ba93c0`: `-vercel.json -.vercelignore -api/index.py`, docstring tweak.
 
-Secret scan of the staged diff: **clean**. No raw filing HTML, embeddings, SEC
-cache, judge pools, backups, or test scratch staged. `data/bm25s_index/chunks.jsonl`
-carries public SEC 10-K text identical to the already-tracked `data/chunks/**`.
+Secret scan of both commits' staged diffs: **clean**. `data/bm25s_index/
+chunks.jsonl` carries public SEC 10-K text identical to the already-tracked
+`data/chunks/**`. No raw filing HTML, embeddings, SEC cache, judge pools,
+backups, or test scratch committed.
 
-**Nothing committed, nothing pushed.** `HEAD` = `c4549fa`; `v1-stable` → `0edf0a5`,
-`a200b3e`, `1ce2a3e` untouched. Frontend not modified. No new companies ingested.
+`HEAD` = `9ba93c0` = `origin/main`. `v1-stable` → `0edf0a5`, `a200b3e`,
+`1ce2a3e`, `c4549fa` untouched. Frontend not modified. No new companies ingested.
