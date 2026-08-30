@@ -1,0 +1,308 @@
+[
+  {
+    "id": "aapl_net_sales_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "AAPL:2025"
+    ],
+    "expected": {
+      "2025": "416,161"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "Apple\u2019s total net sales in fiscal 2025 were $416,161 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "AAPL"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "AAPL:2025"
+      ],
+      "evidence_by_scope": {
+        "AAPL:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "aapl_net_sales_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "AAPL:2023"
+    ],
+    "expected": {
+      "2023": "383,285"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Total net sales were $383,285 million ($383.3 billion) in fiscal 2023. [Source 2]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "AAPL"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "AAPL:2023"
+      ],
+      "evidence_by_scope": {
+        "AAPL:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "aapl_net_sales_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "AAPL:2023",
+      "AAPL:2025"
+    ],
+    "expected": {
+      "2023": "383,285",
+      "2025": "416,161"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Total net sales: 383,285 million dollars [Source 2]\n\nFY2025:\n- Total net sales: 416,161 million dollars [Source 2]\n\nWhat changed:\n- Total net sales increased by 32,876 million dollars from FY2023 to FY2025 [Source 2].",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "AAPL"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "AAPL:2023",
+        "AAPL:2025"
+      ],
+      "evidence_by_scope": {
+        "AAPL:2023": 1,
+        "AAPL:2025": 4
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "msft_revenue_fy2026_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "MSFT:2026"
+    ],
+    "expected": {
+      "2026": "331,839"
+    },
+    "number_present_by_year": {
+      "2026": true
+    },
+    "ok": true,
+    "answer": "Total Revenue for fiscal 2026: $331,839 million ($331.8 billion). [Source 3]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "MSFT"
+      ],
+      "fiscal_years": [
+        2026
+      ],
+      "scopes": [
+        "MSFT:2026"
+      ],
+      "evidence_by_scope": {
+        "MSFT:2026": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "msft_revenue_fy2024_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "MSFT:2024"
+    ],
+    "expected": {
+      "2024": "245,122"
+    },
+    "number_present_by_year": {
+      "2024": true
+    },
+    "ok": true,
+    "answer": "Microsoft's total revenue in fiscal 2024 was $245,122 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "MSFT"
+      ],
+      "fiscal_years": [
+        2024
+      ],
+      "scopes": [
+        "MSFT:2024"
+      ],
+      "evidence_by_scope": {
+        "MSFT:2024": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "msft_revenue_change_2024_2026_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "MSFT:2024",
+      "MSFT:2026"
+    ],
+    "expected": {
+      "2024": "245,122",
+      "2026": "331,839"
+    },
+    "number_present_by_year": {
+      "2024": true,
+      "2026": true
+    },
+    "ok": true,
+    "answer": "FY2024:\n- Total revenue: $245,122 million. [Source 5]\n\nFY2026:\n- Total revenue: $331,839 million. [Source 3]\n\nWhat changed:\n- Revenue increased from FY2024 to FY2026 (245,122 to 331,839 million). [Sources 5, 3]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "MSFT"
+      ],
+      "fiscal_years": [
+        2024,
+        2026
+      ],
+      "scopes": [
+        "MSFT:2024",
+        "MSFT:2026"
+      ],
+      "evidence_by_scope": {
+        "MSFT:2024": 1,
+        "MSFT:2026": 4
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "amzn_net_sales_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "AMZN:2025"
+    ],
+    "expected": {
+      "2025": "716,924"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "Amazon's total net sales in fiscal 2025 were 716,924 million dollars. [Source 2]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "AMZN"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "AMZN:2025"
+      ],
+      "evidence_by_scope": {
+        "AMZN:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "amzn_net_sales_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "AMZN:2023"
+    ],
+    "expected": {
+      "2023": "574,785"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Amazon's total net sales in fiscal 2023 were $574,785 million. [Source 2]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "AMZN"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "AMZN:2023"
+      ],
+      "evidence_by_scope": {
+        "AMZN:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "amzn_net_sales_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "AMZN:2023",
+      "AMZN:2025"
+    ],
+    "expected": {
+      "2023": "574,785",
+      "2025": "716,924"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Total net sales: 574,785 million (Consolidated Net Sales). [Source 5]\n\nFY2025:\n- Total net sales: 716,924 million (Consolidated Net Sales). [Source 1]\n\nWhat changed:\n- Net sales increased by 142,139 million from FY2023 to FY2025. [Source 5][Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "AMZN"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "AMZN:2023",
+        "AMZN:2025"
+      ],
+      "evidence_by_scope": {
+        "AMZN:2023": 1,
+        "AMZN:2025": 4
+      },
+      "warnings": []
+    }
+  }
+]

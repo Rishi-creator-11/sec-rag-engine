@@ -1,0 +1,17 @@
+{
+  "company_name": "MICROSOFT CORP",
+  "ticker": "MSFT",
+  "cik": "0000789019",
+  "filing_type": "10-K",
+  "fiscal_year": 2026,
+  "accession_number": "0001193125-26-323660",
+  "filing_id": "000119312526323660",
+  "filing_date": "2026-07-29",
+  "report_date": "2026-06-30",
+  "primary_document": "msft-20260630.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

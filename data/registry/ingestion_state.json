@@ -177,6 +177,96 @@
     "ticker": "WMT",
     "updated_at": "2026-08-28T03:18:32Z"
   },
+  "000032019323000106": {
+    "accession_number": "0000320193-23-000106",
+    "artifacts": {
+      "chunks": "data/chunks/AAPL/000032019323000106_chunks.jsonl",
+      "clean_text": "data/raw/AAPL/000032019323000106/filing.txt",
+      "embeddings": "data/embeddings/AAPL/000032019323000106_embeddings.jsonl",
+      "metadata": "data/raw/AAPL/000032019323000106/metadata.json",
+      "raw_html": "data/raw/AAPL/000032019323000106/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 1558924,
+    "chunk_count": 65,
+    "cik": "0000320193",
+    "clean_chars": 200701,
+    "company_name": "Apple Inc.",
+    "created_at": "2026-08-29T18:44:46Z",
+    "dense_upserted": 65,
+    "dense_verified": 65,
+    "embedding_count": 65,
+    "filing_date": "2023-11-03",
+    "filing_id": "000032019323000106",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "9a8f048c05e8bda9141caab48e6465a5832057ff744a4d7d826382e322ce906b",
+      "clean_text_sha256": "d847eb730e7b657d43cf40ad2ef02d0199011b690fbe20b556729285be12b080",
+      "embeddings_sha256": "0ecc174eb9e1ae8d753ff08507ecab29ec15360b561d7bbfce465cf713482afd"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 1816,
+    "primary_doc_sha256": "bda1f34435199672c16ecdf2034c650872d2cac8399ed0d179fc25450b080b90",
+    "primary_document": "aapl-20230930.htm",
+    "report_date": "2023-09-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 65,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:05Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:05Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:49Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:47Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:05Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:04Z"
+      }
+    },
+    "ticker": "AAPL",
+    "updated_at": "2026-08-29T18:45:05Z"
+  },
   "000032019324000123": {
     "accession_number": "0000320193-24-000123",
     "artifacts": {
@@ -243,6 +333,96 @@
     },
     "ticker": "AAPL",
     "updated_at": "seed-backfill"
+  },
+  "000032019325000079": {
+    "accession_number": "0000320193-25-000079",
+    "artifacts": {
+      "chunks": "data/chunks/AAPL/000032019325000079_chunks.jsonl",
+      "clean_text": "data/raw/AAPL/000032019325000079/filing.txt",
+      "embeddings": "data/embeddings/AAPL/000032019325000079_embeddings.jsonl",
+      "metadata": "data/raw/AAPL/000032019325000079/metadata.json",
+      "raw_html": "data/raw/AAPL/000032019325000079/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 1520208,
+    "chunk_count": 67,
+    "cik": "0000320193",
+    "clean_chars": 206827,
+    "company_name": "Apple Inc.",
+    "created_at": "2026-08-29T18:44:24Z",
+    "dense_upserted": 67,
+    "dense_verified": 67,
+    "embedding_count": 67,
+    "filing_date": "2025-10-31",
+    "filing_id": "000032019325000079",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "113c07ddb188135ebb193e9124ea9c6b4fb2b98b042af431b3862d8226e8c346",
+      "clean_text_sha256": "4f149ce1783a72bf4653a841174f629789a7443563c59aa648044a9af5172442",
+      "embeddings_sha256": "2d4804c0086c9d0d2bd1606bb7d13667397da0f405edf043c58347e3fa65e02c"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 1751,
+    "primary_doc_sha256": "548ae59778cf08ee0f2ee088e7ece20d947076c3c01f74d2d65db4c2777e436a",
+    "primary_document": "aapl-20250927.htm",
+    "report_date": "2025-09-27",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 67,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:25Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:25Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:29Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:24Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:25Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:27Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:46Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:44:45Z"
+      }
+    },
+    "ticker": "AAPL",
+    "updated_at": "2026-08-29T18:44:46Z"
   },
   "000073176626000062": {
     "accession_number": "0000731766-26-000062",
@@ -334,6 +514,96 @@
     "ticker": "UNH",
     "updated_at": "2026-08-28T17:46:23Z"
   },
+  "000095017024087843": {
+    "accession_number": "0000950170-24-087843",
+    "artifacts": {
+      "chunks": "data/chunks/MSFT/000095017024087843_chunks.jsonl",
+      "clean_text": "data/raw/MSFT/000095017024087843/filing.txt",
+      "embeddings": "data/embeddings/MSFT/000095017024087843_embeddings.jsonl",
+      "metadata": "data/raw/MSFT/000095017024087843/metadata.json",
+      "raw_html": "data/raw/MSFT/000095017024087843/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 6860911,
+    "chunk_count": 109,
+    "cik": "0000789019",
+    "clean_chars": 354529,
+    "company_name": "MICROSOFT CORP",
+    "created_at": "2026-08-29T18:45:51Z",
+    "dense_upserted": 109,
+    "dense_verified": 109,
+    "embedding_count": 109,
+    "filing_date": "2024-07-30",
+    "filing_id": "000095017024087843",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "6057817add2d50749fa81361780bcb918540ad5da05163054cf3b7e6cafe9827",
+      "clean_text_sha256": "10040d81c6925a256188a8d56876d4a94ba8452578450f62bca9afaf0b9ffcbe",
+      "embeddings_sha256": "2e1d2f70188f4f73235dc311280efd8d45dce3959f780a964388e99cd44de419"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 2026,
+    "primary_doc_sha256": "43829a12cc9cd7198474b3d735c4fc1aba1f871fb637d237aa5979d57e6b8c95",
+    "primary_document": "msft-20240630.htm",
+    "report_date": "2024-06-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 109,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:25Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:52Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:52Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:25Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:57Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:51Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:51Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:54Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:25Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:25Z"
+      }
+    },
+    "ticker": "MSFT",
+    "updated_at": "2026-08-29T18:46:25Z"
+  },
   "000095017025100235": {
     "accession_number": "0000950170-25-100235",
     "artifacts": {
@@ -400,6 +670,186 @@
     },
     "ticker": "MSFT",
     "updated_at": "seed-backfill"
+  },
+  "000101872424000008": {
+    "accession_number": "0001018724-24-000008",
+    "artifacts": {
+      "chunks": "data/chunks/AMZN/000101872424000008_chunks.jsonl",
+      "clean_text": "data/raw/AMZN/000101872424000008/filing.txt",
+      "embeddings": "data/embeddings/AMZN/000101872424000008_embeddings.jsonl",
+      "metadata": "data/raw/AMZN/000101872424000008/metadata.json",
+      "raw_html": "data/raw/AMZN/000101872424000008/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 1945178,
+    "chunk_count": 89,
+    "cik": "0001018724",
+    "clean_chars": 283147,
+    "company_name": "AMAZON COM INC",
+    "created_at": "2026-08-29T18:46:57Z",
+    "dense_upserted": 89,
+    "dense_verified": 89,
+    "embedding_count": 89,
+    "filing_date": "2024-02-02",
+    "filing_id": "000101872424000008",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "21b295d23a2321412e7f4a7a9a70757dcc1bb047e4efe57cdb0437945ffbdddb",
+      "clean_text_sha256": "8a09ac68837cef91aa8ef95a47655d0b8dd1925dda4e8852ef810518d3bba41d",
+      "embeddings_sha256": "99578c23050f5fc308429e5a1ab4e96b627f6f77e0c5c50de89619c91b80c0d0"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 2203,
+    "primary_doc_sha256": "a469a0feca6dd5728b10c73076c2c120db58116938614c5b1b864fe13674266d",
+    "primary_document": "amzn-20231231.htm",
+    "report_date": "2023-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 89,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:47:17Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:58Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:58Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-29T18:47:17Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:47:01Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:57Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:57Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:59Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-29T18:47:17Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:47:16Z"
+      }
+    },
+    "ticker": "AMZN",
+    "updated_at": "2026-08-29T18:47:17Z"
+  },
+  "000101872425000004": {
+    "accession_number": "0001018724-25-000004",
+    "artifacts": {
+      "chunks": "data/chunks/AMZN/000101872425000004_chunks.jsonl",
+      "clean_text": "data/raw/AMZN/000101872425000004/filing.txt",
+      "embeddings": "data/embeddings/AMZN/000101872425000004_embeddings.jsonl",
+      "metadata": "data/raw/AMZN/000101872425000004/metadata.json",
+      "raw_html": "data/raw/AMZN/000101872425000004/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 1922355,
+    "chunk_count": 88,
+    "cik": "0001018724",
+    "clean_chars": 280220,
+    "company_name": "AMAZON COM INC",
+    "created_at": "2026-08-29T18:46:37Z",
+    "dense_upserted": 88,
+    "dense_verified": 88,
+    "embedding_count": 88,
+    "filing_date": "2025-02-07",
+    "filing_id": "000101872425000004",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "fc14b71c964c8944184c0f1ece2bfadc973f69dc2b47de1bb65179176cc21bc8",
+      "clean_text_sha256": "404e7a9c24b4715bef37288390961386a22da997de04686902d1c33f8a2461a2",
+      "embeddings_sha256": "59b066172d5974f85dcd0e31b77e2870bbfba44692fee54e2c321ac46ca94ea2"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 2114,
+    "primary_doc_sha256": "094e0f2aa1d58203ed77340330e94ff5cb63f5168de5e08ed25a17681a1a53d9",
+    "primary_document": "amzn-20241231.htm",
+    "report_date": "2024-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 88,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:57Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:38Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:38Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:57Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:42Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:37Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:37Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:39Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:57Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:46:57Z"
+      }
+    },
+    "ticker": "AMZN",
+    "updated_at": "2026-08-29T18:46:57Z"
   },
   "000101872426000004": {
     "accession_number": "0001018724-26-000004",
@@ -825,6 +1275,96 @@
     },
     "ticker": "NVDA",
     "updated_at": "seed-backfill"
+  },
+  "000119312526323660": {
+    "accession_number": "0001193125-26-323660",
+    "artifacts": {
+      "chunks": "data/chunks/MSFT/000119312526323660_chunks.jsonl",
+      "clean_text": "data/raw/MSFT/000119312526323660/filing.txt",
+      "embeddings": "data/embeddings/MSFT/000119312526323660_embeddings.jsonl",
+      "metadata": "data/raw/MSFT/000119312526323660/metadata.json",
+      "raw_html": "data/raw/MSFT/000119312526323660/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 8585501,
+    "chunk_count": 101,
+    "cik": "0000789019",
+    "clean_chars": 323577,
+    "company_name": "MICROSOFT CORP",
+    "created_at": "2026-08-29T18:45:17Z",
+    "dense_upserted": 101,
+    "dense_verified": 101,
+    "embedding_count": 101,
+    "filing_date": "2026-07-29",
+    "filing_id": "000119312526323660",
+    "filing_type": "10-K",
+    "fiscal_year": 2026,
+    "hashes": {
+      "chunks_sha256": "9df04eb1c4ea70090a313a53d23df309321ef2617b5f995276d81b8f50a81f0a",
+      "clean_text_sha256": "c8a1bf8ff6859d4c12f86f9f23603b1bc7086d556ed8966dc557371ecf07ab84",
+      "embeddings_sha256": "43df6780ecca15bc0ba56e79d230701390a9ba05319789d01734978d20244e22"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 1917,
+    "primary_doc_sha256": "4bcf2da2871acc19e32c5a62f36f6d83d6aae03cdc4aaa9a86a9a21ee8223f02",
+    "primary_document": "msft-20260630.htm",
+    "report_date": "2026-06-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 101,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:51Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:18Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:18Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:51Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:23Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:17Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:17Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:20Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:51Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-29T18:45:50Z"
+      }
+    },
+    "ticker": "MSFT",
+    "updated_at": "2026-08-29T18:45:51Z"
   },
   "000162828026003942": {
     "accession_number": "0001628280-26-003942",

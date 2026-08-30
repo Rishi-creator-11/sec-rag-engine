@@ -1,0 +1,17 @@
+{
+  "company_name": "Apple Inc.",
+  "ticker": "AAPL",
+  "cik": "0000320193",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000320193-25-000079",
+  "filing_id": "000032019325000079",
+  "filing_date": "2025-10-31",
+  "report_date": "2025-09-27",
+  "primary_document": "aapl-20250927.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

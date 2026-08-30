@@ -1,0 +1,34 @@
+SCOPED RETRIEVAL EVALUATION - Benchmark v3 (LIVE retrieval, current corpus)
+top_k: 10   every question scoped to its own company
+questions: 125  supported/scored: 115  unsupported: 10
+qrels: model-assisted (gpt-5-mini first pass + gpt-5-mini review pass); 115/115 questions completed the review pass
+
+retriever    R@1    R@5   R@10  R@10c  Rprec    P@1    P@5    MRR   NE@5  NE@10
+-------------------------------------------------------------------------------
+dense      0.114  0.387  0.572  0.711  0.562  0.809  0.614  0.871  0.893  0.964
+bm25s      0.131  0.406  0.556  0.687  0.547  0.817  0.612  0.886  0.929  0.964
+hybrid     0.118  0.418  0.573  0.712  0.549  0.835  0.642  0.897  0.929  0.929
+
+mean relevant chunks / question: 11.4  (depth-50 pool; |relevant| > 10 makes plain R@10 capacity-capped)
+R@10c = Recall@10 / min(|relevant|,10)   Rprec = precision at rank |relevant|
+
+STRUCTURAL GATES (scoped pool by construction; matches live Part A run)
+  filter_correctness == 1.000       1.000   PASS
+  cross_company_leakage@10 == 0      0.000   PASS
+  (live proof: evaluation/results/scoped_retrieval_evaluation.json,
+   filtered hybrid: filter_correctness 1.000, leakage@10 0.000)
+
+V3 RETRIEVAL-QUALITY BASELINE (record; the v2 0.900 R@10 gate is NOT carried over)
+  hybrid MRR              = 0.897
+  hybrid Recall@10 capped = 0.712  (hits@10 / min(|rel|,10))
+  hybrid R-precision      = 0.549
+  hybrid Precision@5      = 0.642   P@1 = 0.835
+  hybrid Recall@10 (plain)= 0.573  (capacity-capped: mean |rel| = 11.4)
+  Recommended v3 regression gates:
+    - both structural gates exact (1.000 / 0.000)
+    - hybrid MRR not below baseline by > 0.02  (floor 0.877)
+    - hybrid Recall@10-capped not below baseline by > 0.02  (floor 0.692)
+    - hybrid Precision@5 not below baseline by > 0.02  (floor 0.622)
+    - comparison scope_coverage@5 == 1.000, cross_scope_leakage == 0.000
+
+NE@5/NE@10 = numeric evidence hit rate (numeric + mixed questions).

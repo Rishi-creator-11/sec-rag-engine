@@ -1,0 +1,517 @@
+{
+  "summary": {
+    "questions": 18,
+    "supported_questions": 15,
+    "unsupported_year_questions": 3,
+    "companies": [
+      "AAPL",
+      "AMZN",
+      "MSFT"
+    ],
+    "fiscal_year_filter_correctness": 1.0,
+    "cross_year_leakage_at_k": 0.0,
+    "cross_company_leakage_at_k": 0.0,
+    "scope_coverage_mean": 1.0,
+    "comparison_scope_coverage_mean": 1.0,
+    "numeric_year_correctness": 1.0,
+    "numeric_questions": 9,
+    "unsupported_year_correctly_rejected": 1.0,
+    "reranker_fallback_questions": 9,
+    "latency_mean_s": 2.591054236058456,
+    "latency_p50_s": 3.3689633749891073,
+    "result": "PASS"
+  },
+  "questions": [
+    {
+      "id": "aapl_net_sales_fy2025_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "AAPL:2025"
+      ],
+      "evidence_scopes": [
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AAPL:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2025": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 2.9123511249781586,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "aapl_net_sales_fy2023_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "AAPL:2023"
+      ],
+      "evidence_scopes": [
+        "AAPL:2023",
+        "AAPL:2023",
+        "AAPL:2023",
+        "AAPL:2023",
+        "AAPL:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AAPL:2023": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2023": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 0.9877312920289114,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "aapl_net_sales_change_2023_2025_01",
+      "answer_type": "comparison_numeric",
+      "requested_scopes": [
+        "AAPL:2023",
+        "AAPL:2025"
+      ],
+      "evidence_scopes": [
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AAPL:2023": 1,
+        "AAPL:2025": 4
+      },
+      "comparison_mode": true,
+      "number_year_hits": {
+        "2023": false,
+        "2025": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 1.0518072919803672,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "aapl_competition_fy2025_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "AAPL:2025"
+      ],
+      "evidence_scopes": [
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AAPL:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.4656394589692354,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "aapl_supply_chain_change_2023_2025_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "AAPL:2023",
+        "AAPL:2025"
+      ],
+      "evidence_scopes": [
+        "AAPL:2025",
+        "AAPL:2023",
+        "AAPL:2025",
+        "AAPL:2025",
+        "AAPL:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AAPL:2023": 2,
+        "AAPL:2025": 3
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": false,
+      "latency_seconds": 0.6855329159880057,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "msft_revenue_fy2026_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "MSFT:2026"
+      ],
+      "evidence_scopes": [
+        "MSFT:2026",
+        "MSFT:2026",
+        "MSFT:2026",
+        "MSFT:2026",
+        "MSFT:2026"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "MSFT:2026": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2026": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": false,
+      "latency_seconds": 1.242060374992434,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "msft_revenue_fy2024_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "MSFT:2024"
+      ],
+      "evidence_scopes": [
+        "MSFT:2024",
+        "MSFT:2024",
+        "MSFT:2024",
+        "MSFT:2024",
+        "MSFT:2024"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "MSFT:2024": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2024": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.2876380829839036,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "msft_revenue_change_2024_2026_01",
+      "answer_type": "comparison_numeric",
+      "requested_scopes": [
+        "MSFT:2024",
+        "MSFT:2026"
+      ],
+      "evidence_scopes": [
+        "MSFT:2026",
+        "MSFT:2024",
+        "MSFT:2026",
+        "MSFT:2024",
+        "MSFT:2026"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "MSFT:2024": 2,
+        "MSFT:2026": 3
+      },
+      "comparison_mode": true,
+      "number_year_hits": {
+        "2024": true,
+        "2026": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4999439159873873,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "msft_ai_risk_change_2024_2026_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "MSFT:2024",
+        "MSFT:2026"
+      ],
+      "evidence_scopes": [
+        "MSFT:2026",
+        "MSFT:2024",
+        "MSFT:2026",
+        "MSFT:2024",
+        "MSFT:2026"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "MSFT:2024": 2,
+        "MSFT:2026": 3
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4932173749548383,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "msft_cloud_competition_fy2026_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "MSFT:2026"
+      ],
+      "evidence_scopes": [
+        "MSFT:2026",
+        "MSFT:2026",
+        "MSFT:2026",
+        "MSFT:2026",
+        "MSFT:2026"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "MSFT:2026": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.6878009170177393,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "amzn_net_sales_fy2025_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "AMZN:2025"
+      ],
+      "evidence_scopes": [
+        "AMZN:2025",
+        "AMZN:2025",
+        "AMZN:2025",
+        "AMZN:2025",
+        "AMZN:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AMZN:2025": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2025": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.574244791001547,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "amzn_net_sales_fy2023_01",
+      "answer_type": "numeric",
+      "requested_scopes": [
+        "AMZN:2023"
+      ],
+      "evidence_scopes": [
+        "AMZN:2023",
+        "AMZN:2023",
+        "AMZN:2023",
+        "AMZN:2023",
+        "AMZN:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AMZN:2023": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {
+        "2023": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.3689633749891073,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "amzn_net_sales_change_2023_2025_01",
+      "answer_type": "comparison_numeric",
+      "requested_scopes": [
+        "AMZN:2023",
+        "AMZN:2025"
+      ],
+      "evidence_scopes": [
+        "AMZN:2023",
+        "AMZN:2025",
+        "AMZN:2023",
+        "AMZN:2025",
+        "AMZN:2025"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AMZN:2023": 2,
+        "AMZN:2025": 3
+      },
+      "comparison_mode": true,
+      "number_year_hits": {
+        "2023": true,
+        "2025": true
+      },
+      "numeric_year_correct": true,
+      "reranker_fallback": true,
+      "latency_seconds": 3.4954007089836523,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "amzn_aws_risk_change_2023_2025_01",
+      "answer_type": "comparison",
+      "requested_scopes": [
+        "AMZN:2023",
+        "AMZN:2025"
+      ],
+      "evidence_scopes": [
+        "AMZN:2025",
+        "AMZN:2023",
+        "AMZN:2025",
+        "AMZN:2023",
+        "AMZN:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AMZN:2023": 3,
+        "AMZN:2025": 2
+      },
+      "comparison_mode": true,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5225302079925314,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    },
+    {
+      "id": "amzn_competition_fy2023_01",
+      "answer_type": "qualitative",
+      "requested_scopes": [
+        "AMZN:2023"
+      ],
+      "evidence_scopes": [
+        "AMZN:2023",
+        "AMZN:2023",
+        "AMZN:2023",
+        "AMZN:2023",
+        "AMZN:2023"
+      ],
+      "evidence_count": 5,
+      "fiscal_year_filter_correctness": 1.0,
+      "cross_year_leakage_at_k": 0.0,
+      "scope_coverage": 1.0,
+      "evidence_by_scope": {
+        "AMZN:2023": 5
+      },
+      "comparison_mode": false,
+      "number_year_hits": {},
+      "numeric_year_correct": null,
+      "reranker_fallback": true,
+      "latency_seconds": 3.5909517080290243,
+      "warnings": [],
+      "cross_company_leakage_at_k": 0.0
+    }
+  ],
+  "unsupported_year": [
+    {
+      "id": "aapl_year_not_present_fy2019_01",
+      "answer_type": "unsupported_year",
+      "requested": "AAPL:2019",
+      "available_years": [
+        2025,
+        2024,
+        2023
+      ],
+      "year_available": false,
+      "correctly_unavailable": true
+    },
+    {
+      "id": "msft_year_not_present_fy2020_01",
+      "answer_type": "unsupported_year",
+      "requested": "MSFT:2020",
+      "available_years": [
+        2026,
+        2025,
+        2024
+      ],
+      "year_available": false,
+      "correctly_unavailable": true
+    },
+    {
+      "id": "amzn_year_not_present_fy2019_01",
+      "answer_type": "unsupported_year",
+      "requested": "AMZN:2019",
+      "available_years": [
+        2025,
+        2024,
+        2023
+      ],
+      "year_available": false,
+      "correctly_unavailable": true
+    }
+  ]
+}

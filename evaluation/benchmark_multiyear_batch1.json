@@ -1,0 +1,175 @@
+[
+  {
+    "id": "aapl_net_sales_fy2025_01",
+    "question": "What were Apple's total net sales in fiscal 2025?",
+    "ticker": "AAPL",
+    "scopes": [{"ticker": "AAPL", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "416,161"}
+  },
+  {
+    "id": "aapl_net_sales_fy2023_01",
+    "question": "What were Apple's total net sales in fiscal 2023?",
+    "ticker": "AAPL",
+    "scopes": [{"ticker": "AAPL", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "383,285"}
+  },
+  {
+    "id": "aapl_net_sales_change_2023_2025_01",
+    "question": "Compare Apple's total net sales between FY2023 and FY2025.",
+    "ticker": "AAPL",
+    "scopes": [
+      {"ticker": "AAPL", "fiscal_year": 2023},
+      {"ticker": "AAPL", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "383,285", "2025": "416,161"}
+  },
+  {
+    "id": "aapl_competition_fy2025_01",
+    "question": "How does Apple describe competition in its markets in fiscal 2025?",
+    "ticker": "AAPL",
+    "scopes": [{"ticker": "AAPL", "fiscal_year": 2025}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "aapl_supply_chain_change_2023_2025_01",
+    "question": "How did Apple's supply-chain and manufacturing-concentration risk disclosures change between FY2023 and FY2025?",
+    "ticker": "AAPL",
+    "scopes": [
+      {"ticker": "AAPL", "fiscal_year": 2023},
+      {"ticker": "AAPL", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "aapl_year_not_present_fy2019_01",
+    "question": "What were Apple's total net sales in fiscal 2019?",
+    "ticker": "AAPL",
+    "scopes": [{"ticker": "AAPL", "fiscal_year": 2019}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  },
+
+  {
+    "id": "msft_revenue_fy2026_01",
+    "question": "What was Microsoft's total revenue in fiscal 2026?",
+    "ticker": "MSFT",
+    "scopes": [{"ticker": "MSFT", "fiscal_year": 2026}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2026": "331,839"}
+  },
+  {
+    "id": "msft_revenue_fy2024_01",
+    "question": "What was Microsoft's total revenue in fiscal 2024?",
+    "ticker": "MSFT",
+    "scopes": [{"ticker": "MSFT", "fiscal_year": 2024}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2024": "245,122"}
+  },
+  {
+    "id": "msft_revenue_change_2024_2026_01",
+    "question": "Compare Microsoft's total revenue between FY2024 and FY2026.",
+    "ticker": "MSFT",
+    "scopes": [
+      {"ticker": "MSFT", "fiscal_year": 2024},
+      {"ticker": "MSFT", "fiscal_year": 2026}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2024": "245,122", "2026": "331,839"}
+  },
+  {
+    "id": "msft_ai_risk_change_2024_2026_01",
+    "question": "How did Microsoft's AI-related risk disclosures change between FY2024 and FY2026?",
+    "ticker": "MSFT",
+    "scopes": [
+      {"ticker": "MSFT", "fiscal_year": 2024},
+      {"ticker": "MSFT", "fiscal_year": 2026}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "msft_cloud_competition_fy2026_01",
+    "question": "How does Microsoft describe competition for its cloud and server products in fiscal 2026?",
+    "ticker": "MSFT",
+    "scopes": [{"ticker": "MSFT", "fiscal_year": 2026}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "msft_year_not_present_fy2020_01",
+    "question": "What was Microsoft's total revenue in fiscal 2020?",
+    "ticker": "MSFT",
+    "scopes": [{"ticker": "MSFT", "fiscal_year": 2020}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  },
+
+  {
+    "id": "amzn_net_sales_fy2025_01",
+    "question": "What were Amazon's total net sales in fiscal 2025?",
+    "ticker": "AMZN",
+    "scopes": [{"ticker": "AMZN", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "716,924"}
+  },
+  {
+    "id": "amzn_net_sales_fy2023_01",
+    "question": "What were Amazon's total net sales in fiscal 2023?",
+    "ticker": "AMZN",
+    "scopes": [{"ticker": "AMZN", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "574,785"}
+  },
+  {
+    "id": "amzn_net_sales_change_2023_2025_01",
+    "question": "Compare Amazon's total net sales between FY2023 and FY2025.",
+    "ticker": "AMZN",
+    "scopes": [
+      {"ticker": "AMZN", "fiscal_year": 2023},
+      {"ticker": "AMZN", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "574,785", "2025": "716,924"}
+  },
+  {
+    "id": "amzn_aws_risk_change_2023_2025_01",
+    "question": "How did Amazon's AWS-related and cloud-competition risk disclosures change between FY2023 and FY2025?",
+    "ticker": "AMZN",
+    "scopes": [
+      {"ticker": "AMZN", "fiscal_year": 2023},
+      {"ticker": "AMZN", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "amzn_competition_fy2023_01",
+    "question": "How does Amazon describe the competition it faces in fiscal 2023?",
+    "ticker": "AMZN",
+    "scopes": [{"ticker": "AMZN", "fiscal_year": 2023}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "amzn_year_not_present_fy2019_01",
+    "question": "What were Amazon's total net sales in fiscal 2019?",
+    "ticker": "AMZN",
+    "scopes": [{"ticker": "AMZN", "fiscal_year": 2019}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  }
+]
