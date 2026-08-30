@@ -1,0 +1,175 @@
+[
+  {
+    "id": "googl_revenue_fy2025_01",
+    "question": "What were Alphabet's total revenues in fiscal 2025?",
+    "ticker": "GOOGL",
+    "scopes": [{"ticker": "GOOGL", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "402,836"}
+  },
+  {
+    "id": "googl_revenue_fy2023_01",
+    "question": "What were Alphabet's total revenues in fiscal 2023?",
+    "ticker": "GOOGL",
+    "scopes": [{"ticker": "GOOGL", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "307,394"}
+  },
+  {
+    "id": "googl_revenue_change_2023_2025_01",
+    "question": "Compare Alphabet's total revenues between FY2023 and FY2025.",
+    "ticker": "GOOGL",
+    "scopes": [
+      {"ticker": "GOOGL", "fiscal_year": 2023},
+      {"ticker": "GOOGL", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "307,394", "2025": "402,836"}
+  },
+  {
+    "id": "googl_ai_risk_change_2023_2025_01",
+    "question": "How did Alphabet's AI-related risk disclosures change between FY2023 and FY2025?",
+    "ticker": "GOOGL",
+    "scopes": [
+      {"ticker": "GOOGL", "fiscal_year": 2023},
+      {"ticker": "GOOGL", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "googl_competition_fy2025_01",
+    "question": "How does Alphabet describe the competition it faces in fiscal 2025?",
+    "ticker": "GOOGL",
+    "scopes": [{"ticker": "GOOGL", "fiscal_year": 2025}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "googl_year_not_present_fy2015_01",
+    "question": "What were Alphabet's total revenues in fiscal 2015?",
+    "ticker": "GOOGL",
+    "scopes": [{"ticker": "GOOGL", "fiscal_year": 2015}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  },
+
+  {
+    "id": "meta_revenue_fy2025_01",
+    "question": "What was Meta's total revenue in fiscal 2025?",
+    "ticker": "META",
+    "scopes": [{"ticker": "META", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "200,966"}
+  },
+  {
+    "id": "meta_revenue_fy2023_01",
+    "question": "What was Meta's total revenue in fiscal 2023?",
+    "ticker": "META",
+    "scopes": [{"ticker": "META", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "134,902"}
+  },
+  {
+    "id": "meta_revenue_change_2023_2025_01",
+    "question": "Compare Meta's total revenue between FY2023 and FY2025.",
+    "ticker": "META",
+    "scopes": [
+      {"ticker": "META", "fiscal_year": 2023},
+      {"ticker": "META", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "134,902", "2025": "200,966"}
+  },
+  {
+    "id": "meta_ai_risk_change_2023_2025_01",
+    "question": "How did Meta's advertising and AI-related risk disclosures change between FY2023 and FY2025?",
+    "ticker": "META",
+    "scopes": [
+      {"ticker": "META", "fiscal_year": 2023},
+      {"ticker": "META", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "meta_competition_fy2025_01",
+    "question": "How does Meta describe the competition it faces in fiscal 2025?",
+    "ticker": "META",
+    "scopes": [{"ticker": "META", "fiscal_year": 2025}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "meta_year_not_present_fy2016_01",
+    "question": "What was Meta's total revenue in fiscal 2016?",
+    "ticker": "META",
+    "scopes": [{"ticker": "META", "fiscal_year": 2016}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  },
+
+  {
+    "id": "jpm_net_income_fy2025_01",
+    "question": "In JPMorgan Chase's consolidated statements of income, what were total net revenue and net income for fiscal 2025?",
+    "ticker": "JPM",
+    "scopes": [{"ticker": "JPM", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "57,048"}
+  },
+  {
+    "id": "jpm_net_income_fy2023_01",
+    "question": "In JPMorgan Chase's consolidated statements of income, what were total net revenue and net income for fiscal 2023?",
+    "ticker": "JPM",
+    "scopes": [{"ticker": "JPM", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "49,552"}
+  },
+  {
+    "id": "jpm_net_income_change_2023_2025_01",
+    "question": "Using JPMorgan Chase's consolidated statements of income, compare total net revenue and net income for fiscal 2023 and fiscal 2025.",
+    "ticker": "JPM",
+    "scopes": [
+      {"ticker": "JPM", "fiscal_year": 2023},
+      {"ticker": "JPM", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "49,552", "2025": "57,048"}
+  },
+  {
+    "id": "jpm_regulatory_risk_change_2023_2025_01",
+    "question": "How did JPMorgan Chase's credit, market, and regulatory risk disclosures change between FY2023 and FY2025?",
+    "ticker": "JPM",
+    "scopes": [
+      {"ticker": "JPM", "fiscal_year": 2023},
+      {"ticker": "JPM", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "jpm_competition_fy2025_01",
+    "question": "How does JPMorgan Chase describe the competition it faces in fiscal 2025?",
+    "ticker": "JPM",
+    "scopes": [{"ticker": "JPM", "fiscal_year": 2025}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "jpm_year_not_present_fy2015_01",
+    "question": "What was JPMorgan Chase's net income in fiscal 2015?",
+    "ticker": "JPM",
+    "scopes": [{"ticker": "JPM", "fiscal_year": 2015}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  }
+]

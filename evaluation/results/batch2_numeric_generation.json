@@ -1,0 +1,308 @@
+[
+  {
+    "id": "googl_revenue_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "GOOGL:2025"
+    ],
+    "expected": {
+      "2025": "402,836"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "$402.8 billion. [Source 3]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "GOOGL"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "GOOGL:2025"
+      ],
+      "evidence_by_scope": {
+        "GOOGL:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "googl_revenue_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "GOOGL:2023"
+    ],
+    "expected": {
+      "2023": "307,394"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Alphabet's total revenues in fiscal 2023 were $307,394 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "GOOGL"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "GOOGL:2023"
+      ],
+      "evidence_by_scope": {
+        "GOOGL:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "googl_revenue_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "GOOGL:2023",
+      "GOOGL:2025"
+    ],
+    "expected": {
+      "2023": "307,394",
+      "2025": "402,836"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Total revenues: 307,394 million dollars. [Source 5]\n\nFY2025:\n- Total revenues: 402,836 million dollars. [Source 1]\n\nWhat changed:\n- Revenues increased from 307,394 to 402,836 million dollars (an increase of 95,442 million). [Source 5][Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "GOOGL"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "GOOGL:2023",
+        "GOOGL:2025"
+      ],
+      "evidence_by_scope": {
+        "GOOGL:2023": 1,
+        "GOOGL:2025": 4
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "meta_revenue_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "META:2025"
+    ],
+    "expected": {
+      "2025": "200,966"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "$200.966 billion. [Source 2]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "META"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "META:2025"
+      ],
+      "evidence_by_scope": {
+        "META:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "meta_revenue_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "META:2023"
+    ],
+    "expected": {
+      "2023": "134,902"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Meta's total revenue in 2023 was $134,902 million. [Source 3]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "META"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "META:2023"
+      ],
+      "evidence_by_scope": {
+        "META:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "meta_revenue_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "META:2023",
+      "META:2025"
+    ],
+    "expected": {
+      "2023": "134,902",
+      "2025": "200,966"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Revenue: $134,902 million. [Source 5]\n\nFY2025:\n- Revenue: $200,966 million. [Source 4]\n\nWhat changed:\n- Revenue increased from $134,902 million in FY2023 to $200,966 million in FY2025 (increase of $66,064 million). [Sources 5, 4]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "META"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "META:2023",
+        "META:2025"
+      ],
+      "evidence_by_scope": {
+        "META:2023": 1,
+        "META:2025": 4
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "jpm_net_income_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "JPM:2025"
+    ],
+    "expected": {
+      "2025": "57,048"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "Total net revenue for 2025: $182,447 million; Net income: $57,048 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "JPM"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "JPM:2025"
+      ],
+      "evidence_by_scope": {
+        "JPM:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "jpm_net_income_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "JPM:2023"
+    ],
+    "expected": {
+      "2023": "49,552"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Total net revenue: $158,104 million; Net income: $49,552 million for fiscal 2023. [Source 3]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "JPM"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "JPM:2023"
+      ],
+      "evidence_by_scope": {
+        "JPM:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "jpm_net_income_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "JPM:2023",
+      "JPM:2025"
+    ],
+    "expected": {
+      "2023": "49,552",
+      "2025": "57,048"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Total net revenue: 158,104 million\n- Net income: 49,552 million\nSource: [Source 3]\n\nFY2025:\n- Total net revenue: 182,447 million\n- Net income: 57,048 million\nSource: [Source 4]\n\nWhat changed:\n- Financials: Both total net revenue and net income increased in FY2025 vs FY2023 (182,447 vs 158,104; 57,048 vs 49,552) [Source 4] vs [Source 3].\n- Language/presentation: Both years present the items as \u201cTotal net revenue\u201d and \u201cNet income\u201d in the Consolidated statements of income, with no evident shift in disclosure language for these line items.",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "JPM"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "JPM:2023",
+        "JPM:2025"
+      ],
+      "evidence_by_scope": {
+        "JPM:2023": 3,
+        "JPM:2025": 2
+      },
+      "warnings": []
+    }
+  }
+]

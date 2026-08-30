@@ -1,0 +1,34 @@
+MULTI-YEAR (FISCAL-YEAR SCOPE) EVALUATION - Phase 5.5 Batch 2 (GOOGL/META/JPM)
+questions: 18  supported: 15  unsupported-year: 3   top_k: 5
+
+fiscal_year_filter_correctness   1.000   (target 1.000)
+cross_year_leakage@5             0.000   (target 0.000)
+cross_company_leakage@5          0.000   (target 0.000)
+scope_coverage (all)             1.000
+scope_coverage (comparison Qs)   1.000   (target 1.000)
+numeric_year_correctness         1.000   (9 numeric Qs, right number right year)
+unsupported_year rejected        1.000   (target 1.000)
+reranker_fallback               0/15
+latency  mean 0.86s  p50 0.68s
+
+GATE  PASS
+
+per-question:
+  googl_revenue_fy2025_01                  scopes=['GOOGL:2025'] ev_by_scope={'GOOGL:2025': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  googl_revenue_fy2023_01                  scopes=['GOOGL:2023'] ev_by_scope={'GOOGL:2023': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  googl_revenue_change_2023_2025_01        scopes=['GOOGL:2023', 'GOOGL:2025'] ev_by_scope={'GOOGL:2023': 1, 'GOOGL:2025': 4} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  googl_ai_risk_change_2023_2025_01        scopes=['GOOGL:2023', 'GOOGL:2025'] ev_by_scope={'GOOGL:2023': 3, 'GOOGL:2025': 2} yr_leak=0.00 co_leak=0.00
+  googl_competition_fy2025_01              scopes=['GOOGL:2025'] ev_by_scope={'GOOGL:2025': 5} yr_leak=0.00 co_leak=0.00
+  meta_revenue_fy2025_01                   scopes=['META:2025'] ev_by_scope={'META:2025': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  meta_revenue_fy2023_01                   scopes=['META:2023'] ev_by_scope={'META:2023': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  meta_revenue_change_2023_2025_01         scopes=['META:2023', 'META:2025'] ev_by_scope={'META:2023': 1, 'META:2025': 4} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  meta_ai_risk_change_2023_2025_01         scopes=['META:2023', 'META:2025'] ev_by_scope={'META:2023': 2, 'META:2025': 3} yr_leak=0.00 co_leak=0.00
+  meta_competition_fy2025_01               scopes=['META:2025'] ev_by_scope={'META:2025': 5} yr_leak=0.00 co_leak=0.00
+  jpm_net_income_fy2025_01                 scopes=['JPM:2025'] ev_by_scope={'JPM:2025': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  jpm_net_income_fy2023_01                 scopes=['JPM:2023'] ev_by_scope={'JPM:2023': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  jpm_net_income_change_2023_2025_01       scopes=['JPM:2023', 'JPM:2025'] ev_by_scope={'JPM:2023': 1, 'JPM:2025': 4} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  jpm_regulatory_risk_change_2023_2025_01  scopes=['JPM:2023', 'JPM:2025'] ev_by_scope={'JPM:2023': 1, 'JPM:2025': 4} yr_leak=0.00 co_leak=0.00
+  jpm_competition_fy2025_01                scopes=['JPM:2025'] ev_by_scope={'JPM:2025': 5} yr_leak=0.00 co_leak=0.00
+  googl_year_not_present_fy2015_01         requested GOOGL:2015 available [2025, 2024, 2023] -> correctly_unavailable=True
+  meta_year_not_present_fy2016_01          requested META:2016 available [2025, 2024, 2023] -> correctly_unavailable=True
+  jpm_year_not_present_fy2015_01           requested JPM:2015 available [2025, 2024, 2023] -> correctly_unavailable=True

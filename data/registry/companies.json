@@ -74,6 +74,22 @@
           "filing_type": "10-K",
           "fiscal_year": 2025,
           "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001652044-25-000014",
+          "chunk_count": 109,
+          "filing_date": "2025-02-05",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001652044-24-000022",
+          "chunk_count": 106,
+          "filing_date": "2024-01-31",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
         }
       ],
       "legal_name": "Alphabet Inc.",
@@ -90,6 +106,22 @@
           "filing_type": "10-K",
           "fiscal_year": 2025,
           "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000019617-25-000270",
+          "chunk_count": 408,
+          "filing_date": "2025-02-14",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000019617-24-000225",
+          "chunk_count": 415,
+          "filing_date": "2024-02-16",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
         }
       ],
       "legal_name": "JPMORGAN CHASE & CO",
@@ -105,6 +137,22 @@
           "filing_type": "10-K",
           "fiscal_year": 2025,
           "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001326801-25-000017",
+          "chunk_count": 147,
+          "filing_date": "2025-01-30",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001326801-24-000012",
+          "chunk_count": 145,
+          "filing_date": "2024-02-02",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
         }
       ],
       "legal_name": "Meta Platforms, Inc.",
