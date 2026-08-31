@@ -1,0 +1,17 @@
+{
+  "company_name": "Walmart Inc.",
+  "ticker": "WMT",
+  "cik": "0000104169",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000104169-25-000021",
+  "filing_id": "000010416925000021",
+  "filing_date": "2025-03-14",
+  "report_date": "2025-01-31",
+  "primary_document": "wmt-20250131.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

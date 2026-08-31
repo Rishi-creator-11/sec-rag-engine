@@ -179,6 +179,186 @@
     "ticker": "JPM",
     "updated_at": "2026-08-30T22:24:09Z"
   },
+  "000003408824000018": {
+    "accession_number": "0000034088-24-000018",
+    "artifacts": {
+      "chunks": "data/chunks/XOM/000003408824000018_chunks.jsonl",
+      "clean_text": "data/raw/XOM/000003408824000018/filing.txt",
+      "embeddings": "data/embeddings/XOM/000003408824000018_embeddings.jsonl",
+      "metadata": "data/raw/XOM/000003408824000018/metadata.json",
+      "raw_html": "data/raw/XOM/000003408824000018/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 5653988,
+    "chunk_count": 147,
+    "cik": "0000034088",
+    "clean_chars": 414512,
+    "company_name": "EXXON MOBIL CORP",
+    "created_at": "2026-08-31T17:29:09Z",
+    "dense_upserted": 147,
+    "dense_verified": 147,
+    "embedding_count": 147,
+    "filing_date": "2024-02-28",
+    "filing_id": "000003408824000018",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "beed083f9cac23f8a66ffa9e445918111dfdca15b550dbff104991c54912ead3",
+      "clean_text_sha256": "bde9518504bf56f61d7cdc2164d07af660cd97143b6e43bd16f8f3e47ade14a2",
+      "embeddings_sha256": "1f3531b5c8ee0ed7d045dac3273418040971fc66f090f975fc7db2bb940d9f1e"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4262,
+    "primary_doc_sha256": "29d225db9f83e060b863b7ce5872feea7ece7ae6a8cf040085c03268fb170e40",
+    "primary_document": "xom-20231231.htm",
+    "report_date": "2023-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/34088/000003408824000018/xom-20231231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 147,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:44Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:10Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:10Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:44Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:15Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:09Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:09Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:12Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:44Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:43Z"
+      }
+    },
+    "ticker": "XOM",
+    "updated_at": "2026-08-31T17:29:44Z"
+  },
+  "000003408825000010": {
+    "accession_number": "0000034088-25-000010",
+    "artifacts": {
+      "chunks": "data/chunks/XOM/000003408825000010_chunks.jsonl",
+      "clean_text": "data/raw/XOM/000003408825000010/filing.txt",
+      "embeddings": "data/embeddings/XOM/000003408825000010_embeddings.jsonl",
+      "metadata": "data/raw/XOM/000003408825000010/metadata.json",
+      "raw_html": "data/raw/XOM/000003408825000010/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 5980900,
+    "chunk_count": 156,
+    "cik": "0000034088",
+    "clean_chars": 439352,
+    "company_name": "EXXON MOBIL CORP",
+    "created_at": "2026-08-31T17:28:20Z",
+    "dense_upserted": 156,
+    "dense_verified": 156,
+    "embedding_count": 156,
+    "filing_date": "2025-02-19",
+    "filing_id": "000003408825000010",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "5f77cb4ac3a14c1284ebe5c3118261e855881ea65419eac7fa7e005c0f90d288",
+      "clean_text_sha256": "a2fae7d95c9229b992f71a717f4d2f25dbb5d7bc7cbfcc255faa40b7c16856a8",
+      "embeddings_sha256": "958fb9616f827014f19b0592c84562ae4d32978de8d171940bc0608bd724452d"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4115,
+    "primary_doc_sha256": "ef8063b86ee33c8bcc1465c3c853752294a3397867621e1762c8fe45abf0ffc5",
+    "primary_document": "xom-20241231.htm",
+    "report_date": "2024-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/34088/000003408825000010/xom-20241231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 156,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:09Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:21Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:21Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:09Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:27Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:20Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:20Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:24Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:09Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:29:08Z"
+      }
+    },
+    "ticker": "XOM",
+    "updated_at": "2026-08-31T17:29:09Z"
+  },
   "000003408826000045": {
     "accession_number": "0000034088-26-000045",
     "artifacts": {
@@ -268,6 +448,186 @@
     },
     "ticker": "XOM",
     "updated_at": "2026-08-28T17:41:48Z"
+  },
+  "000010416924000056": {
+    "accession_number": "0000104169-24-000056",
+    "artifacts": {
+      "chunks": "data/chunks/WMT/000010416924000056_chunks.jsonl",
+      "clean_text": "data/raw/WMT/000010416924000056/filing.txt",
+      "embeddings": "data/embeddings/WMT/000010416924000056_embeddings.jsonl",
+      "metadata": "data/raw/WMT/000010416924000056/metadata.json",
+      "raw_html": "data/raw/WMT/000010416924000056/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2323877,
+    "chunk_count": 116,
+    "cik": "0000104169",
+    "clean_chars": 375886,
+    "company_name": "Walmart Inc.",
+    "created_at": "2026-08-31T17:26:25Z",
+    "dense_upserted": 116,
+    "dense_verified": 116,
+    "embedding_count": 116,
+    "filing_date": "2024-03-15",
+    "filing_id": "000010416924000056",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "b190a9c5c432ce973924224993e36d3027c01de57f7e190c220d8ed39698f304",
+      "clean_text_sha256": "9097f6c651d33e95a1546c19ba92a97b8bec783bca16e4cbbf1e69c672f27456",
+      "embeddings_sha256": "0bf1372c5e15001db0265567decf536592572f48831ff98ced7cada7432d4b79"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 3763,
+    "primary_doc_sha256": "b5d34a19ec27cb80ddda8d5140ccdaa8454bb2ba5ad4720667887238c55c0e09",
+    "primary_document": "wmt-20240131.htm",
+    "report_date": "2024-01-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416924000056/wmt-20240131.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 116,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:00Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:26Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:26Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:00Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:31Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:25Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:25Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:28Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:00Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:59Z"
+      }
+    },
+    "ticker": "WMT",
+    "updated_at": "2026-08-31T17:27:00Z"
+  },
+  "000010416925000021": {
+    "accession_number": "0000104169-25-000021",
+    "artifacts": {
+      "chunks": "data/chunks/WMT/000010416925000021_chunks.jsonl",
+      "clean_text": "data/raw/WMT/000010416925000021/filing.txt",
+      "embeddings": "data/embeddings/WMT/000010416925000021_embeddings.jsonl",
+      "metadata": "data/raw/WMT/000010416925000021/metadata.json",
+      "raw_html": "data/raw/WMT/000010416925000021/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2335078,
+    "chunk_count": 114,
+    "cik": "0000104169",
+    "clean_chars": 370758,
+    "company_name": "Walmart Inc.",
+    "created_at": "2026-08-31T17:25:50Z",
+    "dense_upserted": 114,
+    "dense_verified": 114,
+    "embedding_count": 114,
+    "filing_date": "2025-03-14",
+    "filing_id": "000010416925000021",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "cd3043e16d7c5410076d02ce59d2857368c0dbc96d3be5ef853a20447cef2f7b",
+      "clean_text_sha256": "715e426c7a170509bf0cef41b27a406ddfb574f8dffb49b9d3cb2f2416c59328",
+      "embeddings_sha256": "330d138e2ad78af4a735f7d53c20f54cd96581196a4608c1a5c54f849c309470"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 3647,
+    "primary_doc_sha256": "fb8c04a6e50d964f863c694130afe0abdd827e05d23c41389c61c82a182234e2",
+    "primary_document": "wmt-20250131.htm",
+    "report_date": "2025-01-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 114,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:25Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-31T17:25:51Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-31T17:25:51Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:25Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:25:56Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:25:50Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:25:51Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:25:53Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:25Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:26:24Z"
+      }
+    },
+    "ticker": "WMT",
+    "updated_at": "2026-08-31T17:26:25Z"
   },
   "000010416926000055": {
     "accession_number": "0000104169-26-000055",
@@ -603,6 +963,186 @@
     },
     "ticker": "AAPL",
     "updated_at": "2026-08-29T18:44:46Z"
+  },
+  "000073176624000081": {
+    "accession_number": "0000731766-24-000081",
+    "artifacts": {
+      "chunks": "data/chunks/UNH/000073176624000081_chunks.jsonl",
+      "clean_text": "data/raw/UNH/000073176624000081/filing.txt",
+      "embeddings": "data/embeddings/UNH/000073176624000081_embeddings.jsonl",
+      "metadata": "data/raw/UNH/000073176624000081/metadata.json",
+      "raw_html": "data/raw/UNH/000073176624000081/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2702863,
+    "chunk_count": 97,
+    "cik": "0000731766",
+    "clean_chars": 311747,
+    "company_name": "UNITEDHEALTH GROUP INC",
+    "created_at": "2026-08-31T17:27:48Z",
+    "dense_upserted": 97,
+    "dense_verified": 97,
+    "embedding_count": 97,
+    "filing_date": "2024-02-28",
+    "filing_id": "000073176624000081",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "3d4cbe09918cb83f3876435dfcc407d10777127241708d00f34be5689614fd83",
+      "clean_text_sha256": "bae01db18fe7120957f245e8eceda70686576f041b6007f6b0b44d478f8cf109",
+      "embeddings_sha256": "8143ffb7e0bcfee0231f3b888acb1b52d53c10e5883745010ecc0f54ea1002e6"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 3959,
+    "primary_doc_sha256": "5a5d68aa5a839be37eb32520c75615d84579d9b4a1be379ae64470d5230af762",
+    "primary_document": "unh-20231231.htm",
+    "report_date": "2023-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176624000081/unh-20231231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 97,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:08Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:08Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:51Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:49Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:08Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:28:07Z"
+      }
+    },
+    "ticker": "UNH",
+    "updated_at": "2026-08-31T17:28:08Z"
+  },
+  "000073176625000063": {
+    "accession_number": "0000731766-25-000063",
+    "artifacts": {
+      "chunks": "data/chunks/UNH/000073176625000063_chunks.jsonl",
+      "clean_text": "data/raw/UNH/000073176625000063/filing.txt",
+      "embeddings": "data/embeddings/UNH/000073176625000063_embeddings.jsonl",
+      "metadata": "data/raw/UNH/000073176625000063/metadata.json",
+      "raw_html": "data/raw/UNH/000073176625000063/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2823139,
+    "chunk_count": 99,
+    "cik": "0000731766",
+    "clean_chars": 316032,
+    "company_name": "UNITEDHEALTH GROUP INC",
+    "created_at": "2026-08-31T17:27:25Z",
+    "dense_upserted": 99,
+    "dense_verified": 99,
+    "embedding_count": 99,
+    "filing_date": "2025-02-27",
+    "filing_id": "000073176625000063",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "ebf02ae88b998356ae3f06b41d2d2d800ca35310151a72327ddf65ae0ec754e5",
+      "clean_text_sha256": "f47f145f28304506b319cf31ed65acf1ad339c37794d5b5dab8667c8ce707267",
+      "embeddings_sha256": "94e221ef4ec2d2db9de73be67c64f60fabed58b57a3823cb1e9e91f0241ab13e"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 3862,
+    "primary_doc_sha256": "5368813fd21746c6fefb949f015d91cecb6d36ed08b6c0ace8582e73bd91a858",
+    "primary_document": "unh-20241231.htm",
+    "report_date": "2024-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 99,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:26Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:26Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:30Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:25Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:25Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:28Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:48Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-08-31T17:27:46Z"
+      }
+    },
+    "ticker": "UNH",
+    "updated_at": "2026-08-31T17:27:48Z"
   },
   "000073176626000062": {
     "accession_number": "0000731766-26-000062",

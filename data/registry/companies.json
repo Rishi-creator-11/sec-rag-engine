@@ -240,6 +240,22 @@
           "filing_type": "10-K",
           "fiscal_year": 2025,
           "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000731766-25-000063",
+          "chunk_count": 99,
+          "filing_date": "2025-02-27",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000731766-24-000081",
+          "chunk_count": 97,
+          "filing_date": "2024-02-28",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
         }
       ],
       "legal_name": "UNITEDHEALTH GROUP INC",
@@ -255,6 +271,22 @@
           "filing_type": "10-K",
           "fiscal_year": 2026,
           "report_date": "2026-01-31"
+        },
+        {
+          "accession_number": "0000104169-25-000021",
+          "chunk_count": 114,
+          "filing_date": "2025-03-14",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-01-31"
+        },
+        {
+          "accession_number": "0000104169-24-000056",
+          "chunk_count": 116,
+          "filing_date": "2024-03-15",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-01-31"
         }
       ],
       "legal_name": "Walmart Inc.",
@@ -270,6 +302,22 @@
           "filing_type": "10-K",
           "fiscal_year": 2025,
           "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000034088-25-000010",
+          "chunk_count": 156,
+          "filing_date": "2025-02-19",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000034088-24-000018",
+          "chunk_count": 147,
+          "filing_date": "2024-02-28",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
         }
       ],
       "legal_name": "EXXON MOBIL CORP",

@@ -1,0 +1,175 @@
+[
+  {
+    "id": "wmt_revenue_fy2026_01",
+    "question": "In Walmart's consolidated statements of income, what were total revenues for fiscal 2026?",
+    "ticker": "WMT",
+    "scopes": [{"ticker": "WMT", "fiscal_year": 2026}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2026": "713,163"}
+  },
+  {
+    "id": "wmt_revenue_fy2024_01",
+    "question": "In Walmart's consolidated statements of income, what were total revenues for fiscal 2024?",
+    "ticker": "WMT",
+    "scopes": [{"ticker": "WMT", "fiscal_year": 2024}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2024": "648,125"}
+  },
+  {
+    "id": "wmt_revenue_change_2024_2026_01",
+    "question": "Using Walmart's consolidated statements of income, compare total revenues for fiscal 2024 and fiscal 2026.",
+    "ticker": "WMT",
+    "scopes": [
+      {"ticker": "WMT", "fiscal_year": 2024},
+      {"ticker": "WMT", "fiscal_year": 2026}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2024": "648,125", "2026": "713,163"}
+  },
+  {
+    "id": "wmt_ecommerce_risk_change_2024_2026_01",
+    "question": "How did Walmart's e-commerce, supply-chain, and competitive risk disclosures change between fiscal 2024 and fiscal 2026?",
+    "ticker": "WMT",
+    "scopes": [
+      {"ticker": "WMT", "fiscal_year": 2024},
+      {"ticker": "WMT", "fiscal_year": 2026}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "wmt_competition_fy2026_01",
+    "question": "How does Walmart describe the competition it faces in fiscal 2026?",
+    "ticker": "WMT",
+    "scopes": [{"ticker": "WMT", "fiscal_year": 2026}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "wmt_year_not_present_fy2015_01",
+    "question": "In Walmart's consolidated statements of income, what were total revenues for fiscal 2015?",
+    "ticker": "WMT",
+    "scopes": [{"ticker": "WMT", "fiscal_year": 2015}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  },
+
+  {
+    "id": "unh_revenue_fy2025_01",
+    "question": "In UnitedHealth Group's consolidated statements of operations, what were total revenues for fiscal 2025?",
+    "ticker": "UNH",
+    "scopes": [{"ticker": "UNH", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "447,567"}
+  },
+  {
+    "id": "unh_revenue_fy2023_01",
+    "question": "In UnitedHealth Group's consolidated statements of operations, what were total revenues for fiscal 2023?",
+    "ticker": "UNH",
+    "scopes": [{"ticker": "UNH", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "371,622"}
+  },
+  {
+    "id": "unh_revenue_change_2023_2025_01",
+    "question": "Using UnitedHealth Group's consolidated statements of operations, compare total revenues for fiscal 2023 and fiscal 2025.",
+    "ticker": "UNH",
+    "scopes": [
+      {"ticker": "UNH", "fiscal_year": 2023},
+      {"ticker": "UNH", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "371,622", "2025": "447,567"}
+  },
+  {
+    "id": "unh_regulatory_risk_change_2023_2025_01",
+    "question": "How did UnitedHealth Group's regulatory and reimbursement risk disclosures change between fiscal 2023 and fiscal 2025?",
+    "ticker": "UNH",
+    "scopes": [
+      {"ticker": "UNH", "fiscal_year": 2023},
+      {"ticker": "UNH", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "unh_competition_fy2025_01",
+    "question": "How does UnitedHealth Group describe the competition it faces in fiscal 2025?",
+    "ticker": "UNH",
+    "scopes": [{"ticker": "UNH", "fiscal_year": 2025}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "unh_year_not_present_fy2016_01",
+    "question": "In UnitedHealth Group's consolidated statements of operations, what were total revenues for fiscal 2016?",
+    "ticker": "UNH",
+    "scopes": [{"ticker": "UNH", "fiscal_year": 2016}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  },
+
+  {
+    "id": "xom_revenue_fy2025_01",
+    "question": "In ExxonMobil's consolidated statement of income, what were total revenues and other income for fiscal 2025?",
+    "ticker": "XOM",
+    "scopes": [{"ticker": "XOM", "fiscal_year": 2025}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2025": "332,238"}
+  },
+  {
+    "id": "xom_revenue_fy2023_01",
+    "question": "In ExxonMobil's consolidated statement of income, what were total revenues and other income for fiscal 2023?",
+    "ticker": "XOM",
+    "scopes": [{"ticker": "XOM", "fiscal_year": 2023}],
+    "category": "financials",
+    "answer_type": "numeric",
+    "number_hint_by_year": {"2023": "344,582"}
+  },
+  {
+    "id": "xom_revenue_change_2023_2025_01",
+    "question": "Using ExxonMobil's consolidated statement of income, compare total revenues and other income for fiscal 2023 and fiscal 2025.",
+    "ticker": "XOM",
+    "scopes": [
+      {"ticker": "XOM", "fiscal_year": 2023},
+      {"ticker": "XOM", "fiscal_year": 2025}
+    ],
+    "category": "financials",
+    "answer_type": "comparison_numeric",
+    "number_hint_by_year": {"2023": "344,582", "2025": "332,238"}
+  },
+  {
+    "id": "xom_climate_risk_change_2023_2025_01",
+    "question": "How did ExxonMobil's climate, regulatory, and commodity-price risk disclosures change between fiscal 2023 and fiscal 2025?",
+    "ticker": "XOM",
+    "scopes": [
+      {"ticker": "XOM", "fiscal_year": 2023},
+      {"ticker": "XOM", "fiscal_year": 2025}
+    ],
+    "category": "risk",
+    "answer_type": "comparison"
+  },
+  {
+    "id": "xom_competition_fy2025_01",
+    "question": "How does ExxonMobil describe the competition it faces in fiscal 2025?",
+    "ticker": "XOM",
+    "scopes": [{"ticker": "XOM", "fiscal_year": 2025}],
+    "category": "competition",
+    "answer_type": "qualitative"
+  },
+  {
+    "id": "xom_year_not_present_fy2015_01",
+    "question": "In ExxonMobil's consolidated statement of income, what were total revenues and other income for fiscal 2015?",
+    "ticker": "XOM",
+    "scopes": [{"ticker": "XOM", "fiscal_year": 2015}],
+    "category": "financials",
+    "answer_type": "unsupported_year"
+  }
+]

@@ -1,0 +1,34 @@
+MULTI-YEAR (FISCAL-YEAR SCOPE) EVALUATION - Phase 5.5 Batch 3 (WMT/UNH/XOM)
+questions: 18  supported: 15  unsupported-year: 3   top_k: 5
+
+fiscal_year_filter_correctness   1.000   (target 1.000)
+cross_year_leakage@5             0.000   (target 0.000)
+cross_company_leakage@5          0.000   (target 0.000)
+scope_coverage (all)             1.000
+scope_coverage (comparison Qs)   1.000   (target 1.000)
+numeric_year_correctness         1.000   (9 numeric Qs, right number right year)
+unsupported_year rejected        1.000   (target 1.000)
+reranker_fallback               5/15
+latency  mean 1.84s  p50 0.79s
+
+GATE  PASS
+
+per-question:
+  wmt_revenue_fy2026_01                    scopes=['WMT:2026'] ev_by_scope={'WMT:2026': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  wmt_revenue_fy2024_01                    scopes=['WMT:2024'] ev_by_scope={'WMT:2024': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  wmt_revenue_change_2024_2026_01          scopes=['WMT:2024', 'WMT:2026'] ev_by_scope={'WMT:2024': 1, 'WMT:2026': 4} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  wmt_ecommerce_risk_change_2024_2026_01   scopes=['WMT:2024', 'WMT:2026'] ev_by_scope={'WMT:2024': 2, 'WMT:2026': 3} yr_leak=0.00 co_leak=0.00
+  wmt_competition_fy2026_01                scopes=['WMT:2026'] ev_by_scope={'WMT:2026': 5} yr_leak=0.00 co_leak=0.00
+  unh_revenue_fy2025_01                    scopes=['UNH:2025'] ev_by_scope={'UNH:2025': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  unh_revenue_fy2023_01                    scopes=['UNH:2023'] ev_by_scope={'UNH:2023': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  unh_revenue_change_2023_2025_01          scopes=['UNH:2023', 'UNH:2025'] ev_by_scope={'UNH:2023': 1, 'UNH:2025': 4} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  unh_regulatory_risk_change_2023_2025_01  scopes=['UNH:2023', 'UNH:2025'] ev_by_scope={'UNH:2023': 3, 'UNH:2025': 2} yr_leak=0.00 co_leak=0.00
+  unh_competition_fy2025_01                scopes=['UNH:2025'] ev_by_scope={'UNH:2025': 5} yr_leak=0.00 co_leak=0.00
+  xom_revenue_fy2025_01                    scopes=['XOM:2025'] ev_by_scope={'XOM:2025': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  xom_revenue_fy2023_01                    scopes=['XOM:2023'] ev_by_scope={'XOM:2023': 5} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  xom_revenue_change_2023_2025_01          scopes=['XOM:2023', 'XOM:2025'] ev_by_scope={'XOM:2023': 3, 'XOM:2025': 2} yr_leak=0.00 co_leak=0.00 numeric_year_ok=True
+  xom_climate_risk_change_2023_2025_01     scopes=['XOM:2023', 'XOM:2025'] ev_by_scope={'XOM:2023': 3, 'XOM:2025': 2} yr_leak=0.00 co_leak=0.00
+  xom_competition_fy2025_01                scopes=['XOM:2025'] ev_by_scope={'XOM:2025': 5} yr_leak=0.00 co_leak=0.00
+  wmt_year_not_present_fy2015_01           requested WMT:2015 available [2026, 2025, 2024] -> correctly_unavailable=True
+  unh_year_not_present_fy2016_01           requested UNH:2016 available [2025, 2024, 2023] -> correctly_unavailable=True
+  xom_year_not_present_fy2015_01           requested XOM:2015 available [2025, 2024, 2023] -> correctly_unavailable=True

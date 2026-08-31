@@ -1,0 +1,308 @@
+[
+  {
+    "id": "wmt_revenue_fy2026_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "WMT:2026"
+    ],
+    "expected": {
+      "2026": "713,163"
+    },
+    "number_present_by_year": {
+      "2026": true
+    },
+    "ok": true,
+    "answer": "Total revenues for fiscal 2026 were $713,163 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "WMT"
+      ],
+      "fiscal_years": [
+        2026
+      ],
+      "scopes": [
+        "WMT:2026"
+      ],
+      "evidence_by_scope": {
+        "WMT:2026": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "wmt_revenue_fy2024_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "WMT:2024"
+    ],
+    "expected": {
+      "2024": "648,125"
+    },
+    "number_present_by_year": {
+      "2024": true
+    },
+    "ok": true,
+    "answer": "Total revenues for fiscal 2024: 648,125 million dollars. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "WMT"
+      ],
+      "fiscal_years": [
+        2024
+      ],
+      "scopes": [
+        "WMT:2024"
+      ],
+      "evidence_by_scope": {
+        "WMT:2024": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "wmt_revenue_change_2024_2026_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "WMT:2024",
+      "WMT:2026"
+    ],
+    "expected": {
+      "2024": "648,125",
+      "2026": "713,163"
+    },
+    "number_present_by_year": {
+      "2024": true,
+      "2026": true
+    },
+    "ok": true,
+    "answer": "FY2024:\n- Total revenues: 648,125 million dollars. [Source 5]\n\nFY2026:\n- Total revenues: 713,163 million dollars. [Source 1]\n\nWhat changed:\n- Total revenues increased from 648,125 in FY2024 to 713,163 in FY2026.",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "WMT"
+      ],
+      "fiscal_years": [
+        2024,
+        2026
+      ],
+      "scopes": [
+        "WMT:2024",
+        "WMT:2026"
+      ],
+      "evidence_by_scope": {
+        "WMT:2024": 1,
+        "WMT:2026": 4
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "unh_revenue_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "UNH:2025"
+    ],
+    "expected": {
+      "2025": "447,567"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "Total revenues for fiscal 2025: $447,567 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "UNH"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "UNH:2025"
+      ],
+      "evidence_by_scope": {
+        "UNH:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "unh_revenue_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "UNH:2023"
+    ],
+    "expected": {
+      "2023": "371,622"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Total revenues for fiscal 2023: $371,622 million. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "UNH"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "UNH:2023"
+      ],
+      "evidence_by_scope": {
+        "UNH:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "unh_revenue_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "UNH:2023",
+      "UNH:2025"
+    ],
+    "expected": {
+      "2023": "371,622",
+      "2025": "447,567"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Total revenues: 371,622 (in millions) [Source 5]\n\nFY2025:\n- Total revenues: 447,567 (in millions) [Source 1]\n\nWhat changed:\n- Revenues increased from 371,622 in FY2023 to 447,567 in FY2025 (increase of 75,945). No change in disclosure language is evident from the excerpts.",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "UNH"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "UNH:2023",
+        "UNH:2025"
+      ],
+      "evidence_by_scope": {
+        "UNH:2023": 1,
+        "UNH:2025": 4
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "xom_revenue_fy2025_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "XOM:2025"
+    ],
+    "expected": {
+      "2025": "332,238"
+    },
+    "number_present_by_year": {
+      "2025": true
+    },
+    "ok": true,
+    "answer": "Total revenues and other income for fiscal 2025: 332,238 million dollars. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "XOM"
+      ],
+      "fiscal_years": [
+        2025
+      ],
+      "scopes": [
+        "XOM:2025"
+      ],
+      "evidence_by_scope": {
+        "XOM:2025": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "xom_revenue_fy2023_01",
+    "answer_type": "numeric",
+    "scopes": [
+      "XOM:2023"
+    ],
+    "expected": {
+      "2023": "344,582"
+    },
+    "number_present_by_year": {
+      "2023": true
+    },
+    "ok": true,
+    "answer": "Total revenues and other income for fiscal 2023 were 344,582 million dollars. [Source 1]",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": false,
+      "tickers": [
+        "XOM"
+      ],
+      "fiscal_years": [
+        2023
+      ],
+      "scopes": [
+        "XOM:2023"
+      ],
+      "evidence_by_scope": {
+        "XOM:2023": 5
+      },
+      "warnings": []
+    }
+  },
+  {
+    "id": "xom_revenue_change_2023_2025_01",
+    "answer_type": "comparison_numeric",
+    "scopes": [
+      "XOM:2023",
+      "XOM:2025"
+    ],
+    "expected": {
+      "2023": "344,582",
+      "2025": "332,238"
+    },
+    "number_present_by_year": {
+      "2023": true,
+      "2025": true
+    },
+    "ok": true,
+    "answer": "FY2023:\n- Total revenues and other income: 344,582 million [Source 3]\n\nFY2025:\n- Total revenues and other income: 332,238 million [Source 1]\n\nWhat changed:\n- Decrease of 12,344 million from 2023 to 2025 (344,582 vs 332,238). The labeling remains the same; no change in the applicable language.",
+    "search_scope": {
+      "global_search": false,
+      "comparison_mode": true,
+      "tickers": [
+        "XOM"
+      ],
+      "fiscal_years": [
+        2023,
+        2025
+      ],
+      "scopes": [
+        "XOM:2023",
+        "XOM:2025"
+      ],
+      "evidence_by_scope": {
+        "XOM:2023": 1,
+        "XOM:2025": 4
+      },
+      "warnings": []
+    }
+  }
+]
