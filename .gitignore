@@ -44,6 +44,8 @@ evaluation/results/reranker_cache.json
 evaluation/results/benchmark_v2_auto_judgments.json
 evaluation/results/benchmark_v2_judgments.json
 evaluation/results/benchmark_v3_auto_judgments.json
+evaluation/results/benchmark_v3_repool.json
+evaluation/results/benchmark_v3_repool_judgments.json
 evaluation/results/*_review.txt
 evaluation/results/*.log
 evaluation/results/retrieval_pool.json

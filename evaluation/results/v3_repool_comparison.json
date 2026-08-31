@@ -1,0 +1,61 @@
+{
+  "note": "same current-corpus retrieval scored against frozen vs re-pooled qrels",
+  "frozen": {
+    "dense": {
+      "questions": 115,
+      "MRR": 0.8712,
+      "R@10c": 0.7113,
+      "P@1": 0.8087,
+      "P@5": 0.6139,
+      "Rprec": 0.5617,
+      "mean_relevant": 11.4
+    },
+    "bm25s": {
+      "questions": 115,
+      "MRR": 0.8793,
+      "R@10c": 0.6806,
+      "P@1": 0.8,
+      "P@5": 0.5983,
+      "Rprec": 0.5436,
+      "mean_relevant": 11.4
+    },
+    "hybrid": {
+      "questions": 115,
+      "MRR": 0.8965,
+      "R@10c": 0.7179,
+      "P@1": 0.8348,
+      "P@5": 0.6383,
+      "Rprec": 0.5506,
+      "mean_relevant": 11.4
+    }
+  },
+  "repool": {
+    "dense": {
+      "questions": 115,
+      "MRR": 0.8854,
+      "R@10c": 0.7026,
+      "P@1": 0.8261,
+      "P@5": 0.6087,
+      "Rprec": 0.5438,
+      "mean_relevant": 11.8
+    },
+    "bm25s": {
+      "questions": 115,
+      "MRR": 0.8219,
+      "R@10c": 0.6628,
+      "P@1": 0.7217,
+      "P@5": 0.5739,
+      "Rprec": 0.5052,
+      "mean_relevant": 11.8
+    },
+    "hybrid": {
+      "questions": 115,
+      "MRR": 0.8836,
+      "R@10c": 0.7011,
+      "P@1": 0.8174,
+      "P@5": 0.6226,
+      "Rprec": 0.5429,
+      "mean_relevant": 11.8
+    }
+  }
+}
