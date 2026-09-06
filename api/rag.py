@@ -276,7 +276,16 @@ def build_generation_request(
         'source supports it; use the fewest citations needed.\n'
         'If the excerpts lack the answer, reply exactly:\n'
         '"The provided SEC filing excerpts do not contain enough information to answer this question."\n'
-        'Keep answers short: 1-3 sentences for numbers; one short paragraph or short bullets otherwise.'
+        'Keep answers short: 1-3 sentences for numbers; one short paragraph or short bullets otherwise.\n'
+        'For a specific financial figure: use the value as reported in a consolidated\n'
+        'financial statement (statement of income/operations, balance sheet, cash flows)\n'
+        'when the excerpts contain one, and match it to the requested fiscal year by its\n'
+        'column or year label, not by position. Do not answer with a differently named\n'
+        'line item -- "sales and other operating revenue", "net revenue", "total net\n'
+        'revenue", and "net income applicable to common stockholders" are each distinct\n'
+        'from "total revenue" / "total revenues and other income" / "net income". If the\n'
+        'excerpts give only a differently named or an unlabeled figure, say they do not\n'
+        'report the requested figure.'
     )
 
     if comparison_scopes:
@@ -288,8 +297,12 @@ def build_generation_request(
                 + " (TICKER:FISCAL_YEAR).\n"
                 "- Discuss each requested fiscal year explicitly, in its own section "
                 "(e.g. 'FY2023:' then 'FY2025:'), then a final 'What changed:' section.\n"
-                "- Use only evidence from that year's own filing. Never transfer a "
-                "fact from one year's excerpts to another year.\n"
+                "- Prefer evidence from each year's own filing. A consolidated financial "
+                "statement shows two to three comparative years side by side; you may "
+                "read a prior year's figure from a later filing's statement only when "
+                "that year is explicitly labeled on its column. Never use an unlabeled "
+                "number as a given year's figure, and never transfer narrative facts "
+                "between years.\n"
                 "- Distinguish a change in disclosure LANGUAGE from a change in the "
                 "underlying real-world fact.\n"
                 "- Do not say something increased or decreased unless excerpts from "

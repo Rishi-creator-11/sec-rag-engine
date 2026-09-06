@@ -107,8 +107,10 @@ class FakeSession:
 
 
 def make_client(routes):
+    # A fresh cache dir per client so this file's XOM->successor
+    # company_tickers.json fixture never leaks into another test module.
     return SecClient(user_agent=UA, session=FakeSession(routes),
-                     cache_dir="/tmp/sec-rag-nonexistent-cache")
+                     cache_dir=tempfile.mkdtemp(prefix="sec-rag-test-"))
 
 
 LEGACY_CIK = "https://data.sec.gov/submissions/CIK0000034088.json"

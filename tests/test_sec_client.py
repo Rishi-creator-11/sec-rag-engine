@@ -1,6 +1,7 @@
 """Phase 3: SEC client — resolution, discovery, retry/backoff, config."""
 
 import json
+import tempfile
 import unittest
 from unittest.mock import patch
 
@@ -73,8 +74,10 @@ class FakeSession:
 
 
 def make_client(routes, **kw):
+    # A fresh cache dir per client so a fixture written by one test can never be
+    # read by another (test_cik_override uses a company_tickers.json without AAPL).
     return SecClient(user_agent=UA, session=FakeSession(routes),
-                     cache_dir="/tmp/sec-rag-nonexistent-cache", **kw)
+                     cache_dir=tempfile.mkdtemp(prefix="sec-rag-test-"), **kw)
 
 
 class ConfigTests(unittest.TestCase):
