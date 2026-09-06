@@ -1,145 +1,215 @@
-# SEC RAG Engine
+# AlphaBrief
 
-Production-oriented RAG system over SEC 10-K filings. It retrieves evidence from Apple, Microsoft, and NVIDIA annual reports, reranks it, and returns grounded answers with citations—or a refusal when the filings do not support the question.
+AI-powered research for SEC 10-K filings with grounded answers and source-level evidence.
 
-## At a Glance
+Ask a plain-English question about a public company's annual report and get a response built
+only from retrieved filing text, with every answer backed by retrieved filing evidence. When
+the filings do not support an answer, the system refuses instead of guessing.
 
-- 60-question SEC 10-K benchmark
-- 90.3% Recall@10
-- 73.5% Precision@5 after Cohere reranking
-- 96.4% MRR
-- 100% Numeric Evidence Hit@5
-- 100% unsupported-query refusal on the final sanity test
-- ~2.0s median end-to-end latency in a controlled benchmark
-- FastAPI serving layer
-- graceful reranker fallback
+## Live Demo
+
+- Frontend: https://secfrontend.vercel.app
+- Backend API docs (Swagger): https://sec-rag-engine.vercel.app/docs
+
+## What It Does
+
+- Pick one or more companies and fiscal years, or ask across the whole corpus.
+- Ask a natural-language question ("How did operating margin change?", "What does the company
+  say about AI-related risk?").
+- Get a grounded answer with inline `[Source N]` citations.
+- Inspect the evidence: each citation opens the underlying 10-K passage with a link to the
+  filing on SEC.gov.
+- Compare across years or companies in a single question; each scope stays tied to its own
+  filing.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    A[SEC 10-K Filings] --> B[Ingestion and Cleaning]
-    B --> C["~800-token Chunks"]
-    C --> D[Dense Search]
-    C --> E[BM25]
-    C --> F[Sparse Search]
-    D --> G[Weighted RRF Hybrid]
-    E --> G
-    F --> G
-    G --> H[Top 10 Candidates]
-    H --> I[Cohere rerank-v4.0-fast]
-    I --> J[Top 5 Evidence]
-    J --> K[GPT-5-nano]
-    K --> L[Grounded Answer + Citations]
-    L --> M[FastAPI]
-    I -.-> N[Cohere error / rate limit]
-    N --> O[Hybrid Top 5 fallback]
-    O --> K
+    EDGAR[SEC EDGAR] --> ING[Ingestion + cleaning]
+    ING --> CHUNK[Token-window chunking]
+    CHUNK --> EMB[OpenAI embeddings]
+    EMB --> DENSE[(Pinecone dense)]
+    CHUNK --> BM25[(bm25s lexical index)]
+
+    Q[Question + ticker/year scope] --> FILTER[Structured scope filter]
+    FILTER --> DENSE
+    FILTER --> BM25
+    DENSE --> RRF[Weighted RRF fusion]
+    BM25 --> RRF
+    RRF --> RERANK[Cohere rerank]
+    RERANK --> SELECT[Scope-aware evidence selection]
+    SELECT --> GEN[OpenAI generation]
+    GEN --> API[FastAPI /ask]
+    API --> UI[Next.js UI]
 ```
 
-## Why This Project
+Pipeline: SEC EDGAR → ingestion and cleaning → chunking → embeddings → Pinecone dense index →
+bm25s lexical index → RRF fusion → Cohere reranking → scope-aware evidence selection → OpenAI
+generation → FastAPI → Next.js UI.
 
-SEC 10-Ks are long, dense, and hard to search with a single retriever. This project compares dense, BM25, sparse, and hybrid retrieval on a fixed benchmark, then selects reranking and generation models from measured quality and latency—not guesswork. The serving path is production-oriented: citations, refusal on unsupported questions, and immediate fallback if Cohere is rate-limited.
+## Retrieval Design
 
-## Key Features
+Retrieval is a dense + lexical hybrid:
 
-- SEC 10-K ingestion and structured metadata
-- dense, BM25, and sparse retrieval
-- weighted RRF hybrid fusion
-- Cohere reranking
-- grounded generation with citations
-- unsupported-query refusal
-- FastAPI
-- latency diagnostics
-- graceful reranker fallback
-- evaluation framework
+- **Dense**: OpenAI `text-embedding-3-small` (1536-dim), stored in the Pinecone `sec-rag-engine`
+  index.
+- **Lexical**: `bm25s` (Lucene-style BM25, `k1=1.5`, `b=0.75`) over a persisted, version-pinned
+  index that ships with the deployment.
+- **Fusion**: each retriever returns `candidate_k = 10` results; they are combined with
+  Reciprocal Rank Fusion (`RRF_K = 60`, equal weight for dense and BM25).
+- **Reranking**: the fused candidates go to Cohere `rerank-v4.0-fast`, which produces the final
+  top-5 evidence set.
+
+Structured scoping happens **before** generation. A request carries an optional list of tickers
+and fiscal years; these become a `RetrievalFilter` that constrains every retriever, so the
+generator never sees a chunk outside the requested scope. If a requested year has no ingested
+10-K for a requested company, the API returns a structured `422` rather than widening scope.
+
+For comparison questions (two or more scopes), retrieval runs independently per scope, using
+one shared query embedding across scopes for comparability. The per-scope candidate sets are
+deduplicated into a union (capped at 60), and a **single** Cohere rerank is run over that union.
+Evidence selection then guarantees at least one chunk per requested scope. Because each scope is
+retrieved and filtered on its own before the union is formed, one company's or year's text
+cannot leak into another scope's evidence.
+
+## Multi-Year / Comparison Support
+
+Scope is derived from what the request specifies:
+
+- **Ticker only** → all ingested filings for that company.
+- **Ticker + year** → that exact fiscal year.
+- **Multiple scopes** (several tickers, several years, or both) → comparison mode, one shared
+  code path for company-vs-company, year-vs-year, and company+year comparisons.
+- **Unsupported year** → structured `422` (`fiscal_year_not_available`) with the available
+  years, or `fiscal_years_without_tickers` when years are given with no ticker.
+
+There is no silent scope widening. A scope-validation failure is surfaced to the caller; it is
+never retried against a different year or company.
+
+## SEC Ingestion
+
+Ingestion uses the official SEC submissions API:
+
+- Exact `10-K` discovery only; `10-K/A` amendments are excluded by string equality.
+- Fiscal year is derived from the filing's `reportDate`, so non-calendar filers (Apple,
+  Microsoft, Walmart) are dated correctly.
+- Historical filings are discovered from the same submissions history, not just the latest.
+- A resumable, accession-keyed ledger re-validates each completed stage's on-disk artifacts, so
+  a rerun picks up at the earliest invalid stage. Accession numbers are deduplicated.
+- Chunk IDs are deterministic (`{TICKER}_{FY}_{FILING_TYPE}_{ACCESSION}_{INDEX}`), so
+  re-ingestion overwrites rather than duplicates.
+- Verification checks dense / sparse / BM25 parity for a filing.
+- The bm25s index is rebuilt and ranking-parity-checked by a dedicated script and committed;
+  the read-only deployment loads the bundled index and never rebuilds it.
+
+CIK-lineage edge cases are handled generically: ExxonMobil's recent 10-Ks were filed under a
+legacy registrant CIK, which is recorded as a `lineage` block in the registry without any
+company-specific code in the SEC client.
 
 ## Evaluation
 
-```mermaid
-flowchart LR
-    A[60-question benchmark] --> B[Pooled candidate judgments]
-    B --> C[Dense / BM25 / Sparse / Hybrid]
-    C --> D[Hybrid selected as candidate generator]
+Retrieval is evaluated offline against `benchmark_v3_repool` — 125 questions (115 answerable,
+10 deliberately unsupported fiscal years) over the current corpus, with **model-assisted
+relevance judgments** (a first-pass judgment plus a lower-temperature review pass). These are
+not human-labeled judgments; qrels outside the pooled candidate set are incomplete.
 
-    D --> E[GPT reranker benchmark]
-    D --> F[Cohere Fast benchmark]
-    E --> G[Reranker comparison]
-    F --> G
-    G --> H[Cohere Fast selected]
+Structural gates (scope correctness, cross-scope leakage, numeric-year attribution) are checked
+by the unit test suite and by dedicated multi-year validation scripts.
 
-    H --> I[Generation model benchmark]
-    I --> J[GPT-5-mini]
-    I --> K[GPT-5-nano]
-    I --> L[GPT-5.6-terra]
+| Metric | Result |
+|---|---|
+| MRR | 0.884 |
+| Recall@10 | 0.701 |
+| Precision@5 | 0.623 |
+| Fiscal-year filter correctness | 1.000 |
+| Cross-year leakage | 0.000 |
+| Cross-company leakage | 0.000 |
+| Comparison scope coverage | 1.000 |
+| Numeric-year correctness (anchored) | 1.000 |
+| Backend tests | 320 / 320 |
 
-    J --> M[Model comparison]
-    K --> M
-    L --> M
-    M --> N[GPT-5-nano selected]
-```
+## Production Corpus
 
-**Methodology**
+10 companies, 31 10-K filings, 4,262 chunks. Three fiscal years per company (four for NVIDIA).
 
-- 60 questions: 20 Apple, 20 Microsoft, 20 NVIDIA
-- 55 supported, 5 unsupported
-- labels come from a pooled Dense / BM25 / Sparse / Hybrid top-10 candidate set
-- LLM-assisted relevance judging
-- human review of every medium/low-confidence judgment
-- 71 ambiguous judgments were human-reviewed
-- qrels are incomplete outside that candidate pool
-
-The 819 pooled candidates were not all labeled by hand.
-
-| Stage | Metric | Result |
+| Ticker | Company | Fiscal years |
 |---|---|---|
-| Hybrid | Recall@10 | 0.903 |
-| Hybrid + Cohere | Recall@5 | 0.757 |
-| Hybrid + Cohere | Precision@5 | 0.735 |
-| Hybrid + Cohere | MRR | 0.964 |
-| Hybrid + Cohere | Numeric Evidence Hit@5 | 1.000 |
-| Cohere Reranker | Median latency | 0.207s |
-| Final RAG | Source hit rate | 1.000 |
-| Final RAG | Unsupported refusal | 1.000 |
-| Final RAG | Median latency | ~2.024s |
-| Final RAG | p95 latency | ~3.130s |
+| AAPL | Apple | 2023–2025 |
+| AMZN | Amazon | 2023–2025 |
+| GOOGL | Alphabet | 2023–2025 |
+| JPM | JPMorgan Chase | 2023–2025 |
+| META | Meta Platforms | 2023–2025 |
+| MSFT | Microsoft | 2024–2026 |
+| NVDA | NVIDIA | 2023–2026 |
+| UNH | UnitedHealth Group | 2023–2025 |
+| WMT | Walmart | 2024–2026 |
+| XOM | ExxonMobil | 2023–2025 |
 
-Cohere keeps Recall@10 at 0.903 while improving top-5 ranking. Hybrid is therefore the candidate generator; Cohere is the production reranker.
+## Tech Stack
 
-Generation models were compared on **identical cached Cohere evidence**. That isolates answer-model quality and latency. It is not a live Cohere stress test. Cohere Trial keys are limited to 10 calls/minute, so live runs can hit HTTP 429 and use hybrid fallback. That is quota, not inference latency.
-
-## Production RAG Flow
-
-1. Hybrid retrieves top 10
-2. Cohere rerank-v4.0-fast reranks those 10
-3. Top 5 evidence chunks are sent to `gpt-5-nano`
-4. The model answers only from that evidence, with citations
-5. If evidence is insufficient, it refuses
-6. On Cohere 429 or API error, the request continues with hybrid top-5 and `reranker_fallback=true`
-
-Serving does not sleep on rate limits. `COHERE_RERANK_ENABLED=false` skips Cohere.
+- **Backend**: Python, FastAPI, Uvicorn.
+- **Frontend**: Next.js, TypeScript (deployed on Vercel).
+- **Retrieval**: OpenAI `text-embedding-3-small` + Pinecone (dense), `bm25s` (lexical), RRF
+  fusion, Cohere `rerank-v4.0-fast`.
+- **Generation**: OpenAI `gpt-5-nano`, constrained to the retrieved evidence.
+- **Infrastructure**: Pinecone managed indexes, Vercel (read-only Python runtime for the API,
+  static + SSR for the UI).
+- **Evaluation**: offline pooled benchmark, model-assisted judging, `unittest` structural gates.
 
 ## API
 
 ```text
 GET  /health
+GET  /companies
+GET  /companies/{ticker}/filings
 POST /ask
 ```
 
-`POST /ask` body:
+`POST /ask` request:
 
 ```json
 {
-  "question": "What were Apple's total net sales in fiscal 2024?",
+  "question": "How did Apple's total net sales change from fiscal 2023 to fiscal 2024?",
+  "tickers": ["AAPL"],
+  "fiscal_years": [2023, 2024],
   "top_k": 5
 }
 ```
 
-Response fields: `question`, `answer`, `sources`, `generation_model`, `reranker_fallback`, `reranker_fallback_reason`, `timings`.
+`tickers` and `fiscal_years` are optional. Omitting both searches the whole corpus; giving
+`fiscal_years` without `tickers` is rejected with `422`.
 
-Swagger UI: `http://127.0.0.1:8000/docs`
+Response fields: `question`, `answer`, `sources`, `generation_model`, `reranker_fallback`,
+`reranker_fallback_reason`, `search_scope` (including `comparison_mode` and `evidence_by_scope`),
+and `timings`.
 
-## Setup
+## Reliability / Safety
+
+- Scope is explicit and structured; it is applied to retrieval before generation.
+- Cross-year and cross-company leakage are covered by dedicated tests and stay at 0.000 on the
+  benchmark.
+- Numeric answers are validated for correct fiscal-year attribution on the multi-year suites.
+- The generator answers only from the supplied evidence and refuses when the evidence is
+  insufficient.
+- There is no silent fallback to a different year or company; an unavailable scope returns a
+  structured error.
+- If Cohere reranking fails or is rate-limited, the request continues with the hybrid top-5 and
+  sets `reranker_fallback = true`. The fallback path is still scope-filtered, so it cannot
+  introduce out-of-scope evidence.
+
+## Known Limitation
+
+Loose, directly phrased revenue questions for ExxonMobil can safely refuse. ExxonMobil's 10-K
+restates consolidated revenue across several segment and reconciliation tables, and in that
+filing's layout a bare per-year total can land in a chunk with no adjacent fiscal-year column
+header, which makes the consolidated income-statement figure hard to retrieve by a loose query.
+The system prefers to refuse rather than return a number it cannot attribute confidently.
+Anchored queries that name the statement ("What does the consolidated statement of income show
+for total revenues?") return the correct value. This is specific to that filing's table
+structure and does not affect the other companies.
+
+## Local Development
 
 ```bash
 python -m venv .venv
@@ -147,52 +217,51 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-`.env` (do not commit secrets):
+Create `.env`:
 
 ```text
 OPENAI_API_KEY=
 PINECONE_API_KEY=
 COHERE_API_KEY=
 FRONTEND_ORIGINS=http://localhost:3000
+SEC_USER_AGENT=your-project you@example.com
 ```
 
-Optional:
-
-```text
-COHERE_RERANK_ENABLED=true
-FRONTEND_ORIGINS=http://localhost:3000,https://secfrontend.vercel.app
-```
-
-## Run
+Run the API:
 
 ```bash
 fastapi dev api/main.py
 ```
 
-## Evaluation Commands
+Run the tests:
 
 ```bash
-python -m evaluation.evaluate_v2
-python -m evaluation.evaluate_cohere_reranker
-python -m evaluation.evaluate_generation_models
-python -m evaluation.evaluate_final_rag
+python -m unittest discover -s tests -t .
 ```
 
-The generation-model comparison reuses cached Cohere rankings so it does not consume Trial quota.
+Offline retrieval evaluation:
 
-## Limitations
+```bash
+python -m evaluation.evaluate_v3_offline
+```
 
-- evaluated on three companies
-- qrels are pooled and incomplete outside the retrieval pool
-- Cohere Trial accounts are limited to 10 calls/minute
-- arbitrary ticker ingestion is not automated
-- production monitoring and deployment are not included
+Ingest a company's recent 10-Ks (writes to Pinecone and the local registry):
 
-## Next Steps
+```bash
+python -m ingestion.ingest_company --ticker AMZN --years 3 --verify
+python -m scripts.build_bm25s_index
+```
 
-- arbitrary ticker/company ingestion
-- incremental filing updates
-- metadata filtering
-- multi-company comparisons
-- streaming `/ask` endpoint
-- observability and deployment
+## Repository Structure
+
+```text
+api/          FastAPI app, request validation, RAG orchestration, generation
+ingestion/    SEC discovery, download, cleaning, chunking, ingestion ledger
+retrieval/    embeddings, Pinecone clients, bm25s backend, RRF hybrid, Cohere reranker, scope
+evaluation/   benchmarks, pooled judging, offline retrieval and multi-year validation
+scripts/      bm25s index build, metadata backfills, filter regression checks
+tests/        unit and structural tests (scope, leakage, numeric attribution, fallback)
+data/         chunks, registry, persisted bm25s index, SEC cache (embeddings/raw gitignored)
+```
+
+See `INGESTION.md` for ingestion operations and `FAILURES.md` for recorded failure analysis.
