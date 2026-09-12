@@ -1,0 +1,17 @@
+{
+  "company_name": "CHEVRON CORP",
+  "ticker": "CVX",
+  "cik": "0000093410",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000093410-26-000078",
+  "filing_id": "000009341026000078",
+  "filing_date": "2026-02-24",
+  "report_date": "2025-12-31",
+  "primary_document": "cvx-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

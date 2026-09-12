@@ -1,0 +1,17 @@
+{
+  "company_name": "COCA COLA CO",
+  "ticker": "KO",
+  "cik": "0000021344",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001628280-26-010047",
+  "filing_id": "000162828026010047",
+  "filing_date": "2026-02-20",
+  "report_date": "2025-12-31",
+  "primary_document": "ko-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

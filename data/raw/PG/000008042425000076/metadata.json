@@ -1,0 +1,17 @@
+{
+  "company_name": "PROCTER & GAMBLE Co",
+  "ticker": "PG",
+  "cik": "0000080424",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000080424-25-000076",
+  "filing_id": "000008042425000076",
+  "filing_date": "2025-08-04",
+  "report_date": "2025-06-30",
+  "primary_document": "pg-20250630.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

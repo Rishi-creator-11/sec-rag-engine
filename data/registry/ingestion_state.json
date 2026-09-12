@@ -179,6 +179,186 @@
     "ticker": "JPM",
     "updated_at": "2026-08-30T22:24:09Z"
   },
+  "000002134424000009": {
+    "accession_number": "0000021344-24-000009",
+    "artifacts": {
+      "chunks": "data/chunks/KO/000002134424000009_chunks.jsonl",
+      "clean_text": "data/raw/KO/000002134424000009/filing.txt",
+      "embeddings": "data/embeddings/KO/000002134424000009_embeddings.jsonl",
+      "metadata": "data/raw/KO/000002134424000009/metadata.json",
+      "raw_html": "data/raw/KO/000002134424000009/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 4161309,
+    "chunk_count": 185,
+    "cik": "0000021344",
+    "clean_chars": 600464,
+    "company_name": "COCA COLA CO",
+    "created_at": "2026-09-12T03:09:43Z",
+    "dense_upserted": 185,
+    "dense_verified": 185,
+    "embedding_count": 185,
+    "filing_date": "2024-02-20",
+    "filing_id": "000002134424000009",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "13b5a0351beb2b31ca8533d3220e9b41d9b40fcaf75ce8a0ae56e39760eb248d",
+      "clean_text_sha256": "80a9841b6787e6b85b8e66651b0259abe9094a662512f706831f722bac456d0d",
+      "embeddings_sha256": "fdcc49b4a1c86fe05909fe50a7a6c30577aa41ae54dea67e332f8bde2d512ade"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 6518,
+    "primary_doc_sha256": "3e64a8ba843636d383ab22a1517306383199a50b1e998d74a67a8adddab9ad6d",
+    "primary_document": "ko-20231231.htm",
+    "report_date": "2023-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000009/ko-20231231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 185,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:31Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:31Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:48Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:46Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:31Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:29Z"
+      }
+    },
+    "ticker": "KO",
+    "updated_at": "2026-09-12T03:10:31Z"
+  },
+  "000002134425000011": {
+    "accession_number": "0000021344-25-000011",
+    "artifacts": {
+      "chunks": "data/chunks/KO/000002134425000011_chunks.jsonl",
+      "clean_text": "data/raw/KO/000002134425000011/filing.txt",
+      "embeddings": "data/embeddings/KO/000002134425000011_embeddings.jsonl",
+      "metadata": "data/raw/KO/000002134425000011/metadata.json",
+      "raw_html": "data/raw/KO/000002134425000011/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 3930907,
+    "chunk_count": 186,
+    "cik": "0000021344",
+    "clean_chars": 602735,
+    "company_name": "COCA COLA CO",
+    "created_at": "2026-09-12T03:08:54Z",
+    "dense_upserted": 186,
+    "dense_verified": 186,
+    "embedding_count": 186,
+    "filing_date": "2025-02-20",
+    "filing_id": "000002134425000011",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "443124ca529366e60acf361e6196d233fef7e940daf4c098a02f4b3db7a73dd0",
+      "clean_text_sha256": "7cbf19725d95da05342a664ac6dbc174f86bf74538e45bd9e4da9777e4c4dc81",
+      "embeddings_sha256": "ab59aa25ef6c451685ba52e533202da3d5cdec07219b2747d846f33b6a41c301"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 6333,
+    "primary_doc_sha256": "03e0f59ce1b6115dd5cc3bb46b3078146affe03f3e2b1b37f2d59c3202135b68",
+    "primary_document": "ko-20241231.htm",
+    "report_date": "2024-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 186,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:55Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:55Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:00Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:54Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:54Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:58Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:43Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:09:41Z"
+      }
+    },
+    "ticker": "KO",
+    "updated_at": "2026-09-12T03:09:43Z"
+  },
   "000003408824000018": {
     "accession_number": "0000034088-24-000018",
     "artifacts": {
@@ -448,6 +628,816 @@
     },
     "ticker": "XOM",
     "updated_at": "2026-08-28T17:41:48Z"
+  },
+  "000007085824000122": {
+    "accession_number": "0000070858-24-000122",
+    "artifacts": {
+      "chunks": "data/chunks/BAC/000007085824000122_chunks.jsonl",
+      "clean_text": "data/raw/BAC/000007085824000122/filing.txt",
+      "embeddings": "data/embeddings/BAC/000007085824000122_embeddings.jsonl",
+      "metadata": "data/raw/BAC/000007085824000122/metadata.json",
+      "raw_html": "data/raw/BAC/000007085824000122/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 12861659,
+    "chunk_count": 305,
+    "cik": "0000070858",
+    "clean_chars": 895570,
+    "company_name": "BANK OF AMERICA CORP /DE/",
+    "created_at": "2026-09-12T03:06:25Z",
+    "dense_upserted": 305,
+    "dense_verified": 305,
+    "embedding_count": 305,
+    "filing_date": "2024-02-20",
+    "filing_id": "000007085824000122",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "5d7257e02f0e0c43ff93e3a1d052ddd2735bcef157404090f92d031808134991",
+      "clean_text_sha256": "7ec7b41004a29245540096d3cf97d137c4d1f551abd98fd681727320b56b9e6e",
+      "embeddings_sha256": "d7977ac91625b1f1e547e9eeab9f6cbf8fc90bf017eb74922648e067b25d87fa"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 5962,
+    "primary_doc_sha256": "ec7ca546700349585038c6f3fec4d1b7bd4721ec25ac680634c38d84a9b3e0d7",
+    "primary_document": "bac-20231231.htm",
+    "report_date": "2023-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/70858/000007085824000122/bac-20231231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 305,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:07:56Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:27Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:27Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:07:56Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:35Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:25Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:25Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:31Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:07:56Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:07:54Z"
+      }
+    },
+    "ticker": "BAC",
+    "updated_at": "2026-09-12T03:07:56Z"
+  },
+  "000007085825000139": {
+    "accession_number": "0000070858-25-000139",
+    "artifacts": {
+      "chunks": "data/chunks/BAC/000007085825000139_chunks.jsonl",
+      "clean_text": "data/raw/BAC/000007085825000139/filing.txt",
+      "embeddings": "data/embeddings/BAC/000007085825000139_embeddings.jsonl",
+      "metadata": "data/raw/BAC/000007085825000139/metadata.json",
+      "raw_html": "data/raw/BAC/000007085825000139/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 12899522,
+    "chunk_count": 301,
+    "cik": "0000070858",
+    "clean_chars": 878486,
+    "company_name": "BANK OF AMERICA CORP /DE/",
+    "created_at": "2026-09-12T03:04:49Z",
+    "dense_upserted": 301,
+    "dense_verified": 301,
+    "embedding_count": 301,
+    "filing_date": "2025-02-25",
+    "filing_id": "000007085825000139",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "43219bd80e207c8c4782ef39508d959805a80532f74216c5a5cdfec651942585",
+      "clean_text_sha256": "a4a4087ff0ea26ec082dbdda72ee02187126b8c8a0be87d068fb1b71357beb83",
+      "embeddings_sha256": "0e1e4233680069e9b4429431dd07c2810ebf8eba6aa9c1fbe215a798a8f4ad99"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 5657,
+    "primary_doc_sha256": "2bd740567c0f0a7ad4b873da1af6765d4d6268a2c1f0dc129d001af9f09a50e6",
+    "primary_document": "bac-20241231.htm",
+    "report_date": "2024-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/70858/000007085825000139/bac-20241231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 301,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:25Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:52Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:52Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:25Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:05:04Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:49Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:49Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:05:01Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:25Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:06:24Z"
+      }
+    },
+    "ticker": "BAC",
+    "updated_at": "2026-09-12T03:06:25Z"
+  },
+  "000007085826000157": {
+    "accession_number": "0000070858-26-000157",
+    "artifacts": {
+      "chunks": "data/chunks/BAC/000007085826000157_chunks.jsonl",
+      "clean_text": "data/raw/BAC/000007085826000157/filing.txt",
+      "embeddings": "data/embeddings/BAC/000007085826000157_embeddings.jsonl",
+      "metadata": "data/raw/BAC/000007085826000157/metadata.json",
+      "raw_html": "data/raw/BAC/000007085826000157/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 12819060,
+    "chunk_count": 301,
+    "cik": "0000070858",
+    "clean_chars": 880453,
+    "company_name": "BANK OF AMERICA CORP /DE/",
+    "created_at": "2026-09-12T03:03:19Z",
+    "dense_upserted": 301,
+    "dense_verified": 301,
+    "embedding_count": 301,
+    "filing_date": "2026-02-25",
+    "filing_id": "000007085826000157",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "6bf9f74b1b79a924889a8d93d25f422f61a30bc271119c8c56b177c032868f4a",
+      "clean_text_sha256": "5acc46ff0e9ff5e7eed4bc55818434ba787759066625301b4654561ec087d2a7",
+      "embeddings_sha256": "bbd2f1d9e3ed1faaaecce3d0bc2f22e38cc4ee70b6863854b2d73317875a2a00"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 5356,
+    "primary_doc_sha256": "c8725c7963d19cd6a2f3c1d0034b2a1068b4490124be6b6600a4db23be5ed134",
+    "primary_document": "bac-20251231.htm",
+    "report_date": "2025-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000157/bac-20251231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 301,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:49Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:21Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:21Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:49Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:29Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:19Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:19Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:25Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:49Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:04:48Z"
+      }
+    },
+    "ticker": "BAC",
+    "updated_at": "2026-09-12T03:04:49Z"
+  },
+  "000008042424000083": {
+    "accession_number": "0000080424-24-000083",
+    "artifacts": {
+      "chunks": "data/chunks/PG/000008042424000083_chunks.jsonl",
+      "clean_text": "data/raw/PG/000008042424000083/filing.txt",
+      "embeddings": "data/embeddings/PG/000008042424000083_embeddings.jsonl",
+      "metadata": "data/raw/PG/000008042424000083/metadata.json",
+      "raw_html": "data/raw/PG/000008042424000083/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2458121,
+    "chunk_count": 96,
+    "cik": "0000080424",
+    "clean_chars": 299212,
+    "company_name": "PROCTER & GAMBLE Co",
+    "created_at": "2026-09-12T03:00:10Z",
+    "dense_upserted": 96,
+    "dense_verified": 96,
+    "embedding_count": 96,
+    "filing_date": "2024-08-05",
+    "filing_id": "000008042424000083",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "e89f3b807790504904e833e4c5715da3c672f305f5936f891fa20ec5579b033b",
+      "clean_text_sha256": "880340b533ecde941c9be0566c7377af22d54db2c7b3ed00e2c89716aa6dd207",
+      "embeddings_sha256": "c7f780566d375dab96773a00bfed8384a3422d6ff4a16f15fbf3904c2f047393"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4553,
+    "primary_doc_sha256": "65e13f87e364fce9390cfd8ab14aece77207825767e3d66adee3e8bbf9d2d557",
+    "primary_document": "pg-20240630.htm",
+    "report_date": "2024-06-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042424000083/pg-20240630.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 96,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:31Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:11Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:10Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:31Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:14Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:10Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:10Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:12Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:31Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:30Z"
+      }
+    },
+    "ticker": "PG",
+    "updated_at": "2026-09-12T03:00:31Z"
+  },
+  "000008042425000076": {
+    "accession_number": "0000080424-25-000076",
+    "artifacts": {
+      "chunks": "data/chunks/PG/000008042425000076_chunks.jsonl",
+      "clean_text": "data/raw/PG/000008042425000076/filing.txt",
+      "embeddings": "data/embeddings/PG/000008042425000076_embeddings.jsonl",
+      "metadata": "data/raw/PG/000008042425000076/metadata.json",
+      "raw_html": "data/raw/PG/000008042425000076/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2491287,
+    "chunk_count": 97,
+    "cik": "0000080424",
+    "clean_chars": 302365,
+    "company_name": "PROCTER & GAMBLE Co",
+    "created_at": "2026-09-12T02:59:49Z",
+    "dense_upserted": 97,
+    "dense_verified": 97,
+    "embedding_count": 97,
+    "filing_date": "2025-08-04",
+    "filing_id": "000008042425000076",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "9c543918b7bfce6a667608a3ffa1316cb61bfcf0444deb210ba4065ac3115c2b",
+      "clean_text_sha256": "c2ee74e2f1486ea97cc7b1d2cbba945fb411cbb00be00d03a14a8845eeadb60b",
+      "embeddings_sha256": "8fe6fbf1c7df2507472b76a0b9ce13336df84643ea770b3ecaa992634f0cda4f"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4457,
+    "primary_doc_sha256": "771cbdd953a63a343f4ddb4e09a90d81cca8b9209730ae27db63461e1562336f",
+    "primary_document": "pg-20250630.htm",
+    "report_date": "2025-06-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 97,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:10Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:10Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:53Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:51Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:10Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:09Z"
+      }
+    },
+    "ticker": "PG",
+    "updated_at": "2026-09-12T03:00:10Z"
+  },
+  "000008042426000103": {
+    "accession_number": "0000080424-26-000103",
+    "artifacts": {
+      "chunks": "data/chunks/PG/000008042426000103_chunks.jsonl",
+      "clean_text": "data/raw/PG/000008042426000103/filing.txt",
+      "embeddings": "data/embeddings/PG/000008042426000103_embeddings.jsonl",
+      "metadata": "data/raw/PG/000008042426000103/metadata.json",
+      "raw_html": "data/raw/PG/000008042426000103/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2599485,
+    "chunk_count": 98,
+    "cik": "0000080424",
+    "clean_chars": 305554,
+    "company_name": "PROCTER & GAMBLE Co",
+    "created_at": "2026-09-12T02:59:25Z",
+    "dense_upserted": 98,
+    "dense_verified": 98,
+    "embedding_count": 98,
+    "filing_date": "2026-08-04",
+    "filing_id": "000008042426000103",
+    "filing_type": "10-K",
+    "fiscal_year": 2026,
+    "hashes": {
+      "chunks_sha256": "7588fe2ee40bddb162a88a068fa5a7cbb2d6af891ee3d6dd90bcf882c6a89eaa",
+      "clean_text_sha256": "53af890e0b6a21eb66dd4d045502366bc2445a2fb1245fba75c935a778bd41a6",
+      "embeddings_sha256": "ef1d890730c840bc1f5ea4d83a57a68c53d43586429d4620233c8dcc760d9157"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4360,
+    "primary_doc_sha256": "37a2e3811927a45061ed4deaf74e730d37b1a22e28465d3ef799683591970943",
+    "primary_document": "pg-20260630.htm",
+    "report_date": "2026-06-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 98,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:26Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:25Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:31Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:25Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:25Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:29Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:49Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T02:59:48Z"
+      }
+    },
+    "ticker": "PG",
+    "updated_at": "2026-09-12T02:59:49Z"
+  },
+  "000009341024000013": {
+    "accession_number": "0000093410-24-000013",
+    "artifacts": {
+      "chunks": "data/chunks/CVX/000009341024000013_chunks.jsonl",
+      "clean_text": "data/raw/CVX/000009341024000013/filing.txt",
+      "embeddings": "data/embeddings/CVX/000009341024000013_embeddings.jsonl",
+      "metadata": "data/raw/CVX/000009341024000013/metadata.json",
+      "raw_html": "data/raw/CVX/000009341024000013/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 5809311,
+    "chunk_count": 164,
+    "cik": "0000093410",
+    "clean_chars": 467669,
+    "company_name": "CHEVRON CORP",
+    "created_at": "2026-09-12T03:02:18Z",
+    "dense_upserted": 164,
+    "dense_verified": 164,
+    "embedding_count": 164,
+    "filing_date": "2024-02-26",
+    "filing_id": "000009341024000013",
+    "filing_type": "10-K",
+    "fiscal_year": 2023,
+    "hashes": {
+      "chunks_sha256": "231d34649bf78d01caec4394019d138215f933868ca515076edbfaa13f3f31c5",
+      "clean_text_sha256": "def36bb54818d7c6b9d17062915462474ef3275f7100e6ae37b84c61834d5e4e",
+      "embeddings_sha256": "148971b800ea6e3925b39835c10e08da1164cb959fe531d5f70a218cc5396bed"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 5055,
+    "primary_doc_sha256": "4e8830c4480b1480207abfe84dba5ad4cea8f77f6bab78ad2a13d18f75f9d59b",
+    "primary_document": "cvx-20231231.htm",
+    "report_date": "2023-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341024000013/cvx-20231231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 164,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:06Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:19Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:19Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:06Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:24Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:18Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:18Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:21Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:06Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:03:05Z"
+      }
+    },
+    "ticker": "CVX",
+    "updated_at": "2026-09-12T03:03:06Z"
+  },
+  "000009341025000009": {
+    "accession_number": "0000093410-25-000009",
+    "artifacts": {
+      "chunks": "data/chunks/CVX/000009341025000009_chunks.jsonl",
+      "clean_text": "data/raw/CVX/000009341025000009/filing.txt",
+      "embeddings": "data/embeddings/CVX/000009341025000009_embeddings.jsonl",
+      "metadata": "data/raw/CVX/000009341025000009/metadata.json",
+      "raw_html": "data/raw/CVX/000009341025000009/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 5960635,
+    "chunk_count": 167,
+    "cik": "0000093410",
+    "clean_chars": 474951,
+    "company_name": "CHEVRON CORP",
+    "created_at": "2026-09-12T03:01:29Z",
+    "dense_upserted": 167,
+    "dense_verified": 167,
+    "embedding_count": 167,
+    "filing_date": "2025-02-21",
+    "filing_id": "000009341025000009",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "b0c08ba5f8a7c5e69ea00cc3625cf2a4e171178817dc8827bb2e4cea504e93ad",
+      "clean_text_sha256": "b329a72b85235d9f7995fae798f3a8ec7ec269fe13ef08a6ab06cba61d10d79b",
+      "embeddings_sha256": "7e26d21927f1ffb473e95a24e7774bb356a00923bef3560ab49fa9e7cfa4f604"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4891,
+    "primary_doc_sha256": "f1689d83592bd0411ec7bf3c072680a715266b1c6c52336cdd37ef0529a80624",
+    "primary_document": "cvx-20241231.htm",
+    "report_date": "2024-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341025000009/cvx-20241231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 167,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:18Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:30Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:30Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:18Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:36Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:29Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:29Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:33Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:18Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:02:16Z"
+      }
+    },
+    "ticker": "CVX",
+    "updated_at": "2026-09-12T03:02:18Z"
+  },
+  "000009341026000078": {
+    "accession_number": "0000093410-26-000078",
+    "artifacts": {
+      "chunks": "data/chunks/CVX/000009341026000078_chunks.jsonl",
+      "clean_text": "data/raw/CVX/000009341026000078/filing.txt",
+      "embeddings": "data/embeddings/CVX/000009341026000078_embeddings.jsonl",
+      "metadata": "data/raw/CVX/000009341026000078/metadata.json",
+      "raw_html": "data/raw/CVX/000009341026000078/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 6061316,
+    "chunk_count": 171,
+    "cik": "0000093410",
+    "clean_chars": 484517,
+    "company_name": "CHEVRON CORP",
+    "created_at": "2026-09-12T03:00:39Z",
+    "dense_upserted": 171,
+    "dense_verified": 171,
+    "embedding_count": 171,
+    "filing_date": "2026-02-24",
+    "filing_id": "000009341026000078",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "3fa1c8cbc408c89924c97bf8e638e4484251d7441ffb9d99d67860c669b70c95",
+      "clean_text_sha256": "c81deaabfb4a0cd7c4af8d8566d04690cedc1db980fcc580b9832044c683d0e2",
+      "embeddings_sha256": "06b801cfdac46869a2284804a20ae8bc0958ada23a6545a31d51264f8473123b"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 4724,
+    "primary_doc_sha256": "eba2b2a9b395e555114d1aa5f7e0048b03d6d49665b10e48cb9f3c23da4e1f07",
+    "primary_document": "cvx-20251231.htm",
+    "report_date": "2025-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 171,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:29Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:41Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:40Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:29Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:47Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:39Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:40Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:00:44Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:29Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:01:27Z"
+      }
+    },
+    "ticker": "CVX",
+    "updated_at": "2026-09-12T03:01:29Z"
   },
   "000010416924000056": {
     "accession_number": "0000104169-24-000056",
@@ -963,6 +1953,186 @@
     },
     "ticker": "AAPL",
     "updated_at": "2026-08-29T18:44:46Z"
+  },
+  "000035495024000062": {
+    "accession_number": "0000354950-24-000062",
+    "artifacts": {
+      "chunks": "data/chunks/HD/000035495024000062_chunks.jsonl",
+      "clean_text": "data/raw/HD/000035495024000062/filing.txt",
+      "embeddings": "data/embeddings/HD/000035495024000062_embeddings.jsonl",
+      "metadata": "data/raw/HD/000035495024000062/metadata.json",
+      "raw_html": "data/raw/HD/000035495024000062/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2018747,
+    "chunk_count": 94,
+    "cik": "0000354950",
+    "clean_chars": 296578,
+    "company_name": "HOME DEPOT, INC.",
+    "created_at": "2026-09-12T03:11:50Z",
+    "dense_upserted": 94,
+    "dense_verified": 94,
+    "embedding_count": 94,
+    "filing_date": "2024-03-13",
+    "filing_id": "000035495024000062",
+    "filing_type": "10-K",
+    "fiscal_year": 2024,
+    "hashes": {
+      "chunks_sha256": "e2fa0a5eceb3df8363785f3b5be92d767b3661d8842d4acbb98c419c01392c14",
+      "clean_text_sha256": "454ac8fb0dac2711d502404c8011d3083aea9924368a86fe56dcc4a18bfad852",
+      "embeddings_sha256": "df74fa042df842392df03f506357468445e4d828d72d0b7addb9894a5b9364c8"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 6816,
+    "primary_doc_sha256": "019dc812e89c7d23f364c1ec964ef8760d1b200dc30a289d0ff094251ad7f95a",
+    "primary_document": "hd-20240128.htm",
+    "report_date": "2024-01-28",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000035495024000062/hd-20240128.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 94,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:12:13Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:51Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:50Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:12:13Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:56Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:50Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:50Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:54Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:12:13Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:12:11Z"
+      }
+    },
+    "ticker": "HD",
+    "updated_at": "2026-09-12T03:12:13Z"
+  },
+  "000035495025000085": {
+    "accession_number": "0000354950-25-000085",
+    "artifacts": {
+      "chunks": "data/chunks/HD/000035495025000085_chunks.jsonl",
+      "clean_text": "data/raw/HD/000035495025000085/filing.txt",
+      "embeddings": "data/embeddings/HD/000035495025000085_embeddings.jsonl",
+      "metadata": "data/raw/HD/000035495025000085/metadata.json",
+      "raw_html": "data/raw/HD/000035495025000085/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2199280,
+    "chunk_count": 101,
+    "cik": "0000354950",
+    "clean_chars": 322924,
+    "company_name": "HOME DEPOT, INC.",
+    "created_at": "2026-09-12T03:11:16Z",
+    "dense_upserted": 101,
+    "dense_verified": 101,
+    "embedding_count": 101,
+    "filing_date": "2025-03-21",
+    "filing_id": "000035495025000085",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "3e645d44a82e383eff0f003b02d1daba77b4a96b553ed7d498c6535293097d43",
+      "clean_text_sha256": "904b70d52e75d0868000b8cfbc6e87c976ce745be4c3eef3b78d76f0901c3ead",
+      "embeddings_sha256": "e5eca9645d867d1e0d74630a7ba3a899ac265d907b0b0203b938d6033df193d4"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 6722,
+    "primary_doc_sha256": "b787e5ef05e77d39b9dd9c039cf16a9883a7a6220cd4ec878049618edcb14f85",
+    "primary_document": "hd-20250202.htm",
+    "report_date": "2025-02-02",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000035495025000085/hd-20250202.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 101,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:50Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:17Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:17Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:50Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:21Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:16Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:16Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:18Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:50Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:48Z"
+      }
+    },
+    "ticker": "HD",
+    "updated_at": "2026-09-12T03:11:50Z"
   },
   "000073176624000081": {
     "accession_number": "0000731766-24-000081",
@@ -2442,6 +3612,186 @@
     },
     "ticker": "JPM",
     "updated_at": "2026-08-28T03:17:46Z"
+  },
+  "000162828026010047": {
+    "accession_number": "0001628280-26-010047",
+    "artifacts": {
+      "chunks": "data/chunks/KO/000162828026010047_chunks.jsonl",
+      "clean_text": "data/raw/KO/000162828026010047/filing.txt",
+      "embeddings": "data/embeddings/KO/000162828026010047_embeddings.jsonl",
+      "metadata": "data/raw/KO/000162828026010047/metadata.json",
+      "raw_html": "data/raw/KO/000162828026010047/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 3758140,
+    "chunk_count": 185,
+    "cik": "0000021344",
+    "clean_chars": 600784,
+    "company_name": "COCA COLA CO",
+    "created_at": "2026-09-12T03:08:04Z",
+    "dense_upserted": 185,
+    "dense_verified": 185,
+    "embedding_count": 185,
+    "filing_date": "2026-02-20",
+    "filing_id": "000162828026010047",
+    "filing_type": "10-K",
+    "fiscal_year": 2025,
+    "hashes": {
+      "chunks_sha256": "8512478009adddcaa7f85fc62614889ae16eb8802274b97f5046889751988444",
+      "clean_text_sha256": "97c9cab11668862aead2e4c63602bbbcbbd742475ed7ce33a2e52dd4fce24634",
+      "embeddings_sha256": "bf86780ded3d02f0453c13446994e7c4e0a46626d261549ee47cd1fd86f615d3"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 6147,
+    "primary_doc_sha256": "22dd41f1aab4928f94a5f80e9497cf6203f27baa7c3f4e9088a6dd0aee929c66",
+    "primary_document": "ko-20251231.htm",
+    "report_date": "2025-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 185,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:54Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:05Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:05Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:54Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:12Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:04Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:05Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:09Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:54Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:08:52Z"
+      }
+    },
+    "ticker": "KO",
+    "updated_at": "2026-09-12T03:08:54Z"
+  },
+  "000162828026019436": {
+    "accession_number": "0001628280-26-019436",
+    "artifacts": {
+      "chunks": "data/chunks/HD/000162828026019436_chunks.jsonl",
+      "clean_text": "data/raw/HD/000162828026019436/filing.txt",
+      "embeddings": "data/embeddings/HD/000162828026019436_embeddings.jsonl",
+      "metadata": "data/raw/HD/000162828026019436/metadata.json",
+      "raw_html": "data/raw/HD/000162828026019436/filing.html"
+    },
+    "bm25_hits": 25,
+    "bytes": 2314728,
+    "chunk_count": 103,
+    "cik": "0000354950",
+    "clean_chars": 328244,
+    "company_name": "HOME DEPOT, INC.",
+    "created_at": "2026-09-12T03:10:42Z",
+    "dense_upserted": 103,
+    "dense_verified": 103,
+    "embedding_count": 103,
+    "filing_date": "2026-03-18",
+    "filing_id": "000162828026019436",
+    "filing_type": "10-K",
+    "fiscal_year": 2026,
+    "hashes": {
+      "chunks_sha256": "b2501639c696a4df67e59e74895ac8436f23edf3e86c720d28d8ef98de963f8b",
+      "clean_text_sha256": "71c25875d4d228436edf744330482d7e620ade05a915a2b97e742ca8176f4899",
+      "embeddings_sha256": "63456e4154eaf99339705a22e70a4c32a267cafb3a6d0e15ac5db15005ab0d8d"
+    },
+    "last_error": null,
+    "lexical_backend": "BM25SBackend",
+    "lexical_document_count": 6621,
+    "primary_doc_sha256": "7a108cae33600d3ebc1ea24d363d38066ad5703aeb437b8b5fc7a20fad71ef18",
+    "primary_document": "hd-20260201.htm",
+    "report_date": "2026-02-01",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm",
+    "sparse_canary": {
+      "cleaned_up": true,
+      "error": null,
+      "fetch_ok": true,
+      "insert_ok": true,
+      "metadata_preserved": true,
+      "ok": true
+    },
+    "sparse_upserted": 103,
+    "stage": "complete",
+    "stages": {
+      "bm25_registered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:16Z"
+      },
+      "chunked": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:42Z"
+      },
+      "cleaned": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:42Z"
+      },
+      "complete": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:16Z"
+      },
+      "dense_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:47Z"
+      },
+      "discovered": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:42Z"
+      },
+      "downloaded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:42Z"
+      },
+      "embedded": {
+        "status": "ok",
+        "ts": "2026-09-12T03:10:44Z"
+      },
+      "registry_updated": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:16Z"
+      },
+      "sparse_upserted": {
+        "status": "ok",
+        "ts": "2026-09-12T03:11:14Z"
+      }
+    },
+    "ticker": "HD",
+    "updated_at": "2026-09-12T03:11:16Z"
   },
   "000165204424000022": {
     "accession_number": "0001652044-24-000022",

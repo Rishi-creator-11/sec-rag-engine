@@ -1,0 +1,17 @@
+{
+  "company_name": "HOME DEPOT, INC.",
+  "ticker": "HD",
+  "cik": "0000354950",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000354950-25-000085",
+  "filing_id": "000035495025000085",
+  "filing_date": "2025-03-21",
+  "report_date": "2025-02-02",
+  "primary_document": "hd-20250202.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000035495025000085/hd-20250202.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

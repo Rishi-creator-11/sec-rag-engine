@@ -1,0 +1,17 @@
+{
+  "company_name": "BANK OF AMERICA CORP /DE/",
+  "ticker": "BAC",
+  "cik": "0000070858",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000070858-26-000157",
+  "filing_id": "000007085826000157",
+  "filing_date": "2026-02-25",
+  "report_date": "2025-12-31",
+  "primary_document": "bac-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000157/bac-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}
