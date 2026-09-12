@@ -240,8 +240,20 @@ class SecClient:
 
     def resolve_cik(self, ticker: str) -> str:
         target = normalize_ticker(ticker)
+        # SEC's own company_tickers.json uses "-" for share-class tickers
+        # (e.g. "BRK-B") where conventional market notation uses "."
+        # (e.g. "BRK.B"). Both forms satisfy our ticker grammar, so try an
+        # exact match first, then the "." <-> "-" swapped form, before
+        # giving up. This is a generic normalization, not a per-ticker rule
+        # — it applies identically to any dual/multi-class ticker.
+        candidates = {target}
+        if "." in target:
+            candidates.add(target.replace(".", "-"))
+        elif "-" in target:
+            candidates.add(target.replace("-", "."))
         for entry in self.company_tickers().values():
-            if str(entry.get("ticker", "")).strip().upper() == target:
+            entry_ticker = str(entry.get("ticker", "")).strip().upper()
+            if entry_ticker in candidates:
                 return normalize_cik(entry["cik_str"])
         raise SecNotFoundError(f"ticker not found in SEC company_tickers: {target}")
 

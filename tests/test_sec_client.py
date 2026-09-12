@@ -20,6 +20,9 @@ UA = "sec-rag-engine test@example.com"
 COMPANY_TICKERS = {
     "0": {"cik_str": 1018724, "ticker": "AMZN", "title": "AMAZON COM INC"},
     "1": {"cik_str": 320193, "ticker": "AAPL", "title": "Apple Inc."},
+    # SEC lists dual/multi-class tickers with a dash; conventional market
+    # notation uses a dot (BRK.B). resolve_cik must accept either spelling.
+    "2": {"cik_str": 1067983, "ticker": "BRK-B", "title": "BERKSHIRE HATHAWAY INC"},
 }
 
 AMZN_SUBMISSIONS = {
@@ -108,6 +111,21 @@ class ResolutionTests(unittest.TestCase):
         client = make_client({self.tickers_url: [FakeResponse(200, COMPANY_TICKERS)]})
         with self.assertRaises(SecNotFoundError):
             client.resolve_cik("ZZZZ")
+
+    def test_resolve_cik_accepts_dot_or_dash_share_class(self):
+        # SEC's own file spells it "BRK-B"; both the dot and dash forms of
+        # the ticker we might be asked to resolve must succeed generically
+        # (no per-ticker special-casing).
+        client = make_client({self.tickers_url: [FakeResponse(200, COMPANY_TICKERS)]})
+        self.assertEqual(client.resolve_cik("BRK.B"), "0001067983")
+        self.assertEqual(client.resolve_cik("BRK-B"), "0001067983")
+
+    def test_resolve_cik_does_not_cross_match_plain_tickers(self):
+        # A plain ticker with no dot/dash must still match exactly — the
+        # dot<->dash fallback must not introduce false positives.
+        client = make_client({self.tickers_url: [FakeResponse(200, COMPANY_TICKERS)]})
+        with self.assertRaises(SecNotFoundError):
+            client.resolve_cik("AMZ")
 
 
 class DiscoveryTests(unittest.TestCase):
