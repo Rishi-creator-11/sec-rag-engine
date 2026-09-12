@@ -1,0 +1,21 @@
+# Deployed Python function bundle exclusions.
+#
+# The production API's lexical retrieval reads the PERSISTED bm25s index
+# (data/bm25s_index/) at runtime -- see retrieval/lexical_backend.py and
+# retrieval/bm25_search.py's get_index()/_select_backend(). It never reads
+# the per-filing chunk JSONL files or raw filing artifacts directly.
+#
+# data/chunks/**/*_chunks.jsonl and data/raw/**/metadata.json are needed only
+# by offline tooling (ingestion, scripts/build_bm25s_index.py, verify_company,
+# evaluation scripts) and by the SEC_RAG_LEXICAL_BACKEND=current fallback
+# mode, which production does not use. They stay in git for local dev,
+# ingestion, and reproducibility, but are excluded from the deployed function
+# bundle -- this was the direct cause of a Wave-1 deploy failure (bundle size
+# 238.39 MB > Vercel's 225 MB Python function cap) even after Vercel's
+# automatic dependency optimization.
+#
+# Keep data/bm25s_index/, data/registry/, and code deployed as before.
+data/chunks/
+data/raw/
+data/sec_cache/
+data/embeddings/
