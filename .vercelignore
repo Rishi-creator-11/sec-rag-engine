@@ -1,21 +1,22 @@
 # Deployed Python function bundle exclusions.
 #
-# The production API's lexical retrieval reads the PERSISTED bm25s index
-# (data/bm25s_index/) at runtime -- see retrieval/lexical_backend.py and
-# retrieval/bm25_search.py's get_index()/_select_backend(). It never reads
-# the per-filing chunk JSONL files or raw filing artifacts directly.
+# CORRECTION: an earlier version of this file also excluded data/chunks/.
+# That was wrong and broke production (500s): on a read-only runtime,
+# retrieval.lexical_backend.load_readonly_bm25s() deliberately re-reads
+# data/chunks/**/*_chunks.jsonl and recomputes corpus_version() from it,
+# then compares that hash to the one recorded in
+# data/bm25s_index/corpus_version.json at the last `build_bm25s_index`
+# run. That cross-check is what catches "ingested new filings but forgot
+# to rebuild + redeploy the bm25s index" -- a real correctness guarantee,
+# not incidental. data/chunks/ MUST stay in the deployed bundle.
 #
-# data/chunks/**/*_chunks.jsonl and data/raw/**/metadata.json are needed only
-# by offline tooling (ingestion, scripts/build_bm25s_index.py, verify_company,
-# evaluation scripts) and by the SEC_RAG_LEXICAL_BACKEND=current fallback
-# mode, which production does not use. They stay in git for local dev,
-# ingestion, and reproducibility, but are excluded from the deployed function
-# bundle -- this was the direct cause of a Wave-1 deploy failure (bundle size
-# 238.39 MB > Vercel's 225 MB Python function cap) even after Vercel's
-# automatic dependency optimization.
-#
-# Keep data/bm25s_index/, data/registry/, and code deployed as before.
-data/chunks/
+# data/raw/**/metadata.json (and the already-gitignored data/sec_cache/,
+# data/embeddings/) are the only genuinely runtime-unused paths: nothing
+# in api/*.py or retrieval/*.py's request path reads data/raw. Excluding
+# just these is safe but does not materially move the bundle-size needle
+# (metadata.json files are a few hundred bytes each) -- the real fix for
+# Wave 1's 238.39 MB / 225 MB cap overage has to come from trimming
+# ingestion-only Python dependencies out of the deployed function instead.
 data/raw/
 data/sec_cache/
 data/embeddings/
