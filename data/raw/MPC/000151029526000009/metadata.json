@@ -1,0 +1,17 @@
+{
+  "company_name": "Marathon Petroleum Corp",
+  "ticker": "MPC",
+  "cik": "0001510295",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001510295-26-000009",
+  "filing_id": "000151029526000009",
+  "filing_date": "2026-02-26",
+  "report_date": "2025-12-31",
+  "primary_document": "mpc-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1510295/000151029526000009/mpc-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

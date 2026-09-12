@@ -1,0 +1,17 @@
+{
+  "company_name": "Cencora, Inc.",
+  "ticker": "COR",
+  "cik": "0001140859",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001140859-25-000131",
+  "filing_id": "000114085925000131",
+  "filing_date": "2025-11-25",
+  "report_date": "2025-09-30",
+  "primary_document": "cor-20250930.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085925000131/cor-20250930.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "Phillips 66",
+  "ticker": "PSX",
+  "cik": "0001534701",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0001534701-25-000074",
+  "filing_id": "000153470125000074",
+  "filing_date": "2025-02-21",
+  "report_date": "2024-12-31",
+  "primary_document": "psx-20241231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1534701/000153470125000074/psx-20241231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

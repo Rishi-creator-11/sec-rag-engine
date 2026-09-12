@@ -1,0 +1,17 @@
+{
+  "company_name": "COSTCO WHOLESALE CORP /NEW",
+  "ticker": "COST",
+  "cik": "0000909832",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000909832-23-000042",
+  "filing_id": "000090983223000042",
+  "filing_date": "2023-10-11",
+  "report_date": "2023-09-03",
+  "primary_document": "cost-20230903.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983223000042/cost-20230903.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

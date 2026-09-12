@@ -1,0 +1,17 @@
+{
+  "company_name": "KROGER CO",
+  "ticker": "KR",
+  "cik": "0000056873",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0001558370-24-004603",
+  "filing_id": "000155837024004603",
+  "filing_date": "2024-04-02",
+  "report_date": "2024-02-03",
+  "primary_document": "kr-20240203x10k.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/56873/000155837024004603/kr-20240203x10k.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

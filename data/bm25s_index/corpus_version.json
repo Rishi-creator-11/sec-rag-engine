@@ -1,9 +1,9 @@
 {
-  "corpus_version": "v2:d5c4fcc8252155add56d4f49f8f0b674bd1a43178f13c75c7e2a6bde655101b1",
+  "corpus_version": "v2:da12eeeb1d60d64ed5d42509fa8fffe08ccb2320fd3ca0fb7020f6a98d2d6756",
   "corpus_version_schema": "v2",
-  "document_count": 6816,
+  "document_count": 16662,
   "k1": 1.5,
   "b": 0.75,
   "method": "lucene",
-  "built": 1789182759.230455
+  "built": 1789190693.5668612
 }

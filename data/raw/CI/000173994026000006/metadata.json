@@ -1,0 +1,17 @@
+{
+  "company_name": "Cigna Group",
+  "ticker": "CI",
+  "cik": "0001739940",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001739940-26-000006",
+  "filing_id": "000173994026000006",
+  "filing_date": "2026-02-26",
+  "report_date": "2025-12-31",
+  "primary_document": "ci-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1739940/000173994026000006/ci-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

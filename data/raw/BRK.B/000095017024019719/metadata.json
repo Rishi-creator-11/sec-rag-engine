@@ -1,0 +1,17 @@
+{
+  "company_name": "BERKSHIRE HATHAWAY INC",
+  "ticker": "BRK.B",
+  "cik": "0001067983",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000950170-24-019719",
+  "filing_id": "000095017024019719",
+  "filing_date": "2024-02-26",
+  "report_date": "2023-12-31",
+  "primary_document": "brka-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017024019719/brka-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

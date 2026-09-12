@@ -1,0 +1,17 @@
+{
+  "company_name": "VERIZON COMMUNICATIONS INC",
+  "ticker": "VZ",
+  "cik": "0000732712",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000732712-26-000007",
+  "filing_id": "000073271226000007",
+  "filing_date": "2026-02-17",
+  "report_date": "2025-12-31",
+  "primary_document": "vz-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000007/vz-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

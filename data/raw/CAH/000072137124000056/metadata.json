@@ -1,0 +1,17 @@
+{
+  "company_name": "CARDINAL HEALTH INC",
+  "ticker": "CAH",
+  "cik": "0000721371",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0000721371-24-000056",
+  "filing_id": "000072137124000056",
+  "filing_date": "2024-08-14",
+  "report_date": "2024-06-30",
+  "primary_document": "cah-20240630.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/721371/000072137124000056/cah-20240630.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "MCKESSON CORP",
+  "ticker": "MCK",
+  "cik": "0000927653",
+  "filing_type": "10-K",
+  "fiscal_year": 2026,
+  "accession_number": "0000927653-26-000069",
+  "filing_id": "000092765326000069",
+  "filing_date": "2026-05-08",
+  "report_date": "2026-03-31",
+  "primary_document": "mck-20260331.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/927653/000092765326000069/mck-20260331.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

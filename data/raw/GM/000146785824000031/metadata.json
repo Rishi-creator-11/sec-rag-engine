@@ -1,0 +1,17 @@
+{
+  "company_name": "General Motors Co",
+  "ticker": "GM",
+  "cik": "0001467858",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0001467858-24-000031",
+  "filing_id": "000146785824000031",
+  "filing_date": "2024-01-30",
+  "report_date": "2023-12-31",
+  "primary_document": "gm-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1467858/000146785824000031/gm-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}
