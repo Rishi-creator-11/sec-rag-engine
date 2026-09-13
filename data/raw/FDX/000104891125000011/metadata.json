@@ -1,0 +1,17 @@
+{
+  "company_name": "FEDEX CORP",
+  "ticker": "FDX",
+  "cik": "0001048911",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001048911-25-000011",
+  "filing_id": "000104891125000011",
+  "filing_date": "2025-07-21",
+  "report_date": "2025-05-31",
+  "primary_document": "fdx-20250531.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1048911/000104891125000011/fdx-20250531.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "PEPSICO INC",
+  "ticker": "PEP",
+  "cik": "0000077476",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0000077476-25-000007",
+  "filing_id": "000007747625000007",
+  "filing_date": "2025-02-04",
+  "report_date": "2024-12-28",
+  "primary_document": "pep-20241228.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

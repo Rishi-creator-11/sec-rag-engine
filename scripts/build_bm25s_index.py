@@ -12,7 +12,12 @@ persisted index bundled with the function. This script produces that bundle:
        method="lucene", k1=1.5, b=0.75, dtype="float64",
        tokenizer/stopwords = retrieval.bm25_search.tokenize
   3. persist to data/bm25s_index/ (7 files: 3 .npy + vocab + params +
-     chunks.jsonl + corpus_version.json)
+     doc_ids.json + corpus_version.json). doc_ids.json is a lightweight
+     ordered list of chunk_id strings (the bm25s row -> canonical chunk
+     mapping) — NOT a second copy of chunk text/metadata. Chunk text and
+     metadata are always re-hydrated from the canonical data/chunks/** tree
+     at load time (already loaded there for the corpus_version check), so
+     the persisted index no longer duplicates the corpus.
   4. verify:
        - load-after-build round-trips (fresh BM25SBackend.load)
        - corpus_version + document_count recorded and match
@@ -80,7 +85,7 @@ def verify(index_dir: Path) -> list[str]:
             f"!= corpus {len(chunks)}"
         )
 
-    persisted = BM25SBackend.load(index_dir)
+    persisted = BM25SBackend.load(index_dir, chunks)
     fresh = BM25SBackend(chunks)
     if persisted.document_count != len(chunks):
         problems.append(

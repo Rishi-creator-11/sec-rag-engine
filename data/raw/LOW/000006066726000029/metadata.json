@@ -1,0 +1,17 @@
+{
+  "company_name": "LOWES COMPANIES INC",
+  "ticker": "LOW",
+  "cik": "0000060667",
+  "filing_type": "10-K",
+  "fiscal_year": 2026,
+  "accession_number": "0000060667-26-000029",
+  "filing_id": "000006066726000029",
+  "filing_date": "2026-03-23",
+  "report_date": "2026-01-30",
+  "primary_document": "low-20260130.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/60667/000006066726000029/low-20260130.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "Dell Technologies Inc.",
+  "ticker": "DELL",
+  "cik": "0001571996",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0001571996-24-000036",
+  "filing_id": "000157199624000036",
+  "filing_date": "2024-03-25",
+  "report_date": "2024-02-02",
+  "primary_document": "dell-20240202.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199624000036/dell-20240202.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -147,12 +147,52 @@ class PersistenceTests(unittest.TestCase):
 
     def test_build_then_load_rank_identical(self):
         built = build_persisted_bm25s(self.chunks, self.dir)
-        loaded = BM25SBackend.load(self.dir)
+        loaded = BM25SBackend.load(self.dir, self.chunks)
         for q in _QUERIES:
             self.assertEqual(
                 [r["chunk_id"] for r in built.search(q, 5)],
                 [r["chunk_id"] for r in loaded.search(q, 5)],
             )
+
+    def test_no_chunks_jsonl_written(self):
+        # the persisted index must not duplicate full chunk text/metadata
+        build_persisted_bm25s(self.chunks, self.dir)
+        self.assertFalse((self.dir / "chunks.jsonl").exists())
+
+    def test_doc_ids_json_written_and_ordered(self):
+        build_persisted_bm25s(self.chunks, self.dir)
+        doc_ids = json.loads((self.dir / "doc_ids.json").read_text())
+        self.assertEqual(len(doc_ids), len(self.chunks))
+        self.assertEqual(set(doc_ids), {c["chunk_id"] for c in self.chunks})
+
+    def test_load_result_text_and_metadata_match_source_chunks(self):
+        build_persisted_bm25s(self.chunks, self.dir)
+        loaded = BM25SBackend.load(self.dir, self.chunks)
+        by_id = {c["chunk_id"]: c for c in self.chunks}
+        for r in loaded.search(_QUERIES[0], top_k=99):
+            self.assertEqual(r["text"], by_id[r["chunk_id"]]["text"])
+
+    def test_load_persisted_index_size_excludes_corpus_text(self):
+        build_persisted_bm25s(self.chunks, self.dir)
+        doc_ids_size = (self.dir / "doc_ids.json").stat().st_size
+        total_chunk_text_size = sum(len(c["text"]) for c in self.chunks)
+        # doc_ids.json holds only ids, so it must be far smaller than the
+        # corpus text it used to duplicate as chunks.jsonl.
+        self.assertLess(doc_ids_size, total_chunk_text_size)
+
+    def test_load_raises_clear_error_on_missing_chunk_id(self):
+        build_persisted_bm25s(self.chunks, self.dir)
+        # simulate corpus drift not caught by corpus_version: supply chunks
+        # missing one of the ids the persisted index references.
+        incomplete = [c for c in self.chunks if c["chunk_id"] != self.chunks[0]["chunk_id"]]
+        with self.assertRaises(Exception) as cm:
+            BM25SBackend.load(self.dir, incomplete)
+        self.assertIn(self.chunks[0]["chunk_id"], str(cm.exception))
+
+    def test_load_requires_chunks_argument(self):
+        build_persisted_bm25s(self.chunks, self.dir)
+        with self.assertRaises(TypeError):
+            BM25SBackend.load(self.dir)  # chunks is now a required argument
 
     def test_load_or_build_second_call_is_a_load(self):
         load_or_build_bm25s(self.dir, self.chunks)

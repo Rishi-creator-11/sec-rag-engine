@@ -1,0 +1,17 @@
+{
+  "company_name": "JOHNSON & JOHNSON",
+  "ticker": "JNJ",
+  "cik": "0000200406",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000200406-26-000016",
+  "filing_id": "000020040626000016",
+  "filing_date": "2026-02-11",
+  "report_date": "2025-12-28",
+  "primary_document": "jnj-20251228.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

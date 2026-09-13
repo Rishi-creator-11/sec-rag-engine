@@ -1,0 +1,17 @@
+{
+  "company_name": "TARGET CORP",
+  "ticker": "TGT",
+  "cik": "0000027419",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000027419-25-000018",
+  "filing_id": "000002741925000018",
+  "filing_date": "2025-03-12",
+  "report_date": "2025-02-01",
+  "primary_document": "tgt-20250201.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/27419/000002741925000018/tgt-20250201.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "GOLDMAN SACHS GROUP INC",
+  "ticker": "GS",
+  "cik": "0000886982",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000886982-24-000006",
+  "filing_id": "000088698224000006",
+  "filing_date": "2024-02-23",
+  "report_date": "2023-12-31",
+  "primary_document": "gs-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698224000006/gs-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

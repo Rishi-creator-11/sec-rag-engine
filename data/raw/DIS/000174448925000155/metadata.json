@@ -1,0 +1,17 @@
+{
+  "company_name": "Walt Disney Co",
+  "ticker": "DIS",
+  "cik": "0001744489",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001744489-25-000155",
+  "filing_id": "000174448925000155",
+  "filing_date": "2025-11-13",
+  "report_date": "2025-09-27",
+  "primary_document": "dis-20250927.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448925000155/dis-20250927.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

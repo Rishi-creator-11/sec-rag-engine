@@ -1,0 +1,17 @@
+{
+  "company_name": "FEDERAL HOME LOAN MORTGAGE CORP",
+  "ticker": "FMCC",
+  "cik": "0001026214",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0001026214-24-000025",
+  "filing_id": "000102621424000025",
+  "filing_date": "2024-02-14",
+  "report_date": "2023-12-31",
+  "primary_document": "fmcc-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1026214/000102621424000025/fmcc-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -65,6 +65,37 @@
       "ticker": "AMZN"
     },
     {
+      "cik": "0000012927",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-004357",
+          "chunk_count": 134,
+          "filing_date": "2026-01-30",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000012927-25-000015",
+          "chunk_count": 132,
+          "filing_date": "2025-02-03",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000012927-24-000010",
+          "chunk_count": 121,
+          "filing_date": "2024-01-31",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "BOEING CO",
+      "ticker": "BA"
+    },
+    {
       "cik": "0000070858",
       "filings": [
         {
@@ -218,6 +249,37 @@
       ],
       "legal_name": "Cigna Group",
       "ticker": "CI"
+    },
+    {
+      "cik": "0001166691",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-004994",
+          "chunk_count": 122,
+          "filing_date": "2026-02-03",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001166691-25-000011",
+          "chunk_count": 117,
+          "filing_date": "2025-01-31",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001166691-24-000011",
+          "chunk_count": 124,
+          "filing_date": "2024-01-31",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "COMCAST CORP",
+      "ticker": "CMCSA"
     },
     {
       "cik": "0001071739",
@@ -375,6 +437,68 @@
       "ticker": "CVX"
     },
     {
+      "cik": "0001571996",
+      "filings": [
+        {
+          "accession_number": "0001571996-26-000008",
+          "chunk_count": 156,
+          "filing_date": "2026-03-16",
+          "filing_type": "10-K",
+          "fiscal_year": 2026,
+          "report_date": "2026-01-30"
+        },
+        {
+          "accession_number": "0001571996-25-000034",
+          "chunk_count": 167,
+          "filing_date": "2025-03-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-01-31"
+        },
+        {
+          "accession_number": "0001571996-24-000036",
+          "chunk_count": 167,
+          "filing_date": "2024-03-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-02-02"
+        }
+      ],
+      "legal_name": "Dell Technologies Inc.",
+      "ticker": "DELL"
+    },
+    {
+      "cik": "0001744489",
+      "filings": [
+        {
+          "accession_number": "0001744489-25-000155",
+          "chunk_count": 143,
+          "filing_date": "2025-11-13",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-09-27"
+        },
+        {
+          "accession_number": "0001744489-24-000276",
+          "chunk_count": 144,
+          "filing_date": "2024-11-14",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-09-28"
+        },
+        {
+          "accession_number": "0001744489-23-000216",
+          "chunk_count": 152,
+          "filing_date": "2023-11-21",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-09-30"
+        }
+      ],
+      "legal_name": "Walt Disney Co",
+      "ticker": "DIS"
+    },
+    {
       "cik": "0001156039",
       "filings": [
         {
@@ -435,6 +559,68 @@
       ],
       "legal_name": "FORD MOTOR CO",
       "ticker": "F"
+    },
+    {
+      "cik": "0001048911",
+      "filings": [
+        {
+          "accession_number": "0001048911-26-000105",
+          "chunk_count": 169,
+          "filing_date": "2026-07-20",
+          "filing_type": "10-K",
+          "fiscal_year": 2026,
+          "report_date": "2026-05-31"
+        },
+        {
+          "accession_number": "0001048911-25-000011",
+          "chunk_count": 164,
+          "filing_date": "2025-07-21",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-05-31"
+        },
+        {
+          "accession_number": "0000950170-24-083577",
+          "chunk_count": 165,
+          "filing_date": "2024-07-15",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-05-31"
+        }
+      ],
+      "legal_name": "FEDEX CORP",
+      "ticker": "FDX"
+    },
+    {
+      "cik": "0001026214",
+      "filings": [
+        {
+          "accession_number": "0001026214-26-000021",
+          "chunk_count": 323,
+          "filing_date": "2026-02-12",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001026214-25-000040",
+          "chunk_count": 339,
+          "filing_date": "2025-02-13",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001026214-24-000025",
+          "chunk_count": 339,
+          "filing_date": "2024-02-14",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "FEDERAL HOME LOAN MORTGAGE CORP",
+      "ticker": "FMCC"
     },
     {
       "cik": "0000310522",
@@ -530,6 +716,37 @@
       "ticker": "GOOGL"
     },
     {
+      "cik": "0000886982",
+      "filings": [
+        {
+          "accession_number": "0000886982-26-000091",
+          "chunk_count": 353,
+          "filing_date": "2026-02-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000886982-25-000005",
+          "chunk_count": 359,
+          "filing_date": "2025-02-27",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000886982-24-000006",
+          "chunk_count": 361,
+          "filing_date": "2024-02-23",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "GOLDMAN SACHS GROUP INC",
+      "ticker": "GS"
+    },
+    {
       "cik": "0000354950",
       "filings": [
         {
@@ -559,6 +776,68 @@
       ],
       "legal_name": "HOME DEPOT, INC.",
       "ticker": "HD"
+    },
+    {
+      "cik": "0000049071",
+      "filings": [
+        {
+          "accession_number": "0000049071-26-000009",
+          "chunk_count": 140,
+          "filing_date": "2026-02-19",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000049071-25-000007",
+          "chunk_count": 140,
+          "filing_date": "2025-02-20",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000049071-24-000012",
+          "chunk_count": 147,
+          "filing_date": "2024-02-15",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "HUMANA INC",
+      "ticker": "HUM"
+    },
+    {
+      "cik": "0000200406",
+      "filings": [
+        {
+          "accession_number": "0000200406-26-000016",
+          "chunk_count": 140,
+          "filing_date": "2026-02-11",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-28"
+        },
+        {
+          "accession_number": "0000200406-25-000038",
+          "chunk_count": 141,
+          "filing_date": "2025-02-13",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-29"
+        },
+        {
+          "accession_number": "0000200406-24-000013",
+          "chunk_count": 140,
+          "filing_date": "2024-02-16",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "JOHNSON & JOHNSON",
+      "ticker": "JNJ"
     },
     {
       "cik": "0000019617",
@@ -655,6 +934,37 @@
       "ticker": "KR"
     },
     {
+      "cik": "0000060667",
+      "filings": [
+        {
+          "accession_number": "0000060667-26-000029",
+          "chunk_count": 96,
+          "filing_date": "2026-03-23",
+          "filing_type": "10-K",
+          "fiscal_year": 2026,
+          "report_date": "2026-01-30"
+        },
+        {
+          "accession_number": "0000060667-25-000049",
+          "chunk_count": 92,
+          "filing_date": "2025-03-24",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-01-31"
+        },
+        {
+          "accession_number": "0000060667-24-000033",
+          "chunk_count": 94,
+          "filing_date": "2024-03-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-02-02"
+        }
+      ],
+      "legal_name": "LOWES COMPANIES INC",
+      "ticker": "LOW"
+    },
+    {
       "cik": "0000927653",
       "filings": [
         {
@@ -748,6 +1058,37 @@
       "ticker": "MPC"
     },
     {
+      "cik": "0000895421",
+      "filings": [
+        {
+          "accession_number": "0000895421-26-000086",
+          "chunk_count": 257,
+          "filing_date": "2026-02-19",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000895421-25-000304",
+          "chunk_count": 257,
+          "filing_date": "2025-02-21",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000895421-24-000300",
+          "chunk_count": 256,
+          "filing_date": "2024-02-22",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "MORGAN STANLEY",
+      "ticker": "MS"
+    },
+    {
       "cik": "0000789019",
       "display_name": "Microsoft Corporation",
       "filings": [
@@ -820,6 +1161,37 @@
       "ticker": "NVDA"
     },
     {
+      "cik": "0000077476",
+      "filings": [
+        {
+          "accession_number": "0000077476-26-000007",
+          "chunk_count": 134,
+          "filing_date": "2026-02-03",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-27"
+        },
+        {
+          "accession_number": "0000077476-25-000007",
+          "chunk_count": 139,
+          "filing_date": "2025-02-04",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-28"
+        },
+        {
+          "accession_number": "0000077476-24-000008",
+          "chunk_count": 137,
+          "filing_date": "2024-02-09",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-30"
+        }
+      ],
+      "legal_name": "PEPSICO INC",
+      "ticker": "PEP"
+    },
+    {
       "cik": "0000080424",
       "filings": [
         {
@@ -849,6 +1221,37 @@
       ],
       "legal_name": "PROCTER & GAMBLE Co",
       "ticker": "PG"
+    },
+    {
+      "cik": "0000080661",
+      "filings": [
+        {
+          "accession_number": "0000080661-26-000086",
+          "chunk_count": 58,
+          "filing_date": "2026-03-02",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000080661-25-000007",
+          "chunk_count": 59,
+          "filing_date": "2025-03-03",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000080661-24-000007",
+          "chunk_count": 60,
+          "filing_date": "2024-02-26",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "PROGRESSIVE CORP/OH/",
+      "ticker": "PGR"
     },
     {
       "cik": "0001534701",
@@ -882,6 +1285,37 @@
       "ticker": "PSX"
     },
     {
+      "cik": "0000101829",
+      "filings": [
+        {
+          "accession_number": "0000101829-26-000006",
+          "chunk_count": 168,
+          "filing_date": "2026-02-06",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000101829-25-000005",
+          "chunk_count": 182,
+          "filing_date": "2025-02-03",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000101829-24-000008",
+          "chunk_count": 172,
+          "filing_date": "2024-02-05",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "RTX Corp",
+      "ticker": "RTX"
+    },
+    {
       "cik": "0000913760",
       "filings": [
         {
@@ -911,6 +1345,99 @@
       ],
       "legal_name": "StoneX Group Inc.",
       "ticker": "SNEX"
+    },
+    {
+      "cik": "0000732717",
+      "filings": [
+        {
+          "accession_number": "0000732717-26-000120",
+          "chunk_count": 119,
+          "filing_date": "2026-02-09",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000732717-25-000013",
+          "chunk_count": 122,
+          "filing_date": "2025-02-12",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000732717-24-000009",
+          "chunk_count": 130,
+          "filing_date": "2024-02-23",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "AT&T INC.",
+      "ticker": "T"
+    },
+    {
+      "cik": "0000027419",
+      "filings": [
+        {
+          "accession_number": "0000027419-26-000016",
+          "chunk_count": 77,
+          "filing_date": "2026-03-11",
+          "filing_type": "10-K",
+          "fiscal_year": 2026,
+          "report_date": "2026-01-31"
+        },
+        {
+          "accession_number": "0000027419-25-000018",
+          "chunk_count": 74,
+          "filing_date": "2025-03-12",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-02-01"
+        },
+        {
+          "accession_number": "0000027419-24-000032",
+          "chunk_count": 69,
+          "filing_date": "2024-03-13",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-02-03"
+        }
+      ],
+      "legal_name": "TARGET CORP",
+      "ticker": "TGT"
+    },
+    {
+      "cik": "0001318605",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-003952",
+          "chunk_count": 119,
+          "filing_date": "2026-01-29",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001628280-25-003063",
+          "chunk_count": 120,
+          "filing_date": "2025-01-30",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001628280-24-002390",
+          "chunk_count": 124,
+          "filing_date": "2024-01-29",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "Tesla, Inc.",
+      "ticker": "TSLA"
     },
     {
       "cik": "0000731766",
@@ -944,6 +1471,68 @@
       "ticker": "UNH"
     },
     {
+      "cik": "0001090727",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-008432",
+          "chunk_count": 141,
+          "filing_date": "2026-02-17",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001090727-25-000019",
+          "chunk_count": 152,
+          "filing_date": "2025-02-18",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001090727-24-000008",
+          "chunk_count": 143,
+          "filing_date": "2024-02-20",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "UNITED PARCEL SERVICE INC",
+      "ticker": "UPS"
+    },
+    {
+      "cik": "0001035002",
+      "filings": [
+        {
+          "accession_number": "0001628280-26-011499",
+          "chunk_count": 135,
+          "filing_date": "2026-02-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0001035002-25-000005",
+          "chunk_count": 133,
+          "filing_date": "2025-02-26",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0001035002-24-000007",
+          "chunk_count": 134,
+          "filing_date": "2024-02-22",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "VALERO ENERGY CORP/TX",
+      "ticker": "VLO"
+    },
+    {
       "cik": "0000732712",
       "filings": [
         {
@@ -973,6 +1562,37 @@
       ],
       "legal_name": "VERIZON COMMUNICATIONS INC",
       "ticker": "VZ"
+    },
+    {
+      "cik": "0000072971",
+      "filings": [
+        {
+          "accession_number": "0000072971-26-000133",
+          "chunk_count": 29,
+          "filing_date": "2026-02-24",
+          "filing_type": "10-K",
+          "fiscal_year": 2025,
+          "report_date": "2025-12-31"
+        },
+        {
+          "accession_number": "0000072971-25-000066",
+          "chunk_count": 32,
+          "filing_date": "2025-02-25",
+          "filing_type": "10-K",
+          "fiscal_year": 2024,
+          "report_date": "2024-12-31"
+        },
+        {
+          "accession_number": "0000072971-24-000064",
+          "chunk_count": 28,
+          "filing_date": "2024-02-20",
+          "filing_type": "10-K",
+          "fiscal_year": 2023,
+          "report_date": "2023-12-31"
+        }
+      ],
+      "legal_name": "WELLS FARGO & COMPANY/MN",
+      "ticker": "WFC"
     },
     {
       "cik": "0000104169",

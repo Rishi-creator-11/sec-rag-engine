@@ -1,0 +1,17 @@
+{
+  "company_name": "HUMANA INC",
+  "ticker": "HUM",
+  "cik": "0000049071",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000049071-24-000012",
+  "filing_id": "000004907124000012",
+  "filing_date": "2024-02-15",
+  "report_date": "2023-12-31",
+  "primary_document": "hum-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/49071/000004907124000012/hum-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

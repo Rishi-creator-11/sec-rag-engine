@@ -146,12 +146,32 @@ class BM25SBackend(LexicalBackend):
             self.save(save_dir)
 
     # -- persistence -------------------------------------------------- #
+    #
+    # ``data/chunks/**`` is the ONE canonical, on-disk source of chunk text +
+    # metadata (also relied on by ``corpus_version()`` for the staleness
+    # guard). The persisted bm25s index therefore stores only:
+    #   - the bm25s library's own scoring artifacts (.npy / vocab / params)
+    #   - ``doc_ids.json``: the ordered list of ``chunk_id`` strings that were
+    #     fed to ``bm25s.index()`` — a lightweight positional mapping from a
+    #     bm25s result row back to a canonical chunk, NOT a second copy of the
+    #     corpus (chunk_id strings only, no text/metadata duplication).
+    #   - ``corpus_version.json``: unchanged, the integrity guard.
+    # A prior format additionally wrote ``chunks.jsonl`` — a full duplicate of
+    # every chunk's text — which is what made the persisted index grow in
+    # lockstep with the corpus and blew past GitHub's 100MB single-file cap.
+    # That duplication was never load-bearing: every caller that loads this
+    # index already has (or is required to pass) the canonical chunks loaded
+    # from ``data/chunks/**`` for the corpus_version check, so re-deriving
+    # ``self._chunks`` from ``doc_ids`` + those already-loaded chunks costs no
+    # extra I/O. Old-format directories (with ``chunks.jsonl``, no
+    # ``doc_ids.json``) are not supported for loading — rebuild via
+    # ``python -m scripts.build_bm25s_index``.
     def save(self, path: str | Path) -> None:
         path = Path(path)
         self._retriever.save(str(path))
         path.mkdir(parents=True, exist_ok=True)
-        (path / "chunks.jsonl").write_text(
-            "".join(json.dumps(c) + "\n" for c in self._chunks), encoding="utf-8"
+        (path / "doc_ids.json").write_text(
+            json.dumps([c["chunk_id"] for c in self._chunks]), encoding="utf-8"
         )
         (path / "corpus_version.json").write_text(
             json.dumps({
@@ -164,7 +184,16 @@ class BM25SBackend(LexicalBackend):
         )
 
     @classmethod
-    def load(cls, path: str | Path):
+    def load(cls, path: str | Path, chunks: list[dict]) -> "BM25SBackend":
+        """Load the persisted bm25s scoring index and re-hydrate chunk records
+        from ``chunks`` (the canonical corpus, e.g. from ``load_chunks()``) via
+        the persisted ``doc_ids`` mapping — no second copy of the corpus is
+        read off disk. ``chunks`` is required (not re-loaded internally) so
+        callers control exactly which corpus a load is validated against —
+        production call sites already have it in hand from the corpus_version
+        check, and tests can pass a small synthetic corpus without touching
+        the real ``data/chunks/**`` tree.
+        """
         import bm25s
 
         path = Path(path)
@@ -172,11 +201,16 @@ class BM25SBackend(LexicalBackend):
         obj.name = "bm25s"
         t0 = time.perf_counter()
         obj._retriever = bm25s.BM25.load(str(path), mmap=False)
-        obj._chunks = [
-            json.loads(line)
-            for line in (path / "chunks.jsonl").read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
+        doc_ids = json.loads((path / "doc_ids.json").read_text(encoding="utf-8"))
+        chunk_by_id = {c["chunk_id"]: c for c in chunks}
+        try:
+            obj._chunks = [chunk_by_id[cid] for cid in doc_ids]
+        except KeyError as exc:
+            raise LexicalBackendError(
+                f"bm25s index references chunk_id {exc} not present in the "
+                "supplied canonical chunks (corpus drift the corpus_version "
+                "hash did not catch); rebuild the index"
+            ) from None
         obj.load_ms = (time.perf_counter() - t0) * 1000
         obj.build_ms = 0.0
         obj.document_count = len(obj._chunks)
@@ -295,7 +329,7 @@ def load_readonly_bm25s(
         )
     t0 = time.perf_counter()
     try:
-        backend = BM25SBackend.load(index_dir)
+        backend = BM25SBackend.load(index_dir, chunks)
     except LexicalBackendError:
         raise
     except Exception as exc:  # noqa: BLE001
@@ -359,7 +393,7 @@ def load_or_build_bm25s(
             meta = json.loads(version_file.read_text(encoding="utf-8"))
             if meta.get("corpus_version") == expected:
                 t0 = time.perf_counter()
-                backend = BM25SBackend.load(index_dir)
+                backend = BM25SBackend.load(index_dir, chunks)
                 logger.info(
                     "lexical event=bm25s_load document_count=%d duration_ms=%.0f "
                     "corpus_version=%s",

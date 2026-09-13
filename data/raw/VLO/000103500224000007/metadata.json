@@ -1,0 +1,17 @@
+{
+  "company_name": "VALERO ENERGY CORP/TX",
+  "ticker": "VLO",
+  "cik": "0001035002",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0001035002-24-000007",
+  "filing_id": "000103500224000007",
+  "filing_date": "2024-02-22",
+  "report_date": "2023-12-31",
+  "primary_document": "vlo-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1035002/000103500224000007/vlo-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "MORGAN STANLEY",
+  "ticker": "MS",
+  "cik": "0000895421",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0000895421-25-000304",
+  "filing_id": "000089542125000304",
+  "filing_date": "2025-02-21",
+  "report_date": "2024-12-31",
+  "primary_document": "ms-20241231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/895421/000089542125000304/ms-20241231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}
