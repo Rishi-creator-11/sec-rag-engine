@@ -1,0 +1,17 @@
+{
+  "company_name": "HCA Healthcare, Inc.",
+  "ticker": "HCA",
+  "cik": "0000860730",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001193125-26-044769",
+  "filing_id": "000119312526044769",
+  "filing_date": "2026-02-10",
+  "report_date": "2025-12-31",
+  "primary_document": "hca-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/860730/000119312526044769/hca-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

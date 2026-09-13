@@ -1,0 +1,17 @@
+{
+  "company_name": "CONOCOPHILLIPS",
+  "ticker": "COP",
+  "cik": "0001163165",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0001163165-25-000012",
+  "filing_id": "000116316525000012",
+  "filing_date": "2025-02-18",
+  "report_date": "2024-12-31",
+  "primary_document": "cop-20241231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1163165/000116316525000012/cop-20241231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

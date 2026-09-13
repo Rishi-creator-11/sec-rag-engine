@@ -1,0 +1,17 @@
+{
+  "company_name": "SYSCO CORP",
+  "ticker": "SYY",
+  "cik": "0000096021",
+  "filing_type": "10-K",
+  "fiscal_year": 2026,
+  "accession_number": "0000096021-26-000033",
+  "filing_id": "000009602126000033",
+  "filing_date": "2026-08-21",
+  "report_date": "2026-06-27",
+  "primary_document": "syy-20260627.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/96021/000009602126000033/syy-20260627.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

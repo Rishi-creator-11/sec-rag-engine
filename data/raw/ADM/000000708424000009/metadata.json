@@ -1,0 +1,17 @@
+{
+  "company_name": "Archer-Daniels-Midland Co",
+  "ticker": "ADM",
+  "cik": "0000007084",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000007084-24-000009",
+  "filing_id": "000000708424000009",
+  "filing_date": "2024-03-12",
+  "report_date": "2023-12-31",
+  "primary_document": "adm-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/7084/000000708424000009/adm-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

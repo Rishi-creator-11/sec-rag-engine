@@ -1,0 +1,17 @@
+{
+  "company_name": "Broadcom Inc.",
+  "ticker": "AVGO",
+  "cik": "0001730168",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001730168-25-000121",
+  "filing_id": "000173016825000121",
+  "filing_date": "2025-12-18",
+  "report_date": "2025-11-02",
+  "primary_document": "avgo-20251102.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

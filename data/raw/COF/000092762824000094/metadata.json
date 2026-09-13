@@ -1,0 +1,17 @@
+{
+  "company_name": "CAPITAL ONE FINANCIAL CORP",
+  "ticker": "COF",
+  "cik": "0000927628",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000927628-24-000094",
+  "filing_id": "000092762824000094",
+  "filing_date": "2024-02-23",
+  "report_date": "2023-12-31",
+  "primary_document": "cof-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/927628/000092762824000094/cof-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

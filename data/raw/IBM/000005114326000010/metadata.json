@@ -1,0 +1,17 @@
+{
+  "company_name": "INTERNATIONAL BUSINESS MACHINES CORP",
+  "ticker": "IBM",
+  "cik": "0000051143",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000051143-26-000010",
+  "filing_id": "000005114326000010",
+  "filing_date": "2026-02-24",
+  "report_date": "2025-12-31",
+  "primary_document": "ibm-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

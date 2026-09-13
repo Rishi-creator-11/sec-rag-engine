@@ -1,0 +1,17 @@
+{
+  "company_name": "Albertsons Companies, Inc.",
+  "ticker": "ACI",
+  "cik": "0001646972",
+  "filing_type": "10-K",
+  "fiscal_year": 2026,
+  "accession_number": "0001646972-26-000032",
+  "filing_id": "000164697226000032",
+  "filing_date": "2026-04-27",
+  "report_date": "2026-02-28",
+  "primary_document": "aci-20260228.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1646972/000164697226000032/aci-20260228.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

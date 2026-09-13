@@ -1,0 +1,17 @@
+{
+  "company_name": "Merck & Co., Inc.",
+  "ticker": "MRK",
+  "cik": "0000310158",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0001628280-25-007732",
+  "filing_id": "000162828025007732",
+  "filing_date": "2025-02-25",
+  "report_date": "2024-12-31",
+  "primary_document": "mrk-20241231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/310158/000162828025007732/mrk-20241231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

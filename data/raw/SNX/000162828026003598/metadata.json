@@ -1,0 +1,17 @@
+{
+  "company_name": "TD SYNNEX CORP",
+  "ticker": "SNX",
+  "cik": "0001177394",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001628280-26-003598",
+  "filing_id": "000162828026003598",
+  "filing_date": "2026-01-27",
+  "report_date": "2025-11-30",
+  "primary_document": "snx-20251130.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1177394/000162828026003598/snx-20251130.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

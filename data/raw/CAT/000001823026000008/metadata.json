@@ -1,0 +1,17 @@
+{
+  "company_name": "CATERPILLAR INC",
+  "ticker": "CAT",
+  "cik": "0000018230",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000018230-26-000008",
+  "filing_id": "000001823026000008",
+  "filing_date": "2026-02-13",
+  "report_date": "2025-12-31",
+  "primary_document": "cat-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}
