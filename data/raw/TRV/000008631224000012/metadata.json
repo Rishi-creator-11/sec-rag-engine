@@ -1,0 +1,17 @@
+{
+  "company_name": "TRAVELERS COMPANIES, INC.",
+  "ticker": "TRV",
+  "cik": "0000086312",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000086312-24-000012",
+  "filing_id": "000008631224000012",
+  "filing_date": "2024-02-15",
+  "report_date": "2023-12-31",
+  "primary_document": "trv-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/86312/000008631224000012/trv-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

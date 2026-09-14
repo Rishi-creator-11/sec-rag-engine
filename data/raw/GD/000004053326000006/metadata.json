@@ -1,0 +1,17 @@
+{
+  "company_name": "GENERAL DYNAMICS CORP",
+  "ticker": "GD",
+  "cik": "0000040533",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000040533-26-000006",
+  "filing_id": "000004053326000006",
+  "filing_date": "2026-01-30",
+  "report_date": "2025-12-31",
+  "primary_document": "gd-20251231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000006/gd-20251231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "American Airlines Group Inc.",
+  "ticker": "AAL",
+  "cik": "0000006201",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000006201-24-000010",
+  "filing_id": "000000620124000010",
+  "filing_date": "2024-02-21",
+  "report_date": "2023-12-31",
+  "primary_document": "aal-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/6201/000000620124000010/aal-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

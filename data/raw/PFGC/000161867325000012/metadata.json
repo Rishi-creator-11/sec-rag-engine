@@ -1,0 +1,17 @@
+{
+  "company_name": "Performance Food Group Co",
+  "ticker": "PFGC",
+  "cik": "0001618673",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0001618673-25-000012",
+  "filing_id": "000161867325000012",
+  "filing_date": "2025-08-13",
+  "report_date": "2025-06-28",
+  "primary_document": "pfgc-20250628.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1618673/000161867325000012/pfgc-20250628.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

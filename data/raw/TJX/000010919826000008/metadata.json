@@ -1,0 +1,17 @@
+{
+  "company_name": "TJX COMPANIES INC /DE/",
+  "ticker": "TJX",
+  "cik": "0000109198",
+  "filing_type": "10-K",
+  "fiscal_year": 2026,
+  "accession_number": "0000109198-26-000008",
+  "filing_id": "000010919826000008",
+  "filing_date": "2026-03-31",
+  "report_date": "2026-01-31",
+  "primary_document": "tjx-20260131.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/109198/000010919826000008/tjx-20260131.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

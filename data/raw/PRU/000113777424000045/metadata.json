@@ -1,0 +1,17 @@
+{
+  "company_name": "PRUDENTIAL FINANCIAL INC",
+  "ticker": "PRU",
+  "cik": "0001137774",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0001137774-24-000045",
+  "filing_id": "000113777424000045",
+  "filing_date": "2024-02-21",
+  "report_date": "2023-12-31",
+  "primary_document": "pru-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1137774/000113777424000045/pru-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

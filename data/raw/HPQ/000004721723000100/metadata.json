@@ -1,0 +1,17 @@
+{
+  "company_name": "HP INC",
+  "ticker": "HPQ",
+  "cik": "0000047217",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000047217-23-000100",
+  "filing_id": "000004721723000100",
+  "filing_date": "2023-12-18",
+  "report_date": "2023-10-31",
+  "primary_document": "hpq-20231031.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/47217/000004721723000100/hpq-20231031.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

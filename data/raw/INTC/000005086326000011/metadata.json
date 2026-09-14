@@ -1,0 +1,17 @@
+{
+  "company_name": "INTEL CORP",
+  "ticker": "INTC",
+  "cik": "0000050863",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000050863-26-000011",
+  "filing_id": "000005086326000011",
+  "filing_date": "2026-01-23",
+  "report_date": "2025-12-27",
+  "primary_document": "intc-20251227.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

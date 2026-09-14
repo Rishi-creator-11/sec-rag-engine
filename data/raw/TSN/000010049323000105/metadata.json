@@ -1,0 +1,17 @@
+{
+  "company_name": "TYSON FOODS, INC.",
+  "ticker": "TSN",
+  "cik": "0000100493",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000100493-23-000105",
+  "filing_id": "000010049323000105",
+  "filing_date": "2023-11-13",
+  "report_date": "2023-09-30",
+  "primary_document": "tsn-20230930.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/100493/000010049323000105/tsn-20230930.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

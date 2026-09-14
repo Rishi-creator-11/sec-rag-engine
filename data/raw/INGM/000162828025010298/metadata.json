@@ -1,0 +1,17 @@
+{
+  "company_name": "Ingram Micro Holding Corp",
+  "ticker": "INGM",
+  "cik": "0001897762",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0001628280-25-010298",
+  "filing_id": "000162828025010298",
+  "filing_date": "2025-03-05",
+  "report_date": "2024-12-28",
+  "primary_document": "ingm-20241228.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1897762/000162828025010298/ingm-20241228.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

@@ -1,0 +1,17 @@
+{
+  "company_name": "NIKE, Inc.",
+  "ticker": "NKE",
+  "cik": "0000320187",
+  "filing_type": "10-K",
+  "fiscal_year": 2025,
+  "accession_number": "0000320187-25-000047",
+  "filing_id": "000032018725000047",
+  "filing_date": "2025-07-17",
+  "report_date": "2025-05-31",
+  "primary_document": "nke-20250531.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/320187/000032018725000047/nke-20250531.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

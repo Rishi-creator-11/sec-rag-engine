@@ -1,0 +1,17 @@
+{
+  "company_name": "CISCO SYSTEMS, INC.",
+  "ticker": "CSCO",
+  "cik": "0000858877",
+  "filing_type": "10-K",
+  "fiscal_year": 2024,
+  "accession_number": "0000858877-24-000017",
+  "filing_id": "000085887724000017",
+  "filing_date": "2024-09-05",
+  "report_date": "2024-07-27",
+  "primary_document": "csco-20240727.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/858877/000085887724000017/csco-20240727.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}

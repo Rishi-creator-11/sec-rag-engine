@@ -1,0 +1,17 @@
+{
+  "company_name": "United Airlines Holdings, Inc.",
+  "ticker": "UAL",
+  "cik": "0000100517",
+  "filing_type": "10-K",
+  "fiscal_year": 2023,
+  "accession_number": "0000100517-24-000027",
+  "filing_id": "000010051724000027",
+  "filing_date": "2024-02-29",
+  "report_date": "2023-12-31",
+  "primary_document": "ual-20231231.htm",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/100517/000010051724000027/ual-20231231.htm",
+  "cik_override": false,
+  "successor_cik": null,
+  "successor_name": null,
+  "successor_effective_date": null
+}
