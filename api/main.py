@@ -11,6 +11,7 @@ from api.ask_logging import (
     client_ip_from_headers,
     hash_ip,
     log_ask,
+    logging_enabled as ask_logging_enabled,
 )
 from api.rag import answer_question
 from ingestion.registry import (
@@ -140,6 +141,9 @@ def health():
         "read_only_runtime": is_read_only_runtime(),
         "companies": len(list_companies()),
         "bm25_documents": document_count(),
+        # Boolean only -- never the values -- so /ask logging setup can be
+        # verified from outside without exposing SUPABASE_URL/ANON_KEY.
+        "ask_logging_configured": ask_logging_enabled(),
     }
     try:
         get_index()  # builds/loads once; cheap thereafter
