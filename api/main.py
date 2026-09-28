@@ -1,10 +1,17 @@
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 
+from api.ask_logging import (
+    build_error_row,
+    build_ok_row,
+    client_ip_from_headers,
+    hash_ip,
+    log_ask,
+)
 from api.rag import answer_question
 from ingestion.registry import (
     available_fiscal_years,
@@ -219,29 +226,45 @@ def company_filings(ticker: str) -> dict:
 
 
 @app.post("/ask")
-def ask(request: AskRequest) -> dict:
+def ask(request: AskRequest, http_request: Request) -> dict:
     tickers = request.tickers
     fiscal_years = request.fiscal_years
 
-    if fiscal_years and not tickers:
-        raise HTTPException(
-            status_code=422,
-            detail={
-                "error": "fiscal_years_without_tickers",
-                "detail": "fiscal_years requires at least one ticker",
-            },
+    # Caller context for the log only -- never used for retrieval/generation.
+    ip_hash = hash_ip(client_ip_from_headers(http_request.headers))
+    user_agent = http_request.headers.get("user-agent")
+    origin = http_request.headers.get("origin")
+
+    def _log_error(status: str, http_status: int, error_code: str, detail) -> None:
+        log_ask(
+            build_error_row(
+                question=request.question,
+                tickers=tickers,
+                fiscal_years=fiscal_years,
+                status=status,
+                http_status=http_status,
+                error_code=error_code,
+                error_detail=detail,
+                ip_hash=ip_hash,
+                user_agent=user_agent,
+                origin=origin,
+            )
         )
+
+    if fiscal_years and not tickers:
+        detail = {
+            "error": "fiscal_years_without_tickers",
+            "detail": "fiscal_years requires at least one ticker",
+        }
+        _log_error("http_error", 422, detail["error"], detail)
+        raise HTTPException(status_code=422, detail=detail)
 
     if tickers:
         known, unknown = partition_tickers(tickers)
         if unknown:
-            raise HTTPException(
-                status_code=422,
-                detail={
-                    "error": "unknown_tickers",
-                    "unknown_tickers": unknown,
-                },
-            )
+            detail = {"error": "unknown_tickers", "unknown_tickers": unknown}
+            _log_error("http_error", 422, detail["error"], detail)
+            raise HTTPException(status_code=422, detail=detail)
         tickers = known
 
     if fiscal_years and tickers:
@@ -254,20 +277,34 @@ def ask(request: AskRequest) -> dict:
             if missing:
                 unavailable[ticker] = missing
         if unavailable:
-            raise HTTPException(
-                status_code=422,
-                detail={
-                    "error": "fiscal_year_not_available",
-                    "unavailable": unavailable,
-                    "available": {
-                        t: available_fiscal_years(t) for t in tickers
-                    },
-                },
-            )
+            detail = {
+                "error": "fiscal_year_not_available",
+                "unavailable": unavailable,
+                "available": {t: available_fiscal_years(t) for t in tickers},
+            }
+            _log_error("http_error", 422, detail["error"], detail)
+            raise HTTPException(status_code=422, detail=detail)
 
-    return answer_question(
-        question=request.question,
-        top_k=request.top_k,
-        tickers=tickers,
-        fiscal_years=fiscal_years,
+    try:
+        result = answer_question(
+            question=request.question,
+            top_k=request.top_k,
+            tickers=tickers,
+            fiscal_years=fiscal_years,
+        )
+    except Exception as exc:
+        _log_error("exception", 500, type(exc).__name__, str(exc)[:500])
+        raise
+
+    log_ask(
+        build_ok_row(
+            question=request.question,
+            tickers=tickers,
+            fiscal_years=fiscal_years,
+            result=result,
+            ip_hash=ip_hash,
+            user_agent=user_agent,
+            origin=origin,
+        )
     )
+    return result
