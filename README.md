@@ -125,18 +125,29 @@ structural tests, not sampled from a benchmark.
 | Backend tests (`python -m pytest`) | **336 / 336** |
 | Fiscal-year filter correctness, cross-year leakage, cross-company leakage, comparison scope coverage, numeric-year attribution | **1.000 / 0.000 / 0.000 / 1.000 / 1.000** — asserted by `tests/test_multiyear*.py`, `test_comparison.py`, `test_filters.py` |
 
-**Retrieval quality** (MRR, Recall@K, Precision@K) is evaluated offline against
-`benchmark_v3_repool` — 125 questions (115 answerable, 10 deliberately unsupported fiscal
-years) covering 8 of the corpus's companies, with model-assisted relevance judgments (a
+**Retrieval quality** (MRR, Recall@K, Precision@K) is evaluated against `benchmark_v3_repool` —
+125 questions (115 answerable, 10 deliberately unsupported fiscal years) covering 8 companies
+(AAPL, AMZN, GOOGL, JPM, META, MSFT, NVDA, WMT), with model-assisted relevance judgments (a
 first-pass judgment plus a lower-temperature review pass over gpt-5-mini; not human-labeled).
-The most recent run of that benchmark predates this corpus's growth to 92 companies — it was
-measured at 10 companies / 4,262 chunks, not the current 92 / 45,252 — and lexical (BM25)
-ranking quality is known to shift as the corpus grows (global IDF over a bigger corpus,
-scope-filtered after scoring), so those numbers would not honestly describe current retrieval
-quality. Headline MRR/Recall/Precision figures are withheld here until the benchmark is re-run
-against the current corpus, rather than publishing a number that no longer reflects the deployed
-system. The harness itself (`evaluation/evaluate_v3_offline.py`) is unchanged and reproducible;
-see `evaluation/SCALE_READINESS_REPORT.md` for the last full methodology writeup.
+Those judgments are a property of the filing text, not of corpus size, so they stay valid as
+companies are added — but the retrieval *ranking* isn't: BM25 scores the whole corpus before
+scope-filtering, so its ranking shifts as the corpus grows. The table below is `python -m
+evaluation.evaluate_v3_current_corpus` — live retrieval against the current 92-company /
+45,252-chunk corpus, scored against those same reviewed judgments (2026-09-29):
+
+| Metric | Result |
+|---|---|
+| MRR (hybrid) | 0.86 |
+| Recall@10, capacity-capped (hybrid) | 0.66 |
+| Precision@5 (hybrid) | 0.60 |
+
+Down from the last full run at 10 companies / 4,262 chunks (MRR 0.88 / 0.70 / 0.62) — consistent
+with the drift this repo's own scale report predicted from BM25's whole-corpus IDF as the corpus
+grows roughly 10x, not a regression introduced by anything else. **Caveat:** the question set
+still covers 8 of the 92 companies; extending it to the full corpus is future work, not done
+here. See `evaluation/evaluate_v3_current_corpus.py` and
+`evaluation/results/v3_retrieval_evaluation_current_corpus.json` for the exact run, and
+`evaluation/SCALE_READINESS_REPORT.md` for the original methodology writeup.
 
 ## Tech Stack
 
