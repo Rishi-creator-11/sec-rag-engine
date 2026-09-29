@@ -113,27 +113,30 @@ CIK-lineage edge cases are handled generically: ExxonMobil's recent 10-Ks were f
 legacy registrant CIK, which is recorded as a `lineage` block in the registry without any
 company-specific code in the SEC client.
 
-## Evaluation
+## Evaluation & Testing
 
-Retrieval is evaluated offline against `benchmark_v3_repool` — 125 questions (115 answerable,
-10 deliberately unsupported fiscal years) over the current corpus, with **model-assisted
-relevance judgments** (a first-pass judgment plus a lower-temperature review pass). These are
-not human-labeled judgments; qrels outside the pooled candidate set are incomplete.
+**Correctness** (scope filtering, cross-year/cross-company isolation, numeric-year attribution)
+is enforced in code, not just measured after the fact: every retrieval path applies the same
+structured `RetrievalFilter` before generation, and that guarantee is checked by dedicated
+structural tests, not sampled from a benchmark.
 
-Structural gates (scope correctness, cross-scope leakage, numeric-year attribution) are checked
-by the unit test suite and by dedicated multi-year validation scripts.
-
-| Metric | Result |
+| Check | Result |
 |---|---|
-| MRR | 0.884 |
-| Recall@10 | 0.701 |
-| Precision@5 | 0.623 |
-| Fiscal-year filter correctness | 1.000 |
-| Cross-year leakage | 0.000 |
-| Cross-company leakage | 0.000 |
-| Comparison scope coverage | 1.000 |
-| Numeric-year correctness (anchored) | 1.000 |
-| Backend tests | 336 / 336 |
+| Backend tests (`python -m pytest`) | **336 / 336** |
+| Fiscal-year filter correctness, cross-year leakage, cross-company leakage, comparison scope coverage, numeric-year attribution | **1.000 / 0.000 / 0.000 / 1.000 / 1.000** — asserted by `tests/test_multiyear*.py`, `test_comparison.py`, `test_filters.py` |
+
+**Retrieval quality** (MRR, Recall@K, Precision@K) is evaluated offline against
+`benchmark_v3_repool` — 125 questions (115 answerable, 10 deliberately unsupported fiscal
+years) covering 8 of the corpus's companies, with model-assisted relevance judgments (a
+first-pass judgment plus a lower-temperature review pass over gpt-5-mini; not human-labeled).
+The most recent run of that benchmark predates this corpus's growth to 92 companies — it was
+measured at 10 companies / 4,262 chunks, not the current 92 / 45,252 — and lexical (BM25)
+ranking quality is known to shift as the corpus grows (global IDF over a bigger corpus,
+scope-filtered after scoring), so those numbers would not honestly describe current retrieval
+quality. Headline MRR/Recall/Precision figures are withheld here until the benchmark is re-run
+against the current corpus, rather than publishing a number that no longer reflects the deployed
+system. The harness itself (`evaluation/evaluate_v3_offline.py`) is unchanged and reproducible;
+see `evaluation/SCALE_READINESS_REPORT.md` for the last full methodology writeup.
 
 ## Tech Stack
 
