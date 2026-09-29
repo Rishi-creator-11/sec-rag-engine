@@ -70,7 +70,7 @@ class ApiAskTests(unittest.TestCase):
         def fake_generate(question, evidence, comparison_scopes=None):
             self.seen["comparison_tickers"] = comparison_scopes
             self.seen["comparison_scopes"] = comparison_scopes
-            return "canned answer [Source 1]", "CTX", 1.0
+            return "canned answer [Source 1]", "CTX", 1.0, False
 
         def fake_comparison(question, evidence_k, scopes):
             # Phase 5: scopes is a list of retrieval.scope.Scope

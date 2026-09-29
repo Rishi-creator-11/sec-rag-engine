@@ -80,6 +80,10 @@ class AskRequest(BaseModel):
     # (ticker, fiscal_year) pair is a retrieval scope; >=2 scopes => comparison.
     # An unavailable year is rejected (422), never silently widened.
     fiscal_years: list[int] | None = Field(default=None, max_length=20)
+    # Opaque, client-generated id (not derived from anything personal) so the
+    # ask log can group multiple questions from one browser visit. Logging
+    # only -- never used for retrieval, never required, ignored if absent.
+    session_id: str | None = Field(default=None, max_length=100)
 
     @field_validator("tickers", mode="after")
     @classmethod
@@ -252,6 +256,7 @@ def ask(request: AskRequest, http_request: Request) -> dict:
                 ip_hash=ip_hash,
                 user_agent=user_agent,
                 origin=origin,
+                session_id=request.session_id,
             )
         )
 
@@ -309,6 +314,7 @@ def ask(request: AskRequest, http_request: Request) -> dict:
             ip_hash=ip_hash,
             user_agent=user_agent,
             origin=origin,
+            session_id=request.session_id,
         )
     )
     return result

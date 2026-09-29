@@ -476,7 +476,7 @@ def generate_answer(
     question: str,
     evidence: list[dict],
     comparison_scopes: list[str] | None = None,
-) -> tuple[str, str, float]:
+) -> tuple[str, str, float, bool]:
     context = build_context(evidence)
     request = build_generation_request(question, context, comparison_scopes)
 
@@ -484,7 +484,18 @@ def generate_answer(
     response = client.responses.create(**request)
     generation_ms = (time.perf_counter() - generation_start) * 1000
 
-    return response.output_text, context, generation_ms
+    # The 800-token cap (MAX_OUTPUT_TOKENS) is a known cause of cut-off
+    # answers. The Responses API reports this explicitly rather than us
+    # guessing from the text: status == "incomplete" with
+    # incomplete_details.reason == "max_output_tokens". Surfaced for
+    # logging only -- never changes what is returned to the caller.
+    truncated = (
+        getattr(response, "status", None) == "incomplete"
+        and getattr(response.incomplete_details, "reason", None)
+        == "max_output_tokens"
+    )
+
+    return response.output_text, context, generation_ms, truncated
 
 
 def normalize_requested_tickers(
@@ -719,7 +730,7 @@ def answer_question(
     plan = plan_evidence(question, top_k, tickers, fiscal_years)
 
     compact_evidence = prepare_evidence(plan["evidence"])
-    answer, context, generation_ms = generate_answer(
+    answer, context, generation_ms, answer_truncated = generate_answer(
         question,
         compact_evidence,
         plan["comparison_scopes"],
@@ -736,6 +747,9 @@ def answer_question(
         "generation_model": ANSWER_MODEL,
         "reranker_fallback": plan["reranker_fallback"],
         "reranker_fallback_reason": plan["reranker_fallback_reason"],
+        # Diagnostic only -- the 800-token cap cutting an answer short.
+        # Not part of the stable public contract; logging reads it.
+        "answer_truncated": answer_truncated,
         "search_scope": {
             "global_search": len(requested) == 0,
             "comparison_mode": plan["comparison_mode"],

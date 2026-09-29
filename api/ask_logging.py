@@ -95,6 +95,7 @@ def build_ok_row(
     ip_hash: str | None,
     user_agent: str | None,
     origin: str | None,
+    session_id: str | None = None,
 ) -> dict[str, Any]:
     scope = result.get("search_scope") or {}
     sources = result.get("sources") or []
@@ -109,6 +110,19 @@ def build_ok_row(
         for s in sources
         if isinstance(s.get("rerank_score"), (int, float))
     ]
+    # Metadata only -- never the evidence text -- so the log stays small and
+    # never duplicates filing content into a second store.
+    source_meta = [
+        {
+            "chunk_id": s.get("chunk_id"),
+            "ticker": s.get("ticker"),
+            "fiscal_year": s.get("fiscal_year"),
+            "accession_number": s.get("accession_number"),
+            "hybrid_rank": s.get("hybrid_rank"),
+            "rerank_score": s.get("rerank_score"),
+        }
+        for s in sources
+    ]
     return {
         "question": question,
         "tickers": tickers,
@@ -117,8 +131,10 @@ def build_ok_row(
         "status": "ok",
         "http_status": 200,
         "answer_length": len(result.get("answer") or ""),
+        "answer_truncated": bool(result.get("answer_truncated")),
         "sources_count": len(sources),
         "source_tickers": sorted({s.get("ticker") for s in sources if s.get("ticker")}),
+        "sources": source_meta,
         "reranker_fallback": bool(result.get("reranker_fallback")),
         "reranker_fallback_reason": result.get("reranker_fallback_reason"),
         "top_rerank_score": max(rerank_scores) if rerank_scores else None,
@@ -130,6 +146,7 @@ def build_ok_row(
         "ip_hash": ip_hash,
         "user_agent": user_agent,
         "origin": origin,
+        "session_id": session_id,
     }
 
 
@@ -145,6 +162,7 @@ def build_error_row(
     ip_hash: str | None,
     user_agent: str | None,
     origin: str | None,
+    session_id: str | None = None,
 ) -> dict[str, Any]:
     return {
         "question": question,
@@ -157,6 +175,7 @@ def build_error_row(
         "ip_hash": ip_hash,
         "user_agent": user_agent,
         "origin": origin,
+        "session_id": session_id,
     }
 
 
