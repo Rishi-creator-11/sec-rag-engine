@@ -11,6 +11,12 @@ the filings do not support an answer, the system refuses instead of guessing.
 - Frontend: https://secfrontend.vercel.app
 - Backend API docs (Swagger): https://sec-rag-engine.vercel.app/docs
 
+## Current Scale
+
+**92 companies · 274 annual 10-K filings · 45,252 indexed chunks**, as of the live
+[`/health`](https://sec-rag-engine.vercel.app/health) and [`/companies`](https://sec-rag-engine.vercel.app/companies)
+endpoints. This is a V1 launch corpus (large-cap US filers), not full SEC coverage.
+
 ## What It Does
 
 - Pick one or more companies and fiscal years, or ask across the whole corpus.
@@ -127,24 +133,7 @@ by the unit test suite and by dedicated multi-year validation scripts.
 | Cross-company leakage | 0.000 |
 | Comparison scope coverage | 1.000 |
 | Numeric-year correctness (anchored) | 1.000 |
-| Backend tests | 320 / 320 |
-
-## Production Corpus
-
-10 companies, 31 10-K filings, 4,262 chunks. Three fiscal years per company (four for NVIDIA).
-
-| Ticker | Company | Fiscal years |
-|---|---|---|
-| AAPL | Apple | 2023–2025 |
-| AMZN | Amazon | 2023–2025 |
-| GOOGL | Alphabet | 2023–2025 |
-| JPM | JPMorgan Chase | 2023–2025 |
-| META | Meta Platforms | 2023–2025 |
-| MSFT | Microsoft | 2024–2026 |
-| NVDA | NVIDIA | 2023–2026 |
-| UNH | UnitedHealth Group | 2023–2025 |
-| WMT | Walmart | 2024–2026 |
-| XOM | ExxonMobil | 2023–2025 |
+| Backend tests | 336 / 336 |
 
 ## Tech Stack
 

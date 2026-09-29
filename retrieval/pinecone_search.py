@@ -10,11 +10,25 @@ load_dotenv()
 
 INDEX_NAME = "sec-rag-engine"
 
-pc = Pinecone(
-    api_key=os.getenv("PINECONE_API_KEY")
-)
+# Lazy: constructing the client is cheap, but pc.Index(INDEX_NAME) resolves
+# the index host with a real network call to Pinecone's control plane. Doing
+# that at import time meant every module that transitively imports this one
+# (api.rag, most of the test suite) needed a live Pinecone credential just to
+# collect, and every fresh serverless instance paid that round trip before
+# serving any request -- even one that never calls search(). `index` stays a
+# plain module attribute (not wrapped in a function) so the existing
+# `@patch("retrieval.pinecone_search.index")` tests keep working unchanged:
+# they replace this attribute directly, and the None-check below then no-ops.
+pc: Pinecone | None = None
+index = None
 
-index = pc.Index(INDEX_NAME)
+
+def _ensure_index():
+    global pc, index
+    if index is None:
+        pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+        index = pc.Index(INDEX_NAME)
+    return index
 
 
 def search(
@@ -40,7 +54,7 @@ def search(
     if filters is not None and not filters.is_empty():
         query_kwargs["filter"] = filters.to_pinecone_filter()
 
-    response = index.query(**query_kwargs)
+    response = _ensure_index().query(**query_kwargs)
 
     results = []
 

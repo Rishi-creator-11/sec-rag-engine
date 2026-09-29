@@ -10,18 +10,29 @@ NAMESPACE = "__default__"
 
 load_dotenv()
 
-pc = Pinecone(
-    api_key=os.environ["PINECONE_API_KEY"]
-)
+# Lazy for the same reason as retrieval/pinecone_search.py: pc.Index()
+# resolves the index host with a real network call, so building it at import
+# time made every module that transitively imports this one require a live
+# Pinecone credential just to collect, independent of whether sparse search
+# is ever actually called (it's currently unused by the production hybrid
+# path -- see retrieval/hybrid_search.py).
+pc: Pinecone | None = None
+index = None
 
-index = pc.Index(INDEX_NAME)
+
+def _ensure_index():
+    global pc, index
+    if index is None:
+        pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
+        index = pc.Index(INDEX_NAME)
+    return index
 
 
 def search(
     query: str,
     top_k: int = 5,
 ) -> list[dict]:
-    response = index.search(
+    response = _ensure_index().search(
         namespace=NAMESPACE,
         query={
             "inputs": {

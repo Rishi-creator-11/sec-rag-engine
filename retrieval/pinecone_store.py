@@ -23,7 +23,20 @@ UPSERT_MAX_ATTEMPTS = 4
 # serverless is eventually consistent). Patchable in tests.
 VERIFY_POLL_WAITS = (1.0, 2.0, 4.0, 8.0, 15.0, 15.0)
 
-pc = Pinecone(api_key=PINECONE_API_KEY)
+_pc: Pinecone | None = None
+
+
+def _client() -> Pinecone:
+    """Lazy singleton. Pinecone's SDK validates the key with a real network
+    call on construction, so building it at import time made every module
+    that transitively imports this one (api.rag, most of the test suite)
+    require a live Pinecone credential just to collect -- independent of
+    whether a given test ever touches retrieval. Deferred to first actual
+    use; behavior is otherwise unchanged (still one client, reused)."""
+    global _pc
+    if _pc is None:
+        _pc = Pinecone(api_key=PINECONE_API_KEY)
+    return _pc
 
 # Canonical dense metadata keys. "company" is kept as a back-compat alias for
 # "company_name" because retrieval/pinecone_search.py (and BM25) read "company".
@@ -100,7 +113,7 @@ def upsert_filing(
                 f"{len(embedding) if embedding else 0} != {VECTOR_DIMENSION}"
             )
 
-    index = pc.Index(index_name)
+    index = _client().Index(index_name)
     upserted = 0
     for batch in _iter_batches(records, batch_size):
         vectors = [
@@ -151,8 +164,8 @@ def upsert_filing(
 
 
 def create_index() -> None:
-    if INDEX_NAME not in pc.list_indexes().names():
-        pc.create_index(
+    if INDEX_NAME not in _client().list_indexes().names():
+        _client().create_index(
             name=INDEX_NAME,
             dimension=VECTOR_DIMENSION,
             metric="cosine",
@@ -164,7 +177,7 @@ def create_index() -> None:
 
         print("Creating Pinecone index...")
 
-        while not pc.describe_index(INDEX_NAME).status["ready"]:
+        while not _client().describe_index(INDEX_NAME).status["ready"]:
             time.sleep(1)
 
         print("Index ready.")
@@ -185,7 +198,7 @@ def load_embedded_chunks(
 
 
 def upload_chunks(chunks: list[dict]) -> None:
-    index = pc.Index(INDEX_NAME)
+    index = _client().Index(INDEX_NAME)
 
     for start in range(0, len(chunks), BATCH_SIZE):
         batch = chunks[start:start + BATCH_SIZE]
@@ -226,7 +239,7 @@ if __name__ == "__main__":
 
     print("Finished uploading vectors.")
 
-    index = pc.Index(INDEX_NAME)
+    index = _client().Index(INDEX_NAME)
 
     stats = index.describe_index_stats()
 
