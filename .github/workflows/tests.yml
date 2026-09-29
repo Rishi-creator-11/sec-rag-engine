@@ -24,5 +24,13 @@ jobs:
       - name: Run tests
         # No external services are called: OpenAI/Cohere/Pinecone are
         # patched at the api.rag seam (see tests/test_api.py's module
-        # docstring). No secrets are required for this job.
+        # docstring) or, for Pinecone, never touched at all now that its
+        # client is lazily constructed. These are placeholder values, not
+        # secrets -- the SDKs only need a non-empty string to construct;
+        # nothing here ever calls out to a real API.
+        env:
+          OPENAI_API_KEY: test
+          COHERE_API_KEY: test
+          PINECONE_API_KEY: test
+          SEC_USER_AGENT: ci-test ci@example.com
         run: python -m pytest -q
