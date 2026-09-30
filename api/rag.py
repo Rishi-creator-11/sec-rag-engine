@@ -15,6 +15,7 @@ from retrieval.hybrid_search import search as hybrid_search
 from retrieval.embedder import embed_text
 from retrieval.scope import Scope, expand_scopes
 from retrieval.scoped_search import scoped_search
+from retrieval.year_inference import infer_fiscal_year
 
 
 load_dotenv()
@@ -285,7 +286,14 @@ def build_generation_request(
         'revenue", and "net income applicable to common stockholders" are each distinct\n'
         'from "total revenue" / "total revenues and other income" / "net income". If the\n'
         'excerpts give only a differently named or an unlabeled figure, say they do not\n'
-        'report the requested figure.'
+        'report the requested figure.\n'
+        'When the question names one specific fiscal year: prefer an excerpt whose own\n'
+        '"Fiscal year:" label matches that year over one with no such label or a\n'
+        'different one. Never use a figure explicitly labeled with a different fiscal\n'
+        'year as if it were the requested year, even if it looks like the same line\n'
+        'item. If every excerpt for the requested year is unlabeled or ambiguous and\n'
+        'conflicts with an explicitly labeled excerpt from another year, say the\n'
+        'excerpts do not clearly support the requested year rather than guessing.'
     )
 
     if comparison_scopes:
@@ -638,9 +646,22 @@ def plan_evidence(
       0 scopes   -> global path                    (unchanged)
       1 scope    -> single ticker[/year] filter    (Phase 1C / Phase 5 year)
       2+ scopes  -> comparison path (company, year, or company+year)
+
+    Structured ``fiscal_years`` always wins. Only when it is entirely absent
+    and a ticker scope is present do we fall back to inferring a single
+    fiscal year from the question text itself (retrieval.year_inference) --
+    closing the gap where "revenue in FY2025?" with no structured year
+    would otherwise search every ingested year for that ticker. Ambiguous
+    or multi-year questions infer nothing and keep today's behavior.
     """
     requested = normalize_requested_tickers(tickers)
     years = _normalize_years(fiscal_years)
+    year_inferred = False
+    if requested and not years:
+        inferred = infer_fiscal_year(question)
+        if inferred is not None:
+            years = [inferred]
+            year_inferred = True
     scopes = expand_scopes(requested, years) if requested else []
     comparison_mode = len(scopes) >= 2
 
@@ -682,6 +703,7 @@ def plan_evidence(
             "comparison_scopes": [s.label for s in scopes],
             "evidence_by_scope": evidence_by_scope(evidence, scopes),
             "warnings": warnings,
+            "fiscal_year_inferred": year_inferred,
         }
 
     # Global / single-scope path.
@@ -716,6 +738,7 @@ def plan_evidence(
         "comparison_scopes": None,
         "evidence_by_scope": evidence_by_scope(evidence, scopes) if scopes else {},
         "warnings": [],
+        "fiscal_year_inferred": year_inferred,
     }
 
 
@@ -758,6 +781,11 @@ def answer_question(
             "scopes": plan["scopes"] or None,
             "evidence_by_scope": plan["evidence_by_scope"],
             "warnings": plan["warnings"],
+            # True when `fiscal_years` was absent from the request and this
+            # single year was instead inferred from the question text
+            # (retrieval.year_inference) -- observability for the loose-
+            # phrasing scoping fix, never used to change behavior downstream.
+            "fiscal_year_inferred": plan["fiscal_year_inferred"],
         },
         "timings": {
             "hybrid_ms": round(plan["hybrid_ms"], 1),

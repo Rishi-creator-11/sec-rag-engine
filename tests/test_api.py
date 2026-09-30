@@ -116,6 +116,7 @@ class ApiAskTests(unittest.TestCase):
                 "scopes": None,
                 "evidence_by_scope": {},
                 "warnings": [],
+                "fiscal_year_inferred": False,
             },
         )
         self.assertIsNone(self.seen["comparison_tickers"])
@@ -155,6 +156,7 @@ class ApiAskTests(unittest.TestCase):
                 "scopes": ["AAPL"],
                 "evidence_by_scope": {"AAPL": len(body["sources"])},
                 "warnings": [],
+                "fiscal_year_inferred": False,
             },
         )
         self.assertIsNone(self.seen["comparison_tickers"])  # single = Phase 1C path

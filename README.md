@@ -112,13 +112,21 @@ flowchart LR
 - **Infrastructure**: Pinecone managed indexes, Vercel (read-only Python runtime for the API,
   static + SSR for the UI).
 
-## Known Limitation — being worked on for launch
+## Known Limitation
 
-Loose, directly phrased revenue questions for ExxonMobil can safely refuse rather than return a
-number: that filing's layout puts the consolidated total in a chunk without an adjacent
-fiscal-year header, which is specific to that one filing's table structure. Anchored queries
-("What does the consolidated statement of income show for total revenues?") already return the
-correct value. Fixing the loose-query case for this filing shape is active pre-launch work.
+When a request names a single fiscal year in the question but omits structured fiscal-year
+scope, AlphaBrief infers that year conservatively and applies the same hard retrieval filter
+used for explicit fiscal-year requests — verified with 18 live trials across ExxonMobil,
+Chevron, Apple, and JPMorgan: 0 mixed-fiscal-year evidence sets, 0 cross-year misattributions.
+Ambiguous phrasing (year ranges, comparisons, no year at all) is left unfiltered, matching prior
+behavior.
+
+A narrower risk remains for filers whose 10-K restates the same metric across multiple tables
+(segment breakdown, reconciliation, consolidated total) — ExxonMobil and Chevron in the current
+corpus. Retrieval now reliably returns only that fiscal year's chunks, but a chunk can still
+contain more than one figure for that year (e.g. a segment total alongside the consolidated
+one), and generation occasionally picks the wrong one. This is a same-year numeric-precision
+issue, distinct from the cross-year issue above, and is separate ongoing work.
 
 ## Repository Structure
 
