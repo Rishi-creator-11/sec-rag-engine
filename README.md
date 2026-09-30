@@ -46,7 +46,7 @@ tests, not sampled from a benchmark.
 
 | Check | Result |
 |---|---|
-| Backend tests (`python -m pytest`) | **336 / 336** |
+| Backend tests (`python -m pytest`) | **362 / 362** |
 | Fiscal-year filter correctness, cross-year leakage, cross-company leakage, comparison scope coverage, numeric-year attribution | **1.000 / 0.000 / 0.000 / 1.000 / 1.000** — asserted by `tests/test_multiyear*.py`, `test_comparison.py`, `test_filters.py` |
 
 **Retrieval quality** (MRR, Recall@K, Precision@K) is evaluated against `benchmark_v3_repool` —
