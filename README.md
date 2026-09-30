@@ -75,28 +75,20 @@ hybrid top-5 rather than failing outright, and that fallback path is still scope
 **Ingestion (build-time):**
 
 ```mermaid
-flowchart TD
-    A[SEC EDGAR] --> B[Ingest + clean]
-    B --> C[Token-window chunking]
-    C --> D[OpenAI embeddings]
-    D --> E[(Pinecone dense index)]
-    C --> F[(bm25s lexical index)]
+flowchart LR
+    A[SEC EDGAR] --> B[Clean + chunk]
+    B --> C[Embed]
+    C --> D[(Dense + lexical index)]
 ```
 
 **Query (request-time):**
 
 ```mermaid
-flowchart TD
-    Q[Question + ticker/year scope] --> S[Structured scope filter]
-    S --> E[(Pinecone dense)]
-    S --> F[(bm25s lexical)]
-    E --> R[Weighted RRF fusion]
-    F --> R
-    R --> K[Cohere rerank]
-    K --> V[Scope-aware evidence selection]
-    V --> G[OpenAI generation]
-    G --> API[FastAPI /ask]
-    API --> UI[Next.js UI]
+flowchart LR
+    Q[Question + scope] --> H[Hybrid search]
+    H --> R[RRF fusion]
+    R --> K[Rerank]
+    K --> G[Grounded answer]
 ```
 
 - **Dense**: OpenAI `text-embedding-3-small` (1536-dim) in Pinecone.
