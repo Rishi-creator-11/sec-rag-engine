@@ -1,6 +1,6 @@
 # AlphaBrief
 
-AI-powered research for SEC 10-K filings with grounded answers and source-level evidence.
+Evidence-backed research for SEC 10-K filings with grounded answers and source-level evidence.
 
 Ask a plain-English question about a public company's annual report and get a response built
 only from retrieved filing text, with every answer backed by retrieved filing evidence. When
